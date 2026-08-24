@@ -75,6 +75,7 @@ def build_variant(spec: dict, num_steps: int, num_blocks: int) -> dict:
         "surrogate_scale": float(spec.get("surrogate_scale", 1.0)),
         "adaptive_threshold": (float(spec["adaptive_threshold"])
                                if spec.get("adaptive_threshold") is not None else None),
+        "taylor_order": int(spec.get("taylor_order", 0)),
         "surrogate_block_ids": {int(b) for b in surrogate_blocks} if surrogate_blocks else None,
         "name": spec["name"],
         "oracle_blend": float(spec.get("oracle_blend", 1.0)),
@@ -124,6 +125,7 @@ def generate(pipeline, common, seed, variant=None):
                 surrogate_scale=variant["surrogate_scale"],
                 oracle_blend=variant["oracle_blend_or_none"],
                 adaptive_threshold=variant["adaptive_threshold"],
+                taylor_order=variant["taylor_order"],
             ) as runtime:
                 result = pipeline(**common, generator=generator)
                 stats = vars(runtime.stats)
@@ -139,6 +141,7 @@ def generate(pipeline, common, seed, variant=None):
                 surrogate_bank=surrogate_for(variant),
                 surrogate_block_ids=variant["surrogate_block_ids"],
                 surrogate_scale=variant["surrogate_scale"],
+                taylor_order=variant["taylor_order"],
             ) as runtime:
                 result = pipeline(**common, generator=generator)
                 stats = vars(runtime.stats)
@@ -279,6 +282,7 @@ def main() -> None:
                 "oracle_blend": v["oracle_blend"],
                 "surrogate_checkpoint": v["surrogate_checkpoint"],
                 "surrogate_scale": v["surrogate_scale"],
+                "taylor_order": v["taylor_order"],
                 "segment": v["segment"],
                 "num_segments": v["num_segments"],
                 "oracle_fraction": v["num_oracle_slots"] / v["num_reuse_slots"] if v["num_reuse_slots"] else 0.0,

@@ -1,0 +1,14 @@
+# PixArt-Sigma-XL-2-512-MS, native sampling configuration.
+[model]
+model_id = "PixArt-alpha/PixArt-Sigma-XL-2-512-MS"
+local_root = "/workspace/models/pixart_sigma_512"
+dtype = "float16"
+height = 512
+width = 512
+num_inference_steps = 50
+guidance_scale = 4.5
+scheduler = "shipped"          # DPMSolverMultistep from the released config
+
+[reuse]
+target = "all_transformer_blocks"
+cache_interval = 999           # schedules are given explicitly per variant

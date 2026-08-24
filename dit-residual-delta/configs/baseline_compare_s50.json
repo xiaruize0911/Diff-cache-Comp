@@ -1,0 +1,8 @@
+[
+  {"name": "fixed_i5", "cache_interval": 5, "num_segments": 1},
+  {"name": "taylor1_i5", "cache_interval": 5, "num_segments": 1, "taylor_order": 1},
+  {"name": "taylor2_i5", "cache_interval": 5, "num_segments": 1, "taylor_order": 2},
+  {"name": "taylor3_i5", "cache_interval": 5, "num_segments": 1, "taylor_order": 3},
+  {"name": "taylor1_K28_i5", "cache_interval": 5, "taylor_order": 1},
+  {"name": "taylor2_K28_i5", "cache_interval": 5, "taylor_order": 2}
+]

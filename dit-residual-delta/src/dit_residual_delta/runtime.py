@@ -14,11 +14,40 @@ upper bound any corrector can reach at those slots.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any
 
 import torch
 from torch import Tensor, nn
+
+
+def taylor_forecast(history: list[tuple[int, Tensor]], step: int, order: int) -> Tensor:
+    """Newton-divided-difference forecast of a cached quantity at `step`.
+
+    Order 0 returns the most recent refresh value, i.e. verbatim reuse. Higher
+    orders extrapolate the polynomial through the last `order + 1` refresh points,
+    which is the mechanism TaylorSeer uses in place of reuse. Divided differences
+    are formed in float32: the stored residuals are fp16 and the leading
+    differences cancel heavily. Non-uniform refresh spacing is handled by
+    construction, so this also works under an adaptive schedule.
+    """
+    order = min(order, len(history) - 1)
+    newest = history[0][1]
+    if order <= 0:
+        return newest
+    steps = [float(history[j][0]) for j in range(order + 1)]
+    table = [history[j][1].float() for j in range(order + 1)]
+    out = table[0].clone()
+    for level in range(1, order + 1):
+        table = [
+            (table[j] - table[j + 1]) / (steps[j] - steps[j + level])
+            for j in range(len(table) - 1)
+        ]
+        basis = 1.0
+        for j in range(level):
+            basis *= step - steps[j]
+        out += table[0] * basis
+    return out.to(newest.dtype)
 
 
 def find_transformer_blocks(transformer: nn.Module) -> list[tuple[str, nn.Module]]:
@@ -33,6 +62,9 @@ def find_transformer_blocks(transformer: nn.Module) -> list[tuple[str, nn.Module
 class BlockCache:
     hidden: Tensor | None = None
     residual: Tensor | None = None
+    # (step, residual) at past refresh points, newest first. Only populated when a
+    # Taylor forecast is requested; plain reuse needs nothing but `residual`.
+    history: list[tuple[int, Tensor]] = field(default_factory=list)
 
 
 @dataclass
@@ -73,6 +105,7 @@ class _CachedBlock(nn.Module):
             if cache_this_block:
                 cache.hidden = hidden_states.detach()
                 cache.residual = output.detach() - cache.hidden
+                record_refresh(owner, cache, owner._step_index)
             owner.stats.exact_block_calls += 1
             return output
 
@@ -132,7 +165,7 @@ class _CachedBlock(nn.Module):
             owner.stats.surrogate_block_calls += 1
 
         owner.stats.reused_block_calls += 1
-        return hidden_states + cache.residual + delta_residual
+        return hidden_states + cached_base(owner, cache, owner._step_index) + delta_residual
 
 
 class DiTBlockRuntime:
@@ -153,6 +186,7 @@ class DiTBlockRuntime:
         reuse_observer: Any | None = None,
         reuse_observer_keys: set[tuple[int, int]] | None = None,
         step_offset: int = 0,
+        taylor_order: int = 0,
     ) -> None:
         if cache_interval < 1:
             raise ValueError("cache_interval must be at least one")
@@ -168,6 +202,7 @@ class DiTBlockRuntime:
         self.surrogate_scale = float(surrogate_scale)
         self.reuse_observer = reuse_observer
         self.reuse_observer_keys = reuse_observer_keys
+        self.taylor_order = int(taylor_order)
         self.targets = find_transformer_blocks(transformer)
         self.caches = {name: BlockCache() for name, _ in self.targets}
         self.stats = RuntimeStats()
@@ -257,6 +292,7 @@ class _SegmentHead(nn.Module):
             output = self._run(hidden_states, *args, **kwargs)
             cache.hidden = hidden_states.detach()
             cache.residual = output.detach() - cache.hidden
+            record_refresh(owner, cache, owner._step_index)
             owner.stats.exact_block_calls += len(self.blocks)
             return output
 
@@ -295,7 +331,7 @@ class _SegmentHead(nn.Module):
             ) * owner.surrogate_scale
             owner.stats.surrogate_block_calls += 1
         owner.stats.reused_block_calls += 1
-        return hidden_states + cache.residual + delta_residual
+        return hidden_states + cached_base(owner, cache, owner._step_index) + delta_residual
 
 
 class DiTSegmentRuntime:
@@ -324,6 +360,7 @@ class DiTSegmentRuntime:
         oracle_blend: float | None = None,
         step_offset: int = 0,
         adaptive_threshold: float | None = None,
+        taylor_order: int = 0,
     ) -> None:
         self.transformer = transformer
         blocks = list(transformer.transformer_blocks)
@@ -345,6 +382,7 @@ class DiTSegmentRuntime:
         self.surrogate_scale = float(surrogate_scale)
         self.reuse_observer = reuse_observer
         self.oracle_blend = oracle_blend
+        self.taylor_order = int(taylor_order)
         self.caches = [BlockCache() for _ in self.segments]
         self.stats = RuntimeStats()
         self.current_timestep: Tensor | None = None
@@ -406,3 +444,20 @@ class DiTSegmentRuntime:
         for handle in self._handles:
             handle.remove()
         self._handles.clear()
+
+
+def record_refresh(owner, cache: BlockCache, step: int) -> None:
+    """Push this refresh onto the cache history, keeping only what the order needs."""
+    order = getattr(owner, "taylor_order", 0)
+    if order <= 0:
+        return
+    cache.history.insert(0, (int(step), cache.residual))
+    del cache.history[order + 1:]
+
+
+def cached_base(owner, cache: BlockCache, step: int) -> Tensor:
+    """The quantity reuse injects: verbatim cache, or its Taylor forecast."""
+    order = getattr(owner, "taylor_order", 0)
+    if order <= 0 or not cache.history:
+        return cache.residual
+    return taylor_forecast(cache.history, step, order)
