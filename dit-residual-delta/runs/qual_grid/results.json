@@ -1,0 +1,735 @@
+{
+  "config": "configs/pixart_sigma_512_s50.toml",
+  "prompt_file": "/tmp/claude-0/-workspace/75597288-e5d0-45e3-bb4f-df6865532b2c/scratchpad/qual4.txt",
+  "seeds": [
+    9301
+  ],
+  "num_steps": 50,
+  "num_blocks": 28,
+  "variants": [
+    {
+      "name": "cache",
+      "anchor_steps": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        35,
+        40,
+        45
+      ],
+      "reuse_steps": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19,
+        21,
+        22,
+        23,
+        24,
+        26,
+        27,
+        28,
+        29,
+        31,
+        32,
+        33,
+        34,
+        36,
+        37,
+        38,
+        39,
+        41,
+        42,
+        43,
+        44,
+        46,
+        47,
+        48,
+        49
+      ],
+      "num_reuse_slots": 1120,
+      "num_oracle_slots": 0,
+      "oracle_blend": 1.0,
+      "surrogate_checkpoint": null,
+      "surrogate_scale": 1.0,
+      "taylor_order": 0,
+      "segment": null,
+      "num_segments": 1,
+      "oracle_fraction": 0.0
+    },
+    {
+      "name": "taylor1",
+      "anchor_steps": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        35,
+        40,
+        45
+      ],
+      "reuse_steps": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19,
+        21,
+        22,
+        23,
+        24,
+        26,
+        27,
+        28,
+        29,
+        31,
+        32,
+        33,
+        34,
+        36,
+        37,
+        38,
+        39,
+        41,
+        42,
+        43,
+        44,
+        46,
+        47,
+        48,
+        49
+      ],
+      "num_reuse_slots": 1120,
+      "num_oracle_slots": 0,
+      "oracle_blend": 1.0,
+      "surrogate_checkpoint": null,
+      "surrogate_scale": 1.0,
+      "taylor_order": 1,
+      "segment": null,
+      "num_segments": 1,
+      "oracle_fraction": 0.0
+    },
+    {
+      "name": "ours",
+      "anchor_steps": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        35,
+        40,
+        45
+      ],
+      "reuse_steps": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19,
+        21,
+        22,
+        23,
+        24,
+        26,
+        27,
+        28,
+        29,
+        31,
+        32,
+        33,
+        34,
+        36,
+        37,
+        38,
+        39,
+        41,
+        42,
+        43,
+        44,
+        46,
+        47,
+        48,
+        49
+      ],
+      "num_reuse_slots": 1120,
+      "num_oracle_slots": 0,
+      "oracle_blend": 1.0,
+      "surrogate_checkpoint": "runs/s50_inv/best.pt",
+      "surrogate_scale": 0.75,
+      "taylor_order": 0,
+      "segment": null,
+      "num_segments": 1,
+      "oracle_fraction": 0.0
+    },
+    {
+      "name": "combined",
+      "anchor_steps": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        35,
+        40,
+        45
+      ],
+      "reuse_steps": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19,
+        21,
+        22,
+        23,
+        24,
+        26,
+        27,
+        28,
+        29,
+        31,
+        32,
+        33,
+        34,
+        36,
+        37,
+        38,
+        39,
+        41,
+        42,
+        43,
+        44,
+        46,
+        47,
+        48,
+        49
+      ],
+      "num_reuse_slots": 1120,
+      "num_oracle_slots": 0,
+      "oracle_blend": 1.0,
+      "surrogate_checkpoint": "runs/s50_std/best.pt",
+      "surrogate_scale": 0.25,
+      "taylor_order": 1,
+      "segment": null,
+      "num_segments": 1,
+      "oracle_fraction": 0.0
+    }
+  ],
+  "aggregate": {
+    "cache": {
+      "speedup_vs_exact": {
+        "mean": 4.28554398168541,
+        "std": 0.048196469853669925,
+        "min": 4.251331217841859,
+        "max": 4.355244565501214,
+        "count": 4
+      },
+      "mse_vs_exact": {
+        "mean": 0.01762989303097129,
+        "std": 0.005789354719642478,
+        "min": 0.012542914599180222,
+        "max": 0.023814847692847252,
+        "count": 4
+      },
+      "psnr_vs_exact": {
+        "mean": 17.718105364973887,
+        "std": 1.4522552314337018,
+        "min": 16.231521916609992,
+        "max": 19.016015346964416,
+        "count": 4
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.5743572048924581,
+        "std": 0.05960755427788279,
+        "min": 0.5117882408538567,
+        "max": 0.6544899696976515,
+        "count": 4
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.3143332377076149,
+        "std": 0.1266293533917043,
+        "min": 0.2155611664056778,
+        "max": 0.49524807929992676,
+        "count": 4
+      }
+    },
+    "taylor1": {
+      "speedup_vs_exact": {
+        "mean": 4.212622212685681,
+        "std": 0.05741588737718992,
+        "min": 4.161902049969756,
+        "max": 4.29512727845855,
+        "count": 4
+      },
+      "mse_vs_exact": {
+        "mean": 0.017284607980400324,
+        "std": 0.005317678157618608,
+        "min": 0.01200546883046627,
+        "max": 0.022478800266981125,
+        "count": 4
+      },
+      "psnr_vs_exact": {
+        "mean": 17.784102910761547,
+        "std": 1.3751424948906925,
+        "min": 16.482268715430987,
+        "max": 19.206208754646166,
+        "count": 4
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.6226280423818862,
+        "std": 0.07995772500775587,
+        "min": 0.5503354754024162,
+        "max": 0.7362279735190058,
+        "count": 4
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.26248467713594437,
+        "std": 0.10065692033393626,
+        "min": 0.17861436307430267,
+        "max": 0.4055573344230652,
+        "count": 4
+      }
+    },
+    "ours": {
+      "speedup_vs_exact": {
+        "mean": 3.210164493098853,
+        "std": 1.2732966678197122,
+        "min": 1.3011514129065205,
+        "max": 3.9026455372616935,
+        "count": 4
+      },
+      "mse_vs_exact": {
+        "mean": 0.017906280234456062,
+        "std": 0.005509929845228874,
+        "min": 0.012222427874803543,
+        "max": 0.024009190499782562,
+        "count": 4
+      },
+      "psnr_vs_exact": {
+        "mean": 17.629507836113955,
+        "std": 1.369259101644314,
+        "min": 16.19622482483753,
+        "max": 19.12842516851384,
+        "count": 4
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.624295205466753,
+        "std": 0.06088665881509068,
+        "min": 0.556174167495704,
+        "max": 0.6959195698295675,
+        "count": 4
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.2912631444633007,
+        "std": 0.10033152110462079,
+        "min": 0.22479626536369324,
+        "max": 0.44037890434265137,
+        "count": 4
+      }
+    },
+    "combined": {
+      "speedup_vs_exact": {
+        "mean": 3.191848897506667,
+        "std": 1.2000355341504036,
+        "min": 1.3924807743889764,
+        "max": 3.8383953909027593,
+        "count": 4
+      },
+      "mse_vs_exact": {
+        "mean": 0.016728477086871862,
+        "std": 0.005336800875144478,
+        "min": 0.011174125596880913,
+        "max": 0.022289326414465904,
+        "count": 4
+      },
+      "psnr_vs_exact": {
+        "mean": 17.939299946487026,
+        "std": 1.4334203812601678,
+        "min": 16.519030557414183,
+        "max": 19.51786451489746,
+        "count": 4
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.6422940729500496,
+        "std": 0.084563108991971,
+        "min": 0.5640172201448254,
+        "max": 0.7613674021914384,
+        "count": 4
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.251370370388031,
+        "std": 0.1002490771898654,
+        "min": 0.17432649433612823,
+        "max": 0.395962119102478,
+        "count": 4
+      }
+    }
+  },
+  "cases": [
+    {
+      "case": "prompt-00-seed-9301",
+      "prompt": "a watercolor painting of a cathedral rose window at blue hour",
+      "seed": 9301,
+      "exact_seconds": 2.352216001600027,
+      "exact_clip_score": null,
+      "variants": {
+        "cache": {
+          "seconds": 0.553289283066988,
+          "speedup_vs_exact": 4.251331217841859,
+          "mse_vs_exact": 0.023814847692847252,
+          "psnr_vs_exact": 16.231521916609992,
+          "ssim_gaussian_vs_exact": 0.5747623273158095,
+          "lpips_alex_vs_exact": 0.23975692689418793,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 40,
+            "exact_block_calls": 280,
+            "reused_block_calls": 40,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        },
+        "taylor1": {
+          "seconds": 0.5651781260967255,
+          "speedup_vs_exact": 4.161902049969756,
+          "mse_vs_exact": 0.022478800266981125,
+          "psnr_vs_exact": 16.482268715430987,
+          "ssim_gaussian_vs_exact": 0.6118588077732522,
+          "lpips_alex_vs_exact": 0.20901958644390106,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 40,
+            "exact_block_calls": 280,
+            "reused_block_calls": 40,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        },
+        "ours": {
+          "seconds": 1.8077957555651665,
+          "speedup_vs_exact": 1.3011514129065205,
+          "mse_vs_exact": 0.024009190499782562,
+          "psnr_vs_exact": 16.19622482483753,
+          "ssim_gaussian_vs_exact": 0.5966119627541704,
+          "lpips_alex_vs_exact": 0.241861954331398,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 40,
+            "exact_block_calls": 280,
+            "reused_block_calls": 40,
+            "surrogate_block_calls": 40,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        },
+        "combined": {
+          "seconds": 1.6892269141972065,
+          "speedup_vs_exact": 1.3924807743889764,
+          "mse_vs_exact": 0.022289326414465904,
+          "psnr_vs_exact": 16.519030557414183,
+          "ssim_gaussian_vs_exact": 0.6344429168756717,
+          "lpips_alex_vs_exact": 0.19494977593421936,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 40,
+            "exact_block_calls": 280,
+            "reused_block_calls": 40,
+            "surrogate_block_calls": 40,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-01-seed-9301",
+      "prompt": "a studio product photograph of a vintage typewriter on a desk under heavy rain",
+      "seed": 9301,
+      "exact_seconds": 2.3600232303142548,
+      "exact_clip_score": null,
+      "variants": {
+        "cache": {
+          "seconds": 0.5546022579073906,
+          "speedup_vs_exact": 4.2553437110390195,
+          "mse_vs_exact": 0.012849114835262299,
+          "psnr_vs_exact": 18.911267894846024,
+          "ssim_gaussian_vs_exact": 0.6544899696976515,
+          "lpips_alex_vs_exact": 0.2155611664056778,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 40,
+            "exact_block_calls": 280,
+            "reused_block_calls": 40,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        },
+        "taylor1": {
+          "seconds": 0.5625599212944508,
+          "speedup_vs_exact": 4.195149958219277,
+          "mse_vs_exact": 0.01200546883046627,
+          "psnr_vs_exact": 19.206208754646166,
+          "ssim_gaussian_vs_exact": 0.7362279735190058,
+          "lpips_alex_vs_exact": 0.17861436307430267,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 40,
+            "exact_block_calls": 280,
+            "reused_block_calls": 40,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        },
+        "ours": {
+          "seconds": 0.6185358092188835,
+          "speedup_vs_exact": 3.8154997578791834,
+          "mse_vs_exact": 0.014422725886106491,
+          "psnr_vs_exact": 18.40952650475463,
+          "ssim_gaussian_vs_exact": 0.6959195698295675,
+          "lpips_alex_vs_exact": 0.22479626536369324,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 40,
+            "exact_block_calls": 280,
+            "reused_block_calls": 40,
+            "surrogate_block_calls": 40,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        },
+        "combined": {
+          "seconds": 0.6259379051625729,
+          "speedup_vs_exact": 3.770379155583002,
+          "mse_vs_exact": 0.011174125596880913,
+          "psnr_vs_exact": 19.51786451489746,
+          "ssim_gaussian_vs_exact": 0.7613674021914384,
+          "lpips_alex_vs_exact": 0.17432649433612823,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 40,
+            "exact_block_calls": 280,
+            "reused_block_calls": 40,
+            "surrogate_block_calls": 40,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-02-seed-9301",
+      "prompt": "a macro photograph of a wheelbarrow of cut flowers under heavy rain",
+      "seed": 9301,
+      "exact_seconds": 2.366006053984165,
+      "exact_clip_score": null,
+      "variants": {
+        "cache": {
+          "seconds": 0.5527720339596272,
+          "speedup_vs_exact": 4.280256432359549,
+          "mse_vs_exact": 0.012542914599180222,
+          "psnr_vs_exact": 19.016015346964416,
+          "ssim_gaussian_vs_exact": 0.5563882817025148,
+          "lpips_alex_vs_exact": 0.3067667782306671,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 40,
+            "exact_block_calls": 280,
+            "reused_block_calls": 40,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        },
+        "taylor1": {
+          "seconds": 0.563561599701643,
+          "speedup_vs_exact": 4.198309564095141,
+          "mse_vs_exact": 0.013455353677272797,
+          "psnr_vs_exact": 18.71104882213179,
+          "ssim_gaussian_vs_exact": 0.5920899128328707,
+          "lpips_alex_vs_exact": 0.25674742460250854,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 40,
+            "exact_block_calls": 280,
+            "reused_block_calls": 40,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        },
+        "ours": {
+          "seconds": 0.6191526763141155,
+          "speedup_vs_exact": 3.821361264348014,
+          "mse_vs_exact": 0.012222427874803543,
+          "psnr_vs_exact": 19.12842516851384,
+          "ssim_gaussian_vs_exact": 0.64847512178757,
+          "lpips_alex_vs_exact": 0.2580154538154602,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 40,
+            "exact_block_calls": 280,
+            "reused_block_calls": 40,
+            "surrogate_block_calls": 40,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        },
+        "combined": {
+          "seconds": 0.6282309964299202,
+          "speedup_vs_exact": 3.7661402691519306,
+          "mse_vs_exact": 0.013284992426633835,
+          "psnr_vs_exact": 18.76638688831579,
+          "ssim_gaussian_vs_exact": 0.6093487525882632,
+          "lpips_alex_vs_exact": 0.2402430921792984,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 40,
+            "exact_block_calls": 280,
+            "reused_block_calls": 40,
+            "surrogate_block_calls": 40,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-03-seed-9301",
+      "prompt": "an oil painting of a train crossing a viaduct in warm evening light",
+      "seed": 9301,
+      "exact_seconds": 2.418614663183689,
+      "exact_clip_score": null,
+      "variants": {
+        "cache": {
+          "seconds": 0.5553338341414928,
+          "speedup_vs_exact": 4.355244565501214,
+          "mse_vs_exact": 0.021312694996595383,
+          "psnr_vs_exact": 16.713616301475113,
+          "ssim_gaussian_vs_exact": 0.5117882408538567,
+          "lpips_alex_vs_exact": 0.49524807929992676,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 40,
+            "exact_block_calls": 280,
+            "reused_block_calls": 40,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        },
+        "taylor1": {
+          "seconds": 0.5631066337227821,
+          "speedup_vs_exact": 4.29512727845855,
+          "mse_vs_exact": 0.021198809146881104,
+          "psnr_vs_exact": 16.736885350837234,
+          "ssim_gaussian_vs_exact": 0.5503354754024162,
+          "lpips_alex_vs_exact": 0.4055573344230652,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 40,
+            "exact_block_calls": 280,
+            "reused_block_calls": 40,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        },
+        "ours": {
+          "seconds": 0.6197372116148472,
+          "speedup_vs_exact": 3.9026455372616935,
+          "mse_vs_exact": 0.020970776677131653,
+          "psnr_vs_exact": 16.78385484634983,
+          "ssim_gaussian_vs_exact": 0.556174167495704,
+          "lpips_alex_vs_exact": 0.44037890434265137,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 40,
+            "exact_block_calls": 280,
+            "reused_block_calls": 40,
+            "surrogate_block_calls": 40,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        },
+        "combined": {
+          "seconds": 0.6301108710467815,
+          "speedup_vs_exact": 3.8383953909027593,
+          "mse_vs_exact": 0.020165463909506798,
+          "psnr_vs_exact": 16.95391782532067,
+          "ssim_gaussian_vs_exact": 0.5640172201448254,
+          "lpips_alex_vs_exact": 0.395962119102478,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 40,
+            "exact_block_calls": 280,
+            "reused_block_calls": 40,
+            "surrogate_block_calls": 40,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    }
+  ]
+}
