@@ -1,0 +1,66 @@
+[
+  {
+    "name": "fixed_i5",
+    "cache_interval": 5,
+    "num_segments": 1
+  },
+  {
+    "name": "fixed_i4",
+    "cache_interval": 4,
+    "num_segments": 1
+  },
+  {
+    "name": "adaptive",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "adaptive_threshold": 0.35
+  },
+  {
+    "name": "ada_std2027",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "adaptive_threshold": 0.35,
+    "surrogate_checkpoint": "runs/sm_std_2027/last.pt",
+    "surrogate_scale": 0.5
+  },
+  {
+    "name": "ada_std3037",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "adaptive_threshold": 0.35,
+    "surrogate_checkpoint": "runs/sm_std_3037/last.pt",
+    "surrogate_scale": 0.5
+  },
+  {
+    "name": "ada_std4093",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "adaptive_threshold": 0.35,
+    "surrogate_checkpoint": "runs/sm_std_4093/last.pt",
+    "surrogate_scale": 0.5
+  },
+  {
+    "name": "ada_inv2027",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "adaptive_threshold": 0.35,
+    "surrogate_checkpoint": "runs/sm_inv_2027/last.pt",
+    "surrogate_scale": 0.75
+  },
+  {
+    "name": "ada_inv3037",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "adaptive_threshold": 0.35,
+    "surrogate_checkpoint": "runs/sm_inv_3037/last.pt",
+    "surrogate_scale": 0.75
+  },
+  {
+    "name": "ada_inv4093",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "adaptive_threshold": 0.35,
+    "surrogate_checkpoint": "runs/sm_inv_4093/last.pt",
+    "surrogate_scale": 0.75
+  }
+]

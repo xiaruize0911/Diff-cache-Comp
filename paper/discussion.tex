@@ -22,20 +22,27 @@ there rather than here. The natural question our result raises --- whether a lea
 corrector trained with a site-balanced objective could close that gap --- is one we
 cannot answer without the baselines we did not run.
 
-\paragraph{Metric scope.} All image numbers are fidelity to the same-seed exact
-output. This is the right primary target for an accelerator whose purpose is to
-reproduce what the model would have produced, and it is what makes same-seed paired
-tests possible, but it is \emph{not} a measure of aesthetic quality or
-prompt alignment: a lower SSIM means a different image, not necessarily a worse one.
-We report no FID \cite{heusel2017fid} or CLIP-score on a standard benchmark such as
-MS-COCO, so we cannot claim distributional quality is preserved. This is the single
-largest gap in our evaluation.
+\paragraph{Metric scope.} Most per-image numbers are fidelity to the same-seed exact
+output, which is the right primary target for an accelerator meant to reproduce what
+the model would have produced, and what makes same-seed paired tests possible --- but a
+lower SSIM means a different image, not necessarily a worse one. Sec.~\ref{sec:coco}
+adds a distributional metric and prompt alignment on COCO captions, which is what
+allowed us to discover that our loss claim does not survive there. What we still cannot
+say is anything about \emph{absolute} generation quality: we measure divergence from the
+exact model's distribution, never distance to real photographs, so a reader should not
+read our KID numbers as image-quality scores. We also could not use FID
+\cite{heusel2017fid} at all (Sec.~\ref{sec:coco}); reaching a sample size where it
+becomes usable would take roughly an order of magnitude more generation than we ran.
 
-\paragraph{No re-implementation of published accelerators.} Our correction-free
-baseline is uniform whole-stack step caching, the mechanism underlying FORA-style
-caching \cite{selvaraju2024fora} at the coarsest granularity. We do not
-re-implement TeaCache \cite{liu2024teacache}, ToCa \cite{zou2024toca} or
-$\Delta$-DiT \cite{chen2024deltadit}, and we make no state-of-the-art claim.
+\paragraph{Our baselines are weaker than the published state of the art.} The
+correction-free baseline is uniform whole-stack step caching, the mechanism underlying
+FORA-style caching \cite{selvaraju2024fora} at the coarsest granularity. We implemented
+the \emph{mechanism} of adaptive scheduling (Sec.~\ref{sec:adaptive}) but without a
+fitted rescaling it underperforms a uniform schedule, so we have not reproduced the
+benefit that TeaCache \cite{liu2024teacache} reports and cannot claim it as a baseline.
+We do not implement ToCa \cite{zou2024toca} or $\Delta$-DiT \cite{chen2024deltadit} at
+all, and we make no state-of-the-art claim. A reader should treat our absolute operating
+points as a controlled setting for the diagnostic question, not as competitive numbers.
 
 We also deliberately do \emph{not} offer oracle or $\alpha$-blend analyses as upper
 bounds on a learned corrector, though we ran them: a blend's error is a contraction of
@@ -53,10 +60,13 @@ steps flattens the per-site target-energy profile, which is the imbalance our fi
 corrects, so the inversion should \emph{weaken}. Testing that on TeaCache-style
 adaptive intervals is the single most informative experiment we did not run.
 
-\paragraph{Prompt diversity.} Prompts are templated (style $\times$ subject
-$\times$ condition) and the held-out split contains only $6$ subjects unseen in training.
-Splits are strictly subject-disjoint, but the templating limits the breadth of the
-generalisation claim; we did not evaluate on free-form or long-form prompts.
+\paragraph{Prompt distribution.} The corrector is \emph{trained} only on templated
+prompts (style $\times$ subject $\times$ condition) whose held-out split contains just
+$6$ unseen subjects. Evaluation now extends to $1989$ free-form COCO captions, and the
+gap between those two distributions is where our loss claim died --- an effect that was
+significant on the templated split and unresolvable on COCO. We did not retrain on a
+broad caption distribution, so we cannot say whether a corrector trained on COCO-like
+prompts would show the effect there; that is the most obvious follow-up.
 
 \paragraph{Timing.} Wall clock is eager mode on one A40. Absolute speedups would
 change under compilation or CUDA graphs, and our own measurements shifted by
@@ -139,27 +149,38 @@ real effects; replicates, not inference from one pair, are the right instrument.
 \section{Conclusion}
 
 Learned correction of cached diffusion transformers is usually posed as a regression
-problem in residual space, and evaluated there. We showed that this framing is
-actively misleading: at fixed granularity, data, architecture and cost, residual
-error and deployed image quality rank two correctors in opposite orders, reliably and
-reproducibly. The reason is an aggregation mismatch --- residual error weights
-injection sites by target energy, deployment weights them equally because each feeds
-the same depth-wise propagation chain --- and it is repairable. A per-site
-scale-invariant objective deploys measurably better at no cost in parameters or
-latency --- $+0.008$ SSIM and $-0.009$ LPIPS in our cleanest design, both significant
-under subject clustering, and positive in every condition we tested --- and a per-site relative statistic restores the correct ranking as a
-candidate selection criterion. We stress the ordering rather than the magnitude: the
-ordering is what contradicts residual error and it is stable across samples, seeds,
-metrics and data conditions, whereas our own magnitude estimate halved when we
-quadrupled the evaluation set. The same lens correctly predicts that on-policy data collection, which
-residual error endorses, buys nothing on images.
+problem in residual space and evaluated there. We set out to show that this framing is
+misleading and that a per-site reweighting fixes it. The first half survived our own
+scrutiny; the second did not.
 
-The broader lesson generalises past caching. Whenever a learned module is inserted
-into a frozen iterative computation, the natural local reconstruction loss inherits
-whatever weighting the local error happens to have, while the deployed system
-propagates every insertion equally. Reporting the local metric alongside a
-deployed one is not enough --- our own prior conclusions, drawn from the local metric,
-were reversed twice by the deployed one.
+What survived. Residual accuracy and deployed quality are decoupled, and across
+injection granularity the decoupling is dramatic: correcting each block achieves
+$6\times$ better residual accuracy than correcting the stack once and destroys the
+image, no scalar gain calibration rescues it, and the depth-wise error recursion
+explains why. The same decoupling reappears in three further places --- on-policy data
+collection improves residual error $11.9\%$ and changes nothing visible, a second
+backbone reproduces the residual-space signature without the image-level benefit, and
+two training objectives are ranked one way by residual error and the other way by images
+on our templated split. Meanwhile correction itself is worth having: it halves the
+distributional divergence from the exact model on COCO captions for $+5.1\%$ FLOPs.
+
+What did not. The fix we proposed --- a per-site scale-invariant objective --- does not
+produce a resolvable effect on a standard benchmark. Our estimate of it fell from
+$+0.022$ to $+0.008$ SSIM as we removed confounds from the design, and then to
+unresolvable when we replaced $24$ templated prompts with $1989$ COCO captions, where
+four fidelity metrics disagree on its sign. We therefore do not claim it. The mechanism
+that motivated it may still be right --- it predicts a small effect exactly where the
+per-site energy imbalance is small --- but on the evidence we have, the honest statement
+is that we identified a real problem with the standard objective and did not demonstrate
+a solution to it.
+
+The transferable lesson is about the shape of this failure rather than its particulars.
+Whenever a learned module is inserted into a frozen iterative computation, the natural
+local reconstruction loss inherits whatever weighting the local error happens to have,
+while the deployed system propagates every insertion equally. Reporting the local metric
+next to a deployed one is not sufficient protection: our own conclusions were reversed
+twice by the deployed metric and a third time by changing the prompt distribution
+underneath it.
 
 \paragraph{Reproducibility.} Every experiment runs on a single 48\,GB GPU. The
 protocol we would ask others to keep: select injection strength on validation and

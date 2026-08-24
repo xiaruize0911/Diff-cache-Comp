@@ -413,6 +413,67 @@ properties are locked by unit tests. We still report FID for comparability with 
 literature, but only as a difference against a shared reference, where the bias is
 common to all variants and cancels.
 
+\paragraph{Results.} Table~\ref{tab:coco} is the paper's most important table, and it
+splits our two claims apart.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrrrrr}
+\toprule
+ & KID$\times10^3$ & SSIM & LPIPS & PSNR & CLIP \\
+\midrule
+\emph{split-half of exact} & $-0.09{\scriptstyle\pm0.17}$ & --- & --- & --- & --- \\
+\midrule
+plain cache $i{=}5$ & $24.14{\scriptstyle\pm1.40}$ & 0.5000 & 0.5193 & 14.37 & 0.3078 \\
+$+$ C, std loss     & $13.45{\scriptstyle\pm0.93}$ & 0.5338 & 0.4508 & 14.77 & 0.3110 \\
+$+$ C, inv loss     & \best{$12.46{\scriptstyle\pm0.94}$} & 0.5362 & 0.4519 & 14.34 & 0.3121 \\
+plain cache $i{=}4$ & $13.25{\scriptstyle\pm0.86}$ & 0.5383 & 0.4438 & 15.22 & 0.3125 \\
+\bottomrule
+\end{tabular}
+\caption{COCO \emph{val2017}, $n{=}1989$ captions, one per image. Exact scores CLIP
+$0.3132$. $\pm$ on KID is the standard deviation over $100$ subsets of $500$. The first
+row is two halves of the \emph{exact} set scored against each other --- the
+same-distribution baseline --- and KID correctly returns zero there. Plain cache
+$i{=}4$ is included as a cost reference: it uses $15.51$ TFLOP against $13.61$ for the
+corrected $i{=}5$ variants.}
+\label{tab:coco}
+\end{table}
+
+\paragraph{Correction survives the benchmark, and the effect is large.} At a matched
+anchor schedule, adding the corrector cuts KID from $24.1\times10^{-3}$ to
+$12.5$--$13.5\times10^{-3}$ --- roughly halving the distributional divergence from the
+exact model --- while improving SSIM by $+0.034$, LPIPS by $-0.069$ and CLIP alignment
+by $+0.003$, for $+5.1\%$ FLOPs. Against the \emph{cheaper-than-i4} comparison the
+picture is a genuine trade rather than a domination: at $12\%$ less compute than plain
+cache $i{=}4$, the corrected $i{=}5$ variant has lower KID ($12.5$ vs.\ $13.3$) and
+equal CLIP, and is marginally behind on SSIM ($0.536$ vs.\ $0.538$) and LPIPS
+($0.452$ vs.\ $0.444$).
+
+\paragraph{The loss contrast does not survive the benchmark.} This is a failure of our
+own earlier conclusion and we state it plainly. On COCO the scale-invariant objective
+is better on KID ($-1.0\times10^{-3}$, but only $0.75$ pooled subset standard
+deviations), better on SSIM ($+0.0024$) and CLIP ($+0.0012$), and \emph{worse} on LPIPS
+($+0.0012$) and PSNR ($-0.43$). Four fidelity metrics do not agree on the sign, and the
+distributional metric cannot resolve it. Whatever the loss is worth on this prompt
+distribution, it is below what $\approx\!2000$ independent captions can measure --- and
+it is roughly a third of the $+0.0077$ SSIM we measured on our templated split, where
+$24$ prompts collapse into $6$ subjects.
+
+The most likely reading, which we cannot prove, is that the templated split's narrow
+subject distribution makes per-image fidelity to the exact output unusually sensitive to
+the corrector's fine behaviour, and that a broad caption distribution averages this
+away. The consequence for the paper is definite regardless: \textbf{the inversion we
+document is established across injection granularity (Sec.~\ref{sec:mechanism},
+Table~\ref{tab:granularity}), where the effect is enormous and mechanically explained,
+and it is \emph{not} established between two training objectives on a standard
+benchmark.}
+
+\paragraph{Why we do not report FID differences.} The split-half baseline is FID
+$50.74$, while the corrected variants score $47.2$ and $48.1$ --- i.e.\ both score
+\emph{better than the exact model does against itself}. At $n\!\approx\!1000$ per half
+the estimator is so bias-dominated that variant ordering by FID is meaningless. We
+report the numbers only to document this; every distributional claim above rests on KID.
+
 \subsection{Does prompt alignment survive?}
 \label{sec:clip}
 
@@ -520,6 +581,58 @@ error are decoupled \emph{between} backbones as well as within one, and $\relmse
 not comparable across them even as a ratio. The FLUX corrector was also trained with
 half the tokens per site (a storage constraint), so its absolute numbers are not
 comparable to the primary backbone's; only within-backbone contrasts are.
+
+\subsection{An adaptive-schedule baseline, and a coupling it reveals}
+\label{sec:adaptive}
+
+Our correction-free baseline so far has been a uniform anchor schedule. Adaptive
+schedules are the obvious stronger baseline, and the mechanism of
+Sec.~\ref{sec:mechanism} makes a prediction about them: a schedule that equalises
+staleness across reuse steps should flatten the per-site target-energy profile, which is
+the imbalance the scale-invariant objective corrects, so the loss effect should shrink.
+We implemented the mechanism --- accumulate the relative change of the stack input since
+the last refresh, recompute when it crosses a threshold --- and calibrated the threshold
+to $4.0$ refreshes per image, exactly matching \texttt{fixed\_i5}. This is a
+reimplementation of the \emph{idea} of timestep-aware adaptive caching and not of any
+published method: we do not have a fitted per-model rescaling polynomial.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrrr}
+\toprule
+ & refreshes/img & SSIM & LPIPS \\
+\midrule
+uniform, $i{=}5$ & 4.00 & \best{0.4626} & \best{0.5350} \\
+adaptive (ours, uncalibrated) & 3.80 & 0.4359 & 0.6080 \\
+adaptive $+$ C, std loss & 3.49 & 0.4233 & 0.5997 \\
+adaptive $+$ C, inv loss & 3.26 & 0.3919 & 0.6058 \\
+\bottomrule
+\end{tabular}
+\caption{Held-out split, $n{=}192$. Two negative results. The bare adaptive mechanism,
+without a fitted rescaling, is \emph{worse} than a uniform schedule at comparable cost,
+so we have not reproduced the benefit published methods report and cannot use it as a
+strong baseline. And the corrected rows are not cost-matched to each other: because the
+refresh decision reads the hidden state that the corrector modifies, each arm
+\emph{chooses a different schedule}.}
+\label{tab:adaptive}
+\end{table}
+
+The second row of that caption is the more interesting finding. Under an adaptive policy
+the corrector and the schedule are coupled: a corrector that makes the trajectory look
+more stable to the refresh indicator triggers fewer refreshes, and therefore buys itself
+\emph{less} real computation. The scale-invariant arm takes $3.26$ refreshes against
+$3.49$ for the standard arm --- $6.6\%$ less compute --- and scores $0.031$ SSIM lower.
+That difference is plausibly the cost gap alone, so \textbf{this experiment does not
+test the prediction we designed it for}, and we decline to read it either way. Reporting
+it as ``the effect reverses under adaptive scheduling'' would be the same error, in the
+opposite direction, as the confounded headline we retracted in
+Sec.~\ref{sec:limits}.
+
+The coupling is worth recording on its own account: any work combining a learned
+corrector with a content-adaptive cache schedule needs to hold refresh count fixed, or
+it will compare two different compute budgets. A clean test of our prediction requires a
+schedule whose decisions are independent of the corrector's output --- for instance one
+computed from an exact reference run --- which we did not build.
 
 \subsection{Cost accounting}
 \label{sec:cost}

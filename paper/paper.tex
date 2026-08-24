@@ -15,7 +15,7 @@
 \newcommand{\dR}{\Delta R}
 \newcommand{\best}[1]{\textbf{#1}}
 
-\title{\vspace{-2em}\Large Residual Error Is the Wrong Objective for Cache Correction\\ in Diffusion Transformers}
+\title{\vspace{-2em}\Large Residual Accuracy Does Not Predict Deployed Quality\\ in Cached Diffusion Transformers}
 \author{}
 \date{}
 
@@ -26,25 +26,25 @@
 \begin{abstract}
 Step caching accelerates diffusion transformers by reusing a block's output residual
 across denoising steps, and a natural refinement is to learn a \emph{corrector} that
-predicts how the cached residual should change. The natural objective for that corrector
-is its reconstruction error in residual space. That this objective is imperfectly
-aligned with image quality is known \cite{huang2025harmonica}; we show something
-stronger and more specific --- it \emph{inverts the ranking}. Holding data, architecture,
-injection structure and cost fixed and varying only the training loss, residual error
-prefers the worse corrector in all three training seeds while held-out image quality
-prefers the other in all three. We identify the mechanism: residual error aggregates
-squared error and target energy separately, so it is dominated by high-magnitude
-injection sites, whereas at deployment every site feeds the same depth-wise propagation
-chain regardless of magnitude. Making the objective per-site scale invariant --- a
-three-line change --- is worth $+0.008$ SSIM and $-0.009$ LPIPS at identical parameter
-count and latency, and a per-site relative statistic ranks correctors correctly where
-residual error does not. Three negative results follow from the same lens: on-policy
-(DAgger) data collection buys nothing at the image level despite an $11.9\%$ residual
-gain; no scalar gain calibration rescues per-block injection; and on a second,
-architecturally unrelated backbone the residual-space signature reappears but the fix
-itself does not help, which we trace to a $3\times$ smaller per-site energy imbalance.
-Our own estimate of the effect fell from $+0.022$ to $+0.008$ as designs got cleaner, so
-we claim the ordering, which was stable throughout, and not the magnitude.
+predicts how the cached residual should change. Such a corrector is naturally trained
+and selected on its reconstruction error in residual space. We report a systematic
+decoupling between that error and deployed image quality, and we are careful about how
+far it extends. Across \emph{injection granularity} the two are strongly
+anti-correlated: correcting each of $28$ blocks achieves $6\times$ better residual
+accuracy than correcting the stack once and destroys the image, and we rule out the
+obvious alternative explanation by showing that no scalar gain calibration rescues it.
+Between two \emph{training objectives} the decoupling appears on a templated prompt
+split but does \emph{not} survive a standard benchmark: on $1989$ COCO captions four
+fidelity metrics disagree on its sign and the distributional metric cannot resolve it.
+What does survive the benchmark is the corrector itself --- it halves the distributional
+divergence from the exact model (KID $24.1 \to 12.5 \times 10^{-3}$) for $+5.1\%$ FLOPs,
+validated against a same-distribution baseline. Two further negative results follow the
+same pattern: on-policy (DAgger) collection improves residual error by $11.9\%$ and
+changes nothing at the image level, and on a second, architecturally unrelated backbone
+the residual-space signature reappears while the image-level benefit does not. We also
+document that FID is unusable at feasible sample sizes here --- two halves of our own
+exact set score FID $50.7$ against each other, worse than the accelerated variants ---
+which is why every distributional claim we make rests on KID.
 \end{abstract}
 
 \section{Introduction}
@@ -82,57 +82,44 @@ This paper argues that Eq.~\ref{eq:relmse} is the wrong objective, and that the 
 is not a matter of degree. Our contributions:
 
 \begin{itemize}\itemsep2pt
-\item \textbf{An inversion, not a gap.} With data, architecture, injection
-structure and FLOPs held fixed and only the loss varied, $\relmse$ and held-out image
-quality rank two correctors in \emph{opposite} orders, consistently across three
-training seeds (Sec.~\ref{sec:inversion}). Residual error is stable to
-$5\times10^{-4}$ across training seeds, an order of magnitude below the gap between
-the arms, so the metric is reliably wrong rather than noisy. We report two variance
-components throughout and never conflate them: the spread across training seeds
-(small; SD $\le\!0.008$ SSIM) and the uncertainty from finite held-out data
-(larger; the subject-clustered standard error of the \emph{contrast} is $0.012$ SSIM).
-The first bounds how much a rerun would move a number; only the second bounds
-generalisation, and with $6$ held-out subjects it is the binding one.
+\item \textbf{A large, mechanically explained decoupling across granularity.} Splitting
+the cached stack into more injection sites improves residual accuracy $6\times$ and
+destroys the image (Table~\ref{tab:granularity}). We give a mechanism --- a working
+corrector restores state dependence and turns additive error accumulation into
+multiplicative --- and rule out the obvious alternative by showing that no scalar gain
+calibration rescues per-block injection (Table~\ref{tab:calib}).
 
-\item \textbf{A mechanism.} $\relmse$ sums squared error and target energy
-separately, so sites whose $\lVert \dR \rVert$ is large dominate it. Deployment does
-not share that weighting: each injection site feeds the same propagation chain
-irrespective of magnitude (Sec.~\ref{sec:mechanism}). This also explains a
-previously puzzling observation in this line of work --- that correcting a cached
-stack \emph{per block} destroys the image while correcting it \emph{once} helps.
+\item \textbf{A benchmark-validated benefit from correction.} On $1989$ COCO captions
+the corrector halves the distributional divergence from the exact model
+(KID $24.1 \to 12.5 \times 10^{-3}$) for $+5.1\%$ FLOPs, with unchanged latency
+relative to an equally-sized corrector (Sec.~\ref{sec:coco}).
 
-\item \textbf{A fix, and when it will not help.} A per-site scale-invariant loss
-is worth $+0.008$ SSIM and $-0.009$ LPIPS at matched cost in our cleanest design
-(Sec.~\ref{sec:loss}) --- small, but significant on both metrics under subject
-clustering. Correction itself is worth several times more
-($+0.034$--$+0.054$ SSIM over plain caching). Reweighting a
-diffusion MSE so no scale dominates is not itself new
-\cite{choi2022p2,hang2023minsnr}; what is new is identifying \emph{which} imbalance
-matters for cache correction, that it inverts rather than blurs the ranking, and a
-measurable predictor of when the fix pays --- the effect tracks the per-site
-target-energy spread across three conditions (Sec.~\ref{sec:scaling}) and vanishes
-when that spread is flat.
+\item \textbf{A claim that did not survive its own benchmark.} A per-site
+scale-invariant objective, which the mechanism predicts should help, does help on our
+templated split ($+0.0077$ SSIM, both metrics significant under clustering) and does
+\emph{not} produce a resolvable effect on COCO, where four fidelity metrics disagree on
+its sign. We report the null rather than the split that favours us, and we do not claim
+the fix.
 
-\item \textbf{A negative result the lens predicts.} On-policy data collection in the
-style of DAgger \cite{ross2011dagger} improves $\relmse$ by $11.9\%$ and delivers
-nothing on images; at matched data volume, ordinary data is if anything slightly
-better (Sec.~\ref{sec:dagger}).
+\item \textbf{Two further negative results of the same shape.} On-policy (DAgger)
+collection improves residual error $11.9\%$ and buys nothing on images
+(Sec.~\ref{sec:dagger}); on FLUX.1-dev the residual-space signature reappears exactly
+while the image-level benefit does not, which we trace to a $3\times$ smaller per-site
+energy imbalance (Sec.~\ref{sec:flux}).
 
-\item \textbf{Cross-backbone limits.} On FLUX.1-dev (12B, flow matching, 57
-blocks) correction itself transfers strongly ($+0.0808$ SSIM over plain caching,
-$t{=}10.8$) and the residual-space signature replicates exactly, but the loss fix
-gives \emph{no} measurable image-level benefit. We trace this to a measurable
-backbone property --- per-site target-energy imbalance, $10.9\times$ on our primary
-backbone versus $3.7\times$ on FLUX --- which bounds how much the fix can buy
-(Sec.~\ref{sec:flux}).
+\item \textbf{A methodological result about the metrics themselves.} FID is unusable at
+the sample sizes this setting affords: two halves of our own exact set score FID $50.7$
+against each other, worse than the accelerated variants score against the whole. We
+report KID throughout and validate it against a same-distribution baseline.
 \end{itemize}
 
-We stress the scope of the claim. We do not propose a new state-of-the-art
-accelerator; the absolute gains from correction are real but modest
-($\approx\!0.05$ SSIM at $4\times$ FLOPs reduction). The contribution is that the
-standard way of building and evaluating such correctors is measuring the wrong thing,
-by an amount large enough to reverse conclusions --- including, in our own case, a
-conclusion we had already written down.
+We stress the scope. We do not propose a state-of-the-art accelerator, and a
+training-free method reports much stronger absolute numbers than ours
+\cite{liu2025taylorseer}. Nor do we claim that residual error is always the wrong
+objective: we claim it is unreliable, demonstrate that unreliability at a scale large
+enough to reverse conclusions in one regime, and show that our own attempt to exploit
+the insight does not survive a standard benchmark. Three of our five findings are
+negative, including one that contradicts an earlier draft of this paper.
 
 \section{Related Work}
 
