@@ -1,0 +1,12 @@
+[
+  {"name": "fixed_i5", "cache_interval": 5, "num_segments": 1},
+  {"name": "taylor1_i5", "cache_interval": 5, "num_segments": 1, "taylor_order": 1},
+  {"name": "ours50_inv_s075", "cache_interval": 5, "num_segments": 1,
+   "surrogate_checkpoint": "runs/s50_inv/best.pt", "surrogate_scale": 0.75},
+  {"name": "ours50_std_s075", "cache_interval": 5, "num_segments": 1,
+   "surrogate_checkpoint": "runs/s50_std/best.pt", "surrogate_scale": 0.75},
+  {"name": "taylor1_plus_ours50_s025", "cache_interval": 5, "num_segments": 1, "taylor_order": 1,
+   "surrogate_checkpoint": "runs/s50_std/best.pt", "surrogate_scale": 0.25},
+  {"name": "taylor1_plus_ours50_s050", "cache_interval": 5, "num_segments": 1, "taylor_order": 1,
+   "surrogate_checkpoint": "runs/s50_std/best.pt", "surrogate_scale": 0.5}
+]
