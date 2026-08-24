@@ -1,0 +1,22 @@
+[
+ {
+  "name": "fit_t0020",
+  "fastcache_maps": "runs/fastcache_maps/maps.pt",
+  "fastcache_threshold": 0.02
+ },
+ {
+  "name": "zero_t0020",
+  "fastcache_maps": "runs/fastcache_maps/maps_zero.pt",
+  "fastcache_threshold": 0.02
+ },
+ {
+  "name": "fit_t0040",
+  "fastcache_maps": "runs/fastcache_maps/maps.pt",
+  "fastcache_threshold": 0.04
+ },
+ {
+  "name": "zero_t0040",
+  "fastcache_maps": "runs/fastcache_maps/maps_zero.pt",
+  "fastcache_threshold": 0.04
+ }
+]

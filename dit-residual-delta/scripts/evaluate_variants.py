@@ -32,8 +32,9 @@ from dit_residual_delta.metrics import (
     skimage_ssim,
 )
 from dit_residual_delta.pipeline import load_pixart_pipeline, load_prompt_embeddings
-from dit_residual_delta.runtime import DiTBlockRuntime, DiTSegmentRuntime, uniform_segments
+from dit_residual_delta.runtime import load_fastcache_maps
 from dit_residual_delta.surrogate import load_surrogate_bank
+from dit_residual_delta.variants import build_variant, runtime_for_variant
 
 METRICS = (
     "clip_score",
@@ -44,51 +45,6 @@ METRICS = (
     "ssim_gaussian_vs_exact",
     "lpips_alex_vs_exact",
 )
-
-
-def resolve_anchor_steps(spec: dict, num_steps: int) -> set[int]:
-    if "anchor_steps" in spec:
-        return {int(s) for s in spec["anchor_steps"]}
-    interval = int(spec.get("cache_interval", 2))
-    return {s for s in range(num_steps) if s % interval == 0}
-
-
-def build_variant(spec: dict, num_steps: int, num_blocks: int) -> dict:
-    anchors = resolve_anchor_steps(spec, num_steps)
-    reuse_steps = [s for s in range(num_steps) if s not in anchors]
-    oracle_steps = [int(s) for s in spec.get("oracle_steps", reuse_steps)]
-    oracle_blocks = [int(b) for b in spec.get("oracle_block_ids", [])]
-    oracle = {(s, b) for b in oracle_blocks for s in oracle_steps} or None
-    forced = {
-        (int(s), int(b))
-        for b in spec.get("forced_cache_block_ids", [])
-        for s in spec.get("forced_cache_steps", sorted(anchors))
-    } or None
-    cached_blocks = spec.get("cached_block_ids")
-    surrogate_blocks = spec.get("surrogate_block_ids")
-    segment = spec.get("segment")
-    num_segments = spec.get("num_segments")
-    return {
-        "segment": tuple(int(v) for v in segment) if segment else None,
-        "num_segments": int(num_segments) if num_segments else None,
-        "surrogate_checkpoint": spec.get("surrogate_checkpoint"),
-        "surrogate_scale": float(spec.get("surrogate_scale", 1.0)),
-        "adaptive_threshold": (float(spec["adaptive_threshold"])
-                               if spec.get("adaptive_threshold") is not None else None),
-        "taylor_order": int(spec.get("taylor_order", 0)),
-        "surrogate_block_ids": {int(b) for b in surrogate_blocks} if surrogate_blocks else None,
-        "name": spec["name"],
-        "oracle_blend": float(spec.get("oracle_blend", 1.0)),
-        "oracle_blend_or_none": (float(spec["oracle_blend"]) if "oracle_blend" in spec
-                                 else (1.0 if spec.get("segment_oracle") else None)),
-        "anchor_steps": anchors,
-        "reuse_steps": reuse_steps,
-        "oracle_refresh_keys": oracle,
-        "forced_cache_keys": forced,
-        "cached_block_ids": {int(b) for b in cached_blocks} if cached_blocks else None,
-        "num_oracle_slots": 0 if oracle is None else len(oracle),
-        "num_reuse_slots": len(reuse_steps) * num_blocks,
-    }
 
 
 _BANK_CACHE: dict[str, object] = {}
@@ -105,6 +61,20 @@ def surrogate_for(variant):
     return _BANK_CACHE[path]
 
 
+_FASTCACHE_CACHE: dict[str, object] = {}
+
+
+def fastcache_for(variant):
+    path = variant.get("fastcache_maps")
+    if path is None:
+        return None
+    if path not in _FASTCACHE_CACHE:
+        _FASTCACHE_CACHE[path] = load_fastcache_maps(path)
+        print(json.dumps({"loaded_fastcache_maps": path,
+                          "blocks": len(_FASTCACHE_CACHE[path])}), flush=True)
+    return _FASTCACHE_CACHE[path]
+
+
 def generate(pipeline, common, seed, variant=None):
     generator = torch.Generator(device="cuda").manual_seed(seed)
     torch.cuda.synchronize()
@@ -113,38 +83,14 @@ def generate(pipeline, common, seed, variant=None):
         if variant is None:
             result = pipeline(**common, generator=generator)
             stats = None
-        elif variant["segment"] is not None or variant["num_segments"] is not None:
-            depth = len(pipeline.transformer.transformer_blocks)
-            with DiTSegmentRuntime(
-                pipeline.transformer,
-                segment=variant["segment"] if variant["num_segments"] is None else None,
-                segments=(uniform_segments(depth, variant["num_segments"])
-                          if variant["num_segments"] else None),
-                anchor_steps=variant["anchor_steps"],
-                surrogate_bank=surrogate_for(variant),
-                surrogate_scale=variant["surrogate_scale"],
-                oracle_blend=variant["oracle_blend_or_none"],
-                adaptive_threshold=variant["adaptive_threshold"],
-                taylor_order=variant["taylor_order"],
-            ) as runtime:
-                result = pipeline(**common, generator=generator)
-                stats = vars(runtime.stats)
         else:
-            with DiTBlockRuntime(
-                pipeline.transformer,
-                cache_interval=999,
-                anchor_steps=variant["anchor_steps"],
-                cached_block_ids=variant["cached_block_ids"],
-                oracle_refresh_keys=variant["oracle_refresh_keys"],
-                oracle_blend=variant["oracle_blend"],
-                forced_cache_keys=variant["forced_cache_keys"],
-                surrogate_bank=surrogate_for(variant),
-                surrogate_block_ids=variant["surrogate_block_ids"],
-                surrogate_scale=variant["surrogate_scale"],
-                taylor_order=variant["taylor_order"],
-            ) as runtime:
+            with runtime_for_variant(pipeline.transformer, variant,
+                                     surrogate_for(variant),
+                                     fastcache_for(variant)) as runtime:
                 result = pipeline(**common, generator=generator)
                 stats = vars(runtime.stats)
+                if getattr(runtime, "deltas", None):
+                    stats["delta_mean"] = sum(runtime.deltas) / len(runtime.deltas)
     torch.cuda.synchronize()
     return result.images[0], time.perf_counter() - start, stats
 
@@ -283,6 +229,8 @@ def main() -> None:
                 "surrogate_checkpoint": v["surrogate_checkpoint"],
                 "surrogate_scale": v["surrogate_scale"],
                 "taylor_order": v["taylor_order"],
+                "fastcache_maps": v["fastcache_maps"],
+                "fastcache_threshold": v["fastcache_threshold"],
                 "segment": v["segment"],
                 "num_segments": v["num_segments"],
                 "oracle_fraction": v["num_oracle_slots"] / v["num_reuse_slots"] if v["num_reuse_slots"] else 0.0,

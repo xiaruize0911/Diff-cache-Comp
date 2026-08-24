@@ -461,3 +461,126 @@ def cached_base(owner, cache: BlockCache, step: int) -> Tensor:
     if order <= 0 or not cache.history:
         return cache.residual
     return taylor_forecast(cache.history, step, order)
+
+
+# ---------------------------------------------------------------------------
+# FastCache (arXiv 2505.20353), reimplemented as a mechanism.
+#
+# Two things the paper leaves under-specified, and what we do about them:
+#
+# 1. It calls W_l, b_l "learnable" but gives no fitting procedure. We solve them
+#    in closed form by ridge least squares on captured per-block slots, which is
+#    the most favourable instantiation available -- a closed-form optimum on
+#    on-policy data, not a weakly-trained head.
+# 2. Its skip test, delta^2 <= chi2_{ND,1-alpha}/(ND), is vacuous at these
+#    dimensions: ND = 1024*1152 puts the bound at delta <= 1.0011, while the
+#    observed relative change is far below 1, so every block at every step would
+#    be skipped. Rather than implement something degenerate we treat the bound as
+#    a free threshold and calibrate it on validation to a target compute budget,
+#    exactly as we do for the adaptive-schedule baseline.
+#
+# Not implemented: the spatial token-selection / token-merging module. This
+# runtime decides at block granularity over all tokens, which is the granularity
+# our other families use, so the comparison stays on one axis.
+# ---------------------------------------------------------------------------
+
+
+class _FastCacheBlock(nn.Module):
+    def __init__(self, owner: "FastCacheRuntime", name: str, block_id: int, original: nn.Module):
+        super().__init__()
+        self.owner = owner
+        self.name = name
+        self.block_id = block_id
+        self.original = original
+
+    def forward(self, hidden_states: Tensor, *args, **kwargs) -> Tensor:
+        owner = self.owner
+        previous = owner.previous_input.get(self.name)
+        skip = False
+        if previous is not None and previous[0].shape == hidden_states.shape:
+            # One fp32-accumulated norm over the difference, no cast copies and no
+            # recomputation of the reference norm: the delta test runs 28x per step,
+            # so an allocation here shows up directly in wall clock.
+            reference, reference_norm = previous
+            difference = torch.linalg.vector_norm(
+                hidden_states.sub(reference), dtype=torch.float32)
+            delta = float(difference / reference_norm)
+            owner.deltas.append(delta)
+            skip = delta <= owner.threshold and self.block_id in owner.linear_maps
+        owner.previous_input[self.name] = (
+            hidden_states.detach(),
+            torch.linalg.vector_norm(hidden_states.detach(), dtype=torch.float32).clamp_min(1e-12),
+        )
+        if not skip:
+            owner.stats.exact_block_calls += 1
+            return self.original(hidden_states, *args, **kwargs)
+        weight, bias = owner.linear_maps[self.block_id]
+        residual = torch.addmm(bias, hidden_states.reshape(-1, hidden_states.shape[-1]), weight)
+        owner.stats.reused_block_calls += 1
+        return hidden_states + residual.reshape(hidden_states.shape)
+
+
+class FastCacheRuntime:
+    """Per-block, per-step adaptive skipping with a linear stand-in on skip.
+
+    No anchor schedule: the decision is taken independently for every (step,
+    block) from the relative change of that block's own input since the previous
+    step. `linear_maps[b] = (A_b, bias_b)` predicts the block's residual from its
+    current input, so the skipped output is `h + A_b h + bias_b` -- FastCache's
+    `W_l h + b_l` with `W_l = I + A_b`.
+    """
+
+    def __init__(self, transformer: nn.Module, linear_maps: dict[int, tuple[Tensor, Tensor]],
+                 threshold: float, step_offset: int = 0) -> None:
+        self.transformer = transformer
+        self.linear_maps = linear_maps
+        self.threshold = float(threshold)
+        self.targets = find_transformer_blocks(transformer)
+        self.previous_input: dict[str, tuple[Tensor, Tensor]] = {}
+        self.deltas: list[float] = []
+        self.stats = RuntimeStats()
+        self.current_timestep: Tensor | None = None
+        self._step_index = int(step_offset)
+        self._full_step = True
+        self._handles: list[Any] = []
+
+    def _root_pre_hook(self, module, args, kwargs):
+        timestep = kwargs.get("timestep")
+        if timestep is None and len(args) > 1:
+            timestep = args[1]
+        if isinstance(timestep, Tensor):
+            self.current_timestep = timestep.detach()
+
+    def _root_post_hook(self, module, args, kwargs, output):
+        self.stats.full_steps += 1
+        self._step_index += 1
+
+    def __enter__(self):
+        stack = self.transformer.transformer_blocks
+        for block_id, (name, original) in enumerate(self.targets):
+            stack[block_id] = _FastCacheBlock(self, name, block_id, original)
+        self._handles = [
+            self.transformer.register_forward_pre_hook(self._root_pre_hook, with_kwargs=True),
+            self.transformer.register_forward_hook(self._root_post_hook, with_kwargs=True),
+        ]
+        return self
+
+    def __exit__(self, exc_type, exc, traceback):
+        stack = self.transformer.transformer_blocks
+        for block_id, (_, original) in enumerate(self.targets):
+            stack[block_id] = original
+        for handle in self._handles:
+            handle.remove()
+        self._handles.clear()
+        self.previous_input.clear()
+
+
+def load_fastcache_maps(path: str, device="cuda", dtype=torch.float16):
+    """Load the ridge-fitted per-block maps written by fit_fastcache_maps.py."""
+    payload = torch.load(path, map_location="cpu")
+    maps = {}
+    for key, entry in payload["maps"].items():
+        weight = entry["weight"].to(device=device, dtype=dtype)
+        bias = entry["bias"].to(device=device, dtype=dtype)
+        maps[int(key)] = (weight, bias)
+    return maps
