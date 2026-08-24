@@ -1,0 +1,69 @@
+{
+ "args": {
+  "train_dir": "/dev/shm/bc1/train",
+  "val_dir": "/dev/shm/bc1/val",
+  "num_blocks": 1,
+  "conditioning_dim": 128,
+  "steps": 8000,
+  "batch_slots": 48,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.0,
+  "warmup": 200,
+  "validate_every": 1000,
+  "seed": 2027,
+  "output_dir": "runs/bc_k1"
+ },
+ "parameters": 297216,
+ "best": {
+  "rel_mse": 0.47789511116654565,
+  "step": 8000,
+  "metrics": {
+   "rel_mse": 0.47789511116654565,
+   "per_block": {
+    "0": 0.47789511116654565
+   }
+  }
+ },
+ "history": [
+  {
+   "step": 1000,
+   "loss": 2.25069522857666,
+   "val_rel_mse": 0.48192045147846335
+  },
+  {
+   "step": 2000,
+   "loss": 2.088280200958252,
+   "val_rel_mse": 0.48035404464625003
+  },
+  {
+   "step": 3000,
+   "loss": 3.0873067378997803,
+   "val_rel_mse": 0.47872012670901937
+  },
+  {
+   "step": 4000,
+   "loss": 3.0497000217437744,
+   "val_rel_mse": 0.4789489184870172
+  },
+  {
+   "step": 5000,
+   "loss": 2.5540084838867188,
+   "val_rel_mse": 0.478118121606821
+  },
+  {
+   "step": 6000,
+   "loss": 2.410327911376953,
+   "val_rel_mse": 0.4789674933656352
+  },
+  {
+   "step": 7000,
+   "loss": 2.4644031524658203,
+   "val_rel_mse": 0.477945651247926
+  },
+  {
+   "step": 8000,
+   "loss": 2.9726576805114746,
+   "val_rel_mse": 0.47789511116654565
+  }
+ ]
+}

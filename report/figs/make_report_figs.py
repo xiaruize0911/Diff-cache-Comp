@@ -12,44 +12,8 @@ def g(agg, k, m="ssim_gaussian_vs_exact"):
 
 CACHE, TAY, OURS, COMB = "0.45", "#1f77b4", "#d62728", "#2ca02c"
 
-# ---------------- Figure 1: Pareto at both step counts ----------------
 a20 = load("baseline_compare/results.json")["aggregate"]
 a50 = load("s50_final/results.json")["aggregate"]
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.2, 2.7))
-
-# 20 steps: plain-cache front from the granularity/scaleup runs
-front = [("fixed_i4", "$i$=4"), ("fixed_i5", "$i$=5")]
-ax1.plot([g(a20, k, "speedup_vs_exact") for k, _ in front],
-         [g(a20, k) for k, _ in front], "o-", color=CACHE, lw=1.3, ms=4.5,
-         label="no corrector (uniform caching)")
-for k, lab in front:
-    ax1.annotate(lab, (g(a20, k, "speedup_vs_exact"), g(a20, k)),
-                 textcoords="offset points", xytext=(4, -8), fontsize=6.5, color="0.35")
-for keys, c, m, lab in (
-        (["taylor1_i4", "taylor1_i5"], TAY, "s", "Taylor forecast, order 1"),
-        (["ours_i4_s075", "ours_i5_s050"], OURS, "D", "learned corrector (ours)")):
-    ax1.plot([g(a20, k, "speedup_vs_exact") for k in keys], [g(a20, k) for k in keys],
-             m + "-", color=c, lw=1.3, ms=4.5, label=lab)
-ax1.plot([g(a20, "taylor2_i5", "speedup_vs_exact")], [g(a20, "taylor2_i5")],
-         "^", color=TAY, ms=4.5, mfc="white", label="Taylor order 2")
-ax1.set_xlabel("wall-clock speedup vs. exact ($\\times$)")
-ax1.set_ylabel("SSIM vs. same-seed exact")
-ax1.set_title("(a) 20 sampling steps  ($n$=192)", fontsize=8)
-ax1.legend(frameon=False, fontsize=6.2, loc="lower left")
-
-order50 = [("fixed_i5", CACHE, "o", "no corrector"),
-           ("taylor1_i5", TAY, "s", "Taylor order 1"),
-           ("ours50_inv_s075", OURS, "D", "learned corrector (ours)"),
-           ("taylor1_plus_ours50_s025", COMB, "*", "Taylor $+$ corrector")]
-for k, c, m, lab in order50:
-    ax2.plot([g(a50, k, "speedup_vs_exact")], [g(a50, k)], m, color=c,
-             ms=8 if m == "*" else 5.5, label=lab)
-ax2.set_xlabel("wall-clock speedup vs. exact ($\\times$)")
-ax2.set_ylabel("SSIM vs. same-seed exact")
-ax2.set_title("(b) 50 sampling steps  ($n$=48)", fontsize=8)
-ax2.legend(frameon=False, fontsize=6.2, loc="lower left")
-fig.tight_layout()
-fig.savefig("fig1_pareto.png", dpi=200, bbox_inches="tight")
 
 # ---------------- Figure 2: order sweep, residual vs image ----------------
 diag = load("taylor_diag_i5.json")
@@ -80,7 +44,12 @@ fig.tight_layout()
 fig.savefig("fig2_order.png", dpi=200, bbox_inches="tight")
 
 # ---------------- Figure 3: granularity -- the mechanism ----------------
-fig, ax = plt.subplots(figsize=(3.6, 2.7))
+bc = load("blockcache_test/results.json")["aggregate"]
+def gbc(k, m="ssim_gaussian_vs_exact"):
+    v = bc[k][m]; return v["mean"] if isinstance(v, dict) else v
+bc_base = gbc("A_cache_i5")
+BC = "#9467bd"
+fig, ax = plt.subplots(figsize=(4.4, 2.9))
 # learned corrector, sigma=1, from the paper's granularity table (n=8 design split)
 Kl = [1, 2, 4, 28]; dl = [+0.0516, -0.2352, -0.2509, -0.3116]
 ax.plot(Kl, dl, "D--", color=OURS, lw=1.4, ms=5, label="learned corrector, $\\sigma$=1")
@@ -88,12 +57,18 @@ tay = [(1, g(a20, "taylor1_i5") - g(a20, "fixed_i5")),
        (28, g(a20, "taylor1_K28_i5") - g(a20, "fixed_i5"))]
 ax.plot([k for k, _ in tay], [v for _, v in tay], "s-", color=TAY, lw=1.4, ms=5,
         label="Taylor order 1 (state-independent)")
+ax.plot([1, 28], [gbc("D_bc_K1_s100") - bc_base, gbc("D_bc_K28_s100") - bc_base],
+        "v-", color=BC, lw=1.4, ms=5.5,
+        label="Block Caching scale-shift (state-independent)")
+ax.plot([28], [gbc("C_ours_K28_s100") - bc_base], "D", color=OURS, ms=5, mfc="white")
+ax.annotate("ours, $\\sigma$=1, $n$=192", (28, gbc("C_ours_K28_s100") - bc_base),
+            textcoords="offset points", xytext=(-64, 6), fontsize=6.0, color=OURS)
 ax.axhline(0, color="0.6", lw=0.8, ls=":")
 ax.set_xscale("log"); ax.set_xticks(Kl); ax.set_xticklabels([str(k) for k in Kl])
 ax.set_xlabel("$K$  (injection sites per reuse step)")
 ax.set_ylabel("$\\Delta$SSIM vs. verbatim reuse")
 ax.set_title("Granularity collapse needs state dependence", fontsize=8)
-ax.legend(frameon=False, fontsize=6.3, loc="lower left")
+ax.legend(frameon=False, fontsize=5.9, loc="lower left")
 fig.tight_layout()
 fig.savefig("fig3_granularity.png", dpi=200, bbox_inches="tight")
 

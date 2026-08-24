@@ -1,0 +1,39 @@
+[
+ {
+  "name": "A_cache_i5",
+  "cache_interval": 5,
+  "num_segments": 1
+ },
+ {
+  "name": "D_bc_K28_s100",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/bc_k28/best.pt",
+  "surrogate_scale": 1.0
+ },
+ {
+  "name": "D_bc_K28_s050",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/bc_k28/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "name": "D_bc_K1_s100",
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/bc_k1/best.pt",
+  "surrogate_scale": 1.0
+ },
+ {
+  "name": "C_ours_K28_s100",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/c_r128_w384/best.pt",
+  "surrogate_scale": 1.0
+ },
+ {
+  "name": "C_ours_K1_s050",
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/fix_base2x_norm/best.pt",
+  "surrogate_scale": 0.5
+ }
+]

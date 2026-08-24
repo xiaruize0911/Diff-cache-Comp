@@ -218,8 +218,64 @@ class SurrogateBank(nn.Module):
         return prediction * self.scale["delta_residual"]
 
 
+class ScaleShiftCorrector(nn.Module):
+    """Block Caching's correction (Wimbauer et al., CVPR 2024), reimplemented.
+
+    They add "a timestep-dependent scalar shift and scale parameter for each layer
+    that receives a cached input", predicted per channel by "a simple linear layer
+    that receives the timestep embedding as input". In residual form that is
+
+        R_hat = gamma(t) * R_anchor + beta(t),   so   delta_R_hat = dgamma * R_a + beta
+
+    with one linear map per block. The output layer is zero-initialised, so an
+    untrained corrector is exactly fixed reuse -- same property as the learned
+    corrector it is being compared against.
+
+    The thing to notice is what is NOT an input: this reads the CACHED residual and
+    the timestep, never the current hidden state. So dR_hat/dh = 0 and it
+    reintroduces no feedback gain, which is why the depth-wise recursion predicts it
+    should survive per-block injection where a state-dependent corrector does not.
+    `forward` therefore takes the same arguments as the learned corrector and
+    deliberately ignores two of them, so the claim is auditable rather than asserted.
+    """
+
+    def __init__(self, dim: int = 1152, conditioning_dim: int = 128,
+                 num_blocks: int = 28) -> None:
+        super().__init__()
+        self.dim = dim
+        self.num_blocks = num_blocks
+        self.timestep_embedding = ScalarFourierEmbedding(conditioning_dim)
+        self.projection = nn.ModuleList(
+            [nn.Linear(conditioning_dim, 2 * dim) for _ in range(num_blocks)])
+        for layer in self.projection:
+            nn.init.zeros_(layer.weight)
+            nn.init.zeros_(layer.bias)
+
+    def forward(self, delta_h: Tensor, anchor_residual: Tensor, anchor_hidden: Tensor,
+                timestep: Tensor, horizon: Tensor, block_id: Tensor) -> Tensor:
+        del delta_h, anchor_hidden, horizon        # state-independent by construction
+        embedding = self.timestep_embedding(timestep).to(anchor_residual.dtype)
+        out = torch.zeros_like(anchor_residual)
+        for b in block_id.unique().tolist():
+            mask = block_id == b
+            gain, shift = self.projection[int(b)](embedding[mask]).chunk(2, dim=-1)
+            out[mask] = (anchor_residual[mask] * gain.unsqueeze(1)
+                         + shift.unsqueeze(1))
+        return out
+
+    def parameter_count(self) -> int:
+        return sum(p.numel() for p in self.parameters())
+
+
 def load_surrogate_bank(path, device: str = "cuda", dtype: torch.dtype = torch.float16) -> "SurrogateBank":
     payload = torch.load(path, map_location="cpu", weights_only=False)
+    if payload.get("kind") == "scale_shift":
+        model = ScaleShiftCorrector(**payload["config"])
+        model.load_state_dict(payload["model"])
+        bank = SurrogateBank(model, payload["scale"]).to(device=device, dtype=dtype).eval()
+        bank.checkpoint_info = {"kind": "scale_shift", "step": payload.get("step"),
+                                "val_rel_mse": payload.get("val_rel_mse")}
+        return bank
     cfg = SurrogateConfig(**payload["config"])
     model = BlockResidualDeltaSurrogate(cfg)
     model.load_state_dict(payload["model"])
