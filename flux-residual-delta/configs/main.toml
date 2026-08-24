@@ -1,0 +1,51 @@
+[model]
+model_id = "black-forest-labs/FLUX.1-dev"
+dtype = "bfloat16"
+height = 512
+width = 512
+num_inference_steps = 30
+guidance_scale = 3.5
+
+[segment]
+stream = "single"
+start = 8
+length = 20
+hidden_dim = 3072
+
+[capture]
+seed = 1234
+anchor_target_steps = [[1, 3], [3, 6], [6, 10], [10, 14], [14, 18], [18, 22], [22, 26]]
+shard_size = 4
+output_dir = "data/features/main"
+offload_to_cpu = true
+
+[surrogate]
+width = 512
+depth = 2
+heads = 8
+mlp_ratio = 2.0
+dropout = 0.0
+conditioning_dim = 128
+use_delta_h = true
+use_anchor_residual = true
+
+[train]
+seed = 2026
+output_dir = "runs/main"
+epochs = 40
+max_steps = 20000
+micro_batch_size = 1
+gradient_accumulation = 16
+learning_rate = 0.0001
+weight_decay = 0.01
+warmup_steps = 500
+grad_clip = 1.0
+num_workers = 4
+validation_every = 500
+save_every = 1000
+
+[evaluation]
+batch_size = 1
+num_workers = 4
+bootstrap_samples = 1000
+gate_relative_mse_improvement = 0.20

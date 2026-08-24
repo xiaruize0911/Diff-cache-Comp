@@ -1,0 +1,26 @@
+[
+  {
+    "name": "fixed_i5",
+    "cache_interval": 5,
+    "num_segments": 1
+  },
+  {
+    "name": "fixed_i4",
+    "cache_interval": 4,
+    "num_segments": 1
+  },
+  {
+    "name": "std_i5",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "surrogate_checkpoint": "runs/sm_std_2027/last.pt",
+    "surrogate_scale": 0.5
+  },
+  {
+    "name": "inv_i5",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "surrogate_checkpoint": "runs/sm_inv_2027/last.pt",
+    "surrogate_scale": 0.75
+  }
+]

@@ -1,0 +1,5 @@
+[
+  {"name": "all_cached", "exact_module_ids": []},
+  {"name": "exact_08_09_10", "exact_module_ids": [8, 9, 10]},
+  {"name": "exact_08_09_14", "exact_module_ids": [8, 9, 14]}
+]

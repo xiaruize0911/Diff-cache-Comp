@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flux-residual-delta"
+version = "0.1.0"
+description = "Current-conditioned residual-delta surrogate for FLUX.1-dev"
+requires-python = ">=3.11"
+dependencies = [
+  "torch>=2.4,<2.5",
+  "numpy>=1.26",
+  "tqdm>=4.66",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

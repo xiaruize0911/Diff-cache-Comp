@@ -1,0 +1,264 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{times}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=blue]{hyperref}
+\usepackage{caption}
+\captionsetup{font=small}
+\usepackage{microtype}
+
+\newcommand{\relmse}{\mathrm{rel\text{-}MSE}}
+\newcommand{\dR}{\Delta R}
+\newcommand{\best}[1]{\textbf{#1}}
+
+\title{\vspace{-2em}\Large Residual Error Is the Wrong Objective for Cache Correction\\ in Diffusion Transformers}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace{-3em}
+
+\begin{abstract}
+Step caching accelerates diffusion transformers by reusing a block's output residual
+across adjacent denoising steps. A natural refinement is to learn a \emph{corrector}
+that predicts how the cached residual should change, and the natural way to train and
+select such a corrector is to minimise its reconstruction error in residual space.
+That this objective is imperfectly aligned with image quality is known
+\cite{huang2025harmonica}. We show something stronger and more specific: it
+\emph{inverts the ranking}. In a controlled experiment holding data, architecture,
+injection structure and FLOPs fixed and varying only the training loss, residual
+error prefers the worse model in all three training seeds per arm while held-out image
+quality prefers the other in all three --- one clean rank separation, which we
+deliberately do not inflate into nine independent comparisons. We identify the mechanism: residual error aggregates
+squared error and target energy separately, so it is dominated by high-magnitude
+injection sites; at deployment every site feeds the same depth-wise propagation chain
+regardless of its magnitude, making \emph{per-site relative} error the
+deployment-aligned statistic. Two consequences follow. First, making the training
+objective per-site scale invariant --- a three-line change --- improves deployed
+fidelity at matched data, architecture, parameter count and wall clock. In a design with no confound we can
+identify --- three training seeds per arm, both arms stopped at the same step with no
+checkpoint selection, one damping value per arm chosen on validation, $192$ held-out
+images --- it is worth $+0.0077$ SSIM and $-0.0091$ LPIPS, and both survive clustering
+by prompt subject ($t(5){=}2.74$ and $-3.18$; CIs $[+0.002,+0.015]$ and
+$[-0.015,-0.003]$). The direction is positive in every condition and metric we
+measured. The magnitude is small and we have repeatedly over-estimated it: successive
+estimates as our designs got cleaner were $+0.022$, $+0.012$, $+0.027$ and now
+$+0.008$. We therefore claim the \emph{ordering}, which is stable, and not the size. Second, a per-site median relative error ranks correctors in deployment order where
+residual error does not --- reliably for correctors trained on identical data, and not
+across training sets, so we offer it as a hypothesis rather than a validated
+criterion. We further report a negative result that the same lens
+predicts: on-policy (DAgger-style) data collection, which residual error credits with
+an $11.9\%$ improvement, yields no measurable image-level benefit over an equal
+volume of ordinary data. On a second, architecturally unrelated backbone
+(FLUX.1-dev, 12B) the residual-space signature replicates exactly but the image-level
+benefit of the fix does not; we give a quantitative account --- the effect should
+scale with the per-site target-energy imbalance, which is $3\times$ smaller there ---
+and state the resulting prediction for other backbones.
+\end{abstract}
+
+\section{Introduction}
+
+Diffusion samplers spend nearly all of their compute inside a transformer block
+stack that is evaluated once per denoising step. Because adjacent steps compute
+similar functions, a large family of training-free accelerators for diffusion transformers \cite{peebles2023dit}
+\emph{caches} intermediate quantities and reuses them for several steps
+\cite{ma2024deepcache,selvaraju2024fora,chen2024deltadit,liu2024teacache,zou2024toca}.
+Concretely, if a block maps hidden state $h$ to $\mathrm{Block}(h)$, one caches the
+residual $R = \mathrm{Block}(h) - h$ at an \emph{anchor} step and, at subsequent
+\emph{reuse} steps, approximates the block by $h + R_{\text{anchor}}$ at zero cost.
+
+The obvious way to push this further is to stop assuming the residual is constant.
+Since the hidden state has drifted from the anchor, one can learn a corrector $C$
+that predicts the residual's change,
+\begin{equation}
+\hat{\dR} = C\!\left(h - h_a,\, R_a,\, h_a,\, t,\, \tau\right),
+\qquad
+h_{\text{out}} \approx h + R_a + \hat{\dR},
+\label{eq:corrector}
+\end{equation}
+where $h_a, R_a$ are the anchor state and residual, $t$ is the timestep and
+$\tau$ the number of steps since the anchor. Training $C$ is a supervised regression
+problem with free labels: the true residual at any state is obtained by running the
+real block once. The natural objective, and the one we ourselves used initially, is
+relative residual error
+\begin{equation}
+\relmse = \frac{\sum_i \lVert \dR_i - \hat{\dR}_i \rVert^2}{\sum_i \lVert \dR_i \rVert^2},
+\label{eq:relmse}
+\end{equation}
+which equals $1$ for the ``predict nothing'' baseline, i.e.\ plain caching.
+
+This paper argues that Eq.~\ref{eq:relmse} is the wrong objective, and that the error
+is not a matter of degree. Our contributions:
+
+\begin{itemize}\itemsep2pt
+\item \textbf{An inversion, not a gap.} With data, architecture, injection
+structure and FLOPs held fixed and only the loss varied, $\relmse$ and held-out image
+quality rank two correctors in \emph{opposite} orders, consistently across three
+training seeds (Sec.~\ref{sec:inversion}). Residual error is stable to
+$5\times10^{-4}$ across training seeds, an order of magnitude below the gap between
+the arms, so the metric is reliably wrong rather than noisy. We report two variance
+components throughout and never conflate them: the spread across training seeds
+(small; SD $\le\!0.008$ SSIM) and the uncertainty from finite held-out data
+(larger; the subject-clustered standard error of the \emph{contrast} is $0.012$ SSIM).
+The first bounds how much a rerun would move a number; only the second bounds
+generalisation, and with $6$ held-out subjects it is the binding one.
+
+\item \textbf{A mechanism.} $\relmse$ sums squared error and target energy
+separately, so sites whose $\lVert \dR \rVert$ is large dominate it. Deployment does
+not share that weighting: each injection site feeds the same propagation chain
+irrespective of magnitude (Sec.~\ref{sec:mechanism}). This also explains a
+previously puzzling observation in this line of work --- that correcting a cached
+stack \emph{per block} destroys the image while correcting it \emph{once} helps.
+
+\item \textbf{A fix, and when it will not help.} A per-site scale-invariant loss
+is worth $+0.008$ SSIM and $-0.009$ LPIPS at matched cost in our cleanest design
+(Sec.~\ref{sec:loss}) --- small, but significant on both metrics under subject
+clustering. Correction itself is worth several times more
+($+0.034$--$+0.054$ SSIM over plain caching). Reweighting a
+diffusion MSE so no scale dominates is not itself new
+\cite{choi2022p2,hang2023minsnr}; what is new is identifying \emph{which} imbalance
+matters for cache correction, that it inverts rather than blurs the ranking, and a
+measurable predictor of when the fix pays --- the effect tracks the per-site
+target-energy spread across three conditions (Sec.~\ref{sec:scaling}) and vanishes
+when that spread is flat.
+
+\item \textbf{A negative result the lens predicts.} On-policy data collection in the
+style of DAgger \cite{ross2011dagger} improves $\relmse$ by $11.9\%$ and delivers
+nothing on images; at matched data volume, ordinary data is if anything slightly
+better (Sec.~\ref{sec:dagger}).
+
+\item \textbf{Cross-backbone limits.} On FLUX.1-dev (12B, flow matching, 57
+blocks) correction itself transfers strongly ($+0.0808$ SSIM over plain caching,
+$t{=}10.8$) and the residual-space signature replicates exactly, but the loss fix
+gives \emph{no} measurable image-level benefit. We trace this to a measurable
+backbone property --- per-site target-energy imbalance, $10.9\times$ on our primary
+backbone versus $3.7\times$ on FLUX --- which bounds how much the fix can buy
+(Sec.~\ref{sec:flux}).
+\end{itemize}
+
+We stress the scope of the claim. We do not propose a new state-of-the-art
+accelerator; the absolute gains from correction are real but modest
+($\approx\!0.05$ SSIM at $4\times$ FLOPs reduction). The contribution is that the
+standard way of building and evaluating such correctors is measuring the wrong thing,
+by an amount large enough to reverse conclusions --- including, in our own case, a
+conclusion we had already written down.
+
+\section{Related Work}
+
+\paragraph{Caching and reuse.} DeepCache \cite{ma2024deepcache} reuses U-Net
+skip-branch features across steps. For transformers, FORA
+\cite{selvaraju2024fora} caches attention and MLP outputs on a fixed step interval;
+$\Delta$-DiT \cite{chen2024deltadit} caches block-level offsets with a
+front/back-loaded schedule; TeaCache \cite{liu2024teacache} modulates the reuse
+interval using timestep-embedding distances; ToCa \cite{zou2024toca} makes the
+decision per token. All are training-free and reuse a stale quantity verbatim. Our
+correction-free baseline is uniform whole-stack step caching, i.e.\ the mechanism
+underlying FORA at the coarsest granularity; our subject is what happens when one
+adds a \emph{learned} correction on top of any such scheme, and how that corrector
+should be trained and chosen.
+
+\paragraph{Predicting the change instead of reusing it.} Eq.~\ref{eq:corrector} is
+not a new idea. TaylorSeer \cite{liu2025taylorseer} replaces verbatim reuse with a
+training-free Taylor extrapolation of how each cached feature evolves, and reports
+substantially stronger absolute results than we do --- near-lossless generation at
+$4.99\times$ compression on FLUX.1-dev. Block Caching
+\cite{wimbauer2024blockcaching} fits lightweight scale--shift corrections to cached
+block outputs, and Learning-to-Cache \cite{ma2024l2c} learns which layers may be
+cached at all. \textbf{We are not competitive with these methods in absolute terms and
+do not claim to be}; our operating points are chosen to make a diagnostic comparison
+clean, not to win a speed/quality benchmark.
+
+\paragraph{Our thesis is a sharpening of a known one.} That the training objective for
+a learned cache mechanism is misaligned with image quality has been argued before, most
+directly by HarmoniCa \cite{huang2025harmonica}, which names an ``objective mismatch''
+between aligning predicted noise and generating good images and fixes it with an
+image-error-proxy objective and step-wise denoising training. We therefore do not claim
+the misalignment itself as novel. What we add is (i) that the mismatch is not a matter
+of degree but reverses the ranking of two correctors, reproducibly and across metrics;
+(ii) a specific and measurable mechanism for it --- per-injection-site target-energy
+imbalance --- with a predictor of when it will and will not matter
+(Sec.~\ref{sec:scaling}); (iii) a much cheaper fix than an image-error proxy, namely
+per-site normalisation, together with the finding that this fix buys nothing on a
+backbone whose sites are already balanced; and (iv) two negative results the lens
+predicts (Secs.~\ref{sec:dagger} and \ref{sec:flux}). Precedent for the \emph{form} of
+the fix is also clear: reweighting a diffusion MSE so no noise level dominates is the
+P2 \cite{choi2022p2} and Min-SNR \cite{hang2023minsnr} argument, and normalised
+relative $L_2$ is standard in operator-learning surrogates.
+
+\paragraph{Distillation and solvers.} Distillation
+\cite{salimans2022progressive,song2023consistency} and better solvers
+\cite{lu2022dpmsolver} reduce step count rather than per-step cost, and are
+complementary to caching. Unlike distillation, a corrector is trained post hoc on a
+frozen model with cheap labels and leaves the sampler unchanged.
+
+\paragraph{Exposure bias.} Training a corrector on states it will not encounter is
+the classic exposure-bias problem \cite{bengio2015scheduled,ross2011dagger}. We
+collect on-policy with respect to the cached rollout, and we test whether going
+fully on-policy (DAgger) helps. It does not, for reasons that are specific and
+measurable (Sec.~\ref{sec:dagger}).
+
+\section{Setup}
+\label{sec:setup}
+
+\paragraph{Cached unit.} Let the block stack have $B$ blocks and the sampler $T$
+steps. Anchors are placed on a fixed interval $i$, i.e.\ at steps
+$\{s : s \bmod i = 0\}$; all other steps are reuse steps. We cache the residual of
+the \emph{entire stack} as a single unit, so a reuse step performs one injection.
+This choice matters and is justified in Sec.~\ref{sec:mechanism}; we note here that
+for correction-free caching, any contiguous partition of the stack into cached
+segments is mathematically identical (the cached residuals simply sum), so the
+partition changes only the corrector's injection structure, never the baseline. A unit
+test verifies this to $10^{-6}$; it is \emph{not} bitwise, since the two orders sum
+floating-point terms differently. It also makes the coarsest granularity strictly
+cheaper: it removes $B$ per-block dispatches per reuse step, worth $10.5\%$ wall
+clock on our primary backbone at $i{=}5$.
+
+\paragraph{Corrector.} $C$ is a residual MLP over tokens with AdaLN conditioning on
+$(t,\tau)$ and a zero-initialised output projection, so an untrained $C$ is exactly
+plain caching. It is not purely token-wise: a single multi-head attention block is
+inserted at mid-depth, which is where much of its per-call cost sits.
+$C$ has $11.9$M parameters on the primary backbone and $17.8$M on the secondary
+(the input/output projections scale with model width). Following a linear-probe diagnostic showing $\dR$ is largely a linear
+function of the input drift, it also carries a low-rank linear path
+$\dR \mathrel{+}= (xA)B$. Injection is damped by a scalar $\sigma$:
+$h + R_a + \sigma \hat{\dR}$.
+
+\paragraph{Backbones.} Primary: PixArt-$\Sigma$-XL-2-512 \cite{chen2024pixartsigma}
+(0.6B, $B{=}28$, $T{=}20$, CFG 4.5, fp16, $512^2$). Secondary:
+FLUX.1-dev \cite{flux2024} (12B, 19 dual-stream + 38 single-stream blocks, flow
+matching \cite{lipman2023flowmatching}, $T{=}20$, $512^2$, bf16). Single NVIDIA A40.
+
+\paragraph{Protocol.} Prompts are templated and split \emph{subject-disjointly} into
+train ($112$ prompts / $28$ subjects), val ($24$ / $6$) and test ($24$ / $6$); no
+subject appears in two splits. Only $6$ independent subjects in the held-out split is
+a real constraint on inference and we treat it as one throughout. We report SSIM \cite{wang2004ssim}, LPIPS \cite{zhang2018lpips} and PSNR.
+All image metrics are computed against the \emph{same-seed exact}
+output, i.e.\ they measure fidelity to what the unaccelerated model would have
+produced. The damping $\sigma$ is always selected on val and only then confirmed on
+test. Cost is reported as FLOPs measured with \texttt{FlopCounterMode} on the real
+pipeline call (VAE decode included) and, separately, as wall clock from an exclusive
+benchmark that refuses to run if another process holds GPU memory.
+
+\paragraph{What the cost numbers exclude.} Following the standard practice in this
+line of work we precompute text embeddings, so reported cost excludes the T5 text
+encoder. This is favourable to \emph{all} cached variants including the baselines,
+but it should be stated plainly: on our primary backbone T5 is $173$\,ms of a
+$1160$\,ms exact latency ($15\%$), and counting it end-to-end reduces the cacheable fraction
+from $91.6\%$ to $78.1\%$ and the all-cache ceiling from $11.96\times$ to
+$4.56\times$. The $\approx\!4\times$ operating points we study are therefore close to
+the ceiling of the whole approach under single-image end-to-end accounting; the
+amortised (many images per prompt) accounting is the one our numbers describe.
+\input{results}
+\input{discussion}
+
+{\small
+\bibliographystyle{plain}
+\bibliography{refs}
+}
+
+\end{document}

@@ -1,0 +1,44 @@
+[model]
+model_id = "stable-diffusion-v1-5/stable-diffusion-v1-5"
+dtype = "float16"
+height = 512
+width = 512
+num_inference_steps = 30
+guidance_scale = 7.5
+scheduler = "ddim"
+
+[reuse]
+cache_interval = 3
+target = "all_transformer2d"
+
+[capture]
+seed = 1234
+anchor_target_steps = [[0, 1], [3, 5], [9, 12], [18, 22]]
+shard_size = 8
+output_dir = "/root/sd15-features/pilot"
+
+[surrogate]
+width_320 = 96
+width_640 = 128
+width_1280 = 256
+depth = 2
+conditioning_dim = 128
+use_delta_h = true
+use_anchor_residual = true
+global_attention_channels = [1280]
+global_attention_heads = 8
+
+[train]
+seed = 2026
+output_dir = "/workspace/sd15-residual-delta/runs/global_1280"
+max_steps = 1000
+gradient_accumulation = 8
+learning_rate = 0.0001
+weight_decay = 0.01
+warmup_steps = 50
+grad_clip = 1.0
+validation_every = 100
+
+[evaluation]
+gate_relative_mse_improvement = 0.20
+gate_lpips_improvement = 0.15

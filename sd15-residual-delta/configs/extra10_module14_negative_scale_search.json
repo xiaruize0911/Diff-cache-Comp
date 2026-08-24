@@ -1,0 +1,9 @@
+[
+  {"name": "m14_s14_xn025", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": -0.25},
+  {"name": "m14_s14_xn050", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": -0.50},
+  {"name": "m14_s14_xn075", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": -0.75},
+  {"name": "m14_s14_xn100", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": -1.00},
+  {"name": "m14_s14_xn125", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": -1.25},
+  {"name": "m14_s14_xn150", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": -1.50},
+  {"name": "m14_s14_xn200", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": -2.00}
+]

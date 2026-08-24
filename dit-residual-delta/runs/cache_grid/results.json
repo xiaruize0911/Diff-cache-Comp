@@ -1,0 +1,1250 @@
+{
+  "config": "configs/pixart_sigma_512.toml",
+  "prompt_file": "data/prompts/design4.txt",
+  "seeds": [
+    8201,
+    8202
+  ],
+  "num_steps": 20,
+  "num_blocks": 28,
+  "variants": [
+    {
+      "name": "fixed_i2",
+      "anchor_steps": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ],
+      "reuse_steps": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "num_reuse_slots": 280,
+      "num_oracle_slots": 0,
+      "oracle_fraction": 0.0
+    },
+    {
+      "name": "fixed_i3",
+      "anchor_steps": [
+        0,
+        3,
+        6,
+        9,
+        12,
+        15,
+        18
+      ],
+      "reuse_steps": [
+        1,
+        2,
+        4,
+        5,
+        7,
+        8,
+        10,
+        11,
+        13,
+        14,
+        16,
+        17,
+        19
+      ],
+      "num_reuse_slots": 364,
+      "num_oracle_slots": 0,
+      "oracle_fraction": 0.0
+    },
+    {
+      "name": "fixed_i4",
+      "anchor_steps": [
+        0,
+        4,
+        8,
+        12,
+        16
+      ],
+      "reuse_steps": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        17,
+        18,
+        19
+      ],
+      "num_reuse_slots": 420,
+      "num_oracle_slots": 0,
+      "oracle_fraction": 0.0
+    },
+    {
+      "name": "fixed_i5",
+      "anchor_steps": [
+        0,
+        5,
+        10,
+        15
+      ],
+      "reuse_steps": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19
+      ],
+      "num_reuse_slots": 448,
+      "num_oracle_slots": 0,
+      "oracle_fraction": 0.0
+    },
+    {
+      "name": "front_loaded",
+      "anchor_steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ],
+      "reuse_steps": [
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "num_reuse_slots": 196,
+      "num_oracle_slots": 0,
+      "oracle_fraction": 0.0
+    },
+    {
+      "name": "front_sparse",
+      "anchor_steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        9,
+        12,
+        15,
+        18
+      ],
+      "reuse_steps": [
+        5,
+        7,
+        8,
+        10,
+        11,
+        13,
+        14,
+        16,
+        17,
+        19
+      ],
+      "num_reuse_slots": 280,
+      "num_oracle_slots": 0,
+      "oracle_fraction": 0.0
+    }
+  ],
+  "aggregate": {
+    "fixed_i2": {
+      "speedup_vs_exact": {
+        "mean": 1.7467301853175001,
+        "std": 0.00884223847799343,
+        "min": 1.7308758401550222,
+        "max": 1.7574526847951981,
+        "count": 8
+      },
+      "mse_vs_exact": {
+        "mean": 0.013470420555677265,
+        "std": 0.0074135978237783355,
+        "min": 0.002997626317664981,
+        "max": 0.021044112741947174,
+        "count": 8
+      },
+      "psnr_vs_exact": {
+        "mean": 19.66991785180879,
+        "std": 3.520844938797037,
+        "min": 16.768693801748988,
+        "max": 25.232225070084322,
+        "count": 8
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.6763214357033416,
+        "std": 0.06203348455159671,
+        "min": 0.5721137049140099,
+        "max": 0.753077234331431,
+        "count": 8
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.21377805061638355,
+        "std": 0.0290035928929234,
+        "min": 0.17409899830818176,
+        "max": 0.2634839415550232,
+        "count": 8
+      }
+    },
+    "fixed_i3": {
+      "speedup_vs_exact": {
+        "mean": 2.282808840668909,
+        "std": 0.016483794952690166,
+        "min": 2.2574419961261794,
+        "max": 2.3051241327562675,
+        "count": 8
+      },
+      "mse_vs_exact": {
+        "mean": 0.023775158333592117,
+        "std": 0.011077482978499895,
+        "min": 0.0074317483231425285,
+        "max": 0.03439238667488098,
+        "count": 8
+      },
+      "psnr_vs_exact": {
+        "mean": 16.86654467467342,
+        "std": 2.7655113290512268,
+        "min": 14.635376850746075,
+        "max": 21.289090061889517,
+        "count": 8
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.5671921121314456,
+        "std": 0.07496903035270583,
+        "min": 0.4442253250478207,
+        "max": 0.6590753263059598,
+        "count": 8
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.33411864191293716,
+        "std": 0.043548760019106604,
+        "min": 0.27387532591819763,
+        "max": 0.40154069662094116,
+        "count": 8
+      }
+    },
+    "fixed_i4": {
+      "speedup_vs_exact": {
+        "mean": 2.8564069019219347,
+        "std": 0.029314457626281626,
+        "min": 2.8084647788718433,
+        "max": 2.891344409351726,
+        "count": 8
+      },
+      "mse_vs_exact": {
+        "mean": 0.04704732331447303,
+        "std": 0.02384635377679913,
+        "min": 0.013439735397696495,
+        "max": 0.08931263536214828,
+        "count": 8
+      },
+      "psnr_vs_exact": {
+        "mean": 13.866372341487027,
+        "std": 2.595419423484096,
+        "min": 10.49087095648137,
+        "max": 18.71609281613409,
+        "count": 8
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.43461082344712587,
+        "std": 0.07196876099840405,
+        "min": 0.3564042942002262,
+        "max": 0.5536827446290503,
+        "count": 8
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.4903867170214653,
+        "std": 0.05130932583164353,
+        "min": 0.43278393149375916,
+        "max": 0.569082498550415,
+        "count": 8
+      }
+    },
+    "fixed_i5": {
+      "speedup_vs_exact": {
+        "mean": 3.2776309415731735,
+        "std": 0.02809037540488398,
+        "min": 3.2256727666323,
+        "max": 3.3146132429933406,
+        "count": 8
+      },
+      "mse_vs_exact": {
+        "mean": 0.0601751774083823,
+        "std": 0.031665246718418624,
+        "min": 0.017340930178761482,
+        "max": 0.0970572829246521,
+        "count": 8
+      },
+      "psnr_vs_exact": {
+        "mean": 12.92426292294386,
+        "std": 2.8932827430175427,
+        "min": 10.129718707308847,
+        "max": 17.609276103968064,
+        "count": 8
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.38668222359588966,
+        "std": 0.10231694662773677,
+        "min": 0.28393485415517383,
+        "max": 0.5479352623298817,
+        "count": 8
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.586617786437273,
+        "std": 0.07341556210140843,
+        "min": 0.47919681668281555,
+        "max": 0.686628520488739,
+        "count": 8
+      }
+    },
+    "front_loaded": {
+      "speedup_vs_exact": {
+        "mean": 1.4073481457299342,
+        "std": 0.025289702001056506,
+        "min": 1.3508018628484453,
+        "max": 1.434355916473792,
+        "count": 8
+      },
+      "mse_vs_exact": {
+        "mean": 0.011021243321010843,
+        "std": 0.006471748991420861,
+        "min": 0.0028335442766547203,
+        "max": 0.01886502094566822,
+        "count": 8
+      },
+      "psnr_vs_exact": {
+        "mean": 20.512245428136684,
+        "std": 3.3358613823693606,
+        "min": 17.243427082693426,
+        "max": 25.476699967311195,
+        "count": 8
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.6987661811524912,
+        "std": 0.06308076600486434,
+        "min": 0.6120652160273717,
+        "max": 0.7974761065472148,
+        "count": 8
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.19903752952814102,
+        "std": 0.04100996160630119,
+        "min": 0.13106980919837952,
+        "max": 0.2571450173854828,
+        "count": 8
+      }
+    },
+    "front_sparse": {
+      "speedup_vs_exact": {
+        "mean": 1.7493027178330611,
+        "std": 0.018786754056136598,
+        "min": 1.720477362793814,
+        "max": 1.7849173031611345,
+        "count": 8
+      },
+      "mse_vs_exact": {
+        "mean": 0.018967679876368493,
+        "std": 0.008926863882067877,
+        "min": 0.005371005740016699,
+        "max": 0.029545215889811516,
+        "count": 8
+      },
+      "psnr_vs_exact": {
+        "mean": 17.870924472305205,
+        "std": 2.8399909485746226,
+        "min": 15.295128322400338,
+        "max": 22.699443834918902,
+        "count": 8
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.5912622025623615,
+        "std": 0.0684623840746929,
+        "min": 0.47388639739396643,
+        "max": 0.6673165327040537,
+        "count": 8
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.2984358128160238,
+        "std": 0.04177981414216169,
+        "min": 0.2433232218027115,
+        "max": 0.3460915684700012,
+        "count": 8
+      }
+    }
+  },
+  "cases": [
+    {
+      "case": "prompt-00-seed-8201",
+      "prompt": "a yellow tram passing through a snow-covered European town at blue hour",
+      "seed": 8201,
+      "exact_seconds": 0.9949392005801201,
+      "variants": {
+        "fixed_i2": {
+          "seconds": 0.5661257393658161,
+          "speedup_vs_exact": 1.7574526847951981,
+          "mse_vs_exact": 0.020152289420366287,
+          "psnr_vs_exact": 16.956756082746594,
+          "ssim_gaussian_vs_exact": 0.5721137049140099,
+          "lpips_alex_vs_exact": 0.23052430152893066,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i3": {
+          "seconds": 0.44073743745684624,
+          "speedup_vs_exact": 2.2574419961261794,
+          "mse_vs_exact": 0.03439238667488098,
+          "psnr_vs_exact": 14.635376850746075,
+          "ssim_gaussian_vs_exact": 0.4442253250478207,
+          "lpips_alex_vs_exact": 0.40154069662094116,
+          "runtime": {
+            "full_steps": 7,
+            "reused_steps": 13,
+            "exact_block_calls": 196,
+            "reused_block_calls": 364,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i4": {
+          "seconds": 0.3465908393263817,
+          "speedup_vs_exact": 2.8706448286799473,
+          "mse_vs_exact": 0.047362856566905975,
+          "psnr_vs_exact": 13.245621121586124,
+          "ssim_gaussian_vs_exact": 0.3564042942002262,
+          "lpips_alex_vs_exact": 0.5349891185760498,
+          "runtime": {
+            "full_steps": 5,
+            "reused_steps": 15,
+            "exact_block_calls": 140,
+            "reused_block_calls": 420,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i5": {
+          "seconds": 0.3044392429292202,
+          "speedup_vs_exact": 3.2681043054999184,
+          "mse_vs_exact": 0.05080385133624077,
+          "psnr_vs_exact": 12.941033634901558,
+          "ssim_gaussian_vs_exact": 0.31253342935347606,
+          "lpips_alex_vs_exact": 0.5977042317390442,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 448,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "front_loaded": {
+          "seconds": 0.6984687335789204,
+          "speedup_vs_exact": 1.4244577498581779,
+          "mse_vs_exact": 0.014452865347266197,
+          "psnr_vs_exact": 18.400460434857152,
+          "ssim_gaussian_vs_exact": 0.6120652160273717,
+          "lpips_alex_vs_exact": 0.20603036880493164,
+          "runtime": {
+            "full_steps": 13,
+            "reused_steps": 7,
+            "exact_block_calls": 364,
+            "reused_block_calls": 196,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "front_sparse": {
+          "seconds": 0.5782925263047218,
+          "speedup_vs_exact": 1.720477362793814,
+          "mse_vs_exact": 0.029545215889811516,
+          "psnr_vs_exact": 15.295128322400338,
+          "ssim_gaussian_vs_exact": 0.47388639739396643,
+          "lpips_alex_vs_exact": 0.3460915684700012,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-00-seed-8202",
+      "prompt": "a yellow tram passing through a snow-covered European town at blue hour",
+      "seed": 8202,
+      "exact_seconds": 0.9995599277317524,
+      "variants": {
+        "fixed_i2": {
+          "seconds": 0.5718209892511368,
+          "speedup_vs_exact": 1.748029447189036,
+          "mse_vs_exact": 0.009228902868926525,
+          "psnr_vs_exact": 20.34849924791189,
+          "ssim_gaussian_vs_exact": 0.6703339483483953,
+          "lpips_alex_vs_exact": 0.18358632922172546,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i3": {
+          "seconds": 0.4336252063512802,
+          "speedup_vs_exact": 2.3051241327562675,
+          "mse_vs_exact": 0.017641549929976463,
+          "psnr_vs_exact": 17.53463261808173,
+          "ssim_gaussian_vs_exact": 0.5615333999970006,
+          "lpips_alex_vs_exact": 0.3005640208721161,
+          "runtime": {
+            "full_steps": 7,
+            "reused_steps": 13,
+            "exact_block_calls": 196,
+            "reused_block_calls": 364,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i4": {
+          "seconds": 0.3457076661288738,
+          "speedup_vs_exact": 2.891344409351726,
+          "mse_vs_exact": 0.035313621163368225,
+          "psnr_vs_exact": 14.520577463101974,
+          "ssim_gaussian_vs_exact": 0.4344716870882214,
+          "lpips_alex_vs_exact": 0.43954798579216003,
+          "runtime": {
+            "full_steps": 5,
+            "reused_steps": 15,
+            "exact_block_calls": 140,
+            "reused_block_calls": 420,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i5": {
+          "seconds": 0.30186983570456505,
+          "speedup_vs_exact": 3.3112282497480305,
+          "mse_vs_exact": 0.03976643085479736,
+          "psnr_vs_exact": 14.00483386374482,
+          "ssim_gaussian_vs_exact": 0.3996467749671653,
+          "lpips_alex_vs_exact": 0.5137383341789246,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 448,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "front_loaded": {
+          "seconds": 0.7399752363562584,
+          "speedup_vs_exact": 1.3508018628484453,
+          "mse_vs_exact": 0.008737361058592796,
+          "psnr_vs_exact": 20.586197173368177,
+          "ssim_gaussian_vs_exact": 0.6750486238457704,
+          "lpips_alex_vs_exact": 0.17968156933784485,
+          "runtime": {
+            "full_steps": 13,
+            "reused_steps": 7,
+            "exact_block_calls": 364,
+            "reused_block_calls": 196,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "front_sparse": {
+          "seconds": 0.5691449604928493,
+          "speedup_vs_exact": 1.7562484026322336,
+          "mse_vs_exact": 0.017139581963419914,
+          "psnr_vs_exact": 17.65999774781197,
+          "ssim_gaussian_vs_exact": 0.5600886156252067,
+          "lpips_alex_vs_exact": 0.29653507471084595,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-01-seed-8201",
+      "prompt": "an underwater photograph of a sea turtle swimming above a coral reef",
+      "seed": 8201,
+      "exact_seconds": 0.9876401722431183,
+      "variants": {
+        "fixed_i2": {
+          "seconds": 0.5669479295611382,
+          "speedup_vs_exact": 1.7420297716011217,
+          "mse_vs_exact": 0.017520975321531296,
+          "psnr_vs_exact": 17.564417220852036,
+          "ssim_gaussian_vs_exact": 0.631815307986996,
+          "lpips_alex_vs_exact": 0.21831417083740234,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i3": {
+          "seconds": 0.43282487243413925,
+          "speedup_vs_exact": 2.2818470821438352,
+          "mse_vs_exact": 0.03093816712498665,
+          "psnr_vs_exact": 15.095054188552307,
+          "ssim_gaussian_vs_exact": 0.4945886544083582,
+          "lpips_alex_vs_exact": 0.3738156259059906,
+          "runtime": {
+            "full_steps": 7,
+            "reused_steps": 13,
+            "exact_block_calls": 196,
+            "reused_block_calls": 364,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i4": {
+          "seconds": 0.3516655005514622,
+          "speedup_vs_exact": 2.8084647788718433,
+          "mse_vs_exact": 0.04564973711967468,
+          "psnr_vs_exact": 13.405617190673254,
+          "ssim_gaussian_vs_exact": 0.3759428297403713,
+          "lpips_alex_vs_exact": 0.5342587232589722,
+          "runtime": {
+            "full_steps": 5,
+            "reused_steps": 15,
+            "exact_block_calls": 140,
+            "reused_block_calls": 420,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i5": {
+          "seconds": 0.3004683032631874,
+          "speedup_vs_exact": 3.2870028602585095,
+          "mse_vs_exact": 0.07941865175962448,
+          "psnr_vs_exact": 11.000774899531415,
+          "ssim_gaussian_vs_exact": 0.28393485415517383,
+          "lpips_alex_vs_exact": 0.686628520488739,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 448,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "front_loaded": {
+          "seconds": 0.7059088237583637,
+          "speedup_vs_exact": 1.3991044438073106,
+          "mse_vs_exact": 0.01660456880927086,
+          "psnr_vs_exact": 17.797723977642256,
+          "ssim_gaussian_vs_exact": 0.6446567672931283,
+          "lpips_alex_vs_exact": 0.23814882338047028,
+          "runtime": {
+            "full_steps": 13,
+            "reused_steps": 7,
+            "exact_block_calls": 364,
+            "reused_block_calls": 196,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "front_sparse": {
+          "seconds": 0.5668813660740852,
+          "speedup_vs_exact": 1.7422343215882747,
+          "mse_vs_exact": 0.025497086346149445,
+          "psnr_vs_exact": 15.935094452949448,
+          "ssim_gaussian_vs_exact": 0.53264911145161,
+          "lpips_alex_vs_exact": 0.34458741545677185,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-01-seed-8202",
+      "prompt": "an underwater photograph of a sea turtle swimming above a coral reef",
+      "seed": 8202,
+      "exact_seconds": 0.9986060298979282,
+      "variants": {
+        "fixed_i2": {
+          "seconds": 0.5712209865450859,
+          "speedup_vs_exact": 1.7481956255455422,
+          "mse_vs_exact": 0.021044112741947174,
+          "psnr_vs_exact": 16.768693801748988,
+          "ssim_gaussian_vs_exact": 0.6336216101012685,
+          "lpips_alex_vs_exact": 0.20289398729801178,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i3": {
+          "seconds": 0.43485818430781364,
+          "speedup_vs_exact": 2.2963947004641554,
+          "mse_vs_exact": 0.03135942295193672,
+          "psnr_vs_exact": 15.03631937412835,
+          "ssim_gaussian_vs_exact": 0.5378915939185247,
+          "lpips_alex_vs_exact": 0.33242306113243103,
+          "runtime": {
+            "full_steps": 7,
+            "reused_steps": 13,
+            "exact_block_calls": 196,
+            "reused_block_calls": 364,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i4": {
+          "seconds": 0.3514561094343662,
+          "speedup_vs_exact": 2.8413392258426966,
+          "mse_vs_exact": 0.056937843561172485,
+          "psnr_vs_exact": 12.445989851556599,
+          "ssim_gaussian_vs_exact": 0.4012778858197393,
+          "lpips_alex_vs_exact": 0.4794527292251587,
+          "runtime": {
+            "full_steps": 5,
+            "reused_steps": 15,
+            "exact_block_calls": 140,
+            "reused_block_calls": 420,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i5": {
+          "seconds": 0.30127377063035965,
+          "speedup_vs_exact": 3.3146132429933406,
+          "mse_vs_exact": 0.0970572829246521,
+          "psnr_vs_exact": 10.129718707308847,
+          "ssim_gaussian_vs_exact": 0.33617252940589587,
+          "lpips_alex_vs_exact": 0.5828331112861633,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 448,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "front_loaded": {
+          "seconds": 0.6962051875889301,
+          "speedup_vs_exact": 1.434355916473792,
+          "mse_vs_exact": 0.016898494213819504,
+          "psnr_vs_exact": 17.721519926504953,
+          "ssim_gaussian_vs_exact": 0.6552549099708894,
+          "lpips_alex_vs_exact": 0.18742051720619202,
+          "runtime": {
+            "full_steps": 13,
+            "reused_steps": 7,
+            "exact_block_calls": 364,
+            "reused_block_calls": 196,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "front_sparse": {
+          "seconds": 0.5685406625270844,
+          "speedup_vs_exact": 1.7564373064527399,
+          "mse_vs_exact": 0.024039199575781822,
+          "psnr_vs_exact": 16.190799969691465,
+          "ssim_gaussian_vs_exact": 0.5719625228963077,
+          "lpips_alex_vs_exact": 0.25715115666389465,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-02-seed-8201",
+      "prompt": "a chef plating a delicate dessert in a quiet restaurant kitchen",
+      "seed": 8201,
+      "exact_seconds": 1.0022414550185204,
+      "variants": {
+        "fixed_i2": {
+          "seconds": 0.5704856961965561,
+          "speedup_vs_exact": 1.7568213571356686,
+          "mse_vs_exact": 0.014353347942233086,
+          "psnr_vs_exact": 18.43046787205163,
+          "ssim_gaussian_vs_exact": 0.7044882587906657,
+          "lpips_alex_vs_exact": 0.20341917872428894,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i3": {
+          "seconds": 0.435718547552824,
+          "speedup_vs_exact": 2.300203791294917,
+          "mse_vs_exact": 0.03165733441710472,
+          "psnr_vs_exact": 14.995256560143684,
+          "ssim_gaussian_vs_exact": 0.5751070633236658,
+          "lpips_alex_vs_exact": 0.34489506483078003,
+          "runtime": {
+            "full_steps": 7,
+            "reused_steps": 13,
+            "exact_block_calls": 196,
+            "reused_block_calls": 364,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i4": {
+          "seconds": 0.3468034006655216,
+          "speedup_vs_exact": 2.8899412551757044,
+          "mse_vs_exact": 0.06431473046541214,
+          "psnr_vs_exact": 11.916895460933246,
+          "ssim_gaussian_vs_exact": 0.41795704705603737,
+          "lpips_alex_vs_exact": 0.49054139852523804,
+          "runtime": {
+            "full_steps": 5,
+            "reused_steps": 15,
+            "exact_block_calls": 140,
+            "reused_block_calls": 420,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i5": {
+          "seconds": 0.3059214763343334,
+          "speedup_vs_exact": 3.27613957355252,
+          "mse_vs_exact": 0.0836181491613388,
+          "psnr_vs_exact": 10.776994495327138,
+          "ssim_gaussian_vs_exact": 0.32027370396287047,
+          "lpips_alex_vs_exact": 0.6451019048690796,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 448,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "front_loaded": {
+          "seconds": 0.7066177502274513,
+          "speedup_vs_exact": 1.4183643910670394,
+          "mse_vs_exact": 0.0067201717756688595,
+          "psnr_vs_exact": 21.72619625715274,
+          "ssim_gaussian_vs_exact": 0.7974761065472148,
+          "lpips_alex_vs_exact": 0.13106980919837952,
+          "runtime": {
+            "full_steps": 13,
+            "reused_steps": 7,
+            "exact_block_calls": 364,
+            "reused_block_calls": 196,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "front_sparse": {
+          "seconds": 0.5615058206021786,
+          "speedup_vs_exact": 1.7849173031611345,
+          "mse_vs_exact": 0.01899285800755024,
+          "psnr_vs_exact": 17.214096785744257,
+          "ssim_gaussian_vs_exact": 0.6370222981690213,
+          "lpips_alex_vs_exact": 0.2610131502151489,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-02-seed-8202",
+      "prompt": "a chef plating a delicate dessert in a quiet restaurant kitchen",
+      "seed": 8202,
+      "exact_seconds": 0.9848548844456673,
+      "variants": {
+        "fixed_i2": {
+          "seconds": 0.5627261511981487,
+          "speedup_vs_exact": 1.750149486297603,
+          "mse_vs_exact": 0.019228484481573105,
+          "psnr_vs_exact": 17.16054943906453,
+          "ssim_gaussian_vs_exact": 0.6972927749677472,
+          "lpips_alex_vs_exact": 0.2634839415550232,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i3": {
+          "seconds": 0.4339084178209305,
+          "speedup_vs_exact": 2.26972984159092,
+          "mse_vs_exact": 0.028699776157736778,
+          "psnr_vs_exact": 15.421214905077791,
+          "ssim_gaussian_vs_exact": 0.6100928475302879,
+          "lpips_alex_vs_exact": 0.3547671437263489,
+          "runtime": {
+            "full_steps": 7,
+            "reused_steps": 13,
+            "exact_block_calls": 196,
+            "reused_block_calls": 364,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i4": {
+          "seconds": 0.34280015900731087,
+          "speedup_vs_exact": 2.8729709090498505,
+          "mse_vs_exact": 0.08931263536214828,
+          "psnr_vs_exact": 10.49087095648137,
+          "ssim_gaussian_vs_exact": 0.40214986176292267,
+          "lpips_alex_vs_exact": 0.569082498550415,
+          "runtime": {
+            "full_steps": 5,
+            "reused_steps": 15,
+            "exact_block_calls": 140,
+            "reused_block_calls": 420,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i5": {
+          "seconds": 0.30136018618941307,
+          "speedup_vs_exact": 3.268032505882045,
+          "mse_vs_exact": 0.09116071462631226,
+          "psnr_vs_exact": 10.401922789606445,
+          "ssim_gaussian_vs_exact": 0.35444095520045193,
+          "lpips_alex_vs_exact": 0.6539250016212463,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 448,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "front_loaded": {
+          "seconds": 0.7000025771558285,
+          "speedup_vs_exact": 1.4069303693812365,
+          "mse_vs_exact": 0.01886502094566822,
+          "psnr_vs_exact": 17.243427082693426,
+          "ssim_gaussian_vs_exact": 0.706660061125203,
+          "lpips_alex_vs_exact": 0.2571450173854828,
+          "runtime": {
+            "full_steps": 13,
+            "reused_steps": 7,
+            "exact_block_calls": 364,
+            "reused_block_calls": 196,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "front_sparse": {
+          "seconds": 0.5671902447938919,
+          "speedup_vs_exact": 1.736374864492862,
+          "mse_vs_exact": 0.024699537083506584,
+          "psnr_vs_exact": 16.073111861720193,
+          "ssim_gaussian_vs_exact": 0.6223844195516854,
+          "lpips_alex_vs_exact": 0.33931201696395874,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-03-seed-8201",
+      "prompt": "a hand-built wooden observatory beneath a clear desert night sky",
+      "seed": 8201,
+      "exact_seconds": 0.987425297498703,
+      "variants": {
+        "fixed_i2": {
+          "seconds": 0.5704772546887398,
+          "speedup_vs_exact": 1.7308758401550222,
+          "mse_vs_exact": 0.003237625351175666,
+          "psnr_vs_exact": 24.89773408001035,
+          "ssim_gaussian_vs_exact": 0.753077234331431,
+          "lpips_alex_vs_exact": 0.23390349745750427,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i3": {
+          "seconds": 0.43416891247034073,
+          "speedup_vs_exact": 2.2742883452443334,
+          "mse_vs_exact": 0.0074317483231425285,
+          "psnr_vs_exact": 21.289090061889517,
+          "ssim_gaussian_vs_exact": 0.6590753263059598,
+          "lpips_alex_vs_exact": 0.2910681962966919,
+          "runtime": {
+            "full_steps": 7,
+            "reused_steps": 13,
+            "exact_block_calls": 196,
+            "reused_block_calls": 364,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i4": {
+          "seconds": 0.3481715992093086,
+          "speedup_vs_exact": 2.836030565793212,
+          "mse_vs_exact": 0.013439735397696495,
+          "psnr_vs_exact": 18.71609281613409,
+          "ssim_gaussian_vs_exact": 0.5536827446290503,
+          "lpips_alex_vs_exact": 0.4424373507499695,
+          "runtime": {
+            "full_steps": 5,
+            "reused_steps": 15,
+            "exact_block_calls": 140,
+            "reused_block_calls": 420,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i5": {
+          "seconds": 0.3061145283281803,
+          "speedup_vs_exact": 3.2256727666323,
+          "mse_vs_exact": 0.017340930178761482,
+          "psnr_vs_exact": 17.609276103968064,
+          "ssim_gaussian_vs_exact": 0.5479352623298817,
+          "lpips_alex_vs_exact": 0.5338143706321716,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 448,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "front_loaded": {
+          "seconds": 0.7005696818232536,
+          "speedup_vs_exact": 1.409460504954909,
+          "mse_vs_exact": 0.003057920141145587,
+          "psnr_vs_exact": 25.145738605563572,
+          "ssim_gaussian_vs_exact": 0.7507306579390494,
+          "lpips_alex_vs_exact": 0.22533763945102692,
+          "runtime": {
+            "full_steps": 13,
+            "reused_steps": 7,
+            "exact_block_calls": 364,
+            "reused_block_calls": 196,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "front_sparse": {
+          "seconds": 0.5629258677363396,
+          "speedup_vs_exact": 1.7540947291503548,
+          "mse_vs_exact": 0.006456954404711723,
+          "psnr_vs_exact": 21.89972280320506,
+          "ssim_gaussian_vs_exact": 0.6647877227070412,
+          "lpips_alex_vs_exact": 0.2994728982448578,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-03-seed-8202",
+      "prompt": "a hand-built wooden observatory beneath a clear desert night sky",
+      "seed": 8202,
+      "exact_seconds": 0.9892871677875519,
+      "variants": {
+        "fixed_i2": {
+          "seconds": 0.5684619918465614,
+          "speedup_vs_exact": 1.7402872698208098,
+          "mse_vs_exact": 0.002997626317664981,
+          "psnr_vs_exact": 25.232225070084322,
+          "ssim_gaussian_vs_exact": 0.7478286461862188,
+          "lpips_alex_vs_exact": 0.17409899830818176,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i3": {
+          "seconds": 0.4343854524195194,
+          "speedup_vs_exact": 2.2774408357306615,
+          "mse_vs_exact": 0.008080881088972092,
+          "psnr_vs_exact": 20.925412838767894,
+          "ssim_gaussian_vs_exact": 0.6550226865199479,
+          "lpips_alex_vs_exact": 0.27387532591819763,
+          "runtime": {
+            "full_steps": 7,
+            "reused_steps": 13,
+            "exact_block_calls": 196,
+            "reused_block_calls": 364,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i4": {
+          "seconds": 0.34827687591314316,
+          "speedup_vs_exact": 2.8405192426104984,
+          "mse_vs_exact": 0.024047426879405975,
+          "psnr_vs_exact": 16.18931387142957,
+          "ssim_gaussian_vs_exact": 0.5350002372804387,
+          "lpips_alex_vs_exact": 0.43278393149375916,
+          "runtime": {
+            "full_steps": 5,
+            "reused_steps": 15,
+            "exact_block_calls": 140,
+            "reused_block_calls": 420,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "fixed_i5": {
+          "seconds": 0.3025108017027378,
+          "speedup_vs_exact": 3.2702540280187242,
+          "mse_vs_exact": 0.022235408425331116,
+          "psnr_vs_exact": 16.529548889162605,
+          "ssim_gaussian_vs_exact": 0.5385202793922018,
+          "lpips_alex_vs_exact": 0.47919681668281555,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 448,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "front_loaded": {
+          "seconds": 0.698989775031805,
+          "speedup_vs_exact": 1.4153099274485637,
+          "mse_vs_exact": 0.0028335442766547203,
+          "psnr_vs_exact": 25.476699967311195,
+          "ssim_gaussian_vs_exact": 0.7482371064713029,
+          "lpips_alex_vs_exact": 0.16746649146080017,
+          "runtime": {
+            "full_steps": 13,
+            "reused_steps": 7,
+            "exact_block_calls": 364,
+            "reused_block_calls": 196,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "front_sparse": {
+          "seconds": 0.5673697628080845,
+          "speedup_vs_exact": 1.7436374523930753,
+          "mse_vs_exact": 0.005371005740016699,
+          "psnr_vs_exact": 22.699443834918902,
+          "ssim_gaussian_vs_exact": 0.6673165327040537,
+          "lpips_alex_vs_exact": 0.2433232218027115,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        }
+      }
+    }
+  ]
+}

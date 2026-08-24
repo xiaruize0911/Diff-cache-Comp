@@ -1,0 +1,14 @@
+[
+  {"name": "sensitivity5", "keys": [[7, 1], [7, 2], [8, 2], [9, 1], [9, 2]]},
+  {"name": "module7_h12", "module_ids": [7], "horizons": [1, 2]},
+  {"name": "module8_h2", "module_ids": [8], "horizons": [2]},
+  {"name": "module9_h12", "module_ids": [9], "horizons": [1, 2]},
+  {"name": "module9_h1", "module_ids": [9], "horizons": [1]},
+  {"name": "module9_h2", "module_ids": [9], "horizons": [2]},
+  {"name": "modules789_h12", "module_ids": [7, 8, 9], "horizons": [1, 2]},
+  {"name": "selected_h1", "module_ids": [0, 1, 2, 3, 9, 10, 11, 12, 13, 14], "horizons": [1]},
+  {"name": "selected_h2", "module_ids": [0, 1, 2, 3, 9, 10, 11, 12, 13, 14], "horizons": [2]},
+  {"name": "selected_h12", "module_ids": [0, 1, 2, 3, 9, 10, 11, 12, 13, 14], "horizons": [1, 2]},
+  {"name": "all_h1", "module_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], "horizons": [1]},
+  {"name": "all_h2", "module_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], "horizons": [2]}
+]

@@ -1,0 +1,6 @@
+[
+  {"name": "all_cached", "exact_module_ids": []},
+  {"name": "exact_08_09_14", "exact_module_ids": [8, 9, 14]},
+  {"name": "refresh14_step27", "exact_module_ids": [8, 9, 10], "refresh_keys": [[27, 14]]},
+  {"name": "refresh14_steps15_27", "exact_module_ids": [8, 9, 10], "refresh_keys": [[15, 14], [27, 14]]}
+]

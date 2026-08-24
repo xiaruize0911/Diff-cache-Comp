@@ -1,0 +1,11 @@
+[
+  {"name": "s14_x1", "keys": [[9, 2]], "step_keys": [[9, 14]], "scale": 1.0},
+  {"name": "s18_x1", "keys": [[9, 2]], "step_keys": [[9, 18]], "scale": 1.0},
+  {"name": "s22_x1", "keys": [[9, 2]], "step_keys": [[9, 22]], "scale": 1.0},
+  {"name": "s26_x1", "keys": [[9, 2]], "step_keys": [[9, 26]], "scale": 1.0},
+  {"name": "s22_26_x1", "keys": [[9, 2]], "step_keys": [[9, 22], [9, 26]], "scale": 1.0},
+  {"name": "s18_22_26_x1", "keys": [[9, 2]], "step_keys": [[9, 18], [9, 22], [9, 26]], "scale": 1.0},
+  {"name": "all_x025", "keys": [[9, 2]], "scale": 0.25},
+  {"name": "all_x050", "keys": [[9, 2]], "scale": 0.50},
+  {"name": "all_x075", "keys": [[9, 2]], "scale": 0.75}
+]

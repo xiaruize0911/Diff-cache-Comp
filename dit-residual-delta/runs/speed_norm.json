@@ -1,0 +1,47 @@
+{
+  "results": {
+    "fixed_i4": {
+      "speedup_mean": 2.9948616637447567,
+      "speedup_sd": 0.05965697096735099,
+      "variant_seconds": 0.3254176119342446,
+      "exact_seconds": 0.9742361607030035,
+      "repeats": 10
+    },
+    "fixed_i5": {
+      "speedup_mean": 3.5246412709015416,
+      "speedup_sd": 0.05773645078319106,
+      "variant_seconds": 0.2863785237073898,
+      "exact_seconds": 1.009224552847445,
+      "repeats": 10
+    },
+    "norm_i4_s075": {
+      "speedup_mean": 2.895870991140009,
+      "speedup_sd": 0.21401978557584253,
+      "variant_seconds": 0.3594504129141569,
+      "exact_seconds": 1.0366231856867671,
+      "repeats": 10
+    },
+    "norm_i5_s075": {
+      "speedup_mean": 3.2299286836393737,
+      "speedup_sd": 0.09240411937755814,
+      "variant_seconds": 0.3087003229185939,
+      "exact_seconds": 0.9967930085957051,
+      "repeats": 10
+    },
+    "old_i4_s075": {
+      "speedup_mean": 2.9786475966085724,
+      "speedup_sd": 0.05462246341551423,
+      "variant_seconds": 0.35078780706971885,
+      "exact_seconds": 1.044717673584819,
+      "repeats": 10
+    },
+    "old_i5_s075": {
+      "speedup_mean": 3.2180809108002935,
+      "speedup_sd": 0.061987776753532245,
+      "variant_seconds": 0.3093658607453108,
+      "exact_seconds": 0.9954488849267363,
+      "repeats": 10
+    }
+  },
+  "gpu_exclusive": true
+}

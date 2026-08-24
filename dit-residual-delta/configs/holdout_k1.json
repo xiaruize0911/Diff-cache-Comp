@@ -1,0 +1,50 @@
+[
+  {
+    "name": "fixed_i2",
+    "cache_interval": 2,
+    "num_segments": 1
+  },
+  {
+    "name": "fixed_i3",
+    "cache_interval": 3,
+    "num_segments": 1
+  },
+  {
+    "name": "fixed_i4",
+    "cache_interval": 4,
+    "num_segments": 1
+  },
+  {
+    "name": "fixed_i5",
+    "cache_interval": 5,
+    "num_segments": 1
+  },
+  {
+    "name": "K1_i4_s050",
+    "cache_interval": 4,
+    "num_segments": 1,
+    "surrogate_checkpoint": "runs/cseg2_mix/best.pt",
+    "surrogate_scale": 0.5
+  },
+  {
+    "name": "K1_i4_s075",
+    "cache_interval": 4,
+    "num_segments": 1,
+    "surrogate_checkpoint": "runs/cseg2_mix/best.pt",
+    "surrogate_scale": 0.75
+  },
+  {
+    "name": "K1_i5_s075",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "surrogate_checkpoint": "runs/cseg2_mix/best.pt",
+    "surrogate_scale": 0.75
+  },
+  {
+    "name": "K1_i5_s050",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "surrogate_checkpoint": "runs/cseg2_mix/best.pt",
+    "surrogate_scale": 0.5
+  }
+]

@@ -1,0 +1,43 @@
+[
+  {
+    "name": "ada_t015",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "adaptive_threshold": 0.15
+  },
+  {
+    "name": "ada_t020",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "adaptive_threshold": 0.2
+  },
+  {
+    "name": "ada_t025",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "adaptive_threshold": 0.25
+  },
+  {
+    "name": "ada_t030",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "adaptive_threshold": 0.3
+  },
+  {
+    "name": "ada_t035",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "adaptive_threshold": 0.35
+  },
+  {
+    "name": "ada_t045",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "adaptive_threshold": 0.45
+  },
+  {
+    "name": "fixed_i5",
+    "cache_interval": 5,
+    "num_segments": 1
+  }
+]

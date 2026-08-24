@@ -1,0 +1,22 @@
+[
+  {"name": "periodic_2", "anchor_steps": [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28]},
+  {"name": "periodic_3", "anchor_steps": [0, 3, 6, 9, 12, 15, 18, 21, 24, 27]},
+  {"name": "periodic_4", "anchor_steps": [0, 4, 8, 12, 16, 20, 24, 28]},
+  {"name": "front3_interval3", "anchor_steps": [0, 1, 2, 5, 8, 11, 14, 17, 20, 23, 26, 29]},
+  {"name": "front6_interval3", "anchor_steps": [0, 1, 2, 3, 4, 5, 8, 11, 14, 17, 20, 23, 26, 29]},
+  {"name": "front6_interval4", "anchor_steps": [0, 1, 2, 3, 4, 5, 9, 13, 17, 21, 25, 29]},
+  {"name": "front6_interval5", "anchor_steps": [0, 1, 2, 3, 4, 5, 10, 15, 20, 25]},
+  {"name": "front8_interval4", "anchor_steps": [0, 1, 2, 3, 4, 5, 6, 7, 11, 15, 19, 23, 27]},
+  {"name": "front9_interval4", "anchor_steps": [0, 1, 2, 3, 4, 5, 6, 7, 8, 12, 16, 20, 24, 28]},
+  {"name": "front9_interval5", "anchor_steps": [0, 1, 2, 3, 4, 5, 6, 7, 8, 13, 18, 23, 28]},
+  {"name": "front9_interval6", "anchor_steps": [0, 1, 2, 3, 4, 5, 6, 7, 8, 14, 20, 26]},
+  {"name": "front10_interval5", "anchor_steps": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 14, 19, 24, 29]},
+  {"name": "front12_interval6", "anchor_steps": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 17, 23, 29]},
+  {"name": "front12_interval8", "anchor_steps": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 19, 27]},
+  {"name": "front15_only", "anchor_steps": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]},
+  {"name": "tail6_interval4", "anchor_steps": [0, 4, 8, 12, 16, 20, 24, 25, 26, 27, 28, 29]},
+  {"name": "sandwich6_interval5", "anchor_steps": [0, 1, 2, 3, 4, 5, 10, 15, 20, 24, 25, 26, 27, 28, 29]},
+  {"name": "front6_tail3_interval5", "anchor_steps": [0, 1, 2, 3, 4, 5, 10, 15, 20, 25, 27, 28, 29]},
+  {"name": "dense_early20_sparse_late", "anchor_steps": [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 23, 28]},
+  {"name": "dense_early15_sparse_late", "anchor_steps": [0, 2, 4, 6, 8, 10, 12, 14, 18, 22, 26, 29]}
+]

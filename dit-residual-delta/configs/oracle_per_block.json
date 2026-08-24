@@ -1,0 +1,566 @@
+[
+  {
+    "name": "fixed",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ]
+  },
+  {
+    "name": "oracle_all",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27
+    ]
+  },
+  {
+    "name": "oracle_b00",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      0
+    ]
+  },
+  {
+    "name": "oracle_b01",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      1
+    ]
+  },
+  {
+    "name": "oracle_b02",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      2
+    ]
+  },
+  {
+    "name": "oracle_b03",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      3
+    ]
+  },
+  {
+    "name": "oracle_b04",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      4
+    ]
+  },
+  {
+    "name": "oracle_b05",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      5
+    ]
+  },
+  {
+    "name": "oracle_b06",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      6
+    ]
+  },
+  {
+    "name": "oracle_b07",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      7
+    ]
+  },
+  {
+    "name": "oracle_b08",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      8
+    ]
+  },
+  {
+    "name": "oracle_b09",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      9
+    ]
+  },
+  {
+    "name": "oracle_b10",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      10
+    ]
+  },
+  {
+    "name": "oracle_b11",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      11
+    ]
+  },
+  {
+    "name": "oracle_b12",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      12
+    ]
+  },
+  {
+    "name": "oracle_b13",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      13
+    ]
+  },
+  {
+    "name": "oracle_b14",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      14
+    ]
+  },
+  {
+    "name": "oracle_b15",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      15
+    ]
+  },
+  {
+    "name": "oracle_b16",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      16
+    ]
+  },
+  {
+    "name": "oracle_b17",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      17
+    ]
+  },
+  {
+    "name": "oracle_b18",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      18
+    ]
+  },
+  {
+    "name": "oracle_b19",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      19
+    ]
+  },
+  {
+    "name": "oracle_b20",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      20
+    ]
+  },
+  {
+    "name": "oracle_b21",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      21
+    ]
+  },
+  {
+    "name": "oracle_b22",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      22
+    ]
+  },
+  {
+    "name": "oracle_b23",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      23
+    ]
+  },
+  {
+    "name": "oracle_b24",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      24
+    ]
+  },
+  {
+    "name": "oracle_b25",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      25
+    ]
+  },
+  {
+    "name": "oracle_b26",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      26
+    ]
+  },
+  {
+    "name": "oracle_b27",
+    "anchor_steps": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ],
+    "oracle_block_ids": [
+      27
+    ]
+  }
+]

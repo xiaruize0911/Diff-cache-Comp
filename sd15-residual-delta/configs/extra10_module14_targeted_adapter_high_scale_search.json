@@ -1,0 +1,7 @@
+[
+  {"name": "targeted_x250", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": 2.50},
+  {"name": "targeted_x300", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": 3.00},
+  {"name": "targeted_x350", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": 3.50},
+  {"name": "targeted_x400", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": 4.00},
+  {"name": "targeted_x500", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": 5.00}
+]

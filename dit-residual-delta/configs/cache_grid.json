@@ -1,0 +1,51 @@
+[
+  {
+    "name": "fixed_i2",
+    "cache_interval": 2
+  },
+  {
+    "name": "fixed_i3",
+    "cache_interval": 3
+  },
+  {
+    "name": "fixed_i4",
+    "cache_interval": 4
+  },
+  {
+    "name": "fixed_i5",
+    "cache_interval": 5
+  },
+  {
+    "name": "front_loaded",
+    "anchor_steps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18
+    ]
+  },
+  {
+    "name": "front_sparse",
+    "anchor_steps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      6,
+      9,
+      12,
+      15,
+      18
+    ]
+  }
+]

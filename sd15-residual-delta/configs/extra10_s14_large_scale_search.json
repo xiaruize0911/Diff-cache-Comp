@@ -1,0 +1,7 @@
+[
+  {"name": "s14_x025", "keys": [[9, 2]], "step_keys": [[9, 14]], "scale": 0.25},
+  {"name": "s14_x050", "keys": [[9, 2]], "step_keys": [[9, 14]], "scale": 0.50},
+  {"name": "s14_x075", "keys": [[9, 2]], "step_keys": [[9, 14]], "scale": 0.75},
+  {"name": "s14_x100", "keys": [[9, 2]], "step_keys": [[9, 14]], "scale": 1.00},
+  {"name": "s14_x125", "keys": [[9, 2]], "step_keys": [[9, 14]], "scale": 1.25}
+]

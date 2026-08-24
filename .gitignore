@@ -1,0 +1,40 @@
+# ---- model weights and large binaries (regenerable / downloadable) ----
+models/
+.cache/
+*.safetensors
+*.bin
+*.ckpt
+
+# ---- captured feature banks and trained checkpoints (regenerable) ----
+# A 5376-slot feature split is 6-17 GB; correctors retrain in ~10 min from them.
+*.pt
+*.tar
+*.npz
+
+# ---- generated images (regenerable; the figures used in the paper are tracked) ----
+*.png
+!paper/figs/*.png
+
+# ---- latex build products ----
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# ---- python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+build/
+dist/
+cases.partial.json
+
+# macOS resource forks
+._*
+.DS_Store

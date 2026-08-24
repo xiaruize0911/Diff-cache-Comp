@@ -1,0 +1,91 @@
+[
+ {
+  "name": "m14_all_x050",
+  "module_ids": [
+   14
+  ],
+  "horizons": [
+   1,
+   2,
+   3
+  ],
+  "scale": 0.5
+ },
+ {
+  "name": "m14_all_x100",
+  "module_ids": [
+   14
+  ],
+  "horizons": [
+   1,
+   2,
+   3
+  ],
+  "scale": 1.0
+ },
+ {
+  "name": "m14_all_x200",
+  "module_ids": [
+   14
+  ],
+  "horizons": [
+   1,
+   2,
+   3
+  ],
+  "scale": 2.0
+ },
+ {
+  "name": "m14_all_x300",
+  "module_ids": [
+   14
+  ],
+  "horizons": [
+   1,
+   2,
+   3
+  ],
+  "scale": 3.0
+ },
+ {
+  "name": "m14_13_x100",
+  "module_ids": [
+   14,
+   13
+  ],
+  "horizons": [
+   1,
+   2,
+   3
+  ],
+  "scale": 1.0
+ },
+ {
+  "name": "m14_13_x200",
+  "module_ids": [
+   14,
+   13
+  ],
+  "horizons": [
+   1,
+   2,
+   3
+  ],
+  "scale": 2.0
+ },
+ {
+  "name": "top4_x100",
+  "module_ids": [
+   14,
+   13,
+   1,
+   11
+  ],
+  "horizons": [
+   1,
+   2,
+   3
+  ],
+  "scale": 1.0
+ }
+]

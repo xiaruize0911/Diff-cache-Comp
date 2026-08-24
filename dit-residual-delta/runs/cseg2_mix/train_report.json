@@ -1,0 +1,100 @@
+{
+  "args": {
+    "train_dir": "/dev/shm/dit-seg2/train",
+    "val_dir": "/dev/shm/dit-seg2/val",
+    "output_dir": "runs/cseg2_mix",
+    "width": 512,
+    "depth": 4,
+    "mix_tokens": true,
+    "linear_rank": 256,
+    "num_blocks": 1,
+    "no_anchor_hidden": false,
+    "no_anchor_residual": false,
+    "no_delta_h": false,
+    "steps": 16000,
+    "batch_slots": 48,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.01,
+    "warmup": 200,
+    "validate_every": 2000,
+    "seed": 2027
+  },
+  "config": {
+    "dim": 1152,
+    "width": 512,
+    "depth": 4,
+    "conditioning_dim": 128,
+    "num_blocks": 1,
+    "use_delta_h": true,
+    "use_anchor_residual": true,
+    "use_anchor_hidden": true,
+    "mix_tokens": true,
+    "attention_heads": 4,
+    "linear_rank": 256
+  },
+  "scale": {
+    "delta_h": 0.05741097778081894,
+    "anchor_hidden": 0.7571715712547302,
+    "anchor_residual": 12.336591720581055,
+    "delta_residual": 1.8760650157928467
+  },
+  "parameters": 11881472,
+  "history": [
+    {
+      "step": 2000,
+      "loss": 0.4950966238975525,
+      "val_rel_mse": 0.33781041482452473
+    },
+    {
+      "step": 4000,
+      "loss": 0.5067130327224731,
+      "val_rel_mse": 0.3210304986281677
+    },
+    {
+      "step": 6000,
+      "loss": 0.3782535195350647,
+      "val_rel_mse": 0.3171572478756006
+    },
+    {
+      "step": 8000,
+      "loss": 0.4447804093360901,
+      "val_rel_mse": 0.31656420736428276
+    },
+    {
+      "step": 10000,
+      "loss": 0.24986210465431213,
+      "val_rel_mse": 0.3175056446774423
+    },
+    {
+      "step": 12000,
+      "loss": 0.43364161252975464,
+      "val_rel_mse": 0.31917026296903755
+    },
+    {
+      "step": 14000,
+      "loss": 0.41290757060050964,
+      "val_rel_mse": 0.32062631420583665
+    },
+    {
+      "step": 16000,
+      "loss": 0.3309808075428009,
+      "val_rel_mse": 0.3205919490881949
+    }
+  ],
+  "best": {
+    "rel_mse": 0.31656420736428276,
+    "step": 8000,
+    "metrics": {
+      "rel_mse": 0.31656420736428276,
+      "per_block": {
+        "0": 0.31656420736428276
+      },
+      "per_horizon": {
+        "1": 0.596695613226084,
+        "2": 0.4156959132843701,
+        "3": 0.3105979452393734,
+        "4": 0.269333150106577
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "num_blocks": 28,
+  "steps": 20,
+  "anchor_steps": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+  ],
+  "exact_seconds": 0.9661181457340717,
+  "cached_seconds": 0.5523998141288757,
+  "speedup": 1.7489472679450881,
+  "psnr_vs_exact": 20.17227705514528,
+  "ssim_gaussian_vs_exact": 0.6059696709625461,
+  "runtime_stats": {
+    "full_steps": 10,
+    "reused_steps": 10,
+    "exact_block_calls": 280,
+    "reused_block_calls": 280,
+    "surrogate_block_calls": 0,
+    "oracle_refresh_block_calls": 0,
+    "observer_block_calls": 0
+  },
+  "cuda_peak_gib": 2.1791319847106934
+}

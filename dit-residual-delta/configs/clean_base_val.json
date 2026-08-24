@@ -1,0 +1,35 @@
+[
+  {
+    "name": "fixed_i5",
+    "cache_interval": 5,
+    "num_segments": 1
+  },
+  {
+    "name": "pbstd_i5_s050",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "surrogate_checkpoint": "runs/fix_base/best.pt",
+    "surrogate_scale": 0.5
+  },
+  {
+    "name": "pbstd_i5_s075",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "surrogate_checkpoint": "runs/fix_base/best.pt",
+    "surrogate_scale": 0.75
+  },
+  {
+    "name": "pbinv_i5_s050",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "surrogate_checkpoint": "runs/fix_base_norm/best.pt",
+    "surrogate_scale": 0.5
+  },
+  {
+    "name": "pbinv_i5_s075",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "surrogate_checkpoint": "runs/fix_base_norm/best.pt",
+    "surrogate_scale": 0.75
+  }
+]

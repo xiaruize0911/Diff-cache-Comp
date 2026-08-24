@@ -1,0 +1,2236 @@
+{
+  "config": "configs/pixart_sigma_512.toml",
+  "prompt_file": "data/prompts/design4.txt",
+  "seeds": [
+    8201,
+    8202
+  ],
+  "num_steps": 20,
+  "num_blocks": 28,
+  "variants": [
+    {
+      "name": "fixed",
+      "anchor_steps": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ],
+      "reuse_steps": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "num_reuse_slots": 280,
+      "num_oracle_slots": 0,
+      "oracle_blend": 1.0,
+      "oracle_fraction": 0.0
+    },
+    {
+      "name": "oracle_top1",
+      "anchor_steps": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ],
+      "reuse_steps": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "num_reuse_slots": 280,
+      "num_oracle_slots": 10,
+      "oracle_blend": 1.0,
+      "oracle_fraction": 0.03571428571428571
+    },
+    {
+      "name": "oracle_top2",
+      "anchor_steps": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ],
+      "reuse_steps": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "num_reuse_slots": 280,
+      "num_oracle_slots": 20,
+      "oracle_blend": 1.0,
+      "oracle_fraction": 0.07142857142857142
+    },
+    {
+      "name": "oracle_top4",
+      "anchor_steps": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ],
+      "reuse_steps": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "num_reuse_slots": 280,
+      "num_oracle_slots": 40,
+      "oracle_blend": 1.0,
+      "oracle_fraction": 0.14285714285714285
+    },
+    {
+      "name": "oracle_top7",
+      "anchor_steps": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ],
+      "reuse_steps": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "num_reuse_slots": 280,
+      "num_oracle_slots": 70,
+      "oracle_blend": 1.0,
+      "oracle_fraction": 0.25
+    },
+    {
+      "name": "oracle_top14",
+      "anchor_steps": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ],
+      "reuse_steps": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "num_reuse_slots": 280,
+      "num_oracle_slots": 140,
+      "oracle_blend": 1.0,
+      "oracle_fraction": 0.5
+    },
+    {
+      "name": "oracle_top21",
+      "anchor_steps": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ],
+      "reuse_steps": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "num_reuse_slots": 280,
+      "num_oracle_slots": 210,
+      "oracle_blend": 1.0,
+      "oracle_fraction": 0.75
+    },
+    {
+      "name": "blend25_all",
+      "anchor_steps": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ],
+      "reuse_steps": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "num_reuse_slots": 280,
+      "num_oracle_slots": 280,
+      "oracle_blend": 0.25,
+      "oracle_fraction": 1.0
+    },
+    {
+      "name": "blend50_all",
+      "anchor_steps": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ],
+      "reuse_steps": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "num_reuse_slots": 280,
+      "num_oracle_slots": 280,
+      "oracle_blend": 0.5,
+      "oracle_fraction": 1.0
+    },
+    {
+      "name": "blend75_all",
+      "anchor_steps": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ],
+      "reuse_steps": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "num_reuse_slots": 280,
+      "num_oracle_slots": 280,
+      "oracle_blend": 0.75,
+      "oracle_fraction": 1.0
+    },
+    {
+      "name": "blend90_all",
+      "anchor_steps": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ],
+      "reuse_steps": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "num_reuse_slots": 280,
+      "num_oracle_slots": 280,
+      "oracle_blend": 0.9,
+      "oracle_fraction": 1.0
+    }
+  ],
+  "aggregate": {
+    "fixed": {
+      "speedup_vs_exact": {
+        "mean": 1.6988659308764102,
+        "std": 0.05779277893230538,
+        "min": 1.5829549248109707,
+        "max": 1.7583065641854394,
+        "count": 8
+      },
+      "mse_vs_exact": {
+        "mean": 0.013470420555677265,
+        "std": 0.0074135978237783355,
+        "min": 0.002997626317664981,
+        "max": 0.021044112741947174,
+        "count": 8
+      },
+      "psnr_vs_exact": {
+        "mean": 19.66991785180879,
+        "std": 3.520844938797037,
+        "min": 16.768693801748988,
+        "max": 25.232225070084322,
+        "count": 8
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.6763214357033416,
+        "std": 0.06203348455159671,
+        "min": 0.5721137049140099,
+        "max": 0.753077234331431,
+        "count": 8
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.21377805061638355,
+        "std": 0.0290035928929234,
+        "min": 0.17409899830818176,
+        "max": 0.2634839415550232,
+        "count": 8
+      }
+    },
+    "oracle_top1": {
+      "speedup_vs_exact": {
+        "mean": 1.7261743585917588,
+        "std": 0.020911018120684657,
+        "min": 1.701205869082228,
+        "max": 1.7655822619552632,
+        "count": 8
+      },
+      "mse_vs_exact": {
+        "mean": 0.013285378838190809,
+        "std": 0.007410065006442002,
+        "min": 0.0029264490585774183,
+        "max": 0.020840946584939957,
+        "count": 8
+      },
+      "psnr_vs_exact": {
+        "mean": 19.753007061859673,
+        "std": 3.559866060928073,
+        "min": 16.81082559495352,
+        "max": 25.336590313554666,
+        "count": 8
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.6804189409072297,
+        "std": 0.06367365371184751,
+        "min": 0.5744456487123134,
+        "max": 0.7590423868517368,
+        "count": 8
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.21348768658936024,
+        "std": 0.028965001134904605,
+        "min": 0.1743689924478531,
+        "max": 0.26303631067276,
+        "count": 8
+      }
+    },
+    "oracle_top2": {
+      "speedup_vs_exact": {
+        "mean": 1.6775664850110874,
+        "std": 0.024995403549240798,
+        "min": 1.6369119177614053,
+        "max": 1.7153443264157349,
+        "count": 8
+      },
+      "mse_vs_exact": {
+        "mean": 0.01309356337878853,
+        "std": 0.007376110906393916,
+        "min": 0.002848416566848755,
+        "max": 0.020858820527791977,
+        "count": 8
+      },
+      "psnr_vs_exact": {
+        "mean": 19.83720899416218,
+        "std": 3.6010854513028496,
+        "min": 16.80710252609086,
+        "max": 25.453964969683554,
+        "count": 8
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.6828711899157875,
+        "std": 0.06358234751860899,
+        "min": 0.5767797329140824,
+        "max": 0.7650076126499492,
+        "count": 8
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.21318728663027287,
+        "std": 0.02883605412509577,
+        "min": 0.1780642569065094,
+        "max": 0.2688618302345276,
+        "count": 8
+      }
+    },
+    "oracle_top4": {
+      "speedup_vs_exact": {
+        "mean": 1.5967228239191233,
+        "std": 0.021444715798147572,
+        "min": 1.5740744551979124,
+        "max": 1.6355040309951612,
+        "count": 8
+      },
+      "mse_vs_exact": {
+        "mean": 0.013010102527914569,
+        "std": 0.00727233425997047,
+        "min": 0.0027674443554133177,
+        "max": 0.020252838730812073,
+        "count": 8
+      },
+      "psnr_vs_exact": {
+        "mean": 19.880852296372005,
+        "std": 3.6553812692890766,
+        "min": 16.93514095475355,
+        "max": 25.57921102655164,
+        "count": 8
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.6851898119535051,
+        "std": 0.06352400962836101,
+        "min": 0.5805778403237182,
+        "max": 0.766614793160577,
+        "count": 8
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.2108823899179697,
+        "std": 0.028801694507192502,
+        "min": 0.17323851585388184,
+        "max": 0.26289933919906616,
+        "count": 8
+      }
+    },
+    "oracle_top7": {
+      "speedup_vs_exact": {
+        "mean": 1.4847676823206684,
+        "std": 0.014363251601036917,
+        "min": 1.4712752428144917,
+        "max": 1.512404838483627,
+        "count": 8
+      },
+      "mse_vs_exact": {
+        "mean": 0.013218565902207047,
+        "std": 0.007299910166334387,
+        "min": 0.002694421447813511,
+        "max": 0.020232660695910454,
+        "count": 8
+      },
+      "psnr_vs_exact": {
+        "mean": 19.762061709719838,
+        "std": 3.5381355889011004,
+        "min": 16.939470015806577,
+        "max": 25.695344731473448,
+        "count": 8
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.6937224705278883,
+        "std": 0.06688552614454744,
+        "min": 0.5794718495845688,
+        "max": 0.7767181456961261,
+        "count": 8
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.20646623708307743,
+        "std": 0.028329831396718984,
+        "min": 0.16870354115962982,
+        "max": 0.25789427757263184,
+        "count": 8
+      }
+    },
+    "oracle_top14": {
+      "speedup_vs_exact": {
+        "mean": 1.2795465745248062,
+        "std": 0.01359326817749561,
+        "min": 1.260505719061526,
+        "max": 1.3040654546396477,
+        "count": 8
+      },
+      "mse_vs_exact": {
+        "mean": 0.014343542221467942,
+        "std": 0.008360429164095563,
+        "min": 0.0025895340368151665,
+        "max": 0.024025574326515198,
+        "count": 8
+      },
+      "psnr_vs_exact": {
+        "mean": 19.48590354614926,
+        "std": 3.66409413185682,
+        "min": 16.193262218132112,
+        "max": 25.867783762452916,
+        "count": 8
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.6996094224804055,
+        "std": 0.07475176516368907,
+        "min": 0.5556374769836783,
+        "max": 0.7894045679560463,
+        "count": 8
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.20322816632688046,
+        "std": 0.04398402155270753,
+        "min": 0.14497236907482147,
+        "max": 0.2692137658596039,
+        "count": 8
+      }
+    },
+    "oracle_top21": {
+      "speedup_vs_exact": {
+        "mean": 1.1211631795097032,
+        "std": 0.01092548618401433,
+        "min": 1.1077627883514265,
+        "max": 1.141498376943633,
+        "count": 8
+      },
+      "mse_vs_exact": {
+        "mean": 0.012470210145693272,
+        "std": 0.007856426180363904,
+        "min": 0.003272671950981021,
+        "max": 0.0250549353659153,
+        "count": 8
+      },
+      "psnr_vs_exact": {
+        "mean": 20.065280054179887,
+        "std": 3.46005990657406,
+        "min": 16.01106713267245,
+        "max": 24.850975257091083,
+        "count": 8
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.7245323746272635,
+        "std": 0.06689744713349964,
+        "min": 0.6246078157508408,
+        "max": 0.8002805273826533,
+        "count": 8
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.18130818754434586,
+        "std": 0.04264561441489991,
+        "min": 0.1216629296541214,
+        "max": 0.26204007863998413,
+        "count": 8
+      }
+    },
+    "blend25_all": {
+      "speedup_vs_exact": {
+        "mean": 0.9431270609686567,
+        "std": 0.008697522255713144,
+        "min": 0.9344025967129809,
+        "max": 0.9560538472674347,
+        "count": 8
+      },
+      "mse_vs_exact": {
+        "mean": 0.01328855223255232,
+        "std": 0.007381393858650978,
+        "min": 0.002680741949006915,
+        "max": 0.020164918154478073,
+        "count": 8
+      },
+      "psnr_vs_exact": {
+        "mean": 19.76198497757808,
+        "std": 3.5893707693004395,
+        "min": 16.954035363705046,
+        "max": 25.717449896412035,
+        "count": 8
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.687783057122214,
+        "std": 0.06472917777735805,
+        "min": 0.5789479846695803,
+        "max": 0.7697959070870272,
+        "count": 8
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.20779798179864883,
+        "std": 0.03110708274257684,
+        "min": 0.16773778200149536,
+        "max": 0.2670029103755951,
+        "count": 8
+      }
+    },
+    "blend50_all": {
+      "speedup_vs_exact": {
+        "mean": 0.944343096405788,
+        "std": 0.009585599937398891,
+        "min": 0.9359686063955545,
+        "max": 0.9637799309432209,
+        "count": 8
+      },
+      "mse_vs_exact": {
+        "mean": 0.012747934379149228,
+        "std": 0.007312869038027779,
+        "min": 0.0022280593402683735,
+        "max": 0.02060689404606819,
+        "count": 8
+      },
+      "psnr_vs_exact": {
+        "mean": 20.020277320270026,
+        "std": 3.7477466654085725,
+        "min": 16.85987461898819,
+        "max": 26.520732467083974,
+        "count": 8
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.7106012531029755,
+        "std": 0.06836059922005239,
+        "min": 0.5911597326678856,
+        "max": 0.8001984427270448,
+        "count": 8
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.1883458811789751,
+        "std": 0.0424290819075771,
+        "min": 0.12923043966293335,
+        "max": 0.2697155177593231,
+        "count": 8
+      }
+    },
+    "blend75_all": {
+      "speedup_vs_exact": {
+        "mean": 0.9446794324872283,
+        "std": 0.010149394072605237,
+        "min": 0.9328442214779517,
+        "max": 0.9626667971443096,
+        "count": 8
+      },
+      "mse_vs_exact": {
+        "mean": 0.01124970446107909,
+        "std": 0.00684705645137288,
+        "min": 0.0014721862971782684,
+        "max": 0.01845182478427887,
+        "count": 8
+      },
+      "psnr_vs_exact": {
+        "mean": 20.76492095049545,
+        "std": 4.152701342430878,
+        "min": 17.33960678038523,
+        "max": 28.320372289135495,
+        "count": 8
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.7612709460841109,
+        "std": 0.0659505515996786,
+        "min": 0.6530000851771977,
+        "max": 0.856376014933952,
+        "count": 8
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.147879209369421,
+        "std": 0.05245917615286662,
+        "min": 0.0797313004732132,
+        "max": 0.24215459823608398,
+        "count": 8
+      }
+    },
+    "blend90_all": {
+      "speedup_vs_exact": {
+        "mean": 0.9454283784464907,
+        "std": 0.010622552103029464,
+        "min": 0.9342795018246847,
+        "max": 0.9644480843020659,
+        "count": 8
+      },
+      "mse_vs_exact": {
+        "mean": 0.006990382309595589,
+        "std": 0.004896367145656687,
+        "min": 0.0007034371956251562,
+        "max": 0.012774794362485409,
+        "count": 8
+      },
+      "psnr_vs_exact": {
+        "mean": 23.156037575001793,
+        "std": 4.6371419556481195,
+        "min": 18.936460820313435,
+        "max": 31.527746712370668,
+        "count": 8
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.8401198615889396,
+        "std": 0.055144590864811965,
+        "min": 0.7786326317965612,
+        "max": 0.919126359496164,
+        "count": 8
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.09310010680928826,
+        "std": 0.04804628315992857,
+        "min": 0.04181536287069321,
+        "max": 0.17011667788028717,
+        "count": 8
+      }
+    }
+  },
+  "cases": [
+    {
+      "case": "prompt-00-seed-8201",
+      "prompt": "a yellow tram passing through a snow-covered European town at blue hour",
+      "seed": 8201,
+      "exact_seconds": 0.9975372329354286,
+      "variants": {
+        "fixed": {
+          "seconds": 0.5686866752803326,
+          "speedup_vs_exact": 1.754106920904548,
+          "mse_vs_exact": 0.020152289420366287,
+          "psnr_vs_exact": 16.956756082746594,
+          "ssim_gaussian_vs_exact": 0.5721137049140099,
+          "lpips_alex_vs_exact": 0.23052430152893066,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "oracle_top1": {
+          "seconds": 0.5745417438447475,
+          "speedup_vs_exact": 1.7362310808959822,
+          "mse_vs_exact": 0.01997559890151024,
+          "psnr_vs_exact": 16.99500190951545,
+          "ssim_gaussian_vs_exact": 0.5744456487123134,
+          "lpips_alex_vs_exact": 0.22826260328292847,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 290,
+            "reused_block_calls": 270,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 10
+          }
+        },
+        "oracle_top2": {
+          "seconds": 0.5923422425985336,
+          "speedup_vs_exact": 1.6840555361362608,
+          "mse_vs_exact": 0.01948900893330574,
+          "psnr_vs_exact": 17.102102453226138,
+          "ssim_gaussian_vs_exact": 0.5767797329140824,
+          "lpips_alex_vs_exact": 0.2269848883152008,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 300,
+            "reused_block_calls": 260,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 20
+          }
+        },
+        "oracle_top4": {
+          "seconds": 0.6213537380099297,
+          "speedup_vs_exact": 1.6054256567769893,
+          "mse_vs_exact": 0.019076352939009666,
+          "psnr_vs_exact": 17.195046511130712,
+          "ssim_gaussian_vs_exact": 0.5805778403237182,
+          "lpips_alex_vs_exact": 0.22529171407222748,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 320,
+            "reused_block_calls": 240,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 40
+          }
+        },
+        "oracle_top7": {
+          "seconds": 0.6687096804380417,
+          "speedup_vs_exact": 1.4917343985240152,
+          "mse_vs_exact": 0.020232660695910454,
+          "psnr_vs_exact": 16.939470015806577,
+          "ssim_gaussian_vs_exact": 0.5794718495845688,
+          "lpips_alex_vs_exact": 0.22198255360126495,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 350,
+            "reused_block_calls": 210,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 70
+          }
+        },
+        "oracle_top14": {
+          "seconds": 0.7774931192398071,
+          "speedup_vs_exact": 1.2830174418916651,
+          "mse_vs_exact": 0.024025574326515198,
+          "psnr_vs_exact": 16.193262218132112,
+          "ssim_gaussian_vs_exact": 0.5556374769836783,
+          "lpips_alex_vs_exact": 0.2538334131240845,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 420,
+            "reused_block_calls": 140,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 140
+          }
+        },
+        "oracle_top21": {
+          "seconds": 0.8899867013096809,
+          "speedup_vs_exact": 1.120845099671129,
+          "mse_vs_exact": 0.01751101016998291,
+          "psnr_vs_exact": 17.566887997420825,
+          "ssim_gaussian_vs_exact": 0.6246078157508408,
+          "lpips_alex_vs_exact": 0.1957699954509735,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 490,
+            "reused_block_calls": 70,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 210
+          }
+        },
+        "blend25_all": {
+          "seconds": 1.05788242071867,
+          "speedup_vs_exact": 0.942956621074915,
+          "mse_vs_exact": 0.020164918154478073,
+          "psnr_vs_exact": 16.954035363705046,
+          "ssim_gaussian_vs_exact": 0.5789479846695803,
+          "lpips_alex_vs_exact": 0.22360561788082123,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend50_all": {
+          "seconds": 1.059460561722517,
+          "speedup_vs_exact": 0.9415520208827681,
+          "mse_vs_exact": 0.02060689404606819,
+          "psnr_vs_exact": 16.85987461898819,
+          "ssim_gaussian_vs_exact": 0.5911597326678856,
+          "lpips_alex_vs_exact": 0.21534758806228638,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend75_all": {
+          "seconds": 1.0560390017926693,
+          "speedup_vs_exact": 0.9446026436922011,
+          "mse_vs_exact": 0.017815086990594864,
+          "psnr_vs_exact": 17.492120526594103,
+          "ssim_gaussian_vs_exact": 0.6530000851771977,
+          "lpips_alex_vs_exact": 0.17479202151298523,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend90_all": {
+          "seconds": 1.0515640154480934,
+          "speedup_vs_exact": 0.948622450256019,
+          "mse_vs_exact": 0.008146322332322598,
+          "psnr_vs_exact": 20.890384098184583,
+          "ssim_gaussian_vs_exact": 0.7979317910680424,
+          "lpips_alex_vs_exact": 0.0895240306854248,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-00-seed-8202",
+      "prompt": "a yellow tram passing through a snow-covered European town at blue hour",
+      "seed": 8202,
+      "exact_seconds": 1.0042300522327423,
+      "variants": {
+        "fixed": {
+          "seconds": 0.5803509391844273,
+          "speedup_vs_exact": 1.7303841252398013,
+          "mse_vs_exact": 0.009228902868926525,
+          "psnr_vs_exact": 20.34849924791189,
+          "ssim_gaussian_vs_exact": 0.6703339483483953,
+          "lpips_alex_vs_exact": 0.18358632922172546,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "oracle_top1": {
+          "seconds": 0.583625178784132,
+          "speedup_vs_exact": 1.7206763668504803,
+          "mse_vs_exact": 0.008805971592664719,
+          "psnr_vs_exact": 20.552227198722754,
+          "ssim_gaussian_vs_exact": 0.6755541315512553,
+          "lpips_alex_vs_exact": 0.18296562135219574,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 290,
+            "reused_block_calls": 270,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 10
+          }
+        },
+        "oracle_top2": {
+          "seconds": 0.5986784547567368,
+          "speedup_vs_exact": 1.6774113787689167,
+          "mse_vs_exact": 0.008683527819812298,
+          "psnr_vs_exact": 20.613038000063383,
+          "ssim_gaussian_vs_exact": 0.6755229188031698,
+          "lpips_alex_vs_exact": 0.18318822979927063,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 300,
+            "reused_block_calls": 260,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 20
+          }
+        },
+        "oracle_top4": {
+          "seconds": 0.6279385127127171,
+          "speedup_vs_exact": 1.5992490218420148,
+          "mse_vs_exact": 0.008927363902330399,
+          "psnr_vs_exact": 20.492767619044265,
+          "ssim_gaussian_vs_exact": 0.6723969056055222,
+          "lpips_alex_vs_exact": 0.18135252594947815,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 320,
+            "reused_block_calls": 240,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 40
+          }
+        },
+        "oracle_top7": {
+          "seconds": 0.6795194111764431,
+          "speedup_vs_exact": 1.4778533706551986,
+          "mse_vs_exact": 0.008189543150365353,
+          "psnr_vs_exact": 20.867403244678243,
+          "ssim_gaussian_vs_exact": 0.693933559994607,
+          "lpips_alex_vs_exact": 0.1748816817998886,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 350,
+            "reused_block_calls": 210,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 70
+          }
+        },
+        "oracle_top14": {
+          "seconds": 0.7795346118509769,
+          "speedup_vs_exact": 1.2882430580577227,
+          "mse_vs_exact": 0.007569163106381893,
+          "psnr_vs_exact": 21.20952136137,
+          "ssim_gaussian_vs_exact": 0.7195774832858127,
+          "lpips_alex_vs_exact": 0.14497236907482147,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 420,
+            "reused_block_calls": 140,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 140
+          }
+        },
+        "oracle_top21": {
+          "seconds": 0.8896583281457424,
+          "speedup_vs_exact": 1.1287817136785472,
+          "mse_vs_exact": 0.005903743207454681,
+          "psnr_vs_exact": 22.288725410919994,
+          "ssim_gaussian_vs_exact": 0.7500815929889946,
+          "lpips_alex_vs_exact": 0.1216629296541214,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 490,
+            "reused_block_calls": 70,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 210
+          }
+        },
+        "blend25_all": {
+          "seconds": 1.0530067272484303,
+          "speedup_vs_exact": 0.9536786672359213,
+          "mse_vs_exact": 0.008322758600115776,
+          "psnr_vs_exact": 20.79732701805601,
+          "ssim_gaussian_vs_exact": 0.6893902539514539,
+          "lpips_alex_vs_exact": 0.1749163568019867,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend50_all": {
+          "seconds": 1.0558928959071636,
+          "speedup_vs_exact": 0.9510718900802572,
+          "mse_vs_exact": 0.0074568986892700195,
+          "psnr_vs_exact": 21.274417572700663,
+          "ssim_gaussian_vs_exact": 0.7178167959105842,
+          "lpips_alex_vs_exact": 0.15672999620437622,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend75_all": {
+          "seconds": 1.0539494268596172,
+          "speedup_vs_exact": 0.9528256542868282,
+          "mse_vs_exact": 0.005515769124031067,
+          "psnr_vs_exact": 22.58393920570475,
+          "ssim_gaussian_vs_exact": 0.7876680347560109,
+          "lpips_alex_vs_exact": 0.10565383732318878,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend90_all": {
+          "seconds": 1.0521594658493996,
+          "speedup_vs_exact": 0.9544466260368962,
+          "mse_vs_exact": 0.002740978728979826,
+          "psnr_vs_exact": 25.620943347350476,
+          "ssim_gaussian_vs_exact": 0.8771579337349217,
+          "lpips_alex_vs_exact": 0.05011891946196556,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-01-seed-8201",
+      "prompt": "an underwater photograph of a sea turtle swimming above a coral reef",
+      "seed": 8201,
+      "exact_seconds": 1.0236247591674328,
+      "variants": {
+        "fixed": {
+          "seconds": 0.6135928630828857,
+          "speedup_vs_exact": 1.6682474988780287,
+          "mse_vs_exact": 0.017520975321531296,
+          "psnr_vs_exact": 17.564417220852036,
+          "ssim_gaussian_vs_exact": 0.631815307986996,
+          "lpips_alex_vs_exact": 0.21831417083740234,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "oracle_top1": {
+          "seconds": 0.579766109585762,
+          "speedup_vs_exact": 1.7655822619552632,
+          "mse_vs_exact": 0.017511583864688873,
+          "psnr_vs_exact": 17.56674571644365,
+          "ssim_gaussian_vs_exact": 0.6338217997579019,
+          "lpips_alex_vs_exact": 0.22725580632686615,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 290,
+            "reused_block_calls": 270,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 10
+          }
+        },
+        "oracle_top2": {
+          "seconds": 0.5967459380626678,
+          "speedup_vs_exact": 1.7153443264157349,
+          "mse_vs_exact": 0.017033565789461136,
+          "psnr_vs_exact": 17.686944277517956,
+          "ssim_gaussian_vs_exact": 0.6373846721782158,
+          "lpips_alex_vs_exact": 0.21803030371665955,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 300,
+            "reused_block_calls": 260,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 20
+          }
+        },
+        "oracle_top4": {
+          "seconds": 0.625877246260643,
+          "speedup_vs_exact": 1.6355040309951612,
+          "mse_vs_exact": 0.016985680907964706,
+          "psnr_vs_exact": 17.699170388060523,
+          "ssim_gaussian_vs_exact": 0.6410969361948236,
+          "lpips_alex_vs_exact": 0.21956831216812134,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 320,
+            "reused_block_calls": 240,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 40
+          }
+        },
+        "oracle_top7": {
+          "seconds": 0.6768192835152149,
+          "speedup_vs_exact": 1.512404838483627,
+          "mse_vs_exact": 0.017534591257572174,
+          "psnr_vs_exact": 17.561043533439214,
+          "ssim_gaussian_vs_exact": 0.6508207417676651,
+          "lpips_alex_vs_exact": 0.2142397165298462,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 350,
+            "reused_block_calls": 210,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 70
+          }
+        },
+        "oracle_top14": {
+          "seconds": 0.7849489115178585,
+          "speedup_vs_exact": 1.3040654546396477,
+          "mse_vs_exact": 0.01705252379179001,
+          "psnr_vs_exact": 17.682113358659592,
+          "ssim_gaussian_vs_exact": 0.6659054753024084,
+          "lpips_alex_vs_exact": 0.21751214563846588,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 420,
+            "reused_block_calls": 140,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 140
+          }
+        },
+        "oracle_top21": {
+          "seconds": 0.896737813949585,
+          "speedup_vs_exact": 1.141498376943633,
+          "mse_vs_exact": 0.01541118137538433,
+          "psnr_vs_exact": 18.121640682806103,
+          "ssim_gaussian_vs_exact": 0.6857358887793518,
+          "lpips_alex_vs_exact": 0.21134130656719208,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 490,
+            "reused_block_calls": 70,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 210
+          }
+        },
+        "blend25_all": {
+          "seconds": 1.070676889270544,
+          "speedup_vs_exact": 0.9560538472674347,
+          "mse_vs_exact": 0.017565935850143433,
+          "psnr_vs_exact": 17.553287076011728,
+          "ssim_gaussian_vs_exact": 0.6397650380286248,
+          "lpips_alex_vs_exact": 0.21601718664169312,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend50_all": {
+          "seconds": 1.062093872576952,
+          "speedup_vs_exact": 0.9637799309432209,
+          "mse_vs_exact": 0.01638314686715603,
+          "psnr_vs_exact": 17.856026754829045,
+          "ssim_gaussian_vs_exact": 0.6713126299752997,
+          "lpips_alex_vs_exact": 0.1932162195444107,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend75_all": {
+          "seconds": 1.0633219741284847,
+          "speedup_vs_exact": 0.9626667971443096,
+          "mse_vs_exact": 0.013521435670554638,
+          "psnr_vs_exact": 18.689771936978193,
+          "ssim_gaussian_vs_exact": 0.7446178568673663,
+          "lpips_alex_vs_exact": 0.14149437844753265,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend90_all": {
+          "seconds": 1.0613580718636513,
+          "speedup_vs_exact": 0.9644480843020659,
+          "mse_vs_exact": 0.0062073892913758755,
+          "psnr_vs_exact": 22.07091017334946,
+          "ssim_gaussian_vs_exact": 0.8481742214090217,
+          "lpips_alex_vs_exact": 0.083594411611557,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-01-seed-8202",
+      "prompt": "an underwater photograph of a sea turtle swimming above a coral reef",
+      "seed": 8202,
+      "exact_seconds": 0.9973985105752945,
+      "variants": {
+        "fixed": {
+          "seconds": 0.5895273201167583,
+          "speedup_vs_exact": 1.6918613888458223,
+          "mse_vs_exact": 0.021044112741947174,
+          "psnr_vs_exact": 16.768693801748988,
+          "ssim_gaussian_vs_exact": 0.6336216101012685,
+          "lpips_alex_vs_exact": 0.20289398729801178,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "oracle_top1": {
+          "seconds": 0.5804565213620663,
+          "speedup_vs_exact": 1.718300120454941,
+          "mse_vs_exact": 0.020840946584939957,
+          "psnr_vs_exact": 16.81082559495352,
+          "ssim_gaussian_vs_exact": 0.6348007760519794,
+          "lpips_alex_vs_exact": 0.2021617591381073,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 290,
+            "reused_block_calls": 270,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 10
+          }
+        },
+        "oracle_top2": {
+          "seconds": 0.6093171536922455,
+          "speedup_vs_exact": 1.6369119177614053,
+          "mse_vs_exact": 0.020858820527791977,
+          "psnr_vs_exact": 16.80710252609086,
+          "ssim_gaussian_vs_exact": 0.639736994104923,
+          "lpips_alex_vs_exact": 0.2043708711862564,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 300,
+            "reused_block_calls": 260,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 20
+          }
+        },
+        "oracle_top4": {
+          "seconds": 0.6281604692339897,
+          "speedup_vs_exact": 1.5878084652343247,
+          "mse_vs_exact": 0.020252838730812073,
+          "psnr_vs_exact": 16.93514095475355,
+          "ssim_gaussian_vs_exact": 0.6418677144831538,
+          "lpips_alex_vs_exact": 0.19928109645843506,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 320,
+            "reused_block_calls": 240,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 40
+          }
+        },
+        "oracle_top7": {
+          "seconds": 0.6772861778736115,
+          "speedup_vs_exact": 1.4726396952418233,
+          "mse_vs_exact": 0.01953147165477276,
+          "psnr_vs_exact": 17.09265032315429,
+          "ssim_gaussian_vs_exact": 0.6455445006455378,
+          "lpips_alex_vs_exact": 0.1954115927219391,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 350,
+            "reused_block_calls": 210,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 70
+          }
+        },
+        "oracle_top14": {
+          "seconds": 0.7834964729845524,
+          "speedup_vs_exact": 1.273009573069207,
+          "mse_vs_exact": 0.020556332543492317,
+          "psnr_vs_exact": 16.870543652700164,
+          "ssim_gaussian_vs_exact": 0.6648856959092001,
+          "lpips_alex_vs_exact": 0.18444083631038666,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 420,
+            "reused_block_calls": 140,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 140
+          }
+        },
+        "oracle_top21": {
+          "seconds": 0.8929823450744152,
+          "speedup_vs_exact": 1.1169297087191326,
+          "mse_vs_exact": 0.017680812627077103,
+          "psnr_vs_exact": 17.524977782740176,
+          "ssim_gaussian_vs_exact": 0.6947657013374687,
+          "lpips_alex_vs_exact": 0.16223745048046112,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 490,
+            "reused_block_calls": 70,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 210
+          }
+        },
+        "blend25_all": {
+          "seconds": 1.0639535561203957,
+          "speedup_vs_exact": 0.9374455349462925,
+          "mse_vs_exact": 0.019557476043701172,
+          "psnr_vs_exact": 17.08687193056615,
+          "ssim_gaussian_vs_exact": 0.6465341169563469,
+          "lpips_alex_vs_exact": 0.19457745552062988,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend50_all": {
+          "seconds": 1.0610512048006058,
+          "speedup_vs_exact": 0.9400097809254427,
+          "mse_vs_exact": 0.016985757276415825,
+          "psnr_vs_exact": 17.69915086201236,
+          "ssim_gaussian_vs_exact": 0.6822247867687946,
+          "lpips_alex_vs_exact": 0.16899369657039642,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend75_all": {
+          "seconds": 1.0574170351028442,
+          "speedup_vs_exact": 0.9432404410605014,
+          "mse_vs_exact": 0.015761764720082283,
+          "psnr_vs_exact": 18.02395159607383,
+          "ssim_gaussian_vs_exact": 0.7364804065417263,
+          "lpips_alex_vs_exact": 0.133899986743927,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend90_all": {
+          "seconds": 1.0624398402869701,
+          "speedup_vs_exact": 0.9387811645936511,
+          "mse_vs_exact": 0.012774794362485409,
+          "psnr_vs_exact": 18.936460820313435,
+          "ssim_gaussian_vs_exact": 0.7999462396502716,
+          "lpips_alex_vs_exact": 0.09391529113054276,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-02-seed-8201",
+      "prompt": "a chef plating a delicate dessert in a quiet restaurant kitchen",
+      "seed": 8201,
+      "exact_seconds": 0.9949465580284595,
+      "variants": {
+        "fixed": {
+          "seconds": 0.6285375170409679,
+          "speedup_vs_exact": 1.5829549248109707,
+          "mse_vs_exact": 0.014353347942233086,
+          "psnr_vs_exact": 18.43046787205163,
+          "ssim_gaussian_vs_exact": 0.7044882587906657,
+          "lpips_alex_vs_exact": 0.20341917872428894,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "oracle_top1": {
+          "seconds": 0.5837066471576691,
+          "speedup_vs_exact": 1.7045318275426589,
+          "mse_vs_exact": 0.013968469575047493,
+          "psnr_vs_exact": 18.548511738085995,
+          "ssim_gaussian_vs_exact": 0.7115048063282131,
+          "lpips_alex_vs_exact": 0.20051001012325287,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 290,
+            "reused_block_calls": 270,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 10
+          }
+        },
+        "oracle_top2": {
+          "seconds": 0.5999399349093437,
+          "speedup_vs_exact": 1.6584102843208877,
+          "mse_vs_exact": 0.01356200035661459,
+          "psnr_vs_exact": 18.676762485391784,
+          "ssim_gaussian_vs_exact": 0.7152943555066639,
+          "lpips_alex_vs_exact": 0.2008381187915802,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 300,
+            "reused_block_calls": 260,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 20
+          }
+        },
+        "oracle_top4": {
+          "seconds": 0.6320835426449776,
+          "speedup_vs_exact": 1.5740744551979124,
+          "mse_vs_exact": 0.01388691645115614,
+          "psnr_vs_exact": 18.573941773664696,
+          "ssim_gaussian_vs_exact": 0.7155558342012736,
+          "lpips_alex_vs_exact": 0.198793426156044,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 320,
+            "reused_block_calls": 240,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 40
+          }
+        },
+        "oracle_top7": {
+          "seconds": 0.674589853733778,
+          "speedup_vs_exact": 1.474891080145282,
+          "mse_vs_exact": 0.01513692270964384,
+          "psnr_vs_exact": 18.199624066100426,
+          "ssim_gaussian_vs_exact": 0.7162514825325038,
+          "lpips_alex_vs_exact": 0.20188990235328674,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 350,
+            "reused_block_calls": 210,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 70
+          }
+        },
+        "oracle_top14": {
+          "seconds": 0.7825639545917511,
+          "speedup_vs_exact": 1.271393286376836,
+          "mse_vs_exact": 0.016776541247963905,
+          "psnr_vs_exact": 17.752975710255313,
+          "ssim_gaussian_vs_exact": 0.7122324100573922,
+          "lpips_alex_vs_exact": 0.21169283986091614,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 420,
+            "reused_block_calls": 140,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 140
+          }
+        },
+        "oracle_top21": {
+          "seconds": 0.8934855945408344,
+          "speedup_vs_exact": 1.1135563506647987,
+          "mse_vs_exact": 0.0250549353659153,
+          "psnr_vs_exact": 16.01106713267245,
+          "ssim_gaussian_vs_exact": 0.6610990566712721,
+          "lpips_alex_vs_exact": 0.26204007863998413,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 490,
+            "reused_block_calls": 70,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 210
+          }
+        },
+        "blend25_all": {
+          "seconds": 1.0618070214986801,
+          "speedup_vs_exact": 0.9370314359234027,
+          "mse_vs_exact": 0.01515708677470684,
+          "psnr_vs_exact": 18.193842630343383,
+          "ssim_gaussian_vs_exact": 0.711153289160347,
+          "lpips_alex_vs_exact": 0.20271359384059906,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend50_all": {
+          "seconds": 1.0622696988284588,
+          "speedup_vs_exact": 0.9366233067984076,
+          "mse_vs_exact": 0.015252932906150818,
+          "psnr_vs_exact": 18.16646640088439,
+          "ssim_gaussian_vs_exact": 0.7211699133977157,
+          "lpips_alex_vs_exact": 0.20007215440273285,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend75_all": {
+          "seconds": 1.0656598769128323,
+          "speedup_vs_exact": 0.933643632066522,
+          "mse_vs_exact": 0.01449620258063078,
+          "psnr_vs_exact": 18.387457504733234,
+          "ssim_gaussian_vs_exact": 0.7385890439346291,
+          "lpips_alex_vs_exact": 0.19101202487945557,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend90_all": {
+          "seconds": 1.0649283342063427,
+          "speedup_vs_exact": 0.9342849899565886,
+          "mse_vs_exact": 0.011305893771350384,
+          "psnr_vs_exact": 19.466950994289768,
+          "ssim_gaussian_vs_exact": 0.7786326317965612,
+          "lpips_alex_vs_exact": 0.15890046954154968,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-02-seed-8202",
+      "prompt": "a chef plating a delicate dessert in a quiet restaurant kitchen",
+      "seed": 8202,
+      "exact_seconds": 1.0044724568724632,
+      "variants": {
+        "fixed": {
+          "seconds": 0.5991403982043266,
+          "speedup_vs_exact": 1.6765226646090805,
+          "mse_vs_exact": 0.019228484481573105,
+          "psnr_vs_exact": 17.16054943906453,
+          "ssim_gaussian_vs_exact": 0.6972927749677472,
+          "lpips_alex_vs_exact": 0.2634839415550232,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "oracle_top1": {
+          "seconds": 0.5770898722112179,
+          "speedup_vs_exact": 1.740582368953481,
+          "mse_vs_exact": 0.01911138743162155,
+          "psnr_vs_exact": 17.18707783273355,
+          "ssim_gaussian_vs_exact": 0.7009233921079551,
+          "lpips_alex_vs_exact": 0.26303631067276,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 290,
+            "reused_block_calls": 270,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 10
+          }
+        },
+        "oracle_top2": {
+          "seconds": 0.5892445333302021,
+          "speedup_vs_exact": 1.704678448513624,
+          "mse_vs_exact": 0.019255515187978745,
+          "psnr_vs_exact": 17.15444857186505,
+          "ssim_gaussian_vs_exact": 0.6998431302878326,
+          "lpips_alex_vs_exact": 0.2688618302345276,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 300,
+            "reused_block_calls": 260,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 20
+          }
+        },
+        "oracle_top4": {
+          "seconds": 0.6219254098832607,
+          "speedup_vs_exact": 1.6151011695454105,
+          "mse_vs_exact": 0.019321300089359283,
+          "psnr_vs_exact": 17.139636541814884,
+          "ssim_gaussian_vs_exact": 0.7048762319613716,
+          "lpips_alex_vs_exact": 0.26289933919906616,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 320,
+            "reused_block_calls": 240,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 40
+          }
+        },
+        "oracle_top7": {
+          "seconds": 0.6711543649435043,
+          "speedup_vs_exact": 1.4966340224234653,
+          "mse_vs_exact": 0.018881946802139282,
+          "psnr_vs_exact": 17.23953230279553,
+          "ssim_gaussian_vs_exact": 0.7139781084540183,
+          "lpips_alex_vs_exact": 0.25789427757263184,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 350,
+            "reused_block_calls": 210,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 70
+          }
+        },
+        "oracle_top14": {
+          "seconds": 0.7810321636497974,
+          "speedup_vs_exact": 1.2860833440949724,
+          "mse_vs_exact": 0.021934781223535538,
+          "psnr_vs_exact": 16.58866692869937,
+          "ssim_gaussian_vs_exact": 0.7035507565726048,
+          "lpips_alex_vs_exact": 0.2692137658596039,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 420,
+            "reused_block_calls": 140,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 140
+          }
+        },
+        "oracle_top21": {
+          "seconds": 0.8910943642258644,
+          "speedup_vs_exact": 1.127234664698049,
+          "mse_vs_exact": 0.011625101789832115,
+          "psnr_vs_exact": 19.346032357224075,
+          "ssim_gaussian_vs_exact": 0.7914469343933023,
+          "lpips_alex_vs_exact": 0.1790672391653061,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 490,
+            "reused_block_calls": 70,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 210
+          }
+        },
+        "blend25_all": {
+          "seconds": 1.0586206130683422,
+          "speedup_vs_exact": 0.9488502722057016,
+          "mse_vs_exact": 0.019458714872598648,
+          "psnr_vs_exact": 17.108858455768573,
+          "ssim_gaussian_vs_exact": 0.7013135309187892,
+          "lpips_alex_vs_exact": 0.2670029103755951,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend50_all": {
+          "seconds": 1.0592090636491776,
+          "speedup_vs_exact": 0.9483231321792732,
+          "mse_vs_exact": 0.01970583014190197,
+          "psnr_vs_exact": 17.05405265012881,
+          "ssim_gaussian_vs_exact": 0.7018447709216827,
+          "lpips_alex_vs_exact": 0.2697155177593231,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend75_all": {
+          "seconds": 1.0578543171286583,
+          "speedup_vs_exact": 0.9495376070297753,
+          "mse_vs_exact": 0.01845182478427887,
+          "psnr_vs_exact": 17.33960678038523,
+          "ssim_gaussian_vs_exact": 0.7306801715739,
+          "lpips_alex_vs_exact": 0.24215459823608398,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend90_all": {
+          "seconds": 1.058647058904171,
+          "speedup_vs_exact": 0.9488265691799257,
+          "mse_vs_exact": 0.012323225848376751,
+          "psnr_vs_exact": 19.092755921092635,
+          "ssim_gaussian_vs_exact": 0.794145509623613,
+          "lpips_alex_vs_exact": 0.17011667788028717,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-03-seed-8201",
+      "prompt": "a hand-built wooden observatory beneath a clear desert night sky",
+      "seed": 8201,
+      "exact_seconds": 0.9929386228322983,
+      "variants": {
+        "fixed": {
+          "seconds": 0.5647130273282528,
+          "speedup_vs_exact": 1.7583065641854394,
+          "mse_vs_exact": 0.003237625351175666,
+          "psnr_vs_exact": 24.89773408001035,
+          "ssim_gaussian_vs_exact": 0.753077234331431,
+          "lpips_alex_vs_exact": 0.23390349745750427,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "oracle_top1": {
+          "seconds": 0.5765240006148815,
+          "speedup_vs_exact": 1.7222849729990375,
+          "mse_vs_exact": 0.003142623696476221,
+          "psnr_vs_exact": 25.027076190867803,
+          "ssim_gaussian_vs_exact": 0.7590423868517368,
+          "lpips_alex_vs_exact": 0.22934038937091827,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 290,
+            "reused_block_calls": 270,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 10
+          }
+        },
+        "oracle_top2": {
+          "seconds": 0.5916171222925186,
+          "speedup_vs_exact": 1.6783466627616477,
+          "mse_vs_exact": 0.002848416566848755,
+          "psnr_vs_exact": 25.453964969683554,
+          "ssim_gaussian_vs_exact": 0.7650076126499492,
+          "lpips_alex_vs_exact": 0.22515979409217834,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 300,
+            "reused_block_calls": 260,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 20
+          }
+        },
+        "oracle_top4": {
+          "seconds": 0.6277152486145496,
+          "speedup_vs_exact": 1.5818296990934102,
+          "mse_vs_exact": 0.0028629228472709656,
+          "psnr_vs_exact": 25.431903555955753,
+          "ssim_gaussian_vs_exact": 0.766614793160577,
+          "lpips_alex_vs_exact": 0.2266341894865036,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 320,
+            "reused_block_calls": 240,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 40
+          }
+        },
+        "oracle_top7": {
+          "seconds": 0.6705833151936531,
+          "speedup_vs_exact": 1.480708810277444,
+          "mse_vs_exact": 0.003546969499439001,
+          "psnr_vs_exact": 24.50142546031099,
+          "ssim_gaussian_vs_exact": 0.7767181456961261,
+          "lpips_alex_vs_exact": 0.2167266309261322,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 350,
+            "reused_block_calls": 210,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 70
+          }
+        },
+        "oracle_top14": {
+          "seconds": 0.7818077504634857,
+          "speedup_vs_exact": 1.2700547190068736,
+          "mse_vs_exact": 0.00424388749524951,
+          "psnr_vs_exact": 23.72236137692459,
+          "ssim_gaussian_vs_exact": 0.7856815137761011,
+          "lpips_alex_vs_exact": 0.19030585885047913,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 420,
+            "reused_block_calls": 140,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 140
+          }
+        },
+        "oracle_top21": {
+          "seconds": 0.8923712931573391,
+          "speedup_vs_exact": 1.1126967333509097,
+          "mse_vs_exact": 0.003272671950981021,
+          "psnr_vs_exact": 24.850975257091083,
+          "ssim_gaussian_vs_exact": 0.8002805273826533,
+          "lpips_alex_vs_exact": 0.1690622866153717,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 490,
+            "reused_block_calls": 70,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 210
+          }
+        },
+        "blend25_all": {
+          "seconds": 1.0626454018056393,
+          "speedup_vs_exact": 0.9344025967129809,
+          "mse_vs_exact": 0.0034007856156677008,
+          "psnr_vs_exact": 24.68420744976171,
+          "ssim_gaussian_vs_exact": 0.7697959070870272,
+          "lpips_alex_vs_exact": 0.21581295132637024,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend50_all": {
+          "seconds": 1.0608674436807632,
+          "speedup_vs_exact": 0.9359686063955545,
+          "mse_vs_exact": 0.0033639557659626007,
+          "psnr_vs_exact": 24.73149723553275,
+          "ssim_gaussian_vs_exact": 0.8001984427270448,
+          "lpips_alex_vs_exact": 0.1734614372253418,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend75_all": {
+          "seconds": 1.0644206181168556,
+          "speedup_vs_exact": 0.9328442214779517,
+          "mse_vs_exact": 0.0029633655212819576,
+          "psnr_vs_exact": 25.282147764358772,
+          "ssim_gaussian_vs_exact": 0.8427559548881058,
+          "lpips_alex_vs_exact": 0.11429552733898163,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend90_all": {
+          "seconds": 1.0627854093909264,
+          "speedup_vs_exact": 0.9342795018246847,
+          "mse_vs_exact": 0.0017210169462487102,
+          "psnr_vs_exact": 27.64214853306333,
+          "ssim_gaussian_vs_exact": 0.905844205932921,
+          "lpips_alex_vs_exact": 0.05681569129228592,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-03-seed-8202",
+      "prompt": "a hand-built wooden observatory beneath a clear desert night sky",
+      "seed": 8202,
+      "exact_seconds": 0.9982429221272469,
+      "variants": {
+        "fixed": {
+          "seconds": 0.5775052830576897,
+          "speedup_vs_exact": 1.7285433595375919,
+          "mse_vs_exact": 0.002997626317664981,
+          "psnr_vs_exact": 25.232225070084322,
+          "ssim_gaussian_vs_exact": 0.7478286461862188,
+          "lpips_alex_vs_exact": 0.17409899830818176,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 280,
+            "reused_block_calls": 280,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 0
+          }
+        },
+        "oracle_top1": {
+          "seconds": 0.5867854915559292,
+          "speedup_vs_exact": 1.701205869082228,
+          "mse_vs_exact": 0.0029264490585774183,
+          "psnr_vs_exact": 25.336590313554666,
+          "ssim_gaussian_vs_exact": 0.7532585858964826,
+          "lpips_alex_vs_exact": 0.1743689924478531,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 290,
+            "reused_block_calls": 270,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 10
+          }
+        },
+        "oracle_top2": {
+          "seconds": 0.5994108989834785,
+          "speedup_vs_exact": 1.665373325410223,
+          "mse_vs_exact": 0.0030176518484950066,
+          "psnr_vs_exact": 25.203308669458707,
+          "ssim_gaussian_vs_exact": 0.753400102881464,
+          "lpips_alex_vs_exact": 0.1780642569065094,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 300,
+            "reused_block_calls": 260,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 20
+          }
+        },
+        "oracle_top4": {
+          "seconds": 0.6338895112276077,
+          "speedup_vs_exact": 1.5747900926677623,
+          "mse_vs_exact": 0.0027674443554133177,
+          "psnr_vs_exact": 25.57921102655164,
+          "ssim_gaussian_vs_exact": 0.7585322396976005,
+          "lpips_alex_vs_exact": 0.17323851585388184,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 320,
+            "reused_block_calls": 240,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 40
+          }
+        },
+        "oracle_top7": {
+          "seconds": 0.6784882210195065,
+          "speedup_vs_exact": 1.4712752428144917,
+          "mse_vs_exact": 0.002694421447813511,
+          "psnr_vs_exact": 25.695344731473448,
+          "ssim_gaussian_vs_exact": 0.7730613755480792,
+          "lpips_alex_vs_exact": 0.16870354115962982,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 350,
+            "reused_block_calls": 210,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 70
+          }
+        },
+        "oracle_top14": {
+          "seconds": 0.7919384315609932,
+          "speedup_vs_exact": 1.260505719061526,
+          "mse_vs_exact": 0.0025895340368151665,
+          "psnr_vs_exact": 25.867783762452916,
+          "ssim_gaussian_vs_exact": 0.7894045679560463,
+          "lpips_alex_vs_exact": 0.153854101896286,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 420,
+            "reused_block_calls": 140,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 140
+          }
+        },
+        "oracle_top21": {
+          "seconds": 0.9011341892182827,
+          "speedup_vs_exact": 1.1077627883514265,
+          "mse_vs_exact": 0.0033022246789187193,
+          "psnr_vs_exact": 24.811933812564394,
+          "ssim_gaussian_vs_exact": 0.7882414797142244,
+          "lpips_alex_vs_exact": 0.1492842137813568,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 490,
+            "reused_block_calls": 70,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 210
+          }
+        },
+        "blend25_all": {
+          "seconds": 1.068099271506071,
+          "speedup_vs_exact": 0.9345975123826051,
+          "mse_vs_exact": 0.002680741949006915,
+          "psnr_vs_exact": 25.717449896412035,
+          "ssim_gaussian_vs_exact": 0.7653643362055425,
+          "lpips_alex_vs_exact": 0.16773778200149536,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend50_all": {
+          "seconds": 1.064887747168541,
+          "speedup_vs_exact": 0.9374161030413789,
+          "mse_vs_exact": 0.0022280593402683735,
+          "psnr_vs_exact": 26.520732467083974,
+          "ssim_gaussian_vs_exact": 0.7990829524547972,
+          "lpips_alex_vs_exact": 0.12923043966293335,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend75_all": {
+          "seconds": 1.0641403868794441,
+          "speedup_vs_exact": 0.9380744631397373,
+          "mse_vs_exact": 0.0014721862971782684,
+          "psnr_vs_exact": 28.320372289135495,
+          "ssim_gaussian_vs_exact": 0.856376014933952,
+          "lpips_alex_vs_exact": 0.0797313004732132,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        },
+        "blend90_all": {
+          "seconds": 1.0622570365667343,
+          "speedup_vs_exact": 0.9397376414220948,
+          "mse_vs_exact": 0.0007034371956251562,
+          "psnr_vs_exact": 31.527746712370668,
+          "ssim_gaussian_vs_exact": 0.919126359496164,
+          "lpips_alex_vs_exact": 0.04181536287069321,
+          "runtime": {
+            "full_steps": 10,
+            "reused_steps": 10,
+            "exact_block_calls": 560,
+            "reused_block_calls": 0,
+            "surrogate_block_calls": 0,
+            "oracle_refresh_block_calls": 280
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "train112": {
+    "file": "data/embeddings/train112.pt",
+    "count": 112
+  },
+  "val24": {
+    "file": "data/embeddings/val24.pt",
+    "count": 24
+  },
+  "test24": {
+    "file": "data/embeddings/test24.pt",
+    "count": 24
+  }
+}

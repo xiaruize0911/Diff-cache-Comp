@@ -1,0 +1,11 @@
+[
+  {"name": "all_cached", "exact_module_ids": []},
+  {"name": "base_exact_08_09_10", "exact_module_ids": [8, 9, 10]},
+  {"name": "refresh14_h1", "exact_module_ids": [8, 9, 10], "refresh_keys": [[9, 14], [13, 14], [17, 14], [21, 14], [25, 14], [29, 14]]},
+  {"name": "refresh14_h2", "exact_module_ids": [8, 9, 10], "refresh_keys": [[10, 14], [14, 14], [18, 14], [22, 14], [26, 14]]},
+  {"name": "refresh14_h3", "exact_module_ids": [8, 9, 10], "refresh_keys": [[11, 14], [15, 14], [19, 14], [23, 14], [27, 14]]},
+  {"name": "refresh14_h12", "exact_module_ids": [8, 9, 10], "refresh_keys": [[9, 14], [10, 14], [13, 14], [14, 14], [17, 14], [18, 14], [21, 14], [22, 14], [25, 14], [26, 14], [29, 14]]},
+  {"name": "refresh14_early", "exact_module_ids": [8, 9, 10], "refresh_keys": [[9, 14], [10, 14], [11, 14], [13, 14], [14, 14], [15, 14]]},
+  {"name": "refresh14_middle", "exact_module_ids": [8, 9, 10], "refresh_keys": [[17, 14], [18, 14], [19, 14], [21, 14], [22, 14], [23, 14]]},
+  {"name": "refresh14_late", "exact_module_ids": [8, 9, 10], "refresh_keys": [[25, 14], [26, 14], [27, 14], [29, 14]]}
+]

@@ -1,0 +1,45 @@
+[model]
+model_id = "stable-diffusion-v1-5/stable-diffusion-v1-5"
+dtype = "float16"
+height = 512
+width = 512
+num_inference_steps = 30
+guidance_scale = 7.5
+scheduler = "ddim"
+
+[reuse]
+cache_interval = 999
+target = "all_transformer2d"
+
+[capture]
+seeds = [7101, 7201, 7301, 7401]
+anchor_steps = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 16, 20, 24, 28]
+on_policy_target_steps = [14, 18, 22, 26]
+module_ids = [9]
+shard_size = 8
+output_dir = "/root/sd15-features/extra10_module9_h2"
+
+[surrogate]
+width_320 = 96
+width_640 = 256
+width_1280 = 192
+depth = 4
+conditioning_dim = 192
+use_delta_h = true
+use_anchor_residual = true
+
+[train]
+seed = 2027
+target_steps = [14]
+output_dir = "/root/sd15-runs/extra10_module9_s14_large"
+max_steps = 2500
+gradient_accumulation = 2
+learning_rate = 0.0001
+weight_decay = 0.001
+warmup_steps = 50
+grad_clip = 1.0
+validation_every = 100
+
+[evaluation]
+gate_relative_mse_improvement = 0.20
+gate_lpips_improvement = 0.0

@@ -1,0 +1,42 @@
+[
+  {
+    "name": "fixed_i2",
+    "cache_interval": 2
+  },
+  {
+    "name": "fixed_i3",
+    "cache_interval": 3
+  },
+  {
+    "name": "fixed_i4",
+    "cache_interval": 4
+  },
+  {
+    "name": "fixed_i5",
+    "cache_interval": 5
+  },
+  {
+    "name": "norm_i4_s100",
+    "cache_interval": 4,
+    "surrogate_checkpoint": "runs/c_norm/best.pt",
+    "surrogate_scale": 1.0
+  },
+  {
+    "name": "norm_i5_s100",
+    "cache_interval": 5,
+    "surrogate_checkpoint": "runs/c_norm/best.pt",
+    "surrogate_scale": 1.0
+  },
+  {
+    "name": "std_i4_s100",
+    "cache_interval": 4,
+    "surrogate_checkpoint": "runs/c_std/best.pt",
+    "surrogate_scale": 1.0
+  },
+  {
+    "name": "std_i5_s100",
+    "cache_interval": 5,
+    "surrogate_checkpoint": "runs/c_std/best.pt",
+    "surrogate_scale": 1.0
+  }
+]

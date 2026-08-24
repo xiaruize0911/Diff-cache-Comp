@@ -1,0 +1,170 @@
+
+\section{Limitations}
+\label{sec:limits}
+
+We state these in full because several of them bound the claims materially.
+
+\paragraph{Absolute fidelity is low at aggressive settings.} At $\approx\!4\times$
+FLOPs reduction the outputs reach SSIM $\approx\!0.53$ against the exact output:
+recognisably the same image, visibly different in detail. Correction moves a
+speed/fidelity front upward; it does not make aggressive caching lossless. Users
+wanting near-exact output should cache less aggressively, and we did not test
+correction in that regime (our correctors are trained and evaluated at anchor
+intervals $4$ and $5$ only).
+
+\paragraph{We are not a competitive accelerator.} A training-free method,
+TaylorSeer \cite{liu2025taylorseer}, reports near-lossless generation at $4.99\times$
+compression on FLUX.1-dev, where our corrected variant at $4.7\times$ reaches SSIM
+$0.585$ against the exact output. Our operating points were chosen to make a clean
+diagnostic comparison against an equal-cost correction-free baseline, not to compete,
+and a reader interested in the best available speed/quality trade-off should look
+there rather than here. The natural question our result raises --- whether a learned
+corrector trained with a site-balanced objective could close that gap --- is one we
+cannot answer without the baselines we did not run.
+
+\paragraph{Metric scope.} All image numbers are fidelity to the same-seed exact
+output. This is the right primary target for an accelerator whose purpose is to
+reproduce what the model would have produced, and it is what makes same-seed paired
+tests possible, but it is \emph{not} a measure of aesthetic quality or
+prompt alignment: a lower SSIM means a different image, not necessarily a worse one.
+We report no FID \cite{heusel2017fid} or CLIP-score on a standard benchmark such as
+MS-COCO, so we cannot claim distributional quality is preserved. This is the single
+largest gap in our evaluation.
+
+\paragraph{No re-implementation of published accelerators.} Our correction-free
+baseline is uniform whole-stack step caching, the mechanism underlying FORA-style
+caching \cite{selvaraju2024fora} at the coarsest granularity. We do not
+re-implement TeaCache \cite{liu2024teacache}, ToCa \cite{zou2024toca} or
+$\Delta$-DiT \cite{chen2024deltadit}, and we make no state-of-the-art claim.
+
+We also deliberately do \emph{not} offer oracle or $\alpha$-blend analyses as upper
+bounds on a learned corrector, though we ran them: a blend's error is a contraction of
+the cache error, hence collinear and direction-safe, whereas a learned corrector's
+error has arbitrary direction and is amplified by Eq.~\ref{eq:multiplicative}. At
+equal $\relmse$ we measured the two to differ in the \emph{sign} of recovered
+quality, so the blend curve is a reference point and not a ceiling.
+
+Our thesis is \emph{assumed} to be orthogonal to which caching schedule one starts
+from; it concerns how a
+learned correction on top of any of them should be trained and selected. Whether the
+inversion also afflicts adaptive-schedule methods is untested, and the mechanism
+makes a specific prediction there: a schedule that equalises staleness across reuse
+steps flattens the per-site target-energy profile, which is the imbalance our fix
+corrects, so the inversion should \emph{weaken}. Testing that on TeaCache-style
+adaptive intervals is the single most informative experiment we did not run.
+
+\paragraph{Prompt diversity.} Prompts are templated (style $\times$ subject
+$\times$ condition) and the held-out split contains only $6$ subjects unseen in training.
+Splits are strictly subject-disjoint, but the templating limits the breadth of the
+generalisation claim; we did not evaluate on free-form or long-form prompts.
+
+\paragraph{Timing.} Wall clock is eager mode on one A40. Absolute speedups would
+change under compilation or CUDA graphs, and our own measurements shifted by
+$3$--$4\%$ between sessions on unchanged baselines, which is why every speed
+comparison here is internal to a single exclusive benchmark run.
+
+\paragraph{The proxy's validity is conditional.} The per-site median tracks
+deployment for correctors trained on identical data ($12/12$) and fails across
+training sets ($6/26$), for the confound identified in Sec.~\ref{sec:proxy}. It
+should not be used as a general-purpose quality estimator on the strength of our
+evidence.
+
+\paragraph{Mechanism is argued, not proved.} Eq.~\ref{eq:multiplicative} is a
+linearisation. We test its predictions --- the granularity inversion, the damping
+requirement, and the weaker damping requirement on the backbone with the flatter
+$\tau$ profile --- but we do not measure $J_b$ or its spectral radius directly, so the
+mechanism should be read as the best available explanation rather than a
+demonstrated one.
+
+\paragraph{Secondary-backbone caveats.} The FLUX corrector was trained with half the
+tokens per site as the primary one (a storage constraint), so its absolute numbers
+are not comparable to the primary backbone's; only the within-backbone loss contrast
+is. Its damping optimum is interior (we swept to $\sigma{=}2$), so unlike an earlier
+draft of this work we are not reporting a boundary value.
+
+\paragraph{Our effect estimate moved four times, always toward zero as the design
+improved.} We measured the loss contrast at $+0.0217$ (48 images), $+0.0115$
+(192 images), $+0.0266$ (a checkpoint-selected base-data pair, which we later found
+step-mismatched) and finally $+0.0077$ (step-matched, seed-replicated,
+selection-free). Each estimate lay inside its successor's interval, so none was
+strictly inconsistent --- but a reader quoting the first would be wrong by a factor of
+three. The general lesson is that every uncontrolled degree of freedom we removed made
+the effect smaller, which is the direction one should expect and a reason to distrust
+the first number any pipeline produces. It is also why we claim the ordering, which
+survived all four designs, rather than the magnitude, which did not.
+
+\paragraph{We selected checkpoints with the metric we are indicting.} Every
+checkpoint in this paper is the one minimising validation $\relmse$ over training,
+which by our own argument is the wrong criterion. For the union-data contrast this is
+harmless --- both arms select their final step ($16$k/$16$k) --- but it is \emph{not}
+harmless for the base-data contrast, whose arms landed on steps $6$k and $12$k. We
+found this only when re-checking the safeguard against a headline we had moved, which
+is itself the lesson: a selection rule has to be re-verified against every claim that
+comes to depend on it, not once. The right protocol, which we recommend and did
+not follow, is to select on a deployment-aligned statistic or at a fixed step count.
+
+\paragraph{A normalisation bug affected one reported cell.} Our feature-normalisation
+statistics were computed by strided subsampling whose stride resonated with the
+$4$-periodic ordering of injection sites, sampling only $\tau\in\{1,3\}$ and making
+every scale $\approx\!22\%$ low. We found and fixed this mid-project (it is now
+covered by unit tests), but one checkpoint used in our earlier $48$-image analysis
+predates it, which is why the $192$-image tables use post-fix checkpoints only. A post-fix rerun reaches the same $\relmse$ ($0.3189$ vs.\ $0.3203$), so the bug is
+benign in residual space --- but its deployed quality differs by $0.0126$ SSIM, about
+six times the seed noise, and we cannot currently explain that gap (the post-fix run
+was never damping-selected, which is the likeliest but untested cause). We therefore
+do not claim the bug was harmless, and we rest no conclusion on that cell.
+
+\paragraph{Two different ``gain'' baselines appear in this paper.} Gains ``vs.\ front''
+interpolate the correction-free curve at matched cost; gains ``vs.\ plain caching''
+compare against the same anchor schedule without a corrector. The second is
+systematically larger. We use the first for headline numbers because it is the
+conservative one, and label every table accordingly. Results also draw on runs with
+different image-seed pairs and, for the granularity ladder, a smaller design split
+($n{=}8$) than the main tables ($n{=}48$); every caption states its $n$.
+
+\paragraph{Effect sizes are small relative to per-image variance.} The per-image
+standard deviation of the paired loss difference ($0.03$--$0.05$ SSIM) exceeds the
+effect itself ($0.01$--$0.03$) --- it is a shift of a distribution, not a per-image
+guarantee. Depending on the condition, between $102$ and $141$ of $192$ images improve,
+not all of them. Readers wanting a per-image guarantee will not find one here.
+
+\paragraph{Scale.} Some cells of Table~\ref{tab:main} are single training runs. We
+replicated the decisive contrast three times and measured the seed noise
+($\sigma \approx 0.002$ at interval $5$) precisely so that single-run differences
+below $\approx\!0.006$ are not interpreted; we mark such comparisons as
+inconclusive rather than reporting them as effects. An earlier draft of this work
+inferred a noise floor of $0.013$ from a single confounded pair and used it to doubt
+real effects; replicates, not inference from one pair, are the right instrument.
+
+\section{Conclusion}
+
+Learned correction of cached diffusion transformers is usually posed as a regression
+problem in residual space, and evaluated there. We showed that this framing is
+actively misleading: at fixed granularity, data, architecture and cost, residual
+error and deployed image quality rank two correctors in opposite orders, reliably and
+reproducibly. The reason is an aggregation mismatch --- residual error weights
+injection sites by target energy, deployment weights them equally because each feeds
+the same depth-wise propagation chain --- and it is repairable. A per-site
+scale-invariant objective deploys measurably better at no cost in parameters or
+latency --- $+0.008$ SSIM and $-0.009$ LPIPS in our cleanest design, both significant
+under subject clustering, and positive in every condition we tested --- and a per-site relative statistic restores the correct ranking as a
+candidate selection criterion. We stress the ordering rather than the magnitude: the
+ordering is what contradicts residual error and it is stable across samples, seeds,
+metrics and data conditions, whereas our own magnitude estimate halved when we
+quadrupled the evaluation set. The same lens correctly predicts that on-policy data collection, which
+residual error endorses, buys nothing on images.
+
+The broader lesson generalises past caching. Whenever a learned module is inserted
+into a frozen iterative computation, the natural local reconstruction loss inherits
+whatever weighting the local error happens to have, while the deployed system
+propagates every insertion equally. Reporting the local metric alongside a
+deployed one is not enough --- our own prior conclusions, drawn from the local metric,
+were reversed twice by the deployed one.
+
+\paragraph{Reproducibility.} Every experiment runs on a single 48\,GB GPU. The
+protocol we would ask others to keep: select injection strength on validation and
+never on test; replicate the decisive contrast across training seeds and report the
+seed spread next to any effect; verify the deployed low-precision path reproduces the
+training path before trusting a rollout (this caught a silent \texttt{fp16}
+timestep-embedding failure in our own pipeline); inspect artefacts at native
+resolution; and treat residual-space error strictly as a diagnostic.

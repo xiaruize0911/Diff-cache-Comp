@@ -1,0 +1,89 @@
+{
+  "results": {
+    "fixed_i2": {
+      "speedup_mean": 1.9144595847675367,
+      "speedup_sd": 0.027289773372989785,
+      "variant_seconds": 0.5487527094781399,
+      "exact_seconds": 1.0503896482288837,
+      "repeats": 10
+    },
+    "fixed_i3": {
+      "speedup_mean": 2.459779235236671,
+      "speedup_sd": 0.03736011250952677,
+      "variant_seconds": 0.4067413054406643,
+      "exact_seconds": 1.0005413573235273,
+      "repeats": 10
+    },
+    "fixed_i4": {
+      "speedup_mean": 3.1119471164638632,
+      "speedup_sd": 0.14957532995558992,
+      "variant_seconds": 0.32658213153481486,
+      "exact_seconds": 1.0140252750366927,
+      "repeats": 10
+    },
+    "fixed_i5": {
+      "speedup_mean": 3.6501286069234906,
+      "speedup_sd": 0.23721694501510646,
+      "variant_seconds": 0.2812300931662321,
+      "exact_seconds": 1.0236369211226701,
+      "repeats": 10
+    },
+    "fixed_i5_K28": {
+      "speedup_mean": 3.303320060623508,
+      "speedup_sd": 0.1632850959181358,
+      "variant_seconds": 0.3078709810972214,
+      "exact_seconds": 1.0155333157628774,
+      "repeats": 10
+    },
+    "K1_i4_s050": {
+      "speedup_mean": 3.010551460423412,
+      "speedup_sd": 0.2350275772220096,
+      "variant_seconds": 0.3513934090733528,
+      "exact_seconds": 1.0527316719293593,
+      "repeats": 10
+    },
+    "K1_i4_s075": {
+      "speedup_mean": 3.07000683983806,
+      "speedup_sd": 0.054622087640352604,
+      "variant_seconds": 0.34404806010425093,
+      "exact_seconds": 1.0560236111283303,
+      "repeats": 10
+    },
+    "K1_i5_s075": {
+      "speedup_mean": 3.3107824847676275,
+      "speedup_sd": 0.22627937945479806,
+      "variant_seconds": 0.30646630227565763,
+      "exact_seconds": 1.0099723290652036,
+      "repeats": 10
+    },
+    "K1_i5_s100": {
+      "speedup_mean": 3.2976735012745277,
+      "speedup_sd": 0.14031839575294103,
+      "variant_seconds": 0.3073342118412256,
+      "exact_seconds": 1.011621693149209,
+      "repeats": 10
+    },
+    "K2_i5_s050": {
+      "speedup_mean": 3.0971942458125175,
+      "speedup_sd": 0.22270444119922322,
+      "variant_seconds": 0.3403314583003521,
+      "exact_seconds": 1.0504403404891491,
+      "repeats": 10
+    },
+    "K4_i5_s050": {
+      "speedup_mean": 2.6644751615183466,
+      "speedup_sd": 0.019519958434346077,
+      "variant_seconds": 0.38133335262537005,
+      "exact_seconds": 1.0160539850592614,
+      "repeats": 10
+    },
+    "K28_i5_s100": {
+      "speedup_mean": 1.2500399173211225,
+      "speedup_sd": 0.07306130240423905,
+      "variant_seconds": 0.8149758402258158,
+      "exact_seconds": 1.015669310092926,
+      "repeats": 10
+    }
+  },
+  "gpu_exclusive": true
+}

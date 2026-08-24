@@ -1,0 +1,72 @@
+{
+  "model": "PixArt-Sigma-XL-2-512-MS",
+  "num_blocks": 28,
+  "hidden_dim": 1152,
+  "num_heads": 16,
+  "patch_size": 2,
+  "transformer_parameters": 610856096,
+  "vae_parameters": 83653863,
+  "text_encoder_parameters": 4762310656,
+  "text_encoder_in_run": true,
+  "steps": 20,
+  "clean_latency_seconds": {
+    "mean": 1.15993449340264,
+    "runs": [
+      1.156922448426485,
+      1.1610832214355469,
+      1.1617978103458881
+    ]
+  },
+  "hooked_latency_seconds": 1.1695899106562138,
+  "hook_overhead_ratio": 1.0083241056356982,
+  "gpu_ms": {
+    "transformer_total": 924.5298919677734,
+    "blocks_total": 913.0441281795502,
+    "attn1_self_total": 261.74000057578087,
+    "attn2_cross_total": 213.37295988202095,
+    "ff_total": 296.184736430645,
+    "vae_decode": 59.57427215576172,
+    "text_encoder": 173.44416046142578
+  },
+  "share_of_hooked_wall": {
+    "transformer": 0.7904735527763349,
+    "blocks": 0.7806532185860553,
+    "attention_only": 0.4062218356442845,
+    "vae_decode": 0.05093603459894485,
+    "text_encoder": 0.14829485008477258
+  },
+  "blocks_share_of_transformer": 0.9875766442080343,
+  "all_cache_speedup_ceiling": 4.558990989308524,
+  "transformer_calls": 20,
+  "per_block_ms_mean": {
+    "transformer_blocks.0": 1.700519996881485,
+    "transformer_blocks.1": 1.6338544011116027,
+    "transformer_blocks.2": 1.6294975996017456,
+    "transformer_blocks.3": 1.6327568173408509,
+    "transformer_blocks.4": 1.6271920025348663,
+    "transformer_blocks.5": 1.6256880044937134,
+    "transformer_blocks.6": 1.624886417388916,
+    "transformer_blocks.7": 1.6296991884708405,
+    "transformer_blocks.8": 1.630238401889801,
+    "transformer_blocks.9": 1.6267584025859834,
+    "transformer_blocks.10": 1.6282623887062073,
+    "transformer_blocks.11": 1.6283199906349182,
+    "transformer_blocks.12": 1.6288832008838654,
+    "transformer_blocks.13": 1.6299631953239442,
+    "transformer_blocks.14": 1.6261264026165008,
+    "transformer_blocks.15": 1.6274544060230256,
+    "transformer_blocks.16": 1.6308399975299834,
+    "transformer_blocks.17": 1.6278656065464019,
+    "transformer_blocks.18": 1.6305279910564423,
+    "transformer_blocks.19": 1.626913595199585,
+    "transformer_blocks.20": 1.6235824048519134,
+    "transformer_blocks.21": 1.6254416048526763,
+    "transformer_blocks.22": 1.6243871927261353,
+    "transformer_blocks.23": 1.6234656155109406,
+    "transformer_blocks.24": 1.6256400048732758,
+    "transformer_blocks.25": 1.6272399961948394,
+    "transformer_blocks.26": 1.629171186685562,
+    "transformer_blocks.27": 1.6270303964614867
+  },
+  "cuda_peak_gib": 12.663957118988037
+}

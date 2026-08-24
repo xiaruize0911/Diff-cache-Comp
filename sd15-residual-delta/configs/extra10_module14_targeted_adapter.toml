@@ -1,0 +1,51 @@
+[model]
+model_id = "stable-diffusion-v1-5/stable-diffusion-v1-5"
+dtype = "bfloat16"
+height = 512
+width = 512
+num_inference_steps = 30
+guidance_scale = 7.5
+scheduler = "ddim"
+
+[reuse]
+cache_interval = 999
+target = "all_transformer2d"
+
+[capture]
+output_dir = "/root/sd15-features/extra10_module14_s14"
+
+[surrogate]
+width_320 = 128
+width_640 = 128
+width_1280 = 192
+depth = 3
+conditioning_dim = 128
+use_delta_h = true
+use_anchor_residual = true
+
+[train]
+seed = 2027
+output_dir = "/root/sd15-runs/extra10_module14_s14"
+
+[targeted_rollout]
+seed = 5051
+trajectory_seeds = [9301, 9401]
+trajectory_cache = "/root/sd15-runs/extra10_module14_targeted_trajectories.pt"
+anchor_steps = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 16, 20, 24, 28]
+start_step = 12
+correction_step = 14
+module_id = 14
+horizon = 2
+val_prompt_count = 4
+fragments_per_step = 4
+trainable_patterns = ["models.320.output"]
+max_steps = 500
+learning_rate = 0.0005
+weight_decay = 0.0
+grad_clip = 1.0
+validation_every = 50
+output_dir = "/root/sd15-runs/extra10_module14_targeted_adapter"
+
+[evaluation]
+gate_relative_mse_improvement = 0.10
+gate_lpips_improvement = 0.0

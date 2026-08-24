@@ -1,0 +1,44 @@
+[
+  {
+    "name": "b2xn_i4_s050",
+    "cache_interval": 4,
+    "num_segments": 1,
+    "surrogate_checkpoint": "runs/fix_base2x_norm/best.pt",
+    "surrogate_scale": 0.5
+  },
+  {
+    "name": "b2xn_i4_s075",
+    "cache_interval": 4,
+    "num_segments": 1,
+    "surrogate_checkpoint": "runs/fix_base2x_norm/best.pt",
+    "surrogate_scale": 0.75
+  },
+  {
+    "name": "b2xn_i4_s100",
+    "cache_interval": 4,
+    "num_segments": 1,
+    "surrogate_checkpoint": "runs/fix_base2x_norm/best.pt",
+    "surrogate_scale": 1.0
+  },
+  {
+    "name": "b2xn_i5_s050",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "surrogate_checkpoint": "runs/fix_base2x_norm/best.pt",
+    "surrogate_scale": 0.5
+  },
+  {
+    "name": "b2xn_i5_s075",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "surrogate_checkpoint": "runs/fix_base2x_norm/best.pt",
+    "surrogate_scale": 0.75
+  },
+  {
+    "name": "b2xn_i5_s100",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "surrogate_checkpoint": "runs/fix_base2x_norm/best.pt",
+    "surrogate_scale": 1.0
+  }
+]

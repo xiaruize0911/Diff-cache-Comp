@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dit-residual-delta"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = ["torch>=2.4,<2.5", "numpy>=1.26", "tqdm>=4.66"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

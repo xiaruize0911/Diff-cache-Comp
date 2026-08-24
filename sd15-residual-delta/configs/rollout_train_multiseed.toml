@@ -1,0 +1,44 @@
+[model]
+model_id = "stable-diffusion-v1-5/stable-diffusion-v1-5"
+dtype = "bfloat16"
+height = 512
+width = 512
+num_inference_steps = 30
+guidance_scale = 7.5
+scheduler = "ddim"
+
+[reuse]
+cache_interval = 3
+target = "all_transformer2d"
+
+[capture]
+seed = 1234
+output_dir = "/root/sd15-features/on_policy20"
+
+[surrogate]
+width_320 = 96
+width_640 = 128
+width_1280 = 192
+depth = 2
+conditioning_dim = 128
+use_delta_h = true
+use_anchor_residual = true
+
+[train]
+seed = 2026
+output_dir = "/root/sd15-runs/on_policy20"
+
+[rollout_train]
+seed = 4040
+trajectory_seeds = [3101, 3201, 3301, 3401]
+anchor_steps = [0, 3, 6, 9, 12, 15, 18, 21, 24, 27]
+max_steps = 100
+learning_rate = 0.00001
+weight_decay = 0.0
+grad_clip = 1.0
+lambda_step_1 = 1.0
+lambda_step_2 = 1.0
+fragments_per_step = 4
+tail_fraction = 0.5
+lambda_tail = 0.5
+checkpoint_steps = [25, 50, 100]

@@ -1,0 +1,70 @@
+[
+  {
+    "name": "fixed_i5",
+    "cache_interval": 5,
+    "num_segments": 1
+  },
+  {
+    "name": "K1_i5_s075",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "surrogate_checkpoint": "runs/fix_agg_norm/best.pt",
+    "surrogate_scale": 0.75
+  },
+  {
+    "name": "K28_s0100",
+    "cache_interval": 5,
+    "num_segments": 28,
+    "surrogate_checkpoint": "runs/c_r128_w384/best.pt",
+    "surrogate_scale": 0.1
+  },
+  {
+    "name": "K28_s0200",
+    "cache_interval": 5,
+    "num_segments": 28,
+    "surrogate_checkpoint": "runs/c_r128_w384/best.pt",
+    "surrogate_scale": 0.2
+  },
+  {
+    "name": "K28_s0300",
+    "cache_interval": 5,
+    "num_segments": 28,
+    "surrogate_checkpoint": "runs/c_r128_w384/best.pt",
+    "surrogate_scale": 0.3
+  },
+  {
+    "name": "K28_s0400",
+    "cache_interval": 5,
+    "num_segments": 28,
+    "surrogate_checkpoint": "runs/c_r128_w384/best.pt",
+    "surrogate_scale": 0.4
+  },
+  {
+    "name": "K28_s0500",
+    "cache_interval": 5,
+    "num_segments": 28,
+    "surrogate_checkpoint": "runs/c_r128_w384/best.pt",
+    "surrogate_scale": 0.5
+  },
+  {
+    "name": "K28_s0667",
+    "cache_interval": 5,
+    "num_segments": 28,
+    "surrogate_checkpoint": "runs/c_r128_w384/best.pt",
+    "surrogate_scale": 0.667
+  },
+  {
+    "name": "K28_s0800",
+    "cache_interval": 5,
+    "num_segments": 28,
+    "surrogate_checkpoint": "runs/c_r128_w384/best.pt",
+    "surrogate_scale": 0.8
+  },
+  {
+    "name": "K28_s1000",
+    "cache_interval": 5,
+    "num_segments": 28,
+    "surrogate_checkpoint": "runs/c_r128_w384/best.pt",
+    "surrogate_scale": 1.0
+  }
+]

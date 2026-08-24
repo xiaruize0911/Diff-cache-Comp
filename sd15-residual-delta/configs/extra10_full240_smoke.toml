@@ -1,0 +1,44 @@
+[model]
+model_id = "stable-diffusion-v1-5/stable-diffusion-v1-5"
+dtype = "float16"
+height = 512
+width = 512
+num_inference_steps = 30
+guidance_scale = 7.5
+scheduler = "ddim"
+
+[reuse]
+cache_interval = 999
+target = "all_transformer2d"
+
+[capture]
+seeds = [7101]
+anchor_steps = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 16, 20, 24, 28]
+on_policy_target_steps = [9, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26, 27, 29]
+module_ids = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+shard_size = 1
+output_dir = "/workspace/sd15-features/extra10_full240_smoke"
+
+[surrogate]
+width_320 = 128
+width_640 = 128
+width_1280 = 192
+depth = 3
+conditioning_dim = 128
+use_delta_h = true
+use_anchor_residual = true
+
+[train]
+seed = 2027
+output_dir = "/workspace/sd15-runs/extra10_full240_smoke"
+max_steps = 6000
+gradient_accumulation = 4
+learning_rate = 0.0001
+weight_decay = 0.001
+warmup_steps = 100
+grad_clip = 1.0
+validation_every = 250
+
+[evaluation]
+gate_relative_mse_improvement = 0.10
+gate_lpips_improvement = 0.0

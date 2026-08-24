@@ -1,0 +1,72 @@
+{
+  "model": "PixArt-Sigma-XL-2-512-MS",
+  "num_blocks": 28,
+  "hidden_dim": 1152,
+  "num_heads": 16,
+  "patch_size": 2,
+  "transformer_parameters": 610856096,
+  "vae_parameters": 83653863,
+  "text_encoder_parameters": 0,
+  "text_encoder_in_run": false,
+  "steps": 20,
+  "clean_latency_seconds": {
+    "mean": 0.9870614322523276,
+    "runs": [
+      0.986491221934557,
+      0.9882973283529282,
+      0.9863957464694977
+    ]
+  },
+  "hooked_latency_seconds": 0.994268786162138,
+  "hook_overhead_ratio": 1.0073018291205689,
+  "gpu_ms": {
+    "transformer_total": 922.6317405700684,
+    "blocks_total": 911.1239675283432,
+    "attn1_self_total": 260.71878412365913,
+    "attn2_cross_total": 212.54006415605545,
+    "ff_total": 296.65670412778854,
+    "vae_decode": 59.637535095214844,
+    "text_encoder": 0.0
+  },
+  "share_of_hooked_wall": {
+    "transformer": 0.9279500205687966,
+    "blocks": 0.9163759138464636,
+    "attention_only": 0.4759868305898311,
+    "vae_decode": 0.05998130075612129,
+    "text_encoder": 0.0
+  },
+  "blocks_share_of_transformer": 0.9875272304911006,
+  "all_cache_speedup_ceiling": 11.958277166269632,
+  "transformer_calls": 20,
+  "per_block_ms_mean": {
+    "transformer_blocks.0": 1.6973583936691283,
+    "transformer_blocks.1": 1.6216768026351929,
+    "transformer_blocks.2": 1.6232591986656189,
+    "transformer_blocks.3": 1.621516799926758,
+    "transformer_blocks.4": 1.6263760030269623,
+    "transformer_blocks.5": 1.6288127958774568,
+    "transformer_blocks.6": 1.627641600370407,
+    "transformer_blocks.7": 1.6214688062667846,
+    "transformer_blocks.8": 1.6264703929424287,
+    "transformer_blocks.9": 1.6251743972301482,
+    "transformer_blocks.10": 1.619404810667038,
+    "transformer_blocks.11": 1.6284783840179444,
+    "transformer_blocks.12": 1.6246640026569366,
+    "transformer_blocks.13": 1.6241760015487672,
+    "transformer_blocks.14": 1.6191135942935944,
+    "transformer_blocks.15": 1.6253648042678832,
+    "transformer_blocks.16": 1.6230639934539794,
+    "transformer_blocks.17": 1.6268704116344452,
+    "transformer_blocks.18": 1.6250207841396331,
+    "transformer_blocks.19": 1.6271776139736176,
+    "transformer_blocks.20": 1.6226864099502563,
+    "transformer_blocks.21": 1.625111997127533,
+    "transformer_blocks.22": 1.62050399184227,
+    "transformer_blocks.23": 1.626807987689972,
+    "transformer_blocks.24": 1.6229583978652955,
+    "transformer_blocks.25": 1.6270624041557311,
+    "transformer_blocks.26": 1.6229503870010376,
+    "transformer_blocks.27": 1.62502720952034
+  },
+  "cuda_peak_gib": 1.9359679222106934
+}

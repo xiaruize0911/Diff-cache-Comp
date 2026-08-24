@@ -1,0 +1,36 @@
+[
+  {
+    "name": "fixed_i2",
+    "cache_interval": 2,
+    "num_segments": 1
+  },
+  {
+    "name": "fixed_i3",
+    "cache_interval": 3,
+    "num_segments": 1
+  },
+  {
+    "name": "fixed_i4",
+    "cache_interval": 4,
+    "num_segments": 1
+  },
+  {
+    "name": "fixed_i5",
+    "cache_interval": 5,
+    "num_segments": 1
+  },
+  {
+    "name": "pbstd_i5_s050",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "surrogate_checkpoint": "runs/fix_base/best.pt",
+    "surrogate_scale": 0.5
+  },
+  {
+    "name": "pbinv_i5_s050",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "surrogate_checkpoint": "runs/fix_base_norm/best.pt",
+    "surrogate_scale": 0.5
+  }
+]

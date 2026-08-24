@@ -1,0 +1,74 @@
+[
+  {
+    "name": "std_i4_s125",
+    "cache_interval": 4,
+    "surrogate_checkpoint": "runs/c_std/best.pt",
+    "surrogate_scale": 1.25
+  },
+  {
+    "name": "std_i4_s150",
+    "cache_interval": 4,
+    "surrogate_checkpoint": "runs/c_std/best.pt",
+    "surrogate_scale": 1.5
+  },
+  {
+    "name": "std_i4_s200",
+    "cache_interval": 4,
+    "surrogate_checkpoint": "runs/c_std/best.pt",
+    "surrogate_scale": 2.0
+  },
+  {
+    "name": "std_i5_s125",
+    "cache_interval": 5,
+    "surrogate_checkpoint": "runs/c_std/best.pt",
+    "surrogate_scale": 1.25
+  },
+  {
+    "name": "std_i5_s150",
+    "cache_interval": 5,
+    "surrogate_checkpoint": "runs/c_std/best.pt",
+    "surrogate_scale": 1.5
+  },
+  {
+    "name": "std_i5_s200",
+    "cache_interval": 5,
+    "surrogate_checkpoint": "runs/c_std/best.pt",
+    "surrogate_scale": 2.0
+  },
+  {
+    "name": "norm_i4_s125",
+    "cache_interval": 4,
+    "surrogate_checkpoint": "runs/c_norm/best.pt",
+    "surrogate_scale": 1.25
+  },
+  {
+    "name": "norm_i4_s150",
+    "cache_interval": 4,
+    "surrogate_checkpoint": "runs/c_norm/best.pt",
+    "surrogate_scale": 1.5
+  },
+  {
+    "name": "norm_i4_s200",
+    "cache_interval": 4,
+    "surrogate_checkpoint": "runs/c_norm/best.pt",
+    "surrogate_scale": 2.0
+  },
+  {
+    "name": "norm_i5_s125",
+    "cache_interval": 5,
+    "surrogate_checkpoint": "runs/c_norm/best.pt",
+    "surrogate_scale": 1.25
+  },
+  {
+    "name": "norm_i5_s150",
+    "cache_interval": 5,
+    "surrogate_checkpoint": "runs/c_norm/best.pt",
+    "surrogate_scale": 1.5
+  },
+  {
+    "name": "norm_i5_s200",
+    "cache_interval": 5,
+    "surrogate_checkpoint": "runs/c_norm/best.pt",
+    "surrogate_scale": 2.0
+  }
+]

@@ -1,0 +1,13 @@
+torch==2.4.1
+torchvision==0.19.1
+diffusers==0.34.0
+transformers==4.48.3
+accelerate==1.2.1
+huggingface_hub==0.27.1
+safetensors==0.5.2
+sentencepiece>=0.2
+protobuf>=4.25
+numpy>=1.26
+tqdm>=4.66
+Pillow>=10
+pytest>=8

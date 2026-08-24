@@ -1,0 +1,82 @@
+[
+ {
+  "name": "fc_insens5_all",
+  "cache_module_ids": [
+   8,
+   15,
+   11,
+   1,
+   6
+  ]
+ },
+ {
+  "name": "fc_insens5_late",
+  "cache_module_ids": [
+   8,
+   15,
+   11,
+   1,
+   6
+  ],
+  "cache_steps": [
+   12,
+   16,
+   20,
+   24,
+   28
+  ]
+ },
+ {
+  "name": "joint_late_top4",
+  "cache_module_ids": [
+   8,
+   15,
+   11,
+   1,
+   6
+  ],
+  "cache_steps": [
+   12,
+   16,
+   20,
+   24,
+   28
+  ],
+  "exact_module_ids": [
+   14,
+   13,
+   12,
+   10
+  ]
+ },
+ {
+  "name": "joint_all_top4",
+  "cache_module_ids": [
+   8,
+   15,
+   11,
+   1,
+   6
+  ],
+  "exact_module_ids": [
+   14,
+   13,
+   12,
+   10
+  ]
+ },
+ {
+  "name": "joint_all_top2",
+  "cache_module_ids": [
+   8,
+   15,
+   11,
+   1,
+   6
+  ],
+  "exact_module_ids": [
+   14,
+   13
+  ]
+ }
+]

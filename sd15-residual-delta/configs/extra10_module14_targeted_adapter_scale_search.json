@@ -1,0 +1,12 @@
+[
+  {"name": "targeted_xn300", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": -3.00},
+  {"name": "targeted_xn200", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": -2.00},
+  {"name": "targeted_xn100", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": -1.00},
+  {"name": "targeted_xn050", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": -0.50},
+  {"name": "targeted_x025", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": 0.25},
+  {"name": "targeted_x050", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": 0.50},
+  {"name": "targeted_x075", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": 0.75},
+  {"name": "targeted_x100", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": 1.00},
+  {"name": "targeted_x150", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": 1.50},
+  {"name": "targeted_x200", "keys": [[14, 2]], "step_keys": [[14, 14]], "scale": 2.00}
+]
