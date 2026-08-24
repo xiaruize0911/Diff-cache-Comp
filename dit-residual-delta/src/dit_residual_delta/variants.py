@@ -14,8 +14,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from .runtime import (DiTBlockRuntime, DiTSegmentRuntime, FastCacheRuntime,
-                      load_fastcache_maps, uniform_segments)
+from .runtime import DiTBlockRuntime, DiTSegmentRuntime, uniform_segments
 
 
 def resolve_anchor_steps(spec: dict, num_steps: int) -> set[int]:
@@ -48,8 +47,6 @@ def build_variant(spec: dict, num_steps: int, num_blocks: int) -> dict:
         "adaptive_threshold": (float(spec["adaptive_threshold"])
                                if spec.get("adaptive_threshold") is not None else None),
         "taylor_order": int(spec.get("taylor_order", 0)),
-        "fastcache_maps": spec.get("fastcache_maps"),
-        "fastcache_threshold": float(spec.get("fastcache_threshold", 0.0)),
         "surrogate_block_ids": {int(b) for b in surrogate_blocks} if surrogate_blocks else None,
         "name": spec["name"],
         "oracle_blend": float(spec.get("oracle_blend", 1.0)),
@@ -65,48 +62,13 @@ def build_variant(spec: dict, num_steps: int, num_blocks: int) -> dict:
     }
 
 
-_FASTCACHE_MAPS: dict[str, Any] = {}
-
-
-def fastcache_maps_for(variant: dict):
-    """Lazily load (and cache) the ridge-fitted maps a FastCache variant names.
-
-    Loading here rather than in each caller keeps the cost scripts and the quality
-    scripts on one code path, which is the whole point of this module.
-    """
-    path = variant.get("fastcache_maps")
-    if path is None:
-        return None
-    if path not in _FASTCACHE_MAPS:
-        _FASTCACHE_MAPS[path] = load_fastcache_maps(path)
-    return _FASTCACHE_MAPS[path]
-
-
-def uses_fastcache_runtime(variant: dict) -> bool:
-    """FastCache decides per (step, block) and has no anchor schedule at all."""
-    return variant.get("fastcache_maps") is not None
-
-
 def uses_segment_runtime(variant: dict) -> bool:
     """Segment runtime only when the variant asks for it explicitly."""
     return variant["segment"] is not None or variant["num_segments"] is not None
 
 
-def runtime_for_variant(transformer, variant: dict, surrogate_bank: Any | None = None,
-                        fastcache_maps: Any | None = None):
+def runtime_for_variant(transformer, variant: dict, surrogate_bank: Any | None = None):
     """Build (but do not enter) the runtime a normalised variant describes."""
-    if uses_fastcache_runtime(variant):
-        # FastCache has no anchor schedule, so segment/anchor keys would be dead
-        # config. Silently ignoring spec keys is the failure mode this module
-        # exists to prevent, so refuse the combination instead of dropping it.
-        if uses_segment_runtime(variant):
-            raise ValueError(
-                f"variant {variant['name']} sets both fastcache_maps and "
-                "segment/num_segments; FastCache decides per (step, block) and has no "
-                "anchor schedule, so the segment keys would be silently ignored")
-        return FastCacheRuntime(transformer,
-                                linear_maps=fastcache_maps or fastcache_maps_for(variant),
-                                threshold=variant["fastcache_threshold"])
     if uses_segment_runtime(variant):
         depth = len(transformer.transformer_blocks)
         return DiTSegmentRuntime(

@@ -1,7 +1,0 @@
-[
- {
-  "name": "D_fastcache_default_t050",
-  "fastcache_maps": "runs/fastcache_maps_exact/maps.pt",
-  "fastcache_threshold": 0.05
- }
-]

@@ -32,7 +32,6 @@ from dit_residual_delta.metrics import (
     skimage_ssim,
 )
 from dit_residual_delta.pipeline import load_pixart_pipeline, load_prompt_embeddings
-from dit_residual_delta.runtime import load_fastcache_maps
 from dit_residual_delta.surrogate import load_surrogate_bank
 from dit_residual_delta.variants import build_variant, runtime_for_variant
 
@@ -61,20 +60,6 @@ def surrogate_for(variant):
     return _BANK_CACHE[path]
 
 
-_FASTCACHE_CACHE: dict[str, object] = {}
-
-
-def fastcache_for(variant):
-    path = variant.get("fastcache_maps")
-    if path is None:
-        return None
-    if path not in _FASTCACHE_CACHE:
-        _FASTCACHE_CACHE[path] = load_fastcache_maps(path)
-        print(json.dumps({"loaded_fastcache_maps": path,
-                          "blocks": len(_FASTCACHE_CACHE[path])}), flush=True)
-    return _FASTCACHE_CACHE[path]
-
-
 def generate(pipeline, common, seed, variant=None):
     generator = torch.Generator(device="cuda").manual_seed(seed)
     torch.cuda.synchronize()
@@ -85,12 +70,9 @@ def generate(pipeline, common, seed, variant=None):
             stats = None
         else:
             with runtime_for_variant(pipeline.transformer, variant,
-                                     surrogate_for(variant),
-                                     fastcache_for(variant)) as runtime:
+                                     surrogate_for(variant)) as runtime:
                 result = pipeline(**common, generator=generator)
                 stats = vars(runtime.stats)
-                if getattr(runtime, "deltas", None):
-                    stats["delta_mean"] = sum(runtime.deltas) / len(runtime.deltas)
     torch.cuda.synchronize()
     return result.images[0], time.perf_counter() - start, stats
 
@@ -229,8 +211,6 @@ def main() -> None:
                 "surrogate_checkpoint": v["surrogate_checkpoint"],
                 "surrogate_scale": v["surrogate_scale"],
                 "taylor_order": v["taylor_order"],
-                "fastcache_maps": v["fastcache_maps"],
-                "fastcache_threshold": v["fastcache_threshold"],
                 "segment": v["segment"],
                 "num_segments": v["num_segments"],
                 "oracle_fraction": v["num_oracle_slots"] / v["num_reuse_slots"] if v["num_reuse_slots"] else 0.0,

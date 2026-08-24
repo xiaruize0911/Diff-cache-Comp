@@ -12,12 +12,7 @@ def g(k, m="ssim_gaussian_vs_exact"):
     v = a[k][m]; return v["mean"] if isinstance(v, dict) else v
 def sp(k): return fl[k]["speedup"]
 
-CACHE, TAY, OURS, FC = "0.45", "#1f77b4", "#d62728", "#9467bd"
-dfc = json.load(open(f"{R}/fastcache_test/results.json"))
-afc = dfc["aggregate"]
-flfc = json.load(open(f"{R}/fastcache_test_flops.json"))
-def gfc(k, m="ssim_gaussian_vs_exact"):
-    v = afc[k][m]; return v["mean"] if isinstance(v, dict) else v
+CACHE, TAY, OURS = "0.45", "#1f77b4", "#d62728"
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.4, 2.9))
 
 # ---- (a) three families, each sweeping the anchor interval ----
@@ -35,10 +30,6 @@ for i, k in zip((2, 3, 4, 5), [f"A_cache_i{i}" for i in (2, 3, 4, 5)]):
 ax1.plot([sp("B_taylor2_i4"), sp("B_taylor2_i5")],
          [g("B_taylor2_i4"), g("B_taylor2_i5")], "^:", color=TAY, lw=1.0, ms=4.5,
          mfc="white", label="B  order 2")
-fc_keys = ["D_fastcache_t020", "D_fastcache_t060", "D_fastcache_t100",
-           "D_fastcache_t150", "D_fastcache_t200"]
-ax1.plot([flfc[k]["speedup"] for k in fc_keys], [gfc(k) for k in fc_keys],
-         "v-", color=FC, lw=1.3, ms=4.5, label="D  FastCache mechanism")
 ax1.set_xlabel("FLOPs speedup vs. exact ($\\times$)")
 ax1.set_ylabel("SSIM vs. same-seed exact")
 ax1.set_title("(a) each family sweeps its own cost axis", fontsize=8)
