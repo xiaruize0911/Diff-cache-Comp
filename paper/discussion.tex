@@ -168,3 +168,31 @@ seed spread next to any effect; verify the deployed low-precision path reproduce
 training path before trusting a rollout (this caught a silent \texttt{fp16}
 timestep-embedding failure in our own pipeline); inspect artefacts at native
 resolution; and treat residual-space error strictly as a diagnostic.
+
+\appendix
+\section{Artefact measurement detail}
+\label{app:artefactsdetail}
+
+Measured over $24$ held-out cases at one image seed, in LAB space. ``Near-Nyquist'' is
+the fraction of lightness-channel FFT energy at radius $>0.8\times$ Nyquist; the ratio
+is cutoff-dependent, spanning $7$--$12\times$ for cutoffs $0.75$--$0.9$. ``Extreme
+chroma'' is the fraction of pixels whose $(a,b)$ deviation from the exact output exceeds
+$40$.
+
+\begin{table}[h]
+\centering\small
+\begin{tabular}{lrrr}
+\toprule
+ & near-Nyquist & vs.\ exact & \% px $>40$ \\
+\midrule
+exact & 0.00393 & $1.00\times$ & 0.000 \\
+plain cache $i{=}5$ & 0.03502 & $8.92\times$ & 5.341 \\
+$+$ corrector & 0.01706 & $4.35\times$ & 3.790 \\
+plain cache $i{=}2$ & 0.00909 & $2.32\times$ & 0.842 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+No per-image test is reported for these; $n{=}24$ at a single seed, so they are
+descriptive.
+\label{app:artefacts}

@@ -381,6 +381,38 @@ defensible reading is a null, not a reversal.}
 \label{tab:dagger}
 \end{table}
 
+\subsection{A standard-benchmark evaluation}
+\label{sec:coco}
+
+Everything above is measured on templated prompts whose held-out split contains only
+six distinct subjects, which bounds both the generality of the claim and the precision
+of any interval computed from it. We therefore repeat the decisive comparison on
+$1989$ captions from COCO \emph{val2017}, taking one caption per image in a
+deterministic order so that every sample describes a distinct scene. Text embeddings
+come from the same T5-XXL encoder the backbone was trained with. Because captions are
+independent, a paired test over them needs no clustering --- in contrast to the
+templated split, where $24$ prompts collapse to $6$ clusters.
+
+\paragraph{Which distributional metric, and why not the usual one.} We report the
+distance between the accelerated output distribution and the \emph{exact model's own}
+output distribution, generated from identical captions and seeds. An accelerator cannot
+improve on the model it accelerates, so this --- not distance to real photographs --- is
+the quantity that says whether acceleration preserved the model's behaviour. It also
+means we make no claim about absolute generation quality.
+
+We report KID rather than FID as the primary statistic. At the sample size we can
+afford, FID is not usable in absolute terms: with $n\!\approx\!2000$ samples and
+$2048$-dimensional Inception features the covariance estimate is rank-deficient. As a
+calibration of that bias, two independent $2000$-sample draws from one distribution at
+matched dimension score FID $\approx\!1050$ --- a quantity that should be zero. We also
+report the split-half FID of our own exact set below, which is the same check on real
+Inception features. KID's estimator is unbiased, and on the same
+synthetic check it returns $7\times10^{-5}$ against a subset standard deviation of
+$3.5\times10^{-4}$, with the correct quadratic response to a mean shift. Both
+properties are locked by unit tests. We still report FID for comparability with the
+literature, but only as a difference against a shared reference, where the bias is
+common to all variants and cancels.
+
 \subsection{Does prompt alignment survive?}
 \label{sec:clip}
 
@@ -539,15 +571,13 @@ speckles, reversing the visual impression (Sec.~\ref{sec:artefacts}).}
 \subsection{An artefact the image metrics do not isolate}
 \label{sec:artefacts}
 
-Inspecting outputs at native resolution revealed a failure mode neither SSIM nor
-LPIPS separates: plain caching imprints a near-Nyquist cross-hatch texture over the
-whole image, at $8.92\times$ the exact output's energy above $0.8\times$ Nyquist in the LAB
-lightness channel (the ratio is cutoff-dependent, spanning $7$--$12\times$ for
-cutoffs $0.75$--$0.9$; $n{=}24$, one image seed, no per-image test). The
-corrector halves it to $4.35\times$, and reduces extreme-chroma pixels from $5.34\%$
-to $3.79\%$. We record this because it is a benefit of correction invisible to the
-headline metrics, and because it cost us a false conclusion: viewed in a
-downsampled contact sheet, LANCZOS resampling averages away the baseline's
-near-Nyquist grid while preserving the corrected image's sparse high-amplitude
-speckles, making the corrector look worse. Artefact claims in this setting must be
-made at native resolution.
+Inspecting outputs at native resolution revealed a failure mode neither SSIM nor LPIPS
+separates: plain caching imprints a near-Nyquist cross-hatch over the whole image, at
+$8.9\times$ the exact output's energy above $0.8\times$ Nyquist in the LAB lightness
+channel, and the corrector halves it to $4.4\times$ while cutting extreme-chroma pixels
+from $5.3\%$ to $3.8\%$ (Appendix~\ref{app:artefacts}). We record it because it is a
+benefit of correction invisible to the headline metrics, and because it cost us a false
+conclusion: viewed in a downsampled contact sheet, LANCZOS resampling averages away the
+baseline's near-Nyquist grid while preserving the corrected image's sparse
+high-amplitude speckles, exactly reversing the visual impression. Artefact claims in
+this setting must be made at native resolution.

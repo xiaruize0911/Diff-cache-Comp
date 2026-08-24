@@ -25,40 +25,26 @@
 
 \begin{abstract}
 Step caching accelerates diffusion transformers by reusing a block's output residual
-across adjacent denoising steps. A natural refinement is to learn a \emph{corrector}
-that predicts how the cached residual should change, and the natural way to train and
-select such a corrector is to minimise its reconstruction error in residual space.
-That this objective is imperfectly aligned with image quality is known
-\cite{huang2025harmonica}. We show something stronger and more specific: it
-\emph{inverts the ranking}. In a controlled experiment holding data, architecture,
-injection structure and FLOPs fixed and varying only the training loss, residual
-error prefers the worse model in all three training seeds per arm while held-out image
-quality prefers the other in all three --- one clean rank separation, which we
-deliberately do not inflate into nine independent comparisons. We identify the mechanism: residual error aggregates
+across denoising steps, and a natural refinement is to learn a \emph{corrector} that
+predicts how the cached residual should change. The natural objective for that corrector
+is its reconstruction error in residual space. That this objective is imperfectly
+aligned with image quality is known \cite{huang2025harmonica}; we show something
+stronger and more specific --- it \emph{inverts the ranking}. Holding data, architecture,
+injection structure and cost fixed and varying only the training loss, residual error
+prefers the worse corrector in all three training seeds while held-out image quality
+prefers the other in all three. We identify the mechanism: residual error aggregates
 squared error and target energy separately, so it is dominated by high-magnitude
-injection sites; at deployment every site feeds the same depth-wise propagation chain
-regardless of its magnitude, making \emph{per-site relative} error the
-deployment-aligned statistic. Two consequences follow. First, making the training
-objective per-site scale invariant --- a three-line change --- improves deployed
-fidelity at matched data, architecture, parameter count and wall clock. In a design with no confound we can
-identify --- three training seeds per arm, both arms stopped at the same step with no
-checkpoint selection, one damping value per arm chosen on validation, $192$ held-out
-images --- it is worth $+0.0077$ SSIM and $-0.0091$ LPIPS, and both survive clustering
-by prompt subject ($t(5){=}2.74$ and $-3.18$; CIs $[+0.002,+0.015]$ and
-$[-0.015,-0.003]$). The direction is positive in every condition and metric we
-measured. The magnitude is small and we have repeatedly over-estimated it: successive
-estimates as our designs got cleaner were $+0.022$, $+0.012$, $+0.027$ and now
-$+0.008$. We therefore claim the \emph{ordering}, which is stable, and not the size. Second, a per-site median relative error ranks correctors in deployment order where
-residual error does not --- reliably for correctors trained on identical data, and not
-across training sets, so we offer it as a hypothesis rather than a validated
-criterion. We further report a negative result that the same lens
-predicts: on-policy (DAgger-style) data collection, which residual error credits with
-an $11.9\%$ improvement, yields no measurable image-level benefit over an equal
-volume of ordinary data. On a second, architecturally unrelated backbone
-(FLUX.1-dev, 12B) the residual-space signature replicates exactly but the image-level
-benefit of the fix does not; we give a quantitative account --- the effect should
-scale with the per-site target-energy imbalance, which is $3\times$ smaller there ---
-and state the resulting prediction for other backbones.
+injection sites, whereas at deployment every site feeds the same depth-wise propagation
+chain regardless of magnitude. Making the objective per-site scale invariant --- a
+three-line change --- is worth $+0.008$ SSIM and $-0.009$ LPIPS at identical parameter
+count and latency, and a per-site relative statistic ranks correctors correctly where
+residual error does not. Three negative results follow from the same lens: on-policy
+(DAgger) data collection buys nothing at the image level despite an $11.9\%$ residual
+gain; no scalar gain calibration rescues per-block injection; and on a second,
+architecturally unrelated backbone the residual-space signature reappears but the fix
+itself does not help, which we trace to a $3\times$ smaller per-site energy imbalance.
+Our own estimate of the effect fell from $+0.022$ to $+0.008$ as designs got cleaner, so
+we claim the ordering, which was stable throughout, and not the magnitude.
 \end{abstract}
 
 \section{Introduction}
