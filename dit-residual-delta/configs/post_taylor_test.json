@@ -1,0 +1,36 @@
+[
+ {
+  "name": "A_fixed_i5",
+  "cache_interval": 5,
+  "num_segments": 1
+ },
+ {
+  "name": "B_taylor1",
+  "cache_interval": 5,
+  "num_segments": 1,
+  "taylor_order": 1
+ },
+ {
+  "name": "C_ours_only_s075",
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/s50_inv/best.pt",
+  "surrogate_scale": 0.75
+ },
+ {
+  "name": "naive_stack_s025",
+  "cache_interval": 5,
+  "num_segments": 1,
+  "taylor_order": 1,
+  "surrogate_checkpoint": "runs/s50_std/best.pt",
+  "surrogate_scale": 0.25
+ },
+ {
+  "name": "PT_s050",
+  "cache_interval": 5,
+  "num_segments": 1,
+  "taylor_order": 1,
+  "surrogate_checkpoint": "runs/post_taylor/best.pt",
+  "surrogate_scale": 0.5
+ }
+]
