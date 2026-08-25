@@ -1,0 +1,16 @@
+{
+ "checkpoint": "runs/bc_k1/best.pt",
+ "num_blocks": 1,
+ "per_site": {
+  "0": {
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "n_states": 4
+  }
+ },
+ "rho_median_over_sites": 1.0,
+ "rho_max_over_sites": 1.0,
+ "log_product_over_sites": 0.0,
+ "amplification_per_reuse_step": 1.0
+}

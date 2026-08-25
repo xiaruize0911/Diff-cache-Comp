@@ -1,0 +1,16 @@
+{
+ "checkpoint": "runs/ctrl_k1/best.pt",
+ "num_blocks": 1,
+ "per_site": {
+  "0": {
+   "median": 12.279489517211914,
+   "min": 5.550236225128174,
+   "max": 17.162458419799805,
+   "n_states": 8
+  }
+ },
+ "rho_median_over_sites": 12.279489517211914,
+ "rho_max_over_sites": 12.279489517211914,
+ "log_product_over_sites": 2.5079303515953133,
+ "amplification_per_reuse_step": 12.279489517211916
+}

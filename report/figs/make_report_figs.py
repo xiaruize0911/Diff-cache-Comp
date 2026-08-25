@@ -74,6 +74,22 @@ ax.set_xlabel("$K$  (injection sites per reuse step)")
 ax.set_ylabel("$\\Delta$SSIM vs. verbatim reuse")
 ax.set_title("Granularity collapse needs state dependence", fontsize=8)
 ax.legend(frameon=False, fontsize=5.9, loc="lower left")
+
+# measured amplification per forward pass: product of per-site spectral radii of
+# I + dC/dh over the K injection sites. State-independent families sit at exactly
+# 1 because delta_h never enters their graph.
+JAC = "#ff7f0e"
+prod = [load(f"jacobian_k{k}.json")["amplification_per_reuse_step"] for k in Kl]
+twin = ax.twinx()
+twin.plot(Kl, prod, "o-", color=JAC, lw=1.2, ms=4, alpha=0.85)
+twin.axhline(1.0, color=JAC, lw=0.8, ls=":", alpha=0.6)
+twin.set_yscale("log")
+twin.set_ylabel("measured $\\prod_b \\rho(I + \\partial C/\\partial h)$",
+                color=JAC, fontsize=7.5)
+twin.tick_params(axis="y", labelcolor=JAC, labelsize=7)
+twin.grid(False)
+twin.annotate("state-independent families $=1$", (1.15, 1.0),
+              textcoords="offset points", xytext=(2, 5), fontsize=5.8, color=JAC)
 fig.tight_layout()
 fig.savefig("fig3_granularity.png", dpi=200, bbox_inches="tight")
 
