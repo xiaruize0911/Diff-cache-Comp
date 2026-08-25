@@ -1,0 +1,52 @@
+[
+ {
+  "name": "exact_20",
+  "steps": 20,
+  "exact": true
+ },
+ {
+  "name": "exact_10",
+  "steps": 10,
+  "exact": true
+ },
+ {
+  "name": "exact_5",
+  "steps": 5,
+  "exact": true
+ },
+ {
+  "name": "cache_i2",
+  "steps": 20,
+  "cache_interval": 2,
+  "num_segments": 1
+ },
+ {
+  "name": "cache_i5",
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 1
+ },
+ {
+  "name": "taylor_i5",
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 1,
+  "taylor_order": 1
+ },
+ {
+  "name": "ours_i5",
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/coco_inv/best.pt",
+  "surrogate_scale": 0.75
+ },
+ {
+  "name": "ours_i4",
+  "steps": 20,
+  "cache_interval": 4,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/coco_inv/best.pt",
+  "surrogate_scale": 0.75
+ }
+]

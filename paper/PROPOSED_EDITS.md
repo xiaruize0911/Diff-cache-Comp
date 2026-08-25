@@ -2,7 +2,7 @@
 
 **状态：待审阅，未应用。** 本文件不改动任何 `.tex`。论文的科学措辞是作者的，我只给出「原文 → 提议」和支撑证据，你批准哪几处我再应用哪几处。
 
-**第二版（新增站点 7、8，并修订站点 2 与 5）。** 第一版之后又跑出三个结果，其中两个改变了论文该说什么：固定参考的跨步数前沿（§4.8，暴露了论文从未声明的适用区间上界）、自适应调度下机制方向性预测的失败（§4.7.1）、以及跨步数 ρ 对我自己一个解释的证伪。**站点 8 是新增里最重要的一处，因为它改变论文如何定位自己，而不只是某一句的措辞。**
+**第三版（站点 4 的让步被撤回并重写；第二版新增站点 7、8，修订站点 2 与 5）。** 第一版之后又跑出三个结果，其中两个改变了论文该说什么：固定参考的跨步数前沿（§4.8，暴露了论文从未声明的适用区间上界）、自适应调度下机制方向性预测的失败（§4.7.1）、以及跨步数 ρ 对我自己一个解释的证伪。**站点 8 是新增里最重要的一处，因为它改变论文如何定位自己，而不只是某一句的措辞。**
 
 八处冲突，按严重程度排序。**站点 1、2、8 是必须改的**，其余是「陈述已过时」或「结论需要限定」。
 
@@ -136,8 +136,24 @@ mild caching and \emph{hurts} at aggressive caching: on our primary backbone at 
 it gains $+0.0084$ and $+0.0118$ SSIM at $i{=}2,3$ and loses $-0.0145$ and $-0.0278$ at
 $i{=}4,5$ ($n{=}192$ throughout), while at $50$ steps and $i{=}5$ it gains $+0.0440$. The
 variable is the extrapolation span relative to trajectory smoothness, which both the step
-count and the anchor interval move. We remain uncompetitive in absolute terms, but the gap
-is now characterised rather than conceded.
+count and the anchor interval move.
+```
+
+**修订（第三版）· 关于「we remain uncompetitive in absolute terms」这半句。** 第二版的提议里保留了这个让步，**那是错的** —— 它建立在一个未定义的比较上：TaylorSeer 的 "near-lossless" 由 **ImageReward** 支撑（且它**不报任何对精确输出的保真度指标**），而我们的 SSIM 0.585 测的是对精确输出的保真度。两者正交。
+
+我们据此提出一个假设：若 ImageReward 对偏离不敏感，这句让步就可在指标层面消解。**我们测了，假设被否证**（§4.10）：ImageReward 掉得比 SSIM 更陡，两指标排序几乎一致。所以让步在指标证据上是合理的。
+
+但它仍不是同类比较。**建议的措辞是把「不可比」说清楚，而不是让步也不是否认**：
+
+```latex
+The comparison is not yet defined: their claim rests on ImageReward and reports no
+fidelity to the uncompressed model's own output, while every number here is
+same-seed fidelity. On our backbone, ImageReward retention becomes statistically
+indistinguishable from exact only near $2\times$ compression ($96.8\%$ at
+$1.91\times$), and at $\approx\!4\times$ our best variant retains $66.1\%$ against
+plain caching's $30.2\%$. Whether the remaining gap to their reported figure is a
+property of the method or of the backbone is untested, and testing it means running
+their mechanism on FLUX under one shared metric set.
 ```
 
 ---
