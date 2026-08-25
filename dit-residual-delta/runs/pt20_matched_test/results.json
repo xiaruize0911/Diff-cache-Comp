@@ -1,0 +1,5087 @@
+{
+  "config": "configs/pixart_sigma_512.toml",
+  "prompt_file": "data/prompts/test24.txt",
+  "seeds": [
+    9301,
+    9302,
+    9303,
+    9304,
+    9305,
+    9306,
+    9307,
+    9308
+  ],
+  "num_steps": 20,
+  "num_blocks": 28,
+  "variants": [
+    {
+      "name": "matched_naive_s025",
+      "anchor_steps": [
+        0,
+        5,
+        10,
+        15
+      ],
+      "reuse_steps": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19
+      ],
+      "num_reuse_slots": 448,
+      "num_oracle_slots": 0,
+      "oracle_blend": 1.0,
+      "surrogate_checkpoint": "runs/ctrl_k1/best.pt",
+      "surrogate_scale": 0.25,
+      "taylor_order": 1,
+      "segment": null,
+      "num_segments": 1,
+      "oracle_fraction": 0.0
+    }
+  ],
+  "aggregate": {
+    "matched_naive_s025": {
+      "speedup_vs_exact": {
+        "mean": 3.0281379441573235,
+        "std": 0.27817508923897727,
+        "min": 1.7537124957256274,
+        "max": 3.3984577817745056,
+        "count": 192
+      },
+      "mse_vs_exact": {
+        "mean": 0.04427287353610154,
+        "std": 0.018917317102042516,
+        "min": 0.012274372391402721,
+        "max": 0.11050465703010559,
+        "count": 192
+      },
+      "psnr_vs_exact": {
+        "mean": 13.92778334524364,
+        "std": 1.87586871894742,
+        "min": 9.566194189937264,
+        "max": 19.11000704819566,
+        "count": 192
+      },
+      "ssim_gaussian_vs_exact": {
+        "mean": 0.46591554288453435,
+        "std": 0.12415325470341403,
+        "min": 0.21864288419606734,
+        "max": 0.8008683543631125,
+        "count": 192
+      },
+      "lpips_alex_vs_exact": {
+        "mean": 0.49771097690487903,
+        "std": 0.07086198809690271,
+        "min": 0.3022259473800659,
+        "max": 0.7117640972137451,
+        "count": 192
+      }
+    }
+  },
+  "cases": [
+    {
+      "case": "prompt-00-seed-9301",
+      "prompt": "a watercolor painting of a cathedral rose window at blue hour",
+      "seed": 9301,
+      "exact_seconds": 0.9894891157746315,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.31678956001996994,
+          "speedup_vs_exact": 3.123490293405678,
+          "mse_vs_exact": 0.06059456989169121,
+          "psnr_vs_exact": 12.175662928590942,
+          "ssim_gaussian_vs_exact": 0.30952607595404424,
+          "lpips_alex_vs_exact": 0.4668959081172943,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-00-seed-9302",
+      "prompt": "a watercolor painting of a cathedral rose window at blue hour",
+      "seed": 9302,
+      "exact_seconds": 0.9991000629961491,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.31376950442790985,
+          "speedup_vs_exact": 3.1841847244453847,
+          "mse_vs_exact": 0.08177822828292847,
+          "psnr_vs_exact": 10.873623026259306,
+          "ssim_gaussian_vs_exact": 0.21864288419606734,
+          "lpips_alex_vs_exact": 0.5148978233337402,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-00-seed-9303",
+      "prompt": "a watercolor painting of a cathedral rose window at blue hour",
+      "seed": 9303,
+      "exact_seconds": 0.9944779723882675,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.32010143995285034,
+          "speedup_vs_exact": 3.106758821624639,
+          "mse_vs_exact": 0.05575154349207878,
+          "psnr_vs_exact": 12.537431045880801,
+          "ssim_gaussian_vs_exact": 0.3573900259222178,
+          "lpips_alex_vs_exact": 0.4684862196445465,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-00-seed-9304",
+      "prompt": "a watercolor painting of a cathedral rose window at blue hour",
+      "seed": 9304,
+      "exact_seconds": 0.9999299757182598,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.31066177412867546,
+          "speedup_vs_exact": 3.218709410009649,
+          "mse_vs_exact": 0.04482969641685486,
+          "psnr_vs_exact": 13.484342021320032,
+          "ssim_gaussian_vs_exact": 0.3233916968052515,
+          "lpips_alex_vs_exact": 0.421517550945282,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-00-seed-9305",
+      "prompt": "a watercolor painting of a cathedral rose window at blue hour",
+      "seed": 9305,
+      "exact_seconds": 0.9989803656935692,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3152146339416504,
+          "speedup_vs_exact": 3.169206813788002,
+          "mse_vs_exact": 0.056914106011390686,
+          "psnr_vs_exact": 12.447800815193535,
+          "ssim_gaussian_vs_exact": 0.3394640358435466,
+          "lpips_alex_vs_exact": 0.4688176214694977,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-00-seed-9306",
+      "prompt": "a watercolor painting of a cathedral rose window at blue hour",
+      "seed": 9306,
+      "exact_seconds": 1.0015380792319775,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3023090846836567,
+          "speedup_vs_exact": 3.3129605756969243,
+          "mse_vs_exact": 0.04643167182803154,
+          "psnr_vs_exact": 13.331856787586116,
+          "ssim_gaussian_vs_exact": 0.436498646663875,
+          "lpips_alex_vs_exact": 0.43006739020347595,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-00-seed-9307",
+      "prompt": "a watercolor painting of a cathedral rose window at blue hour",
+      "seed": 9307,
+      "exact_seconds": 1.0061080865561962,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.31596235930919647,
+          "speedup_vs_exact": 3.18426564719892,
+          "mse_vs_exact": 0.06045733392238617,
+          "psnr_vs_exact": 12.185510084702369,
+          "ssim_gaussian_vs_exact": 0.2847149060612664,
+          "lpips_alex_vs_exact": 0.46911272406578064,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-00-seed-9308",
+      "prompt": "a watercolor painting of a cathedral rose window at blue hour",
+      "seed": 9308,
+      "exact_seconds": 1.0205623805522919,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.31297142803668976,
+          "speedup_vs_exact": 3.2608803524155916,
+          "mse_vs_exact": 0.06013607606291771,
+          "psnr_vs_exact": 12.20864913445669,
+          "ssim_gaussian_vs_exact": 0.36720615327809,
+          "lpips_alex_vs_exact": 0.47010529041290283,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-01-seed-9301",
+      "prompt": "a studio product photograph of a vintage typewriter on a desk under heavy rain",
+      "seed": 9301,
+      "exact_seconds": 1.0049083195626736,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3756800554692745,
+          "speedup_vs_exact": 2.674904629439029,
+          "mse_vs_exact": 0.05658435821533203,
+          "psnr_vs_exact": 12.473036055538858,
+          "ssim_gaussian_vs_exact": 0.40257670756845626,
+          "lpips_alex_vs_exact": 0.4491884112358093,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-01-seed-9302",
+      "prompt": "a studio product photograph of a vintage typewriter on a desk under heavy rain",
+      "seed": 9302,
+      "exact_seconds": 0.9981037080287933,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.32018790021538734,
+          "speedup_vs_exact": 3.117243678969063,
+          "mse_vs_exact": 0.054233893752098083,
+          "psnr_vs_exact": 12.657292140350549,
+          "ssim_gaussian_vs_exact": 0.4270530098902993,
+          "lpips_alex_vs_exact": 0.49401599168777466,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-01-seed-9303",
+      "prompt": "a studio product photograph of a vintage typewriter on a desk under heavy rain",
+      "seed": 9303,
+      "exact_seconds": 1.0062763765454292,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.32019154354929924,
+          "speedup_vs_exact": 3.1427325200126495,
+          "mse_vs_exact": 0.04691966623067856,
+          "psnr_vs_exact": 13.286450859574057,
+          "ssim_gaussian_vs_exact": 0.3799649883375312,
+          "lpips_alex_vs_exact": 0.47059524059295654,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-01-seed-9304",
+      "prompt": "a studio product photograph of a vintage typewriter on a desk under heavy rain",
+      "seed": 9304,
+      "exact_seconds": 1.0000240616500378,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.2975979931652546,
+          "speedup_vs_exact": 3.360318566041975,
+          "mse_vs_exact": 0.07729308307170868,
+          "psnr_vs_exact": 11.118593691890142,
+          "ssim_gaussian_vs_exact": 0.3152793693542692,
+          "lpips_alex_vs_exact": 0.5189366936683655,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-01-seed-9305",
+      "prompt": "a studio product photograph of a vintage typewriter on a desk under heavy rain",
+      "seed": 9305,
+      "exact_seconds": 0.9935013093054295,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.37052755430340767,
+          "speedup_vs_exact": 2.6813155938516187,
+          "mse_vs_exact": 0.07070676237344742,
+          "psnr_vs_exact": 11.505390484233546,
+          "ssim_gaussian_vs_exact": 0.40669389325649136,
+          "lpips_alex_vs_exact": 0.4480208456516266,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-01-seed-9306",
+      "prompt": "a studio product photograph of a vintage typewriter on a desk under heavy rain",
+      "seed": 9306,
+      "exact_seconds": 0.9927879087626934,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.36882079020142555,
+          "speedup_vs_exact": 2.6917894412093695,
+          "mse_vs_exact": 0.06849755346775055,
+          "psnr_vs_exact": 11.643249399591141,
+          "ssim_gaussian_vs_exact": 0.35451464836227714,
+          "lpips_alex_vs_exact": 0.5038225650787354,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-01-seed-9307",
+      "prompt": "a studio product photograph of a vintage typewriter on a desk under heavy rain",
+      "seed": 9307,
+      "exact_seconds": 0.9956853277981281,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.2958429455757141,
+          "speedup_vs_exact": 3.3655875277354066,
+          "mse_vs_exact": 0.05728093534708023,
+          "psnr_vs_exact": 12.419898989970058,
+          "ssim_gaussian_vs_exact": 0.3530702239280144,
+          "lpips_alex_vs_exact": 0.4606325626373291,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-01-seed-9308",
+      "prompt": "a studio product photograph of a vintage typewriter on a desk under heavy rain",
+      "seed": 9308,
+      "exact_seconds": 0.9980076290667057,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3873449005186558,
+          "speedup_vs_exact": 2.5765348342791423,
+          "mse_vs_exact": 0.05304574593901634,
+          "psnr_vs_exact": 12.753494390819743,
+          "ssim_gaussian_vs_exact": 0.44636787994000565,
+          "lpips_alex_vs_exact": 0.44760119915008545,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-02-seed-9301",
+      "prompt": "a macro photograph of a wheelbarrow of cut flowers under heavy rain",
+      "seed": 9301,
+      "exact_seconds": 1.0043417066335678,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.32145538181066513,
+          "speedup_vs_exact": 3.1243580399133517,
+          "mse_vs_exact": 0.03589718043804169,
+          "psnr_vs_exact": 14.449396619589761,
+          "ssim_gaussian_vs_exact": 0.30530936866443875,
+          "lpips_alex_vs_exact": 0.5340927243232727,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-02-seed-9302",
+      "prompt": "a macro photograph of a wheelbarrow of cut flowers under heavy rain",
+      "seed": 9302,
+      "exact_seconds": 1.0041905492544174,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3212541416287422,
+          "speedup_vs_exact": 3.125844679116734,
+          "mse_vs_exact": 0.03440847247838974,
+          "psnr_vs_exact": 14.633346069179073,
+          "ssim_gaussian_vs_exact": 0.36062150624621453,
+          "lpips_alex_vs_exact": 0.49474871158599854,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-02-seed-9303",
+      "prompt": "a macro photograph of a wheelbarrow of cut flowers under heavy rain",
+      "seed": 9303,
+      "exact_seconds": 1.0093327760696411,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.4224615804851055,
+          "speedup_vs_exact": 2.3891705724119134,
+          "mse_vs_exact": 0.0646127238869667,
+          "psnr_vs_exact": 11.896819499651967,
+          "ssim_gaussian_vs_exact": 0.22880902048239282,
+          "lpips_alex_vs_exact": 0.6007766127586365,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-02-seed-9304",
+      "prompt": "a macro photograph of a wheelbarrow of cut flowers under heavy rain",
+      "seed": 9304,
+      "exact_seconds": 1.0076435953378677,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3370595648884773,
+          "speedup_vs_exact": 2.989511944784199,
+          "mse_vs_exact": 0.048545680940151215,
+          "psnr_vs_exact": 13.138494027755103,
+          "ssim_gaussian_vs_exact": 0.3567777929959819,
+          "lpips_alex_vs_exact": 0.5205084085464478,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-02-seed-9305",
+      "prompt": "a macro photograph of a wheelbarrow of cut flowers under heavy rain",
+      "seed": 9305,
+      "exact_seconds": 1.0037969574332237,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.37605665996670723,
+          "speedup_vs_exact": 2.669270523016641,
+          "mse_vs_exact": 0.037575747817754745,
+          "psnr_vs_exact": 14.250923674970736,
+          "ssim_gaussian_vs_exact": 0.4119289384504741,
+          "lpips_alex_vs_exact": 0.4514077603816986,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-02-seed-9306",
+      "prompt": "a macro photograph of a wheelbarrow of cut flowers under heavy rain",
+      "seed": 9306,
+      "exact_seconds": 1.0174705050885677,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.362126000225544,
+          "speedup_vs_exact": 2.8097140344931146,
+          "mse_vs_exact": 0.0551002100110054,
+          "psnr_vs_exact": 12.588467458587962,
+          "ssim_gaussian_vs_exact": 0.31713634015021364,
+          "lpips_alex_vs_exact": 0.574800968170166,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-02-seed-9307",
+      "prompt": "a macro photograph of a wheelbarrow of cut flowers under heavy rain",
+      "seed": 9307,
+      "exact_seconds": 1.0141861699521542,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3509559817612171,
+          "speedup_vs_exact": 2.8897816896085406,
+          "mse_vs_exact": 0.04084767401218414,
+          "psnr_vs_exact": 13.888326684445085,
+          "ssim_gaussian_vs_exact": 0.38585059472418365,
+          "lpips_alex_vs_exact": 0.4724550247192383,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-02-seed-9308",
+      "prompt": "a macro photograph of a wheelbarrow of cut flowers under heavy rain",
+      "seed": 9308,
+      "exact_seconds": 1.0040940642356873,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3190060816705227,
+          "speedup_vs_exact": 3.1475702876183416,
+          "mse_vs_exact": 0.050278302282094955,
+          "psnr_vs_exact": 12.986193953052128,
+          "ssim_gaussian_vs_exact": 0.3066528129712597,
+          "lpips_alex_vs_exact": 0.5591806769371033,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-03-seed-9301",
+      "prompt": "an oil painting of a train crossing a viaduct in warm evening light",
+      "seed": 9301,
+      "exact_seconds": 1.0109633728861809,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.38044675067067146,
+          "speedup_vs_exact": 2.657305841366766,
+          "mse_vs_exact": 0.036849092692136765,
+          "psnr_vs_exact": 14.335732009840182,
+          "ssim_gaussian_vs_exact": 0.43572682950023817,
+          "lpips_alex_vs_exact": 0.5543764233589172,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-03-seed-9302",
+      "prompt": "an oil painting of a train crossing a viaduct in warm evening light",
+      "seed": 9302,
+      "exact_seconds": 1.0072953402996063,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3381809666752815,
+          "speedup_vs_exact": 2.9785689898592156,
+          "mse_vs_exact": 0.02679293416440487,
+          "psnr_vs_exact": 15.719797230609965,
+          "ssim_gaussian_vs_exact": 0.5181260423350801,
+          "lpips_alex_vs_exact": 0.4800901412963867,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-03-seed-9303",
+      "prompt": "an oil painting of a train crossing a viaduct in warm evening light",
+      "seed": 9303,
+      "exact_seconds": 1.0093447715044022,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3274293802678585,
+          "speedup_vs_exact": 3.0826334847492687,
+          "mse_vs_exact": 0.03174787014722824,
+          "psnr_vs_exact": 14.982854046816838,
+          "ssim_gaussian_vs_exact": 0.4177046464724325,
+          "lpips_alex_vs_exact": 0.5414495468139648,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-03-seed-9304",
+      "prompt": "an oil painting of a train crossing a viaduct in warm evening light",
+      "seed": 9304,
+      "exact_seconds": 1.0384966619312763,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3727320246398449,
+          "speedup_vs_exact": 2.7861750353614814,
+          "mse_vs_exact": 0.02726539596915245,
+          "psnr_vs_exact": 15.64388190771248,
+          "ssim_gaussian_vs_exact": 0.5278328925689575,
+          "lpips_alex_vs_exact": 0.4687715470790863,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-03-seed-9305",
+      "prompt": "an oil painting of a train crossing a viaduct in warm evening light",
+      "seed": 9305,
+      "exact_seconds": 1.0129232741892338,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.38958070799708366,
+          "speedup_vs_exact": 2.6000344816787395,
+          "mse_vs_exact": 0.03610991686582565,
+          "psnr_vs_exact": 14.423735114279154,
+          "ssim_gaussian_vs_exact": 0.4305419246899412,
+          "lpips_alex_vs_exact": 0.5574361085891724,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-03-seed-9306",
+      "prompt": "an oil painting of a train crossing a viaduct in warm evening light",
+      "seed": 9306,
+      "exact_seconds": 1.007574338465929,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.39354008808732033,
+          "speedup_vs_exact": 2.5602838667921533,
+          "mse_vs_exact": 0.03183463215827942,
+          "psnr_vs_exact": 14.97100163942197,
+          "ssim_gaussian_vs_exact": 0.4459159293953114,
+          "lpips_alex_vs_exact": 0.4867997467517853,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-03-seed-9307",
+      "prompt": "an oil painting of a train crossing a viaduct in warm evening light",
+      "seed": 9307,
+      "exact_seconds": 1.0062040761113167,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.4238336533308029,
+          "speedup_vs_exact": 2.3740542267085445,
+          "mse_vs_exact": 0.046198006719350815,
+          "psnr_vs_exact": 13.353767623110146,
+          "ssim_gaussian_vs_exact": 0.4462013688019278,
+          "lpips_alex_vs_exact": 0.5226248502731323,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-03-seed-9308",
+      "prompt": "an oil painting of a train crossing a viaduct in warm evening light",
+      "seed": 9308,
+      "exact_seconds": 1.0015667714178562,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3059961050748825,
+          "speedup_vs_exact": 3.2731356863929872,
+          "mse_vs_exact": 0.04040037468075752,
+          "psnr_vs_exact": 13.936146071411052,
+          "ssim_gaussian_vs_exact": 0.4262059463838697,
+          "lpips_alex_vs_exact": 0.6274980902671814,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-04-seed-9301",
+      "prompt": "a long-exposure photograph of a snow leopard on a cliff ledge under harsh midday sun",
+      "seed": 9301,
+      "exact_seconds": 1.003830447793007,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3054492585361004,
+          "speedup_vs_exact": 3.286406562595621,
+          "mse_vs_exact": 0.05307323858141899,
+          "psnr_vs_exact": 12.751244104839433,
+          "ssim_gaussian_vs_exact": 0.43297674089111116,
+          "lpips_alex_vs_exact": 0.6180103421211243,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-04-seed-9302",
+      "prompt": "a long-exposure photograph of a snow leopard on a cliff ledge under harsh midday sun",
+      "seed": 9302,
+      "exact_seconds": 1.0071835108101368,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3400132581591606,
+          "speedup_vs_exact": 2.9621889342287733,
+          "mse_vs_exact": 0.044278405606746674,
+          "psnr_vs_exact": 13.538080257485657,
+          "ssim_gaussian_vs_exact": 0.6186866853651841,
+          "lpips_alex_vs_exact": 0.4994274377822876,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-04-seed-9303",
+      "prompt": "a long-exposure photograph of a snow leopard on a cliff ledge under harsh midday sun",
+      "seed": 9303,
+      "exact_seconds": 1.0034654140472412,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.32968203350901604,
+          "speedup_vs_exact": 3.0437370316080594,
+          "mse_vs_exact": 0.028621068224310875,
+          "psnr_vs_exact": 15.433141610980446,
+          "ssim_gaussian_vs_exact": 0.6119485551500412,
+          "lpips_alex_vs_exact": 0.5380464196205139,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-04-seed-9304",
+      "prompt": "a long-exposure photograph of a snow leopard on a cliff ledge under harsh midday sun",
+      "seed": 9304,
+      "exact_seconds": 1.0030687786638737,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.2997359223663807,
+          "speedup_vs_exact": 3.3465083889337013,
+          "mse_vs_exact": 0.022599797695875168,
+          "psnr_vs_exact": 16.458954484613745,
+          "ssim_gaussian_vs_exact": 0.6528927135847981,
+          "lpips_alex_vs_exact": 0.4989769458770752,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-04-seed-9305",
+      "prompt": "a long-exposure photograph of a snow leopard on a cliff ledge under harsh midday sun",
+      "seed": 9305,
+      "exact_seconds": 1.0061740167438984,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.37586912885308266,
+          "speedup_vs_exact": 2.676926460585129,
+          "mse_vs_exact": 0.04105173051357269,
+          "psnr_vs_exact": 13.866685307088618,
+          "ssim_gaussian_vs_exact": 0.48801745327572954,
+          "lpips_alex_vs_exact": 0.5510192513465881,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-04-seed-9306",
+      "prompt": "a long-exposure photograph of a snow leopard on a cliff ledge under harsh midday sun",
+      "seed": 9306,
+      "exact_seconds": 1.0094215497374535,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3197137229144573,
+          "speedup_vs_exact": 3.157266884060321,
+          "mse_vs_exact": 0.038852572441101074,
+          "psnr_vs_exact": 14.105802211361835,
+          "ssim_gaussian_vs_exact": 0.5956013227615938,
+          "lpips_alex_vs_exact": 0.4933585524559021,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-04-seed-9307",
+      "prompt": "a long-exposure photograph of a snow leopard on a cliff ledge under harsh midday sun",
+      "seed": 9307,
+      "exact_seconds": 1.010016456246376,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3274375945329666,
+          "speedup_vs_exact": 3.084607488907896,
+          "mse_vs_exact": 0.030098026618361473,
+          "psnr_vs_exact": 15.214619780557012,
+          "ssim_gaussian_vs_exact": 0.5226618723090054,
+          "lpips_alex_vs_exact": 0.5195913910865784,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-04-seed-9308",
+      "prompt": "a long-exposure photograph of a snow leopard on a cliff ledge under harsh midday sun",
+      "seed": 9308,
+      "exact_seconds": 1.0071258880198002,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.30938348174095154,
+          "speedup_vs_exact": 3.2552671602004666,
+          "mse_vs_exact": 0.03454768657684326,
+          "psnr_vs_exact": 14.61581029058226,
+          "ssim_gaussian_vs_exact": 0.5670638442076917,
+          "lpips_alex_vs_exact": 0.543972909450531,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-05-seed-9301",
+      "prompt": "an aerial photograph of a train crossing a viaduct under harsh midday sun",
+      "seed": 9301,
+      "exact_seconds": 1.031625296920538,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3705274201929569,
+          "speedup_vs_exact": 2.7842077015064253,
+          "mse_vs_exact": 0.026233743876218796,
+          "psnr_vs_exact": 15.811397258505108,
+          "ssim_gaussian_vs_exact": 0.47072129943356283,
+          "lpips_alex_vs_exact": 0.5127114057540894,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-05-seed-9302",
+      "prompt": "an aerial photograph of a train crossing a viaduct under harsh midday sun",
+      "seed": 9302,
+      "exact_seconds": 1.0064474530518055,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3106462061405182,
+          "speedup_vs_exact": 3.2398511012123787,
+          "mse_vs_exact": 0.03347431868314743,
+          "psnr_vs_exact": 14.752882536038005,
+          "ssim_gaussian_vs_exact": 0.4220290286352247,
+          "lpips_alex_vs_exact": 0.48551642894744873,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-05-seed-9303",
+      "prompt": "an aerial photograph of a train crossing a viaduct under harsh midday sun",
+      "seed": 9303,
+      "exact_seconds": 1.0111548639833927,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.30594493076205254,
+          "speedup_vs_exact": 3.305022447879074,
+          "mse_vs_exact": 0.022536523640155792,
+          "psnr_vs_exact": 16.471130749951204,
+          "ssim_gaussian_vs_exact": 0.4591699901187318,
+          "lpips_alex_vs_exact": 0.5531783103942871,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-05-seed-9304",
+      "prompt": "an aerial photograph of a train crossing a viaduct under harsh midday sun",
+      "seed": 9304,
+      "exact_seconds": 1.009434800595045,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.30787966772913933,
+          "speedup_vs_exact": 3.278666655841356,
+          "mse_vs_exact": 0.020326144993305206,
+          "psnr_vs_exact": 16.919449807760447,
+          "ssim_gaussian_vs_exact": 0.4831659093566935,
+          "lpips_alex_vs_exact": 0.4815099835395813,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-05-seed-9305",
+      "prompt": "an aerial photograph of a train crossing a viaduct under harsh midday sun",
+      "seed": 9305,
+      "exact_seconds": 1.02279569581151,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3769267909228802,
+          "speedup_vs_exact": 2.7135128636180594,
+          "mse_vs_exact": 0.030283059924840927,
+          "psnr_vs_exact": 15.188002440553202,
+          "ssim_gaussian_vs_exact": 0.3738245146634564,
+          "lpips_alex_vs_exact": 0.5830851197242737,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-05-seed-9306",
+      "prompt": "an aerial photograph of a train crossing a viaduct under harsh midday sun",
+      "seed": 9306,
+      "exact_seconds": 1.009499341249466,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.37022682651877403,
+          "speedup_vs_exact": 2.726705006068151,
+          "mse_vs_exact": 0.012895914725959301,
+          "psnr_vs_exact": 18.8954784729517,
+          "ssim_gaussian_vs_exact": 0.5785860475824862,
+          "lpips_alex_vs_exact": 0.470804899930954,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-05-seed-9307",
+      "prompt": "an aerial photograph of a train crossing a viaduct under harsh midday sun",
+      "seed": 9307,
+      "exact_seconds": 1.012389611452818,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3836537189781666,
+          "speedup_vs_exact": 2.6388108895418583,
+          "mse_vs_exact": 0.03462501987814903,
+          "psnr_vs_exact": 14.606099685999006,
+          "ssim_gaussian_vs_exact": 0.40595321041831695,
+          "lpips_alex_vs_exact": 0.5609167814254761,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-05-seed-9308",
+      "prompt": "an aerial photograph of a train crossing a viaduct under harsh midday sun",
+      "seed": 9308,
+      "exact_seconds": 1.013025902211666,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3789946474134922,
+          "speedup_vs_exact": 2.6729293121293893,
+          "mse_vs_exact": 0.035391971468925476,
+          "psnr_vs_exact": 14.510952448157665,
+          "ssim_gaussian_vs_exact": 0.4166712965624768,
+          "lpips_alex_vs_exact": 0.49314752221107483,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-06-seed-9301",
+      "prompt": "a detailed digital illustration of a train crossing a viaduct at blue hour",
+      "seed": 9301,
+      "exact_seconds": 1.0121517814695835,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.30519232153892517,
+          "speedup_vs_exact": 3.316439209105366,
+          "mse_vs_exact": 0.06079366058111191,
+          "psnr_vs_exact": 12.161417055658152,
+          "ssim_gaussian_vs_exact": 0.39202833599547954,
+          "lpips_alex_vs_exact": 0.5678695440292358,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-06-seed-9302",
+      "prompt": "a detailed digital illustration of a train crossing a viaduct at blue hour",
+      "seed": 9302,
+      "exact_seconds": 1.0056111998856068,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3812657557427883,
+          "speedup_vs_exact": 2.6375597197982237,
+          "mse_vs_exact": 0.04337019845843315,
+          "psnr_vs_exact": 13.628085905511412,
+          "ssim_gaussian_vs_exact": 0.40527354271883126,
+          "lpips_alex_vs_exact": 0.5174936652183533,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-06-seed-9303",
+      "prompt": "a detailed digital illustration of a train crossing a viaduct at blue hour",
+      "seed": 9303,
+      "exact_seconds": 1.0143437013030052,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.34595653787255287,
+          "speedup_vs_exact": 2.9319974917678238,
+          "mse_vs_exact": 0.056041888892650604,
+          "psnr_vs_exact": 12.514872352379724,
+          "ssim_gaussian_vs_exact": 0.39137107096884316,
+          "lpips_alex_vs_exact": 0.5322156548500061,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-06-seed-9304",
+      "prompt": "a detailed digital illustration of a train crossing a viaduct at blue hour",
+      "seed": 9304,
+      "exact_seconds": 1.0113653764128685,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3095443435013294,
+          "speedup_vs_exact": 3.267271386622915,
+          "mse_vs_exact": 0.04260475933551788,
+          "psnr_vs_exact": 13.705418835803798,
+          "ssim_gaussian_vs_exact": 0.38242679711652344,
+          "lpips_alex_vs_exact": 0.5050575137138367,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-06-seed-9305",
+      "prompt": "a detailed digital illustration of a train crossing a viaduct at blue hour",
+      "seed": 9305,
+      "exact_seconds": 1.0058307982981205,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.30846916139125824,
+          "speedup_vs_exact": 3.260717517957453,
+          "mse_vs_exact": 0.035375744104385376,
+          "psnr_vs_exact": 14.512944162865997,
+          "ssim_gaussian_vs_exact": 0.36002482543534203,
+          "lpips_alex_vs_exact": 0.5422113537788391,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-06-seed-9306",
+      "prompt": "a detailed digital illustration of a train crossing a viaduct at blue hour",
+      "seed": 9306,
+      "exact_seconds": 1.0070217289030552,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.30561306327581406,
+          "speedup_vs_exact": 3.295087317632832,
+          "mse_vs_exact": 0.03711304813623428,
+          "psnr_vs_exact": 14.304733750938732,
+          "ssim_gaussian_vs_exact": 0.3936515142739457,
+          "lpips_alex_vs_exact": 0.4823831617832184,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-06-seed-9307",
+      "prompt": "a detailed digital illustration of a train crossing a viaduct at blue hour",
+      "seed": 9307,
+      "exact_seconds": 1.0073195733129978,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3807397000491619,
+          "speedup_vs_exact": 2.645690935783504,
+          "mse_vs_exact": 0.054913781583309174,
+          "psnr_vs_exact": 12.603186480004332,
+          "ssim_gaussian_vs_exact": 0.3553870303140856,
+          "lpips_alex_vs_exact": 0.5211877226829529,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-06-seed-9308",
+      "prompt": "a detailed digital illustration of a train crossing a viaduct at blue hour",
+      "seed": 9308,
+      "exact_seconds": 1.0116625018417835,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.31974710151553154,
+          "speedup_vs_exact": 3.1639458091933403,
+          "mse_vs_exact": 0.06082764267921448,
+          "psnr_vs_exact": 12.15899013904439,
+          "ssim_gaussian_vs_exact": 0.3625039331493804,
+          "lpips_alex_vs_exact": 0.5753942728042603,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-07-seed-9301",
+      "prompt": "a 35mm film photograph of a snow leopard on a cliff ledge in warm evening light",
+      "seed": 9301,
+      "exact_seconds": 1.0164219588041306,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3058491051197052,
+          "speedup_vs_exact": 3.3232791654117046,
+          "mse_vs_exact": 0.09936212003231049,
+          "psnr_vs_exact": 10.027791507774849,
+          "ssim_gaussian_vs_exact": 0.45577629232202416,
+          "lpips_alex_vs_exact": 0.7059788107872009,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-07-seed-9302",
+      "prompt": "a 35mm film photograph of a snow leopard on a cliff ledge in warm evening light",
+      "seed": 9302,
+      "exact_seconds": 1.005426000803709,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.34364623948931694,
+          "speedup_vs_exact": 2.925758775355274,
+          "mse_vs_exact": 0.0363667868077755,
+          "psnr_vs_exact": 14.39295069396185,
+          "ssim_gaussian_vs_exact": 0.606027434325786,
+          "lpips_alex_vs_exact": 0.5588535070419312,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-07-seed-9303",
+      "prompt": "a 35mm film photograph of a snow leopard on a cliff ledge in warm evening light",
+      "seed": 9303,
+      "exact_seconds": 1.0125869512557983,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.32192936912178993,
+          "speedup_vs_exact": 3.145369911474973,
+          "mse_vs_exact": 0.032536521553993225,
+          "psnr_vs_exact": 14.876288788931841,
+          "ssim_gaussian_vs_exact": 0.6457831194161403,
+          "lpips_alex_vs_exact": 0.5094695687294006,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-07-seed-9304",
+      "prompt": "a 35mm film photograph of a snow leopard on a cliff ledge in warm evening light",
+      "seed": 9304,
+      "exact_seconds": 1.0150441378355026,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3081570491194725,
+          "speedup_vs_exact": 3.293918282044458,
+          "mse_vs_exact": 0.02928995154798031,
+          "psnr_vs_exact": 15.332813467363664,
+          "ssim_gaussian_vs_exact": 0.6499817939730561,
+          "lpips_alex_vs_exact": 0.5092328786849976,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-07-seed-9305",
+      "prompt": "a 35mm film photograph of a snow leopard on a cliff ledge in warm evening light",
+      "seed": 9305,
+      "exact_seconds": 1.0083650574088097,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.30826758965849876,
+          "speedup_vs_exact": 3.2710706257699176,
+          "mse_vs_exact": 0.056921929121017456,
+          "psnr_vs_exact": 12.447203898172729,
+          "ssim_gaussian_vs_exact": 0.5594964389900862,
+          "lpips_alex_vs_exact": 0.5724771618843079,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-07-seed-9306",
+      "prompt": "a 35mm film photograph of a snow leopard on a cliff ledge in warm evening light",
+      "seed": 9306,
+      "exact_seconds": 1.0135464370250702,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3845211826264858,
+          "speedup_vs_exact": 2.6358663262762394,
+          "mse_vs_exact": 0.026548516005277634,
+          "psnr_vs_exact": 15.759597498642997,
+          "ssim_gaussian_vs_exact": 0.6459378406435029,
+          "lpips_alex_vs_exact": 0.44581061601638794,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-07-seed-9307",
+      "prompt": "a 35mm film photograph of a snow leopard on a cliff ledge in warm evening light",
+      "seed": 9307,
+      "exact_seconds": 1.0082672983407974,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.32735423371195793,
+          "speedup_vs_exact": 3.080049666405052,
+          "mse_vs_exact": 0.04586630314588547,
+          "psnr_vs_exact": 13.38506262877473,
+          "ssim_gaussian_vs_exact": 0.5936471206809989,
+          "lpips_alex_vs_exact": 0.6188135147094727,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-07-seed-9308",
+      "prompt": "a 35mm film photograph of a snow leopard on a cliff ledge in warm evening light",
+      "seed": 9308,
+      "exact_seconds": 1.0021627210080624,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.32951919361948967,
+          "speedup_vs_exact": 3.0412878533725225,
+          "mse_vs_exact": 0.049434732645750046,
+          "psnr_vs_exact": 13.059678102645798,
+          "ssim_gaussian_vs_exact": 0.552194143911052,
+          "lpips_alex_vs_exact": 0.5788444876670837,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-08-seed-9301",
+      "prompt": "a watercolor painting of a train crossing a viaduct in warm evening light",
+      "seed": 9301,
+      "exact_seconds": 1.0011587403714657,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.34979142248630524,
+          "speedup_vs_exact": 2.8621592069218402,
+          "mse_vs_exact": 0.0390818789601326,
+          "psnr_vs_exact": 14.080245646461808,
+          "ssim_gaussian_vs_exact": 0.4860996779207743,
+          "lpips_alex_vs_exact": 0.5389214754104614,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-08-seed-9302",
+      "prompt": "a watercolor painting of a train crossing a viaduct in warm evening light",
+      "seed": 9302,
+      "exact_seconds": 1.0037001594901085,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3551475666463375,
+          "speedup_vs_exact": 2.8261496170959592,
+          "mse_vs_exact": 0.034917429089546204,
+          "psnr_vs_exact": 14.569577401476455,
+          "ssim_gaussian_vs_exact": 0.518079265157778,
+          "lpips_alex_vs_exact": 0.5231389999389648,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-08-seed-9303",
+      "prompt": "a watercolor painting of a train crossing a viaduct in warm evening light",
+      "seed": 9303,
+      "exact_seconds": 1.0042258985340595,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.299095019698143,
+          "speedup_vs_exact": 3.3575480445898394,
+          "mse_vs_exact": 0.04878569766879082,
+          "psnr_vs_exact": 13.11707479921964,
+          "ssim_gaussian_vs_exact": 0.4597106644208983,
+          "lpips_alex_vs_exact": 0.5809191465377808,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-08-seed-9304",
+      "prompt": "a watercolor painting of a train crossing a viaduct in warm evening light",
+      "seed": 9304,
+      "exact_seconds": 1.0061063133180141,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.2965530566871166,
+          "speedup_vs_exact": 3.3926688349043856,
+          "mse_vs_exact": 0.02516276203095913,
+          "psnr_vs_exact": 15.992416895794095,
+          "ssim_gaussian_vs_exact": 0.5393806134729534,
+          "lpips_alex_vs_exact": 0.46937239170074463,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-08-seed-9305",
+      "prompt": "a watercolor painting of a train crossing a viaduct in warm evening light",
+      "seed": 9305,
+      "exact_seconds": 1.004063531756401,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3003693148493767,
+          "speedup_vs_exact": 3.34276333206639,
+          "mse_vs_exact": 0.043488509953022,
+          "psnr_vs_exact": 13.61625472313195,
+          "ssim_gaussian_vs_exact": 0.472181405336693,
+          "lpips_alex_vs_exact": 0.48353898525238037,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-08-seed-9306",
+      "prompt": "a watercolor painting of a train crossing a viaduct in warm evening light",
+      "seed": 9306,
+      "exact_seconds": 1.006809525191784,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.2991562709212303,
+          "speedup_vs_exact": 3.3654969761836715,
+          "mse_vs_exact": 0.04181189462542534,
+          "psnr_vs_exact": 13.78700152786231,
+          "ssim_gaussian_vs_exact": 0.47439750580046836,
+          "lpips_alex_vs_exact": 0.5311217308044434,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-08-seed-9307",
+      "prompt": "a watercolor painting of a train crossing a viaduct in warm evening light",
+      "seed": 9307,
+      "exact_seconds": 1.0065444000065327,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.36719293892383575,
+          "speedup_vs_exact": 2.7411866986236166,
+          "mse_vs_exact": 0.0428493469953537,
+          "psnr_vs_exact": 13.68055792141611,
+          "ssim_gaussian_vs_exact": 0.45093126958895163,
+          "lpips_alex_vs_exact": 0.5014938116073608,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-08-seed-9308",
+      "prompt": "a watercolor painting of a train crossing a viaduct in warm evening light",
+      "seed": 9308,
+      "exact_seconds": 1.0094521380960941,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.33733294531702995,
+          "speedup_vs_exact": 2.9924504917460633,
+          "mse_vs_exact": 0.03150371462106705,
+          "psnr_vs_exact": 15.01638235279636,
+          "ssim_gaussian_vs_exact": 0.5361093789195831,
+          "lpips_alex_vs_exact": 0.476177453994751,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-09-seed-9301",
+      "prompt": "an architectural photograph of a snow leopard on a cliff ledge in dense fog",
+      "seed": 9301,
+      "exact_seconds": 1.0072145387530327,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.31445566564798355,
+          "speedup_vs_exact": 3.2030414738354755,
+          "mse_vs_exact": 0.02722749672830105,
+          "psnr_vs_exact": 15.649922854709114,
+          "ssim_gaussian_vs_exact": 0.6744454858350953,
+          "lpips_alex_vs_exact": 0.4701384902000427,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-09-seed-9302",
+      "prompt": "an architectural photograph of a snow leopard on a cliff ledge in dense fog",
+      "seed": 9302,
+      "exact_seconds": 1.0230627916753292,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3398839719593525,
+          "speedup_vs_exact": 3.010035412313234,
+          "mse_vs_exact": 0.012274372391402721,
+          "psnr_vs_exact": 19.11000704819566,
+          "ssim_gaussian_vs_exact": 0.770138447328478,
+          "lpips_alex_vs_exact": 0.36511901021003723,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-09-seed-9303",
+      "prompt": "an architectural photograph of a snow leopard on a cliff ledge in dense fog",
+      "seed": 9303,
+      "exact_seconds": 1.0094297602772713,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.31822486594319344,
+          "speedup_vs_exact": 3.1720643743077743,
+          "mse_vs_exact": 0.019003523513674736,
+          "psnr_vs_exact": 17.211658674327968,
+          "ssim_gaussian_vs_exact": 0.8008683543631125,
+          "lpips_alex_vs_exact": 0.31554141640663147,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-09-seed-9304",
+      "prompt": "an architectural photograph of a snow leopard on a cliff ledge in dense fog",
+      "seed": 9304,
+      "exact_seconds": 1.0114684700965881,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3714711256325245,
+          "speedup_vs_exact": 2.7228723857723924,
+          "mse_vs_exact": 0.02618991956114769,
+          "psnr_vs_exact": 15.818658354504203,
+          "ssim_gaussian_vs_exact": 0.7458815005094914,
+          "lpips_alex_vs_exact": 0.3022259473800659,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-09-seed-9305",
+      "prompt": "an architectural photograph of a snow leopard on a cliff ledge in dense fog",
+      "seed": 9305,
+      "exact_seconds": 1.0070466920733452,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.32066939771175385,
+          "speedup_vs_exact": 3.140451503197596,
+          "mse_vs_exact": 0.021726548671722412,
+          "psnr_vs_exact": 16.63009257198653,
+          "ssim_gaussian_vs_exact": 0.7016102883411457,
+          "lpips_alex_vs_exact": 0.41111525893211365,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-09-seed-9306",
+      "prompt": "an architectural photograph of a snow leopard on a cliff ledge in dense fog",
+      "seed": 9306,
+      "exact_seconds": 1.0088875964283943,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.30432598665356636,
+          "speedup_vs_exact": 3.3151542775637997,
+          "mse_vs_exact": 0.02474147640168667,
+          "psnr_vs_exact": 16.06574388216429,
+          "ssim_gaussian_vs_exact": 0.7413820421475642,
+          "lpips_alex_vs_exact": 0.408128559589386,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-09-seed-9307",
+      "prompt": "an architectural photograph of a snow leopard on a cliff ledge in dense fog",
+      "seed": 9307,
+      "exact_seconds": 1.0093607045710087,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3059659041464329,
+          "speedup_vs_exact": 3.298931975400555,
+          "mse_vs_exact": 0.029575884342193604,
+          "psnr_vs_exact": 15.290622607594466,
+          "ssim_gaussian_vs_exact": 0.7206357332790239,
+          "lpips_alex_vs_exact": 0.3980690836906433,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-09-seed-9308",
+      "prompt": "an architectural photograph of a snow leopard on a cliff ledge in dense fog",
+      "seed": 9308,
+      "exact_seconds": 1.007119569927454,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3284410275518894,
+          "speedup_vs_exact": 3.0663634730236073,
+          "mse_vs_exact": 0.02332407794892788,
+          "psnr_vs_exact": 16.321955158390278,
+          "ssim_gaussian_vs_exact": 0.6855232380383578,
+          "lpips_alex_vs_exact": 0.47436317801475525,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-10-seed-9301",
+      "prompt": "a cinematic photograph of a vintage typewriter on a desk under harsh midday sun",
+      "seed": 9301,
+      "exact_seconds": 1.0154654271900654,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.4072282202541828,
+          "speedup_vs_exact": 2.493602792449488,
+          "mse_vs_exact": 0.0530741810798645,
+          "psnr_vs_exact": 12.751166981556475,
+          "ssim_gaussian_vs_exact": 0.5335946210576945,
+          "lpips_alex_vs_exact": 0.5024027824401855,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-10-seed-9302",
+      "prompt": "a cinematic photograph of a vintage typewriter on a desk under harsh midday sun",
+      "seed": 9302,
+      "exact_seconds": 1.0063685476779938,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.31841016933321953,
+          "speedup_vs_exact": 3.160604291582216,
+          "mse_vs_exact": 0.07649825513362885,
+          "psnr_vs_exact": 11.163484706565633,
+          "ssim_gaussian_vs_exact": 0.4498067943611559,
+          "lpips_alex_vs_exact": 0.5513805747032166,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-10-seed-9303",
+      "prompt": "a cinematic photograph of a vintage typewriter on a desk under harsh midday sun",
+      "seed": 9303,
+      "exact_seconds": 1.0071552693843842,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.30754995718598366,
+          "speedup_vs_exact": 3.274769662137623,
+          "mse_vs_exact": 0.06173716112971306,
+          "psnr_vs_exact": 12.094533446311582,
+          "ssim_gaussian_vs_exact": 0.528537600400654,
+          "lpips_alex_vs_exact": 0.48661309480667114,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-10-seed-9304",
+      "prompt": "a cinematic photograph of a vintage typewriter on a desk under harsh midday sun",
+      "seed": 9304,
+      "exact_seconds": 1.0081981495022774,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.32931479066610336,
+          "speedup_vs_exact": 3.061502787235885,
+          "mse_vs_exact": 0.07310449331998825,
+          "psnr_vs_exact": 11.36055928594758,
+          "ssim_gaussian_vs_exact": 0.4935584470285083,
+          "lpips_alex_vs_exact": 0.5127821564674377,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-10-seed-9305",
+      "prompt": "a cinematic photograph of a vintage typewriter on a desk under harsh midday sun",
+      "seed": 9305,
+      "exact_seconds": 1.0044454522430897,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.33330247551202774,
+          "speedup_vs_exact": 3.013615337539978,
+          "mse_vs_exact": 0.0618610605597496,
+          "psnr_vs_exact": 12.085826386280438,
+          "ssim_gaussian_vs_exact": 0.4728500569179564,
+          "lpips_alex_vs_exact": 0.5305729508399963,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-10-seed-9306",
+      "prompt": "a cinematic photograph of a vintage typewriter on a desk under harsh midday sun",
+      "seed": 9306,
+      "exact_seconds": 1.008234579116106,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.30949725210666656,
+          "speedup_vs_exact": 3.2576527650999094,
+          "mse_vs_exact": 0.036875903606414795,
+          "psnr_vs_exact": 14.33257328939973,
+          "ssim_gaussian_vs_exact": 0.5217543646656218,
+          "lpips_alex_vs_exact": 0.4317518472671509,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-10-seed-9307",
+      "prompt": "a cinematic photograph of a vintage typewriter on a desk under harsh midday sun",
+      "seed": 9307,
+      "exact_seconds": 1.0089723765850067,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.31066619977355003,
+          "speedup_vs_exact": 3.2477700416732302,
+          "mse_vs_exact": 0.07525688409805298,
+          "psnr_vs_exact": 11.234537669759657,
+          "ssim_gaussian_vs_exact": 0.4248766040006131,
+          "lpips_alex_vs_exact": 0.5737693309783936,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-10-seed-9308",
+      "prompt": "a cinematic photograph of a vintage typewriter on a desk under harsh midday sun",
+      "seed": 9308,
+      "exact_seconds": 1.0086442045867443,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.33677321299910545,
+          "speedup_vs_exact": 2.995025036594652,
+          "mse_vs_exact": 0.09246637672185898,
+          "psnr_vs_exact": 10.340161597880286,
+          "ssim_gaussian_vs_exact": 0.4088427363441318,
+          "lpips_alex_vs_exact": 0.6034342050552368,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-11-seed-9301",
+      "prompt": "a macro photograph of a wheelbarrow of cut flowers against a plain grey backdrop",
+      "seed": 9301,
+      "exact_seconds": 1.010005421936512,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3410751596093178,
+          "speedup_vs_exact": 2.96124004777544,
+          "mse_vs_exact": 0.03687746077775955,
+          "psnr_vs_exact": 14.332389902261218,
+          "ssim_gaussian_vs_exact": 0.5048928277719983,
+          "lpips_alex_vs_exact": 0.5061965584754944,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-11-seed-9302",
+      "prompt": "a macro photograph of a wheelbarrow of cut flowers against a plain grey backdrop",
+      "seed": 9302,
+      "exact_seconds": 1.0084326677024364,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3482845164835453,
+          "speedup_vs_exact": 2.895427789567211,
+          "mse_vs_exact": 0.03963109850883484,
+          "psnr_vs_exact": 14.01963889570596,
+          "ssim_gaussian_vs_exact": 0.5390445486646606,
+          "lpips_alex_vs_exact": 0.4964213967323303,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-11-seed-9303",
+      "prompt": "a macro photograph of a wheelbarrow of cut flowers against a plain grey backdrop",
+      "seed": 9303,
+      "exact_seconds": 1.0097949095070362,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.30768048018217087,
+          "speedup_vs_exact": 3.28195961248227,
+          "mse_vs_exact": 0.04808061569929123,
+          "psnr_vs_exact": 13.180299795849212,
+          "ssim_gaussian_vs_exact": 0.46681302087188153,
+          "lpips_alex_vs_exact": 0.5381124019622803,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-11-seed-9304",
+      "prompt": "a macro photograph of a wheelbarrow of cut flowers against a plain grey backdrop",
+      "seed": 9304,
+      "exact_seconds": 1.0068788602948189,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.31790217012166977,
+          "speedup_vs_exact": 3.167260103664782,
+          "mse_vs_exact": 0.03178591653704643,
+          "psnr_vs_exact": 14.977652613062665,
+          "ssim_gaussian_vs_exact": 0.5393369856732074,
+          "lpips_alex_vs_exact": 0.4613335132598877,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-11-seed-9305",
+      "prompt": "a macro photograph of a wheelbarrow of cut flowers against a plain grey backdrop",
+      "seed": 9305,
+      "exact_seconds": 1.006265178322792,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.30556105077266693,
+          "speedup_vs_exact": 3.2931722671402874,
+          "mse_vs_exact": 0.04482601583003998,
+          "psnr_vs_exact": 13.484698598386837,
+          "ssim_gaussian_vs_exact": 0.45521739410400247,
+          "lpips_alex_vs_exact": 0.49523240327835083,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-11-seed-9306",
+      "prompt": "a macro photograph of a wheelbarrow of cut flowers against a plain grey backdrop",
+      "seed": 9306,
+      "exact_seconds": 1.0300414599478245,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.37811674177646637,
+          "speedup_vs_exact": 2.7241360832331525,
+          "mse_vs_exact": 0.04874439537525177,
+          "psnr_vs_exact": 13.12075312222465,
+          "ssim_gaussian_vs_exact": 0.4008587106719837,
+          "lpips_alex_vs_exact": 0.5490631461143494,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-11-seed-9307",
+      "prompt": "a macro photograph of a wheelbarrow of cut flowers against a plain grey backdrop",
+      "seed": 9307,
+      "exact_seconds": 1.0102120153605938,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3072216548025608,
+          "speedup_vs_exact": 3.2882187813545145,
+          "mse_vs_exact": 0.031178481876850128,
+          "psnr_vs_exact": 15.061450350278056,
+          "ssim_gaussian_vs_exact": 0.4432583917921001,
+          "lpips_alex_vs_exact": 0.4871101379394531,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-11-seed-9308",
+      "prompt": "a macro photograph of a wheelbarrow of cut flowers against a plain grey backdrop",
+      "seed": 9308,
+      "exact_seconds": 1.0130730420351028,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.30945368856191635,
+          "speedup_vs_exact": 3.2737468625532458,
+          "mse_vs_exact": 0.03866661712527275,
+          "psnr_vs_exact": 14.12663821929842,
+          "ssim_gaussian_vs_exact": 0.5046905165596901,
+          "lpips_alex_vs_exact": 0.525826632976532,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-12-seed-9301",
+      "prompt": "a cinematic photograph of a cathedral rose window at blue hour",
+      "seed": 9301,
+      "exact_seconds": 1.0128154829144478,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.5775265246629715,
+          "speedup_vs_exact": 1.7537124957256274,
+          "mse_vs_exact": 0.04754182696342468,
+          "psnr_vs_exact": 13.229241329804005,
+          "ssim_gaussian_vs_exact": 0.35612009785112103,
+          "lpips_alex_vs_exact": 0.4973754286766052,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-12-seed-9302",
+      "prompt": "a cinematic photograph of a cathedral rose window at blue hour",
+      "seed": 9302,
+      "exact_seconds": 1.0080018378794193,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.38431743532419205,
+          "speedup_vs_exact": 2.6228366064868136,
+          "mse_vs_exact": 0.03831694275140762,
+          "psnr_vs_exact": 14.166091498847631,
+          "ssim_gaussian_vs_exact": 0.5565452970371864,
+          "lpips_alex_vs_exact": 0.36846262216567993,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-12-seed-9303",
+      "prompt": "a cinematic photograph of a cathedral rose window at blue hour",
+      "seed": 9303,
+      "exact_seconds": 1.0073931701481342,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.36905744299292564,
+          "speedup_vs_exact": 2.7296378633595113,
+          "mse_vs_exact": 0.02991708181798458,
+          "psnr_vs_exact": 15.240807708394824,
+          "ssim_gaussian_vs_exact": 0.4252044441460551,
+          "lpips_alex_vs_exact": 0.4241589605808258,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-12-seed-9304",
+      "prompt": "a cinematic photograph of a cathedral rose window at blue hour",
+      "seed": 9304,
+      "exact_seconds": 1.0037299655377865,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3710157126188278,
+          "speedup_vs_exact": 2.705357027746675,
+          "mse_vs_exact": 0.048482269048690796,
+          "psnr_vs_exact": 13.144170626811835,
+          "ssim_gaussian_vs_exact": 0.3526660743387396,
+          "lpips_alex_vs_exact": 0.42952537536621094,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-12-seed-9305",
+      "prompt": "a cinematic photograph of a cathedral rose window at blue hour",
+      "seed": 9305,
+      "exact_seconds": 1.0037342347204685,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3656625635921955,
+          "speedup_vs_exact": 2.744974013363537,
+          "mse_vs_exact": 0.06635674089193344,
+          "psnr_vs_exact": 11.781149524760014,
+          "ssim_gaussian_vs_exact": 0.2876265900867861,
+          "lpips_alex_vs_exact": 0.5271997451782227,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-12-seed-9306",
+      "prompt": "a cinematic photograph of a cathedral rose window at blue hour",
+      "seed": 9306,
+      "exact_seconds": 1.0044406242668629,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3672371245920658,
+          "speedup_vs_exact": 2.7351282237127172,
+          "mse_vs_exact": 0.04710036516189575,
+          "psnr_vs_exact": 13.26975725839648,
+          "ssim_gaussian_vs_exact": 0.37015411151224226,
+          "lpips_alex_vs_exact": 0.46255725622177124,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-12-seed-9307",
+      "prompt": "a cinematic photograph of a cathedral rose window at blue hour",
+      "seed": 9307,
+      "exact_seconds": 1.0049946010112762,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3634555861353874,
+          "speedup_vs_exact": 2.765109794286984,
+          "mse_vs_exact": 0.046735867857933044,
+          "psnr_vs_exact": 13.303496883029895,
+          "ssim_gaussian_vs_exact": 0.44421528316770204,
+          "lpips_alex_vs_exact": 0.44124773144721985,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-12-seed-9308",
+      "prompt": "a cinematic photograph of a cathedral rose window at blue hour",
+      "seed": 9308,
+      "exact_seconds": 1.0042781606316566,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3596240393817425,
+          "speedup_vs_exact": 2.7925779443392855,
+          "mse_vs_exact": 0.047140397131443024,
+          "psnr_vs_exact": 13.266067631085171,
+          "ssim_gaussian_vs_exact": 0.34925014784861136,
+          "lpips_alex_vs_exact": 0.47913816571235657,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-13-seed-9301",
+      "prompt": "a macro photograph of a snow leopard on a cliff ledge in dense fog",
+      "seed": 9301,
+      "exact_seconds": 1.0064501501619816,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.29791923239827156,
+          "speedup_vs_exact": 3.378265115883874,
+          "mse_vs_exact": 0.04831492528319359,
+          "psnr_vs_exact": 13.159186877405194,
+          "ssim_gaussian_vs_exact": 0.5529388954171387,
+          "lpips_alex_vs_exact": 0.5581457614898682,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-13-seed-9302",
+      "prompt": "a macro photograph of a snow leopard on a cliff ledge in dense fog",
+      "seed": 9302,
+      "exact_seconds": 1.0066454522311687,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.332886166870594,
+          "speedup_vs_exact": 3.0239930415086653,
+          "mse_vs_exact": 0.024391276761889458,
+          "psnr_vs_exact": 16.12765465937576,
+          "ssim_gaussian_vs_exact": 0.6590837553934227,
+          "lpips_alex_vs_exact": 0.5054601430892944,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-13-seed-9303",
+      "prompt": "a macro photograph of a snow leopard on a cliff ledge in dense fog",
+      "seed": 9303,
+      "exact_seconds": 1.0059746019542217,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3006649725139141,
+          "speedup_vs_exact": 3.3458323846076463,
+          "mse_vs_exact": 0.04000624269247055,
+          "psnr_vs_exact": 13.978722347882396,
+          "ssim_gaussian_vs_exact": 0.6328891368529221,
+          "lpips_alex_vs_exact": 0.49291837215423584,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-13-seed-9304",
+      "prompt": "a macro photograph of a snow leopard on a cliff ledge in dense fog",
+      "seed": 9304,
+      "exact_seconds": 1.008528459817171,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.34802377223968506,
+          "speedup_vs_exact": 2.8978723301769005,
+          "mse_vs_exact": 0.03163256496191025,
+          "psnr_vs_exact": 14.998655914026521,
+          "ssim_gaussian_vs_exact": 0.657499076243965,
+          "lpips_alex_vs_exact": 0.42704254388809204,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-13-seed-9305",
+      "prompt": "a macro photograph of a snow leopard on a cliff ledge in dense fog",
+      "seed": 9305,
+      "exact_seconds": 1.0084219984710217,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.34448719769716263,
+          "speedup_vs_exact": 2.9273134247430628,
+          "mse_vs_exact": 0.028561711311340332,
+          "psnr_vs_exact": 15.442157748088114,
+          "ssim_gaussian_vs_exact": 0.6468597142441982,
+          "lpips_alex_vs_exact": 0.4660860300064087,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-13-seed-9306",
+      "prompt": "a macro photograph of a snow leopard on a cliff ledge in dense fog",
+      "seed": 9306,
+      "exact_seconds": 1.0106516294181347,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.37273555248975754,
+          "speedup_vs_exact": 2.71144413959789,
+          "mse_vs_exact": 0.038140714168548584,
+          "psnr_vs_exact": 14.186111792355828,
+          "ssim_gaussian_vs_exact": 0.6291274753052778,
+          "lpips_alex_vs_exact": 0.5123615264892578,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-13-seed-9307",
+      "prompt": "a macro photograph of a snow leopard on a cliff ledge in dense fog",
+      "seed": 9307,
+      "exact_seconds": 1.0091792605817318,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3178808018565178,
+          "speedup_vs_exact": 3.174709685793627,
+          "mse_vs_exact": 0.03487710654735565,
+          "psnr_vs_exact": 14.574595519115093,
+          "ssim_gaussian_vs_exact": 0.6420567582912491,
+          "lpips_alex_vs_exact": 0.44109582901000977,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-13-seed-9308",
+      "prompt": "a macro photograph of a snow leopard on a cliff ledge in dense fog",
+      "seed": 9308,
+      "exact_seconds": 1.0105973444879055,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.31748218461871147,
+          "speedup_vs_exact": 3.1831623739820514,
+          "mse_vs_exact": 0.025425054132938385,
+          "psnr_vs_exact": 15.947381137400692,
+          "ssim_gaussian_vs_exact": 0.6563594467662269,
+          "lpips_alex_vs_exact": 0.45413583517074585,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-14-seed-9301",
+      "prompt": "an architectural photograph of a wheelbarrow of cut flowers reflected in still water",
+      "seed": 9301,
+      "exact_seconds": 1.011543907225132,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3952096961438656,
+          "speedup_vs_exact": 2.5595118669783505,
+          "mse_vs_exact": 0.04243915528059006,
+          "psnr_vs_exact": 13.722332689891106,
+          "ssim_gaussian_vs_exact": 0.44576402034001356,
+          "lpips_alex_vs_exact": 0.5128952860832214,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-14-seed-9302",
+      "prompt": "an architectural photograph of a wheelbarrow of cut flowers reflected in still water",
+      "seed": 9302,
+      "exact_seconds": 1.007518257945776,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.33894405886530876,
+          "speedup_vs_exact": 2.9725207791476542,
+          "mse_vs_exact": 0.029792627319693565,
+          "psnr_vs_exact": 15.258911960084657,
+          "ssim_gaussian_vs_exact": 0.4107855829224733,
+          "lpips_alex_vs_exact": 0.5520279407501221,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-14-seed-9303",
+      "prompt": "an architectural photograph of a wheelbarrow of cut flowers reflected in still water",
+      "seed": 9303,
+      "exact_seconds": 1.0098019540309906,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.30596183612942696,
+          "speedup_vs_exact": 3.3004180090089,
+          "mse_vs_exact": 0.04546339437365532,
+          "psnr_vs_exact": 13.423381422424798,
+          "ssim_gaussian_vs_exact": 0.36176212069119656,
+          "lpips_alex_vs_exact": 0.5430581569671631,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-14-seed-9304",
+      "prompt": "an architectural photograph of a wheelbarrow of cut flowers reflected in still water",
+      "seed": 9304,
+      "exact_seconds": 1.0072292648255825,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.37882907688617706,
+          "speedup_vs_exact": 2.6587960805559137,
+          "mse_vs_exact": 0.04455365240573883,
+          "psnr_vs_exact": 13.511166877070401,
+          "ssim_gaussian_vs_exact": 0.3810926196171107,
+          "lpips_alex_vs_exact": 0.5426236391067505,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-14-seed-9305",
+      "prompt": "an architectural photograph of a wheelbarrow of cut flowers reflected in still water",
+      "seed": 9305,
+      "exact_seconds": 1.0070855990052223,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3076068051159382,
+          "speedup_vs_exact": 3.2739379696936415,
+          "mse_vs_exact": 0.05448925495147705,
+          "psnr_vs_exact": 12.636891302987614,
+          "ssim_gaussian_vs_exact": 0.32513795971959963,
+          "lpips_alex_vs_exact": 0.5557665824890137,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-14-seed-9306",
+      "prompt": "an architectural photograph of a wheelbarrow of cut flowers reflected in still water",
+      "seed": 9306,
+      "exact_seconds": 1.0262780748307705,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.36182496696710587,
+          "speedup_vs_exact": 2.8363937498101706,
+          "mse_vs_exact": 0.03477470204234123,
+          "psnr_vs_exact": 14.587365824551515,
+          "ssim_gaussian_vs_exact": 0.3471698540270041,
+          "lpips_alex_vs_exact": 0.5350931286811829,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-14-seed-9307",
+      "prompt": "an architectural photograph of a wheelbarrow of cut flowers reflected in still water",
+      "seed": 9307,
+      "exact_seconds": 1.008074201643467,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.31044359505176544,
+          "speedup_vs_exact": 3.2472056686348254,
+          "mse_vs_exact": 0.030981337651610374,
+          "psnr_vs_exact": 15.088998350541633,
+          "ssim_gaussian_vs_exact": 0.42800617646408073,
+          "lpips_alex_vs_exact": 0.47331833839416504,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-14-seed-9308",
+      "prompt": "an architectural photograph of a wheelbarrow of cut flowers reflected in still water",
+      "seed": 9308,
+      "exact_seconds": 1.009353019297123,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.313883475959301,
+          "speedup_vs_exact": 3.215693391352651,
+          "mse_vs_exact": 0.037327688187360764,
+          "psnr_vs_exact": 14.279689063652125,
+          "ssim_gaussian_vs_exact": 0.4291787180376187,
+          "lpips_alex_vs_exact": 0.5256156325340271,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-15-seed-9301",
+      "prompt": "a detailed digital illustration of a train crossing a viaduct in dense fog",
+      "seed": 9301,
+      "exact_seconds": 1.0097884573042393,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.30577484890818596,
+          "speedup_vs_exact": 3.302392138888589,
+          "mse_vs_exact": 0.014925368130207062,
+          "psnr_vs_exact": 18.260749483094227,
+          "ssim_gaussian_vs_exact": 0.6660222545487396,
+          "lpips_alex_vs_exact": 0.46646901965141296,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-15-seed-9302",
+      "prompt": "a detailed digital illustration of a train crossing a viaduct in dense fog",
+      "seed": 9302,
+      "exact_seconds": 1.0097957886755466,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3334994353353977,
+          "speedup_vs_exact": 3.0278785559561836,
+          "mse_vs_exact": 0.028687234967947006,
+          "psnr_vs_exact": 15.423113094058909,
+          "ssim_gaussian_vs_exact": 0.6103135649781821,
+          "lpips_alex_vs_exact": 0.5213344097137451,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-15-seed-9303",
+      "prompt": "a detailed digital illustration of a train crossing a viaduct in dense fog",
+      "seed": 9303,
+      "exact_seconds": 1.0086943879723549,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3175997734069824,
+          "speedup_vs_exact": 3.175992152487407,
+          "mse_vs_exact": 0.01845274120569229,
+          "psnr_vs_exact": 17.339391090671853,
+          "ssim_gaussian_vs_exact": 0.6570301762592891,
+          "lpips_alex_vs_exact": 0.4766745865345001,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-15-seed-9304",
+      "prompt": "a detailed digital illustration of a train crossing a viaduct in dense fog",
+      "seed": 9304,
+      "exact_seconds": 1.0158250033855438,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.310978539288044,
+          "speedup_vs_exact": 3.2665437483601902,
+          "mse_vs_exact": 0.024129515513777733,
+          "psnr_vs_exact": 16.174513980168353,
+          "ssim_gaussian_vs_exact": 0.6584981986509265,
+          "lpips_alex_vs_exact": 0.4646512567996979,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-15-seed-9305",
+      "prompt": "a detailed digital illustration of a train crossing a viaduct in dense fog",
+      "seed": 9305,
+      "exact_seconds": 1.0089547671377659,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.33561330661177635,
+          "speedup_vs_exact": 3.0063014405590396,
+          "mse_vs_exact": 0.03625347465276718,
+          "psnr_vs_exact": 14.406503628804039,
+          "ssim_gaussian_vs_exact": 0.6655201570487409,
+          "lpips_alex_vs_exact": 0.541498601436615,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-15-seed-9306",
+      "prompt": "a detailed digital illustration of a train crossing a viaduct in dense fog",
+      "seed": 9306,
+      "exact_seconds": 1.0091690458357334,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3095722794532776,
+          "speedup_vs_exact": 3.259881820226229,
+          "mse_vs_exact": 0.036782413721084595,
+          "psnr_vs_exact": 14.343597750611632,
+          "ssim_gaussian_vs_exact": 0.5914079940164151,
+          "lpips_alex_vs_exact": 0.5367575287818909,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-15-seed-9307",
+      "prompt": "a detailed digital illustration of a train crossing a viaduct in dense fog",
+      "seed": 9307,
+      "exact_seconds": 1.0098964907228947,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.31363798677921295,
+          "speedup_vs_exact": 3.219943161520854,
+          "mse_vs_exact": 0.012924136593937874,
+          "psnr_vs_exact": 18.885984606141587,
+          "ssim_gaussian_vs_exact": 0.6504522076101908,
+          "lpips_alex_vs_exact": 0.43860751390457153,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-15-seed-9308",
+      "prompt": "a detailed digital illustration of a train crossing a viaduct in dense fog",
+      "seed": 9308,
+      "exact_seconds": 1.0097869224846363,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.32871877774596214,
+          "speedup_vs_exact": 3.071886946674558,
+          "mse_vs_exact": 0.014756652526557446,
+          "psnr_vs_exact": 18.310121488899686,
+          "ssim_gaussian_vs_exact": 0.674069574797327,
+          "lpips_alex_vs_exact": 0.43761956691741943,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-16-seed-9301",
+      "prompt": "an architectural photograph of a snow leopard on a cliff ledge under heavy rain",
+      "seed": 9301,
+      "exact_seconds": 1.0201589204370975,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.32962092757225037,
+          "speedup_vs_exact": 3.0949458456744576,
+          "mse_vs_exact": 0.04676921293139458,
+          "psnr_vs_exact": 13.300399386745276,
+          "ssim_gaussian_vs_exact": 0.37604789884338263,
+          "lpips_alex_vs_exact": 0.7011728286743164,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-16-seed-9302",
+      "prompt": "an architectural photograph of a snow leopard on a cliff ledge under heavy rain",
+      "seed": 9302,
+      "exact_seconds": 1.009463258087635,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.32603058218955994,
+          "speedup_vs_exact": 3.0962226037455447,
+          "mse_vs_exact": 0.02901458740234375,
+          "psnr_vs_exact": 15.373836008760978,
+          "ssim_gaussian_vs_exact": 0.4826352831133718,
+          "lpips_alex_vs_exact": 0.5781275033950806,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-16-seed-9303",
+      "prompt": "an architectural photograph of a snow leopard on a cliff ledge under heavy rain",
+      "seed": 9303,
+      "exact_seconds": 1.0084310322999954,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.31945230066776276,
+          "speedup_vs_exact": 3.15674994417644,
+          "mse_vs_exact": 0.034202367067337036,
+          "psnr_vs_exact": 14.65943836379273,
+          "ssim_gaussian_vs_exact": 0.49322921330644154,
+          "lpips_alex_vs_exact": 0.553558349609375,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-16-seed-9304",
+      "prompt": "an architectural photograph of a snow leopard on a cliff ledge under heavy rain",
+      "seed": 9304,
+      "exact_seconds": 1.0084914229810238,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.32748930901288986,
+          "speedup_vs_exact": 3.0794636503426434,
+          "mse_vs_exact": 0.022379865869879723,
+          "psnr_vs_exact": 16.50142520673873,
+          "ssim_gaussian_vs_exact": 0.5790861943333975,
+          "lpips_alex_vs_exact": 0.5036868453025818,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-16-seed-9305",
+      "prompt": "an architectural photograph of a snow leopard on a cliff ledge under heavy rain",
+      "seed": 9305,
+      "exact_seconds": 1.0094072371721268,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3059643805027008,
+          "speedup_vs_exact": 3.299100488474071,
+          "mse_vs_exact": 0.04085142910480499,
+          "psnr_vs_exact": 13.887927459498128,
+          "ssim_gaussian_vs_exact": 0.5069861024274256,
+          "lpips_alex_vs_exact": 0.5393107533454895,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-16-seed-9306",
+      "prompt": "an architectural photograph of a snow leopard on a cliff ledge under heavy rain",
+      "seed": 9306,
+      "exact_seconds": 1.0368880815804005,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3702171891927719,
+          "speedup_vs_exact": 2.800756182718716,
+          "mse_vs_exact": 0.053006596863269806,
+          "psnr_vs_exact": 12.756700775118546,
+          "ssim_gaussian_vs_exact": 0.32594995358582446,
+          "lpips_alex_vs_exact": 0.7117640972137451,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-16-seed-9307",
+      "prompt": "an architectural photograph of a snow leopard on a cliff ledge under heavy rain",
+      "seed": 9307,
+      "exact_seconds": 1.0104264914989471,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.30675768852233887,
+          "speedup_vs_exact": 3.293891332817777,
+          "mse_vs_exact": 0.040994878858327866,
+          "psnr_vs_exact": 13.87270392609079,
+          "ssim_gaussian_vs_exact": 0.5255198989958972,
+          "lpips_alex_vs_exact": 0.5516722202301025,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-16-seed-9308",
+      "prompt": "an architectural photograph of a snow leopard on a cliff ledge under heavy rain",
+      "seed": 9308,
+      "exact_seconds": 1.0099122263491154,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.32412297651171684,
+          "speedup_vs_exact": 3.1158304086245723,
+          "mse_vs_exact": 0.024064145982265472,
+          "psnr_vs_exact": 16.18629546484893,
+          "ssim_gaussian_vs_exact": 0.5362839334052927,
+          "lpips_alex_vs_exact": 0.5901259779930115,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-17-seed-9301",
+      "prompt": "an architectural photograph of a vintage typewriter on a desk in warm evening light",
+      "seed": 9301,
+      "exact_seconds": 1.0109048560261726,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.31190934404730797,
+          "speedup_vs_exact": 3.241021390730912,
+          "mse_vs_exact": 0.07831697165966034,
+          "psnr_vs_exact": 11.06144114066592,
+          "ssim_gaussian_vs_exact": 0.39707377515404424,
+          "lpips_alex_vs_exact": 0.5992665886878967,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-17-seed-9302",
+      "prompt": "an architectural photograph of a vintage typewriter on a desk in warm evening light",
+      "seed": 9302,
+      "exact_seconds": 1.0065713226795197,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3259231112897396,
+          "speedup_vs_exact": 3.0883705015465943,
+          "mse_vs_exact": 0.06471587717533112,
+          "psnr_vs_exact": 11.889891579136496,
+          "ssim_gaussian_vs_exact": 0.4797803694879858,
+          "lpips_alex_vs_exact": 0.488606333732605,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-17-seed-9303",
+      "prompt": "an architectural photograph of a vintage typewriter on a desk in warm evening light",
+      "seed": 9303,
+      "exact_seconds": 1.0135587081313133,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.36008067429065704,
+          "speedup_vs_exact": 2.81481007034876,
+          "mse_vs_exact": 0.06960804015398026,
+          "psnr_vs_exact": 11.573405938256778,
+          "ssim_gaussian_vs_exact": 0.4248416867404636,
+          "lpips_alex_vs_exact": 0.5368167161941528,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-17-seed-9304",
+      "prompt": "an architectural photograph of a vintage typewriter on a desk in warm evening light",
+      "seed": 9304,
+      "exact_seconds": 1.0091688968241215,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.35415755584836006,
+          "speedup_vs_exact": 2.8494913638273984,
+          "mse_vs_exact": 0.07034747302532196,
+          "psnr_vs_exact": 11.527514983837385,
+          "ssim_gaussian_vs_exact": 0.43313805288763135,
+          "lpips_alex_vs_exact": 0.5805542469024658,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-17-seed-9305",
+      "prompt": "an architectural photograph of a vintage typewriter on a desk in warm evening light",
+      "seed": 9305,
+      "exact_seconds": 1.0103651955723763,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3119307793676853,
+          "speedup_vs_exact": 3.239068608812785,
+          "mse_vs_exact": 0.06367719918489456,
+          "psnr_vs_exact": 11.960160471123423,
+          "ssim_gaussian_vs_exact": 0.41805723388075844,
+          "lpips_alex_vs_exact": 0.536788821220398,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-17-seed-9306",
+      "prompt": "an architectural photograph of a vintage typewriter on a desk in warm evening light",
+      "seed": 9306,
+      "exact_seconds": 1.0086861662566662,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3204110525548458,
+          "speedup_vs_exact": 3.148100411061838,
+          "mse_vs_exact": 0.045046430081129074,
+          "psnr_vs_exact": 13.463396210555981,
+          "ssim_gaussian_vs_exact": 0.44870238884872776,
+          "lpips_alex_vs_exact": 0.4530595541000366,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-17-seed-9307",
+      "prompt": "an architectural photograph of a vintage typewriter on a desk in warm evening light",
+      "seed": 9307,
+      "exact_seconds": 1.0099702402949333,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3302537314593792,
+          "speedup_vs_exact": 3.058164508337004,
+          "mse_vs_exact": 0.09395591914653778,
+          "psnr_vs_exact": 10.270758545022238,
+          "ssim_gaussian_vs_exact": 0.36534390818612533,
+          "lpips_alex_vs_exact": 0.6021886467933655,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-17-seed-9308",
+      "prompt": "an architectural photograph of a vintage typewriter on a desk in warm evening light",
+      "seed": 9308,
+      "exact_seconds": 1.0085186809301376,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3249950036406517,
+          "speedup_vs_exact": 3.1031821093633205,
+          "mse_vs_exact": 0.09273481369018555,
+          "psnr_vs_exact": 10.327571962202061,
+          "ssim_gaussian_vs_exact": 0.4018552154633077,
+          "lpips_alex_vs_exact": 0.6009991765022278,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-18-seed-9301",
+      "prompt": "an aerial photograph of a coral reef with small fish in warm evening light",
+      "seed": 9301,
+      "exact_seconds": 1.0084368512034416,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.38598377630114555,
+          "speedup_vs_exact": 2.612640512684804,
+          "mse_vs_exact": 0.042014311999082565,
+          "psnr_vs_exact": 13.766027438058252,
+          "ssim_gaussian_vs_exact": 0.28970918519920735,
+          "lpips_alex_vs_exact": 0.6063485145568848,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-18-seed-9302",
+      "prompt": "an aerial photograph of a coral reef with small fish in warm evening light",
+      "seed": 9302,
+      "exact_seconds": 1.009419672191143,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3110128529369831,
+          "speedup_vs_exact": 3.2455882856894984,
+          "mse_vs_exact": 0.0401386022567749,
+          "psnr_vs_exact": 13.964377549860263,
+          "ssim_gaussian_vs_exact": 0.2970568332819333,
+          "lpips_alex_vs_exact": 0.5607776045799255,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-18-seed-9303",
+      "prompt": "an aerial photograph of a coral reef with small fish in warm evening light",
+      "seed": 9303,
+      "exact_seconds": 1.011213731020689,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.316892609000206,
+          "speedup_vs_exact": 3.191029712592734,
+          "mse_vs_exact": 0.030913375318050385,
+          "psnr_vs_exact": 15.098535733264104,
+          "ssim_gaussian_vs_exact": 0.4263812815309014,
+          "lpips_alex_vs_exact": 0.449016273021698,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-18-seed-9304",
+      "prompt": "an aerial photograph of a coral reef with small fish in warm evening light",
+      "seed": 9304,
+      "exact_seconds": 1.006091970950365,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3072883114218712,
+          "speedup_vs_exact": 3.2740977562570466,
+          "mse_vs_exact": 0.04499359056353569,
+          "psnr_vs_exact": 13.468493480278322,
+          "ssim_gaussian_vs_exact": 0.32544900500732815,
+          "lpips_alex_vs_exact": 0.5807151794433594,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-18-seed-9305",
+      "prompt": "an aerial photograph of a coral reef with small fish in warm evening light",
+      "seed": 9305,
+      "exact_seconds": 1.0105287618935108,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.4286250099539757,
+          "speedup_vs_exact": 2.3576056889494574,
+          "mse_vs_exact": 0.05067009851336479,
+          "psnr_vs_exact": 12.95248251348383,
+          "ssim_gaussian_vs_exact": 0.2721421818586723,
+          "lpips_alex_vs_exact": 0.5529599785804749,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-18-seed-9306",
+      "prompt": "an aerial photograph of a coral reef with small fish in warm evening light",
+      "seed": 9306,
+      "exact_seconds": 1.0120058953762054,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.315141923725605,
+          "speedup_vs_exact": 3.2112702855027373,
+          "mse_vs_exact": 0.025652190670371056,
+          "psnr_vs_exact": 15.908755406719097,
+          "ssim_gaussian_vs_exact": 0.3686045023084392,
+          "lpips_alex_vs_exact": 0.528110682964325,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-18-seed-9307",
+      "prompt": "an aerial photograph of a coral reef with small fish in warm evening light",
+      "seed": 9307,
+      "exact_seconds": 1.0185990370810032,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3902261294424534,
+          "speedup_vs_exact": 2.6102789132453927,
+          "mse_vs_exact": 0.0426129512488842,
+          "psnr_vs_exact": 13.70458386787101,
+          "ssim_gaussian_vs_exact": 0.33907163461290185,
+          "lpips_alex_vs_exact": 0.5212088227272034,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-18-seed-9308",
+      "prompt": "an aerial photograph of a coral reef with small fish in warm evening light",
+      "seed": 9308,
+      "exact_seconds": 1.0108787566423416,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.42638222873210907,
+          "speedup_vs_exact": 2.370827601441768,
+          "mse_vs_exact": 0.032623425126075745,
+          "psnr_vs_exact": 14.864704444218944,
+          "ssim_gaussian_vs_exact": 0.35223578766907376,
+          "lpips_alex_vs_exact": 0.543000340461731,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-19-seed-9301",
+      "prompt": "a long-exposure photograph of a cathedral rose window at blue hour",
+      "seed": 9301,
+      "exact_seconds": 1.0089167803525925,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.30927392467856407,
+          "speedup_vs_exact": 3.2622109393838628,
+          "mse_vs_exact": 0.07188533246517181,
+          "psnr_vs_exact": 11.433597143357197,
+          "ssim_gaussian_vs_exact": 0.3216505854899505,
+          "lpips_alex_vs_exact": 0.4757336974143982,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-19-seed-9302",
+      "prompt": "a long-exposure photograph of a cathedral rose window at blue hour",
+      "seed": 9302,
+      "exact_seconds": 1.0089415945112705,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3090061731636524,
+          "speedup_vs_exact": 3.265117923637487,
+          "mse_vs_exact": 0.04405216500163078,
+          "psnr_vs_exact": 13.560327427534926,
+          "ssim_gaussian_vs_exact": 0.533456133570826,
+          "lpips_alex_vs_exact": 0.3699862062931061,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-19-seed-9303",
+      "prompt": "a long-exposure photograph of a cathedral rose window at blue hour",
+      "seed": 9303,
+      "exact_seconds": 1.0101475417613983,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3092973716557026,
+          "speedup_vs_exact": 3.2659428573672264,
+          "mse_vs_exact": 0.039927199482917786,
+          "psnr_vs_exact": 13.987311504059253,
+          "ssim_gaussian_vs_exact": 0.34640775240437804,
+          "lpips_alex_vs_exact": 0.44996631145477295,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-19-seed-9304",
+      "prompt": "a long-exposure photograph of a cathedral rose window at blue hour",
+      "seed": 9304,
+      "exact_seconds": 1.006074532866478,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3002259209752083,
+          "speedup_vs_exact": 3.3510581951035348,
+          "mse_vs_exact": 0.0608987919986248,
+          "psnr_vs_exact": 12.153913220392866,
+          "ssim_gaussian_vs_exact": 0.33024659422665886,
+          "lpips_alex_vs_exact": 0.43585604429244995,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-19-seed-9305",
+      "prompt": "a long-exposure photograph of a cathedral rose window at blue hour",
+      "seed": 9305,
+      "exact_seconds": 1.0055775493383408,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.29613973945379257,
+          "speedup_vs_exact": 3.395618403639622,
+          "mse_vs_exact": 0.04736006259918213,
+          "psnr_vs_exact": 13.245877322466779,
+          "ssim_gaussian_vs_exact": 0.373126853510885,
+          "lpips_alex_vs_exact": 0.4326171576976776,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-19-seed-9306",
+      "prompt": "a long-exposure photograph of a cathedral rose window at blue hour",
+      "seed": 9306,
+      "exact_seconds": 1.0085074231028557,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.32053571194410324,
+          "speedup_vs_exact": 3.1463184460355067,
+          "mse_vs_exact": 0.04814865440130234,
+          "psnr_vs_exact": 13.174158454917837,
+          "ssim_gaussian_vs_exact": 0.37629846350606977,
+          "lpips_alex_vs_exact": 0.3640018105506897,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-19-seed-9307",
+      "prompt": "a long-exposure photograph of a cathedral rose window at blue hour",
+      "seed": 9307,
+      "exact_seconds": 1.0071020424365997,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.2963409014046192,
+          "speedup_vs_exact": 3.3984577817745056,
+          "mse_vs_exact": 0.04811432212591171,
+          "psnr_vs_exact": 13.177256285241278,
+          "ssim_gaussian_vs_exact": 0.3835925642979983,
+          "lpips_alex_vs_exact": 0.41658899188041687,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-19-seed-9308",
+      "prompt": "a long-exposure photograph of a cathedral rose window at blue hour",
+      "seed": 9308,
+      "exact_seconds": 1.0035958476364613,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3640394061803818,
+          "speedup_vs_exact": 2.7568329982913413,
+          "mse_vs_exact": 0.06869720667600632,
+          "psnr_vs_exact": 11.630609215992555,
+          "ssim_gaussian_vs_exact": 0.33877012248199606,
+          "lpips_alex_vs_exact": 0.479854017496109,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-20-seed-9301",
+      "prompt": "a pencil sketch of a wheelbarrow of cut flowers in dense fog",
+      "seed": 9301,
+      "exact_seconds": 1.0038674175739288,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.36961330845952034,
+          "speedup_vs_exact": 2.7159937009786304,
+          "mse_vs_exact": 0.018903378397226334,
+          "psnr_vs_exact": 17.23460572114845,
+          "ssim_gaussian_vs_exact": 0.6719042514693684,
+          "lpips_alex_vs_exact": 0.371273010969162,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-20-seed-9302",
+      "prompt": "a pencil sketch of a wheelbarrow of cut flowers in dense fog",
+      "seed": 9302,
+      "exact_seconds": 1.0034364014863968,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.29918814077973366,
+          "speedup_vs_exact": 3.3538642235994915,
+          "mse_vs_exact": 0.027663802728056908,
+          "psnr_vs_exact": 15.580881210345032,
+          "ssim_gaussian_vs_exact": 0.6230306899576137,
+          "lpips_alex_vs_exact": 0.4201095700263977,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-20-seed-9303",
+      "prompt": "a pencil sketch of a wheelbarrow of cut flowers in dense fog",
+      "seed": 9303,
+      "exact_seconds": 1.0058593340218067,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3636355698108673,
+          "speedup_vs_exact": 2.766119207053838,
+          "mse_vs_exact": 0.01666124165058136,
+          "psnr_vs_exact": 17.782926366685835,
+          "ssim_gaussian_vs_exact": 0.6641042723758294,
+          "lpips_alex_vs_exact": 0.3604532778263092,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-20-seed-9304",
+      "prompt": "a pencil sketch of a wheelbarrow of cut flowers in dense fog",
+      "seed": 9304,
+      "exact_seconds": 1.0043008551001549,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3110058195888996,
+          "speedup_vs_exact": 3.2292027732075286,
+          "mse_vs_exact": 0.01592428795993328,
+          "psnr_vs_exact": 17.979399776416138,
+          "ssim_gaussian_vs_exact": 0.6886999603274594,
+          "lpips_alex_vs_exact": 0.310733824968338,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-20-seed-9305",
+      "prompt": "a pencil sketch of a wheelbarrow of cut flowers in dense fog",
+      "seed": 9305,
+      "exact_seconds": 1.0057032480835915,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.31415247172117233,
+          "speedup_vs_exact": 3.2013220923380437,
+          "mse_vs_exact": 0.017804328352212906,
+          "psnr_vs_exact": 17.494744049399962,
+          "ssim_gaussian_vs_exact": 0.672637898697719,
+          "lpips_alex_vs_exact": 0.34685859084129333,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-20-seed-9306",
+      "prompt": "a pencil sketch of a wheelbarrow of cut flowers in dense fog",
+      "seed": 9306,
+      "exact_seconds": 1.0038438439369202,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.2968049757182598,
+          "speedup_vs_exact": 3.3821664933603146,
+          "mse_vs_exact": 0.0202307291328907,
+          "psnr_vs_exact": 16.93988464600198,
+          "ssim_gaussian_vs_exact": 0.6271875569646435,
+          "lpips_alex_vs_exact": 0.35988152027130127,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-20-seed-9307",
+      "prompt": "a pencil sketch of a wheelbarrow of cut flowers in dense fog",
+      "seed": 9307,
+      "exact_seconds": 1.004386343061924,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.35336313024163246,
+          "speedup_vs_exact": 2.8423631587571596,
+          "mse_vs_exact": 0.021153077483177185,
+          "psnr_vs_exact": 16.746264397908966,
+          "ssim_gaussian_vs_exact": 0.6427536637915581,
+          "lpips_alex_vs_exact": 0.38966482877731323,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-20-seed-9308",
+      "prompt": "a pencil sketch of a wheelbarrow of cut flowers in dense fog",
+      "seed": 9308,
+      "exact_seconds": 1.005846295505762,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3100564070045948,
+          "speedup_vs_exact": 3.244075183683775,
+          "mse_vs_exact": 0.023906860500574112,
+          "psnr_vs_exact": 16.214774526085826,
+          "ssim_gaussian_vs_exact": 0.6638783983944473,
+          "lpips_alex_vs_exact": 0.38043132424354553,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-21-seed-9301",
+      "prompt": "a long-exposure photograph of a cathedral rose window reflected in still water",
+      "seed": 9301,
+      "exact_seconds": 1.0053983628749847,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.30205734446644783,
+          "speedup_vs_exact": 3.32850162822862,
+          "mse_vs_exact": 0.03973095864057541,
+          "psnr_vs_exact": 14.008709560297293,
+          "ssim_gaussian_vs_exact": 0.39898787360194427,
+          "lpips_alex_vs_exact": 0.4698646664619446,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-21-seed-9302",
+      "prompt": "a long-exposure photograph of a cathedral rose window reflected in still water",
+      "seed": 9302,
+      "exact_seconds": 1.0031731650233269,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.35041529685258865,
+          "speedup_vs_exact": 2.8628121375801063,
+          "mse_vs_exact": 0.02125755324959755,
+          "psnr_vs_exact": 16.724867243540864,
+          "ssim_gaussian_vs_exact": 0.6433745646989918,
+          "lpips_alex_vs_exact": 0.31586340069770813,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-21-seed-9303",
+      "prompt": "a long-exposure photograph of a cathedral rose window reflected in still water",
+      "seed": 9303,
+      "exact_seconds": 1.0022754520177841,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3647676110267639,
+          "speedup_vs_exact": 2.747709560058074,
+          "mse_vs_exact": 0.05197399482131004,
+          "psnr_vs_exact": 12.842139011841745,
+          "ssim_gaussian_vs_exact": 0.378070861397364,
+          "lpips_alex_vs_exact": 0.5073692798614502,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-21-seed-9304",
+      "prompt": "a long-exposure photograph of a cathedral rose window reflected in still water",
+      "seed": 9304,
+      "exact_seconds": 1.0069504901766777,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.35975950211286545,
+          "speedup_vs_exact": 2.7989545356352323,
+          "mse_vs_exact": 0.037474025040864944,
+          "psnr_vs_exact": 14.262696573424027,
+          "ssim_gaussian_vs_exact": 0.4497758251371109,
+          "lpips_alex_vs_exact": 0.412283718585968,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-21-seed-9305",
+      "prompt": "a long-exposure photograph of a cathedral rose window reflected in still water",
+      "seed": 9305,
+      "exact_seconds": 1.007648691534996,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3384251818060875,
+          "speedup_vs_exact": 2.9774636927353813,
+          "mse_vs_exact": 0.041749320924282074,
+          "psnr_vs_exact": 13.7935058416207,
+          "ssim_gaussian_vs_exact": 0.37646742860833265,
+          "lpips_alex_vs_exact": 0.4950615465641022,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-21-seed-9306",
+      "prompt": "a long-exposure photograph of a cathedral rose window reflected in still water",
+      "seed": 9306,
+      "exact_seconds": 1.013643004000187,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3151230737566948,
+          "speedup_vs_exact": 3.2166575170652734,
+          "mse_vs_exact": 0.029691746458411217,
+          "psnr_vs_exact": 15.273642565991814,
+          "ssim_gaussian_vs_exact": 0.49207792254970983,
+          "lpips_alex_vs_exact": 0.4579986333847046,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-21-seed-9307",
+      "prompt": "a long-exposure photograph of a cathedral rose window reflected in still water",
+      "seed": 9307,
+      "exact_seconds": 1.0091874115169048,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.30859624966979027,
+          "speedup_vs_exact": 3.270251704603584,
+          "mse_vs_exact": 0.0317799337208271,
+          "psnr_vs_exact": 14.978470128778234,
+          "ssim_gaussian_vs_exact": 0.5063705673602706,
+          "lpips_alex_vs_exact": 0.4075726270675659,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-21-seed-9308",
+      "prompt": "a long-exposure photograph of a cathedral rose window reflected in still water",
+      "seed": 9308,
+      "exact_seconds": 1.013987809419632,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.31940997019410133,
+          "speedup_vs_exact": 3.1745653049071842,
+          "mse_vs_exact": 0.04180376976728439,
+          "psnr_vs_exact": 13.787845527869626,
+          "ssim_gaussian_vs_exact": 0.43431571169737576,
+          "lpips_alex_vs_exact": 0.39082929491996765,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-22-seed-9301",
+      "prompt": "an aerial photograph of a vintage typewriter on a desk under harsh midday sun",
+      "seed": 9301,
+      "exact_seconds": 1.0083763599395752,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3748740293085575,
+          "speedup_vs_exact": 2.689907225100366,
+          "mse_vs_exact": 0.0643749088048935,
+          "psnr_vs_exact": 11.912833731827462,
+          "ssim_gaussian_vs_exact": 0.5173499473248434,
+          "lpips_alex_vs_exact": 0.5186755657196045,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-22-seed-9302",
+      "prompt": "an aerial photograph of a vintage typewriter on a desk under harsh midday sun",
+      "seed": 9302,
+      "exact_seconds": 1.0099034756422043,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3863220438361168,
+          "speedup_vs_exact": 2.6141492357361296,
+          "mse_vs_exact": 0.09607142210006714,
+          "psnr_vs_exact": 10.174057805938435,
+          "ssim_gaussian_vs_exact": 0.3504645831236873,
+          "lpips_alex_vs_exact": 0.5985673069953918,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-22-seed-9303",
+      "prompt": "an aerial photograph of a vintage typewriter on a desk under harsh midday sun",
+      "seed": 9303,
+      "exact_seconds": 1.0101065784692764,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.4065512418746948,
+          "speedup_vs_exact": 2.4845738357887157,
+          "mse_vs_exact": 0.08660048246383667,
+          "psnr_vs_exact": 10.624796884584233,
+          "ssim_gaussian_vs_exact": 0.32781196930286566,
+          "lpips_alex_vs_exact": 0.5916230082511902,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-22-seed-9304",
+      "prompt": "an aerial photograph of a vintage typewriter on a desk under harsh midday sun",
+      "seed": 9304,
+      "exact_seconds": 1.01076889783144,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3203962631523609,
+          "speedup_vs_exact": 3.1547462129755863,
+          "mse_vs_exact": 0.07303864508867264,
+          "psnr_vs_exact": 11.36447291826041,
+          "ssim_gaussian_vs_exact": 0.44450225254651277,
+          "lpips_alex_vs_exact": 0.5076150298118591,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-22-seed-9305",
+      "prompt": "an aerial photograph of a vintage typewriter on a desk under harsh midday sun",
+      "seed": 9305,
+      "exact_seconds": 1.0094625800848007,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.31092265620827675,
+          "speedup_vs_exact": 3.2466678124883743,
+          "mse_vs_exact": 0.0850866436958313,
+          "psnr_vs_exact": 10.70138607065137,
+          "ssim_gaussian_vs_exact": 0.33987280311411566,
+          "lpips_alex_vs_exact": 0.5297492146492004,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-22-seed-9306",
+      "prompt": "an aerial photograph of a vintage typewriter on a desk under harsh midday sun",
+      "seed": 9306,
+      "exact_seconds": 1.0069601014256477,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3120013698935509,
+          "speedup_vs_exact": 3.227422051926259,
+          "mse_vs_exact": 0.08848106861114502,
+          "psnr_vs_exact": 10.531496409091659,
+          "ssim_gaussian_vs_exact": 0.3601364293544398,
+          "lpips_alex_vs_exact": 0.5940638780593872,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-22-seed-9307",
+      "prompt": "an aerial photograph of a vintage typewriter on a desk under harsh midday sun",
+      "seed": 9307,
+      "exact_seconds": 1.0083310417830944,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3573447987437248,
+          "speedup_vs_exact": 2.8217314071114665,
+          "mse_vs_exact": 0.11050465703010559,
+          "psnr_vs_exact": 9.566194189937264,
+          "ssim_gaussian_vs_exact": 0.326065429789279,
+          "lpips_alex_vs_exact": 0.5977916717529297,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-22-seed-9308",
+      "prompt": "an aerial photograph of a vintage typewriter on a desk under harsh midday sun",
+      "seed": 9308,
+      "exact_seconds": 1.0255702324211597,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3067595809698105,
+          "speedup_vs_exact": 3.343237818942289,
+          "mse_vs_exact": 0.09413854777812958,
+          "psnr_vs_exact": 10.262325055918742,
+          "ssim_gaussian_vs_exact": 0.32863110018374825,
+          "lpips_alex_vs_exact": 0.5746345520019531,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-23-seed-9301",
+      "prompt": "a detailed digital illustration of a cathedral rose window lit by a single window",
+      "seed": 9301,
+      "exact_seconds": 1.0102576054632664,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3057539351284504,
+          "speedup_vs_exact": 3.3041524225643952,
+          "mse_vs_exact": 0.06731297075748444,
+          "psnr_vs_exact": 11.719012420816142,
+          "ssim_gaussian_vs_exact": 0.28891464466282907,
+          "lpips_alex_vs_exact": 0.41400787234306335,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-23-seed-9302",
+      "prompt": "a detailed digital illustration of a cathedral rose window lit by a single window",
+      "seed": 9302,
+      "exact_seconds": 1.0179536864161491,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.33449074253439903,
+          "speedup_vs_exact": 3.0432940496446257,
+          "mse_vs_exact": 0.03633245453238487,
+          "psnr_vs_exact": 14.39705261265781,
+          "ssim_gaussian_vs_exact": 0.3398942005845235,
+          "lpips_alex_vs_exact": 0.4297091066837311,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-23-seed-9303",
+      "prompt": "a detailed digital illustration of a cathedral rose window lit by a single window",
+      "seed": 9303,
+      "exact_seconds": 1.0097742788493633,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.30826058611273766,
+          "speedup_vs_exact": 3.2757164695718406,
+          "mse_vs_exact": 0.04058430343866348,
+          "psnr_vs_exact": 13.916419035675373,
+          "ssim_gaussian_vs_exact": 0.37026869739653834,
+          "lpips_alex_vs_exact": 0.4454720914363861,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-23-seed-9304",
+      "prompt": "a detailed digital illustration of a cathedral rose window lit by a single window",
+      "seed": 9304,
+      "exact_seconds": 1.008059784770012,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3173181563615799,
+          "speedup_vs_exact": 3.1768109216585168,
+          "mse_vs_exact": 0.045671284198760986,
+          "psnr_vs_exact": 13.403567765998218,
+          "ssim_gaussian_vs_exact": 0.32623796445441533,
+          "lpips_alex_vs_exact": 0.4545503854751587,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-23-seed-9305",
+      "prompt": "a detailed digital illustration of a cathedral rose window lit by a single window",
+      "seed": 9305,
+      "exact_seconds": 1.009144090116024,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.39811304211616516,
+          "speedup_vs_exact": 2.534817962134399,
+          "mse_vs_exact": 0.04706568270921707,
+          "psnr_vs_exact": 13.272956372905124,
+          "ssim_gaussian_vs_exact": 0.35007455351376887,
+          "lpips_alex_vs_exact": 0.44160395860671997,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-23-seed-9306",
+      "prompt": "a detailed digital illustration of a cathedral rose window lit by a single window",
+      "seed": 9306,
+      "exact_seconds": 1.007584322243929,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.34062010422348976,
+          "speedup_vs_exact": 2.9580882330504674,
+          "mse_vs_exact": 0.039278544485569,
+          "psnr_vs_exact": 14.058446138992833,
+          "ssim_gaussian_vs_exact": 0.3596971158912958,
+          "lpips_alex_vs_exact": 0.4600398540496826,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-23-seed-9307",
+      "prompt": "a detailed digital illustration of a cathedral rose window lit by a single window",
+      "seed": 9307,
+      "exact_seconds": 1.0115376971662045,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.32950981706380844,
+          "speedup_vs_exact": 3.069825676757678,
+          "mse_vs_exact": 0.05346715450286865,
+          "psnr_vs_exact": 12.71912928235282,
+          "ssim_gaussian_vs_exact": 0.35361775082333063,
+          "lpips_alex_vs_exact": 0.40503865480422974,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "prompt-23-seed-9308",
+      "prompt": "a detailed digital illustration of a cathedral rose window lit by a single window",
+      "seed": 9308,
+      "exact_seconds": 1.009517852216959,
+      "exact_clip_score": null,
+      "variants": {
+        "matched_naive_s025": {
+          "seconds": 0.3333098068833351,
+          "speedup_vs_exact": 3.0287673250799663,
+          "mse_vs_exact": 0.04210571572184563,
+          "psnr_vs_exact": 13.756589460178406,
+          "ssim_gaussian_vs_exact": 0.38858196079358187,
+          "lpips_alex_vs_exact": 0.49806690216064453,
+          "runtime": {
+            "full_steps": 4,
+            "reused_steps": 16,
+            "exact_block_calls": 112,
+            "reused_block_calls": 16,
+            "surrogate_block_calls": 16,
+            "oracle_refresh_block_calls": 0,
+            "observer_block_calls": 0
+          }
+        }
+      }
+    }
+  ]
+}

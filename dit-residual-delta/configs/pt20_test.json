@@ -1,0 +1,39 @@
+[
+ {
+  "name": "A_i5_check",
+  "cache_interval": 5,
+  "num_segments": 1
+ },
+ {
+  "name": "PT_i3_s075",
+  "cache_interval": 3,
+  "num_segments": 1,
+  "taylor_order": 1,
+  "surrogate_checkpoint": "runs/pt20_i3/best.pt",
+  "surrogate_scale": 0.75
+ },
+ {
+  "name": "PT_i5_s050",
+  "cache_interval": 5,
+  "num_segments": 1,
+  "taylor_order": 1,
+  "surrogate_checkpoint": "runs/pt20_i5/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "name": "naive_i3_s025",
+  "cache_interval": 3,
+  "num_segments": 1,
+  "taylor_order": 1,
+  "surrogate_checkpoint": "runs/fix_base2x_norm/best.pt",
+  "surrogate_scale": 0.25
+ },
+ {
+  "name": "naive_i5_s050",
+  "cache_interval": 5,
+  "num_segments": 1,
+  "taylor_order": 1,
+  "surrogate_checkpoint": "runs/fix_base2x_norm/best.pt",
+  "surrogate_scale": 0.5
+ }
+]

@@ -1,0 +1,10 @@
+[
+ {
+  "name": "matched_naive_s025",
+  "cache_interval": 5,
+  "num_segments": 1,
+  "taylor_order": 1,
+  "surrogate_checkpoint": "runs/ctrl_k1/best.pt",
+  "surrogate_scale": 0.25
+ }
+]
