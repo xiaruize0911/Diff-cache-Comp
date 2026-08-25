@@ -8,15 +8,12 @@
 
 ## 开放项（按性价比降序）
 
-### 1. 更新 `paper/` 正文
-- **解锁**：论文与实测对齐。现在有四处冲突。
-- **具体四处**：
-  1. §mechanism 的 "The more faithfully C imitates the true block, the larger the feedback gain" —— 决定性的是**是否读当前状态**，不是忠实度。三个证据点都指这个。
-  2. Related Work 里对 TaylorSeer 的让步（"cannot answer without the baselines we did not run"）—— 现在跑了，而且有交叉点结论。
-  3. 新增 Block Caching 作为机制的预注册预测确认。
-  4. `tab:granularity` 应换成受控阶梯（n=192、同配方），旧的 n=8 未受控版本降为附录或删除。
-  5. 新增 4.4.1 的方法结果 —— 论文现在的 Conclusion 写着"did not demonstrate a solution"，而 post-Taylor 叠加在 50 步上是一个可证的解。措辞需要重写为"在一个受限区间上有解"。
-- **估计**：2 小时，无 GPU。**需要人过一遍科学措辞**，所以我会先出 diff 而不是直接改。
+### 1. 审阅并应用 `paper/PROPOSED_EDITS.md`
+- **状态**：diff 已起草（`paper/PROPOSED_EDITS.md`），**未应用，等你审阅**。任何 `.tex` 都没动。
+- **内容**：六处冲突，每处含逐字原文、提议替换、支撑数据。站点 1（机制的因果归错成「忠实度」）与站点 2（`J_b` 已测，不再是 argued）是**必改** —— 现在的文字与实测直接矛盾。其余四处是陈述过时。
+- **另附**：四项结构性改动我没起草（Contributions、Abstract、negative findings 计数、Cost accounting），因为它们改的是骨架不是句子。
+- **两处需要你定**：50 步结果是否进主表（n=48 单种子）；README 那两个无出处的分数。
+- **为什么不直接改**：论文的科学措辞是你的。我给证据和草稿，不替你定调。
 
 ### 2. 受控阶梯的数据量严格匹配
 - **解锁**：关掉边界第 1 条。现在 K=1/2/4 用 112 张图（1,792/3,584/7,168 slot），K=28 用 32 张图（14,336 slot）—— 梯度样本偏向 K=28，图像多样性偏向低 K。
