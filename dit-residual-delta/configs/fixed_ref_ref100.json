@@ -1,0 +1,79 @@
+[
+ {
+  "name": "exact_4",
+  "steps": 4,
+  "exact": true
+ },
+ {
+  "name": "exact_5",
+  "steps": 5,
+  "exact": true
+ },
+ {
+  "name": "exact_6",
+  "steps": 6,
+  "exact": true
+ },
+ {
+  "name": "exact_7",
+  "steps": 7,
+  "exact": true
+ },
+ {
+  "name": "exact_8",
+  "steps": 8,
+  "exact": true
+ },
+ {
+  "name": "exact_10",
+  "steps": 10,
+  "exact": true
+ },
+ {
+  "name": "cache_50_i15",
+  "steps": 50,
+  "cache_interval": 15,
+  "num_segments": 1
+ },
+ {
+  "name": "cache_100_i20",
+  "steps": 100,
+  "cache_interval": 20,
+  "num_segments": 1
+ },
+ {
+  "name": "cache_50_i5",
+  "steps": 50,
+  "cache_interval": 5,
+  "num_segments": 1
+ },
+ {
+  "name": "ours_20_i5",
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/fix_base2x_norm/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "name": "ours_20_i4",
+  "steps": 20,
+  "cache_interval": 4,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/fix_base2x_norm/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "name": "ours_20_i3",
+  "steps": 20,
+  "cache_interval": 3,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/fix_base2x_norm/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "name": "exact_9",
+  "steps": 9,
+  "exact": true
+ }
+]
