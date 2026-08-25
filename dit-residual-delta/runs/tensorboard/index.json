@@ -1,0 +1,370 @@
+[
+  {
+    "run": "bc_k1",
+    "steps": 8000,
+    "best_step": 8000,
+    "best_val_rel_mse": 0.47789511116654565,
+    "truncated": true,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "bc_k28",
+    "steps": 8000,
+    "best_step": 8000,
+    "best_val_rel_mse": 0.2686697845630586,
+    "truncated": true,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "big_s100_i10",
+    "steps": 16000,
+    "best_step": 10000,
+    "best_val_rel_mse": 0.47581850480124777,
+    "truncated": false,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "big_s100_i20",
+    "steps": 16000,
+    "best_step": 10000,
+    "best_val_rel_mse": 0.37036177072321536,
+    "truncated": false,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "big_s200_i20",
+    "steps": 16000,
+    "best_step": 16000,
+    "best_val_rel_mse": 0.43040733650181734,
+    "truncated": true,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "c_r128_w384",
+    "steps": 12000,
+    "best_step": 12000,
+    "best_val_rel_mse": 0.05374381610341727,
+    "truncated": true,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "c_r64",
+    "steps": 12000,
+    "best_step": 12000,
+    "best_val_rel_mse": 0.06432333897832113,
+    "truncated": true,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "c_w256d3",
+    "steps": 6000,
+    "best_step": 6000,
+    "best_val_rel_mse": 0.11742202166520749,
+    "truncated": true,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "c_w512d4",
+    "steps": 12000,
+    "best_step": 12000,
+    "best_val_rel_mse": 0.059800612716382685,
+    "truncated": true,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "ck2",
+    "steps": 16000,
+    "best_step": 4000,
+    "best_val_rel_mse": 0.27244150844688325,
+    "truncated": false,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "ck4",
+    "steps": 16000,
+    "best_step": 8000,
+    "best_val_rel_mse": 0.20206960299812748,
+    "truncated": false,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "coco_inv",
+    "steps": 16000,
+    "best_step": 12000,
+    "best_val_rel_mse": 0.38037430444864495,
+    "truncated": false,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "coco_std",
+    "steps": 16000,
+    "best_step": 6000,
+    "best_val_rel_mse": 0.36960358747730815,
+    "truncated": false,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "cseg2_big",
+    "steps": 16000,
+    "best_step": 6000,
+    "best_val_rel_mse": 0.3199472512771744,
+    "truncated": false,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "cseg2_mix",
+    "steps": 16000,
+    "best_step": 8000,
+    "best_val_rel_mse": 0.31656420736428276,
+    "truncated": false,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "cseg_w512d4_mix",
+    "steps": 8000,
+    "best_step": 7000,
+    "best_val_rel_mse": 0.3453156876771852,
+    "truncated": false,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "cseg_w512d4_r512",
+    "steps": 8000,
+    "best_step": 5000,
+    "best_val_rel_mse": 0.3485607916118461,
+    "truncated": false,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "cseg_w768d6",
+    "steps": 8000,
+    "best_step": 2000,
+    "best_val_rel_mse": 0.353917556568178,
+    "truncated": false,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "ctrl_k1",
+    "steps": 16000,
+    "best_step": 2000,
+    "best_val_rel_mse": 0.3934880372725134,
+    "truncated": false,
+    "best_at_first_eval": true
+  },
+  {
+    "run": "ctrl_k14",
+    "steps": 16000,
+    "best_step": 16000,
+    "best_val_rel_mse": 0.06834437071997429,
+    "truncated": true,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "ctrl_k2",
+    "steps": 16000,
+    "best_step": 2000,
+    "best_val_rel_mse": 0.3149477893580172,
+    "truncated": false,
+    "best_at_first_eval": true
+  },
+  {
+    "run": "ctrl_k28",
+    "steps": 16000,
+    "best_step": 16000,
+    "best_val_rel_mse": 0.05912206739833143,
+    "truncated": true,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "ctrl_k4",
+    "steps": 16000,
+    "best_step": 4000,
+    "best_val_rel_mse": 0.23818726514433305,
+    "truncated": false,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "ctrl_k7",
+    "steps": 16000,
+    "best_step": 8000,
+    "best_val_rel_mse": 0.14375623027942894,
+    "truncated": false,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "fix_agg",
+    "steps": 16000,
+    "best_step": 16000,
+    "best_val_rel_mse": 0.2960849701392778,
+    "truncated": true,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "fix_agg_norm",
+    "steps": 16000,
+    "best_step": 16000,
+    "best_val_rel_mse": 0.31039928695275143,
+    "truncated": true,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "fix_base",
+    "steps": 16000,
+    "best_step": 6000,
+    "best_val_rel_mse": 0.32573457382191956,
+    "truncated": false,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "fix_base2x",
+    "steps": 16000,
+    "best_step": 16000,
+    "best_val_rel_mse": 0.3015289466139314,
+    "truncated": true,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "fix_base2x_norm",
+    "steps": 16000,
+    "best_step": 16000,
+    "best_val_rel_mse": 0.31485627684812734,
+    "truncated": true,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "fix_base_norm",
+    "steps": 16000,
+    "best_step": 12000,
+    "best_val_rel_mse": 0.3359339723560675,
+    "truncated": false,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "fix_dagonly",
+    "steps": 16000,
+    "best_step": 8000,
+    "best_val_rel_mse": 0.32492177687288554,
+    "truncated": false,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "post_taylor",
+    "steps": 16000,
+    "best_step": 2000,
+    "best_val_rel_mse": 0.7444334222188516,
+    "truncated": false,
+    "best_at_first_eval": true
+  },
+  {
+    "run": "pt20_i3",
+    "steps": 16000,
+    "best_step": 2000,
+    "best_val_rel_mse": 0.843457554058982,
+    "truncated": false,
+    "best_at_first_eval": true
+  },
+  {
+    "run": "pt20_i5",
+    "steps": 16000,
+    "best_step": 2000,
+    "best_val_rel_mse": 0.6322787374727721,
+    "truncated": false,
+    "best_at_first_eval": true
+  },
+  {
+    "run": "rep_agg_s3037",
+    "steps": 16000,
+    "best_step": 16000,
+    "best_val_rel_mse": 0.2961122639002839,
+    "truncated": true,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "rep_agg_s4093",
+    "steps": 16000,
+    "best_step": 16000,
+    "best_val_rel_mse": 0.295681273948556,
+    "truncated": true,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "rep_norm_s3037",
+    "steps": 16000,
+    "best_step": 16000,
+    "best_val_rel_mse": 0.31102384100645775,
+    "truncated": true,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "rep_norm_s4093",
+    "steps": 16000,
+    "best_step": 16000,
+    "best_val_rel_mse": 0.3103849766581033,
+    "truncated": true,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "s50_inv",
+    "steps": 16000,
+    "best_step": 10000,
+    "best_val_rel_mse": 0.465518468275451,
+    "truncated": false,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "s50_std",
+    "steps": 16000,
+    "best_step": 4000,
+    "best_val_rel_mse": 0.4517002361289458,
+    "truncated": false,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "sm_inv_2027",
+    "steps": 16000,
+    "best_step": 12000,
+    "best_val_rel_mse": 0.3359339723560675,
+    "truncated": false,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "sm_inv_3037",
+    "steps": 16000,
+    "best_step": 16000,
+    "best_val_rel_mse": 0.33499978798534336,
+    "truncated": true,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "sm_inv_4093",
+    "steps": 16000,
+    "best_step": 16000,
+    "best_val_rel_mse": 0.3338823345886935,
+    "truncated": true,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "sm_std_2027",
+    "steps": 16000,
+    "best_step": 6000,
+    "best_val_rel_mse": 0.32573457382191956,
+    "truncated": false,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "sm_std_3037",
+    "steps": 16000,
+    "best_step": 8000,
+    "best_val_rel_mse": 0.3268679005308369,
+    "truncated": false,
+    "best_at_first_eval": false
+  },
+  {
+    "run": "sm_std_4093",
+    "steps": 16000,
+    "best_step": 8000,
+    "best_val_rel_mse": 0.3238340763849628,
+    "truncated": false,
+    "best_at_first_eval": false
+  }
+]
