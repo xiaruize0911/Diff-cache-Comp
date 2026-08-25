@@ -1,0 +1,17 @@
+{
+ "checkpoint": "runs/s50_inv/best.pt",
+ "num_blocks": 1,
+ "scale": 0.75,
+ "per_site": {
+  "0": {
+   "median": 22.602153778076172,
+   "min": 5.747286796569824,
+   "max": 129.57904052734375,
+   "n_states": 10
+  }
+ },
+ "rho_median_over_sites": 22.602153778076172,
+ "rho_max_over_sites": 22.602153778076172,
+ "log_product_over_sites": 3.1180452016523668,
+ "amplification_per_reuse_step": 22.602153778076175
+}

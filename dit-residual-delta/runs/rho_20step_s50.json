@@ -1,0 +1,17 @@
+{
+ "checkpoint": "runs/fix_base2x_norm/best.pt",
+ "num_blocks": 1,
+ "scale": 0.5,
+ "per_site": {
+  "0": {
+   "median": 10.82716178894043,
+   "min": 3.6281449794769287,
+   "max": 23.79387855529785,
+   "n_states": 10
+  }
+ },
+ "rho_median_over_sites": 10.82716178894043,
+ "rho_max_over_sites": 10.82716178894043,
+ "log_product_over_sites": 2.382057957316812,
+ "amplification_per_reuse_step": 10.82716178894043
+}
