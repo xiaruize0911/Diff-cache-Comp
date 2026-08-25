@@ -1,0 +1,62 @@
+[
+ {
+  "name": "exact_20",
+  "steps": 20,
+  "exact": true
+ },
+ {
+  "name": "cache_20_i5",
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 1
+ },
+ {
+  "name": "ours_20_i5",
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/fix_base2x_norm/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "name": "ours_20_i4",
+  "steps": 20,
+  "cache_interval": 4,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/fix_base2x_norm/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "name": "cache_50_i5",
+  "steps": 50,
+  "cache_interval": 5,
+  "num_segments": 1
+ },
+ {
+  "name": "cache_50_i10",
+  "steps": 50,
+  "cache_interval": 10,
+  "num_segments": 1
+ },
+ {
+  "name": "cache_50_i12",
+  "steps": 50,
+  "cache_interval": 12,
+  "num_segments": 1
+ },
+ {
+  "name": "taylor_50_i10",
+  "steps": 50,
+  "cache_interval": 10,
+  "num_segments": 1,
+  "taylor_order": 1
+ },
+ {
+  "name": "ours_50_i5",
+  "steps": 50,
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/s50_inv/best.pt",
+  "surrogate_scale": 0.75
+ }
+]

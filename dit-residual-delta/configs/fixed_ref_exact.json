@@ -1,0 +1,37 @@
+[
+ {
+  "name": "exact_3",
+  "steps": 3,
+  "exact": true
+ },
+ {
+  "name": "exact_4",
+  "steps": 4,
+  "exact": true
+ },
+ {
+  "name": "exact_5",
+  "steps": 5,
+  "exact": true
+ },
+ {
+  "name": "exact_6",
+  "steps": 6,
+  "exact": true
+ },
+ {
+  "name": "exact_8",
+  "steps": 8,
+  "exact": true
+ },
+ {
+  "name": "exact_12",
+  "steps": 12,
+  "exact": true
+ },
+ {
+  "name": "exact_25",
+  "steps": 25,
+  "exact": true
+ }
+]

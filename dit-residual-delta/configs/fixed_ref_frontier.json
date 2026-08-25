@@ -1,0 +1,70 @@
+[
+ {
+  "name": "cache_50_i7",
+  "steps": 50,
+  "cache_interval": 7,
+  "num_segments": 1
+ },
+ {
+  "name": "cache_50_i8",
+  "steps": 50,
+  "cache_interval": 8,
+  "num_segments": 1
+ },
+ {
+  "name": "cache_50_i15",
+  "steps": 50,
+  "cache_interval": 15,
+  "num_segments": 1
+ },
+ {
+  "name": "cache_100_i14",
+  "steps": 100,
+  "cache_interval": 14,
+  "num_segments": 1
+ },
+ {
+  "name": "cache_100_i20",
+  "steps": 100,
+  "cache_interval": 20,
+  "num_segments": 1
+ },
+ {
+  "name": "cache_100_i25",
+  "steps": 100,
+  "cache_interval": 25,
+  "num_segments": 1
+ },
+ {
+  "name": "cache_100_i34",
+  "steps": 100,
+  "cache_interval": 34,
+  "num_segments": 1
+ },
+ {
+  "name": "ours_20_i2",
+  "steps": 20,
+  "cache_interval": 2,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/fix_base2x_norm/best.pt",
+  "surrogate_scale": 0.25
+ },
+ {
+  "name": "ours_20_i3",
+  "steps": 20,
+  "cache_interval": 3,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/fix_base2x_norm/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "name": "exact_10",
+  "steps": 10,
+  "exact": true
+ },
+ {
+  "name": "exact_15",
+  "steps": 15,
+  "exact": true
+ }
+]
