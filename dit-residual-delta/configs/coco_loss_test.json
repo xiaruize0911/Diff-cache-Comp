@@ -1,0 +1,35 @@
+[
+ {
+  "name": "A_cache_i5",
+  "cache_interval": 5,
+  "num_segments": 1
+ },
+ {
+  "name": "std_s050",
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/coco_std/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "name": "std_s075",
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/coco_std/best.pt",
+  "surrogate_scale": 0.75
+ },
+ {
+  "name": "inv_s050",
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/coco_inv/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "name": "inv_s075",
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/coco_inv/best.pt",
+  "surrogate_scale": 0.75
+ }
+]
