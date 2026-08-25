@@ -50,9 +50,16 @@ def gbc(k, m="ssim_gaussian_vs_exact"):
 bc_base = gbc("A_cache_i5")
 BC = "#9467bd"
 fig, ax = plt.subplots(figsize=(4.4, 2.9))
-# learned corrector, sigma=1, from the paper's granularity table (n=8 design split)
-Kl = [1, 2, 4, 28]; dl = [+0.0516, -0.2352, -0.2509, -0.3116]
-ax.plot(Kl, dl, "D--", color=OURS, lw=1.4, ms=5, label="learned corrector, $\\sigma$=1")
+# learned corrector at sigma=1, CONTROLLED ladder: identical recipe at every K
+# (w512 d4 rank256 mix_tokens, 16k steps, batch 48, seed 2027), n=192
+ctrl = load("ctrl_ladder_test/results.json")["aggregate"]
+def gc(k, m="ssim_gaussian_vs_exact"):
+    v = ctrl[k][m]; return v["mean"] if isinstance(v, dict) else v
+ctrl_base = gc("A_cache_i5")
+Kl = [1, 2, 4, 28]
+dl = [gc(f"ctrl_K{k}_s100") - ctrl_base for k in Kl]
+ax.plot(Kl, dl, "D--", color=OURS, lw=1.4, ms=5,
+        label="learned corrector, $\\sigma$=1 (matched recipe)")
 tay = [(1, g(a20, "taylor1_i5") - g(a20, "fixed_i5")),
        (28, g(a20, "taylor1_K28_i5") - g(a20, "fixed_i5"))]
 ax.plot([k for k, _ in tay], [v for _, v in tay], "s-", color=TAY, lw=1.4, ms=5,
@@ -60,9 +67,7 @@ ax.plot([k for k, _ in tay], [v for _, v in tay], "s-", color=TAY, lw=1.4, ms=5,
 ax.plot([1, 28], [gbc("D_bc_K1_s100") - bc_base, gbc("D_bc_K28_s100") - bc_base],
         "v-", color=BC, lw=1.4, ms=5.5,
         label="Block Caching scale-shift (state-independent)")
-ax.plot([28], [gbc("C_ours_K28_s100") - bc_base], "D", color=OURS, ms=5, mfc="white")
-ax.annotate("ours, $\\sigma$=1, $n$=192", (28, gbc("C_ours_K28_s100") - bc_base),
-            textcoords="offset points", xytext=(-64, 6), fontsize=6.0, color=OURS)
+
 ax.axhline(0, color="0.6", lw=0.8, ls=":")
 ax.set_xscale("log"); ax.set_xticks(Kl); ax.set_xticklabels([str(k) for k in Kl])
 ax.set_xlabel("$K$  (injection sites per reuse step)")

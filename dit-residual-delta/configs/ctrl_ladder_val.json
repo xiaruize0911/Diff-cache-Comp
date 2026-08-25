@@ -1,0 +1,67 @@
+[
+ {
+  "name": "A_cache_i5",
+  "cache_interval": 5,
+  "num_segments": 1
+ },
+ {
+  "name": "ctrl_K1_s020",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k1/best.pt",
+  "surrogate_scale": 0.2,
+  "num_segments": 1
+ },
+ {
+  "name": "ctrl_K1_s050",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k1/best.pt",
+  "surrogate_scale": 0.5,
+  "num_segments": 1
+ },
+ {
+  "name": "ctrl_K1_s100",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k1/best.pt",
+  "surrogate_scale": 1.0,
+  "num_segments": 1
+ },
+ {
+  "name": "ctrl_K4_s020",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 0.2,
+  "num_segments": 4
+ },
+ {
+  "name": "ctrl_K4_s050",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 0.5,
+  "num_segments": 4
+ },
+ {
+  "name": "ctrl_K4_s100",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 1.0,
+  "num_segments": 4
+ },
+ {
+  "name": "ctrl_K28_s020",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k28/best.pt",
+  "surrogate_scale": 0.2
+ },
+ {
+  "name": "ctrl_K28_s050",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k28/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "name": "ctrl_K28_s100",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k28/best.pt",
+  "surrogate_scale": 1.0
+ }
+]
