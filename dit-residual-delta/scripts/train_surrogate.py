@@ -75,12 +75,21 @@ def main() -> None:
     parser.add_argument("--normalize-loss", action="store_true",
                         help="per-slot scale-invariant loss; without it the single global\n                             delta_residual scale makes the gradient magnitude-weighted, so\n                             long horizons (3.3x the rms of horizon 1) dominate training")
     parser.add_argument("--seed", type=int, default=2027)
+    parser.add_argument("--bank-store", choices=["cuda", "cpu"], default="cuda",
+                        help="where the feature bank lives. 'cpu' keeps it in pinned "
+                             "host RAM and stages each batch to the GPU, which lifts "
+                             "the split-size ceiling from VRAM (~50k slots) to RAM")
+    parser.add_argument("--patience", type=int, default=0,
+                        help="stop after this many validations with no improvement "
+                             "(0 = off). Note the LR schedule is cosine over --steps, "
+                             "so a run stopped early is NOT annealed: use this to PROBE "
+                             "for the right budget, then retrain with --steps set to it.")
     args = parser.parse_args()
 
     torch.manual_seed(args.seed)
     out = Path(args.output_dir); out.mkdir(parents=True, exist_ok=True)
-    train = SlotDataset(args.train_dir)
-    val = SlotDataset(args.val_dir)
+    train = SlotDataset(args.train_dir, store=args.bank_store)
+    val = SlotDataset(args.val_dir, store=args.bank_store)
     scale = train.stats()
     print(json.dumps({"train_slots": train.num_slots, "val_slots": val.num_slots,
                       "tokens": train.tokens, "rms": {k: round(v, 5) for k, v in scale.items()}}), flush=True)
@@ -103,6 +112,7 @@ def main() -> None:
         return 0.5 * (1 + math.cos(math.pi * progress))
 
     history, best = [], {"rel_mse": float("inf"), "step": -1}
+    stale, stopped_early = 0, None
     start = time.perf_counter()
     for step in range(1, args.steps + 1):
         for group in optimizer.param_groups:
@@ -133,17 +143,30 @@ def main() -> None:
                               "seconds": round(time.perf_counter() - start)}), flush=True)
             if metrics["rel_mse"] < best["rel_mse"]:
                 best = {"rel_mse": metrics["rel_mse"], "step": step, "metrics": metrics}
+                stale = 0
                 torch.save({"model": model.state_dict(), "config": cfg.__dict__,
                             "scale": scale, "step": step,
                             "val_rel_mse": metrics["rel_mse"]}, out / "best.pt")
+            else:
+                stale += 1
+                if args.patience and stale >= args.patience:
+                    stopped_early = step
+                    print(json.dumps({"stopped_early_at": step,
+                                      "validations_without_improvement": stale}), flush=True)
+                    break
     # Also persist the FINAL step, so a contrast can be made selection-free: choosing
     # `best.pt` by validation rel-MSE is exactly the criterion this project argues is
     # anti-correlated with deployed quality, and it can silently step-mismatch two arms.
     torch.save({"model": model.state_dict(), "config": cfg.__dict__, "scale": scale,
-                "step": args.steps, "val_rel_mse": history[-1]["val_rel_mse"]},
+                "step": history[-1]["step"], "val_rel_mse": history[-1]["val_rel_mse"]},
                out / "last.pt")
     report = {"args": vars(args), "config": cfg.__dict__, "scale": scale,
-              "parameters": model.parameter_count(), "history": history, "best": best}
+              "parameters": model.parameter_count(), "history": history, "best": best,
+              "train_slots": train.num_slots, "val_slots": val.num_slots,
+              "epochs_at_stop": (history[-1]["step"] * args.batch_slots / train.num_slots
+                                 if history else 0.0),
+              "stopped_early": stopped_early,
+              "annealed": stopped_early is None}
     (out / "train_report.json").write_text(json.dumps(report, indent=2))
     print(json.dumps({"best_val_rel_mse": best["rel_mse"], "best_step": best["step"]}, indent=1))
 

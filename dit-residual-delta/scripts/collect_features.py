@@ -21,6 +21,9 @@ def main() -> None:
     parser.add_argument("--prompt-file", required=True)
     parser.add_argument("--embeddings", required=True)
     parser.add_argument("--seeds", nargs="+", type=int, default=[4001])
+    parser.add_argument("--slot-seed", type=int, default=7717,
+                        help="seeds the token subsample, which was previously drawn "
+                             "from the unseeded global RNG (banks were irreproducible)")
     parser.add_argument("--anchor-steps", nargs="+", type=int, default=[0, 5, 10, 15])
     parser.add_argument("--tokens-per-slot", type=int, default=48)
     parser.add_argument("--shard-size", type=int, default=8, help="prompts per shard file")
@@ -58,13 +61,21 @@ def main() -> None:
         print(json.dumps({"capture_on_policy_with": args.surrogate_checkpoint,
                           "scale": args.surrogate_scale, **bank.checkpoint_info}), flush=True)
 
-    recorder = SlotRecorder(tokens_per_slot=args.tokens_per_slot)
+    # The token subsample inside SlotRecorder draws from its own generator; leaving
+    # it None meant it drew from the global CUDA RNG, which nothing here seeds, so
+    # two runs of the same command produced different banks -- 0.3% apart in the
+    # scale statistics and 1.5% in downstream rel-MSE, the same order as several
+    # contrasts this project reports. Seeded explicitly and recorded in the manifest.
+    slot_generator = torch.Generator(device="cuda").manual_seed(args.slot_seed)
+    recorder = SlotRecorder(tokens_per_slot=args.tokens_per_slot,
+                            generator=slot_generator)
     manifest = {"shards": [], "anchor_steps": sorted(anchors), "segment": args.segment,
                 "num_segments": args.num_segments,
                 "surrogate_checkpoint": args.surrogate_checkpoint,
                 "surrogate_scale": args.surrogate_scale,
                 "tokens_per_slot": args.tokens_per_slot,
-                "prompt_file": args.prompt_file, "seeds": args.seeds}
+                "prompt_file": args.prompt_file, "seeds": args.seeds,
+                "slot_seed": args.slot_seed}
     shard_index, in_shard, start = 0, 0, time.perf_counter()
     for prompt_index, prompt in enumerate(prompts):
         for seed in args.seeds:

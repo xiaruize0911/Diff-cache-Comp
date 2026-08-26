@@ -1,0 +1,41 @@
+{
+  "K": 4,
+  "sweep": [
+    {
+      "budget": 2000,
+      "best_val_rel_mse": 0.2693392362259347,
+      "best_step": 2000,
+      "epochs": 13.392857142857142,
+      "best_is_last_step": true
+    },
+    {
+      "budget": 4000,
+      "best_val_rel_mse": 0.2323339423212678,
+      "best_step": 3900,
+      "epochs": 26.785714285714285,
+      "best_is_last_step": false
+    },
+    {
+      "budget": 8000,
+      "best_val_rel_mse": 0.22707544417384148,
+      "best_step": 3800,
+      "epochs": 53.57142857142857,
+      "best_is_last_step": false
+    },
+    {
+      "budget": 16000,
+      "best_val_rel_mse": 0.2275391624770527,
+      "best_step": 4800,
+      "epochs": 107.14285714285714,
+      "best_is_last_step": false
+    }
+  ],
+  "selected": {
+    "budget": 8000,
+    "best_val_rel_mse": 0.22707544417384148,
+    "best_step": 3800,
+    "epochs": 53.57142857142857,
+    "best_is_last_step": false
+  },
+  "budget_at_ladder_edge": false
+}

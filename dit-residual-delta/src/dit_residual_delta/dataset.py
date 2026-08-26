@@ -1,4 +1,14 @@
-"""In-memory slot dataset. Shards live in tmpfs; the whole split fits on the GPU."""
+"""In-memory slot dataset.
+
+Banks were held entirely on the GPU, which capped a split at what fits in VRAM --
+about 50k slots at 48 tokens on a 46 GB card. Since the supervision here is free
+(the target is the exact residual, produced by the same forward pass that produces
+the input, so there is nothing to annotate), sample count is worth scaling well
+past that. Passing `store="cpu"` keeps the bank in host RAM, pinned, and stages
+each batch to `compute_device`: a 48-slot batch is 21 MB, so at ~40 steps/s that
+is under 1 GB/s over a link that does more than ten times that. Default behaviour
+is unchanged.
+"""
 from __future__ import annotations
 
 from pathlib import Path
@@ -10,7 +20,8 @@ META_KEYS = ("block_id", "step", "horizon", "timestep")
 
 
 class SlotDataset:
-    def __init__(self, directory: str | Path, device: str = "cuda", limit_shards: int | None = None):
+    def __init__(self, directory: str | Path, device: str = "cuda",
+                 limit_shards: int | None = None, store: str | None = None):
         directory = Path(directory)
         shards = sorted(directory.glob("shard_*.pt"))
         if limit_shards:
@@ -22,7 +33,12 @@ class SlotDataset:
             payload = torch.load(shard, map_location="cpu", weights_only=True)
             for k in FEATURE_KEYS + META_KEYS:
                 parts[k].append(payload[k])
-        self.data = {k: torch.cat(v).to(device) for k, v in parts.items()}
+        store = store or device
+        self.data = {k: torch.cat(v).to(store) for k, v in parts.items()}
+        if store == "cpu" and device != "cpu":
+            # pin once so every later staging copy is async-capable
+            self.data = {k: v.pin_memory() for k, v in self.data.items()}
+        self.store = store
         self.device = device
         self.num_slots = self.data["delta_h"].shape[0]
         self.tokens = self.data["delta_h"].shape[1]
@@ -44,22 +60,30 @@ class SlotDataset:
             data = self.data[k]
             total = 0.0
             for start in range(0, self.num_slots, chunk):
-                total += float(data[start : start + chunk].float().pow(2).sum())
+                block = data[start : start + chunk]
+                if self.store != self.device:
+                    block = block.to(self.device, non_blocking=True)
+                total += float(block.float().pow(2).sum())
             out[k] = (total / data.numel()) ** 0.5
         return out
 
     def batch(self, index: torch.Tensor) -> dict[str, torch.Tensor]:
+        # gather on whichever device holds the bank, then stage the (small) batch
+        idx = index.to(self.store)
+        raw = {k: self.data[k][idx] for k in FEATURE_KEYS + META_KEYS}
+        if self.store != self.device:
+            raw = {k: v.to(self.device, non_blocking=True) for k, v in raw.items()}
         return {
-            "delta_h": self.data["delta_h"][index].float(),
-            "anchor_hidden": self.data["anchor_hidden"][index].float(),
-            "anchor_residual": self.data["anchor_residual"][index].float(),
-            "delta_residual": self.data["delta_residual"][index].float(),
-            "timestep": self.data["timestep"][index],
-            "horizon": self.data["horizon"][index].float(),
-            "block_id": self.data["block_id"][index].long(),
+            "delta_h": raw["delta_h"].float(),
+            "anchor_hidden": raw["anchor_hidden"].float(),
+            "anchor_residual": raw["anchor_residual"].float(),
+            "delta_residual": raw["delta_residual"].float(),
+            "timestep": raw["timestep"],
+            "horizon": raw["horizon"].float(),
+            "block_id": raw["block_id"].long(),
         }
 
     def iter_batches(self, batch_size: int):
         for start in range(0, self.num_slots, batch_size):
             yield self.batch(torch.arange(start, min(start + batch_size, self.num_slots),
-                                          device=self.device))
+                                          device=self.store))
