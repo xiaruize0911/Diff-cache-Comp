@@ -209,13 +209,22 @@ class SurrogateBank(nn.Module):
             step_value = torch.full((batch,), float(timestep or 0.0), device=device)
         horizon_value = torch.full((batch,), float(horizon), device=device)
         block_value = torch.full((batch,), int(block_id), device=device, dtype=torch.long)
+        # Inputs arrive in the transformer's dtype (fp16); the bank may be fp32 when
+        # it is being trained against the latent trajectory. Cast to the bank's own
+        # dtype so either combination works -- a no-op in the fp16/fp16 deployed case.
+        pdtype = next(self.model.parameters()).dtype
         prediction = self.model(
-            delta_h / self.scale["delta_h"],
-            anchor_residual / self.scale["anchor_residual"],
-            anchor_hidden / self.scale["anchor_hidden"],
-            step_value, horizon_value, block_value,
+            (delta_h / self.scale["delta_h"]).to(pdtype),
+            (anchor_residual / self.scale["anchor_residual"]).to(pdtype),
+            (anchor_hidden / self.scale["anchor_hidden"]).to(pdtype),
+            step_value.to(pdtype), horizon_value.to(pdtype), block_value,
         )
-        return prediction * self.scale["delta_residual"]
+        # Cast back to the caller's dtype so an fp32 bank can serve an fp16 pipeline:
+        # training against the latent trajectory needs fp32 parameters (AdamW on fp16
+        # weights rounds a 1e-5 update to zero), while the transformer runs fp16 and
+        # would reject an fp32 residual. A no-op when the bank is already fp16, so
+        # deployed numerics for every existing evaluation are unchanged.
+        return (prediction * self.scale["delta_residual"]).to(delta_h.dtype)
 
 
 class ScaleShiftCorrector(nn.Module):

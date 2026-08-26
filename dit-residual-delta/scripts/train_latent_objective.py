@@ -60,7 +60,7 @@ def rollout(pipe, embed, steps, cfg, generator, *, variant=None, bank=None,
     added = {"resolution": None, "aspect_ratio": None}
     guidance = float(cfg["guidance_scale"])
 
-    out, loss = [], latents.new_zeros(())
+    out, loss = [], latents.new_zeros((), dtype=torch.float32)
     for i, t in enumerate(timesteps):
         is_anchor = anchor_every is None or (i % anchor_every == 0)
         # anchor steps run all 28 real blocks and refresh the cache from exact values,
@@ -79,8 +79,11 @@ def rollout(pipe, embed, steps, cfg, generator, *, variant=None, bank=None,
             latents = sched.step(pred, t, latents, return_dict=False)[0]
 
         if reference is not None and not is_anchor:
-            ref = reference[i]
-            loss = loss + ((latents - ref) ** 2).sum() / (ref ** 2).sum()
+            # fp32: an fp16 sum of squares over 4x64x64 overflows past 65504 even at
+            # magnitude 3, which silently produced inf/inf = NaN on the second step
+            ref = reference[i].float()
+            cur = latents.float()
+            loss = loss + ((cur - ref) ** 2).sum() / (ref ** 2).sum()
         out.append(latents if reference is None else latents.detach())
         if is_anchor:
             latents = latents.detach()      # truncate the graph at anchor boundaries
@@ -110,7 +113,7 @@ def main() -> None:
     n_steps = int(model_cfg["num_inference_steps"])
     pipe = load_pixart_pipeline(with_text_encoder=False).to("cuda")
     pipe.transformer.requires_grad_(False)
-    bank = load_surrogate_bank(a.init_checkpoint)
+    bank = load_surrogate_bank(a.init_checkpoint).float()   # fp32 master weights
     bank.requires_grad_(True)
     trainable = [p for p in bank.parameters() if p.requires_grad]
     print(json.dumps({"trainable_params": sum(p.numel() for p in trainable)}), flush=True)
@@ -122,7 +125,8 @@ def main() -> None:
     if not val_p:
         raise SystemExit("no validation prompts left after --train-images")
 
-    spec = {"cache_interval": a.cache_interval, "surrogate_scale": a.surrogate_scale}
+    spec = {"name": f"latent_i{a.cache_interval}_k{a.num_segments}",
+            "cache_interval": a.cache_interval, "surrogate_scale": a.surrogate_scale}
     if a.num_segments != 28:
         spec["num_segments"] = a.num_segments
     n_blocks = len(pipe.transformer.transformer_blocks)
@@ -160,6 +164,14 @@ def main() -> None:
         opt.zero_grad(set_to_none=True)
         loss.backward()
         gnorm = torch.nn.utils.clip_grad_norm_(trainable, 1.0)
+        if step == 1:
+            # the point of the truncation is a bounded graph; report it rather than assume
+            reached = sum(1 for p in trainable if p.grad is not None and float(p.grad.abs().sum()) > 0)
+            print(json.dumps({"peak_alloc_GB": round(torch.cuda.max_memory_allocated() / 1e9, 2),
+                              "params_with_nonzero_grad": reached,
+                              "trainable_tensors": len(trainable),
+                              "grad_norm_step1": round(float(gnorm), 5),
+                              "loss_step1": round(float(loss), 5)}), flush=True)
         opt.step()
         if step % a.validate_every == 0 or step == a.steps:
             v = evaluate()
@@ -170,7 +182,7 @@ def main() -> None:
                               "seconds": round(time.perf_counter() - start)}), flush=True)
             if v < best["latent_rel_err"]:
                 best = {"latent_rel_err": v, "step": step}
-                torch.save({"model": bank.model.state_dict(), "config": bank.model.cfg.__dict__,
+                torch.save({"model": {k: v.half() for k, v in bank.model.state_dict().items()}, "config": bank.model.cfg.__dict__,
                             "scale": bank.scale, "step": step, "val_latent_rel_err": v},
                            out / "best.pt")
     (out / "train_report.json").write_text(json.dumps(
