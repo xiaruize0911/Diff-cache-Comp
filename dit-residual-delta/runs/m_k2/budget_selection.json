@@ -1,0 +1,79 @@
+{
+  "K": 2,
+  "sweep": [
+    {
+      "budget": 16000,
+      "best_val_rel_mse": 0.2216741439574105,
+      "best_step": 16000,
+      "train_slots": 50176,
+      "epochs": 15.3,
+      "best_is_last_step": true,
+      "counted_in_selection": true
+    },
+    {
+      "budget": 32000,
+      "best_val_rel_mse": 0.2147888512357604,
+      "best_step": 32000,
+      "train_slots": 50176,
+      "epochs": 30.6,
+      "best_is_last_step": true,
+      "gain_vs_half_pct": 3.11,
+      "counted_in_selection": true
+    },
+    {
+      "budget": 64000,
+      "best_val_rel_mse": 0.21313694055773502,
+      "best_step": 41600,
+      "train_slots": 50176,
+      "epochs": 61.2,
+      "best_is_last_step": false,
+      "gain_vs_half_pct": 0.77,
+      "counted_in_selection": true
+    },
+    {
+      "budget": 128000,
+      "best_val_rel_mse": 0.2124251221088879,
+      "best_step": 60800,
+      "train_slots": 50176,
+      "epochs": 122.4,
+      "best_is_last_step": false,
+      "gain_vs_half_pct": 0.33,
+      "counted_in_selection": true
+    },
+    {
+      "budget": 256000,
+      "best_val_rel_mse": 0.21155821885168455,
+      "best_step": 70400,
+      "train_slots": 50176,
+      "epochs": 244.9,
+      "best_is_last_step": false,
+      "gain_vs_half_pct": 0.41,
+      "counted_in_selection": false
+    },
+    {
+      "budget": 512000,
+      "best_val_rel_mse": 0.21130363591892337,
+      "best_step": 102400,
+      "train_slots": 50176,
+      "epochs": 489.8,
+      "best_is_last_step": false,
+      "gain_vs_half_pct": 0.12,
+      "counted_in_selection": false
+    }
+  ],
+  "selected": {
+    "budget": 128000,
+    "best_val_rel_mse": 0.2124251221088879,
+    "best_step": 60800,
+    "train_slots": 50176,
+    "epochs": 122.4,
+    "best_is_last_step": false,
+    "gain_vs_half_pct": 0.33,
+    "counted_in_selection": true
+  },
+  "converged": true,
+  "stop_rule": "gain over previous doubling < 0.5%",
+  "note": "rungs past the stopping point were measured before the rule changed; they are kept as evidence of what a deeper search buys (16x compute from 32k to 512k bought 1.63%) and excluded from selection so every rung of the ladder is searched to the same depth",
+  "final_gain_per_doubling_pct": 0.33,
+  "matched_slots": true
+}

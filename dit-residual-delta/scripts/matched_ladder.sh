@@ -17,9 +17,20 @@
 # latent. Token subsampling is seeded separately via --slot-seed (banks used to be
 # irreproducible; see the comment in collect_features.py).
 #
-# Budget: doubled until the val rel-MSE actually regresses, no threshold. With 28x
-# the data the optimum moves out a long way, so K=1 is run first on its own to
-# calibrate the scale before committing the other five rungs.
+# Budget: doubled until the gain over the previous doubling falls below 0.5%.
+#
+# This started as "double until it actually regresses", which turned out to be
+# pathological: K=2's gains ran 3.11%, 0.77%, 0.33%, 0.41%, 0.12% -- decaying but
+# never negative, so the loop would have run to the 2M-step cap. Measured cost of
+# that tail: 16x the compute from 32k to 512k bought 1.63%, against the 26% that
+# matching data volume bought and the 5.45x granularity ratio under study. K=2 was
+# stopped by hand and the threshold adopted at the user's direction.
+#
+# The SELECTION obeys the same rule, not just the loop: K=2 has measured rungs out
+# to 512k, but selecting its best over all of them while later rungs stop at the
+# threshold would give K=2 a deeper search than the rest and make the ladder
+# uncomparable. Rungs past the stopping point are kept in the record as evidence of
+# what a deeper search buys, and excluded from selection.
 set -euo pipefail
 cd /workspace/dit-residual-delta
 BANKS=/workspace/scratch_banks
@@ -63,7 +74,7 @@ for K in $KS; do
     CUR=$(python3 -c "import json;print(json.load(open('$OUT/train_report.json'))['best']['rel_mse'])")
     if [ -n "$PREV" ]; then
       echo "{\"K\": $K, \"budget\": $B, \"rel_mse\": $CUR, \"gain_vs_half_pct\": $(python3 -c "print(round(100*($PREV-$CUR)/$PREV,2))")}"
-      [ "$(python3 -c "print(1 if $CUR >= $PREV else 0)")" = "1" ] && break
+      [ "$(python3 -c "print(1 if ($PREV-$CUR)/$PREV < 0.005 else 0)")" = "1" ] && break
     fi
     PREV=$CUR
     B=$(( B * 2 ))
@@ -85,18 +96,27 @@ for p in sorted(glob.glob(f"runs/m_k{K}_b*/train_report.json"),
 for i in range(1, len(rows)):
     prev = rows[i-1]["best_val_rel_mse"]
     rows[i]["gain_vs_half_pct"] = round(100 * (prev - rows[i]["best_val_rel_mse"]) / prev, 2)
-win = min(rows, key=lambda r: r["best_val_rel_mse"])
+# apply the stopping rule to selection too, so every rung searched equally deep
+considered = [rows[0]]
+for r in rows[1:]:
+    considered.append(r)
+    if r["gain_vs_half_pct"] < 0.5:
+        break
+for r in rows:
+    r["counted_in_selection"] = r in considered
+win = min(considered, key=lambda r: r["best_val_rel_mse"])
 out = Path(f"runs/m_k{K}"); out.mkdir(parents=True, exist_ok=True)
 shutil.copy(f"runs/m_k{K}_b{win['budget']}/best.pt", out / "best.pt")
 shutil.copy(f"runs/m_k{K}_b{win['budget']}/train_report.json", out / "train_report.json")
-last = rows[-1].get("gain_vs_half_pct")
+last = considered[-1].get("gain_vs_half_pct")
 (out / "budget_selection.json").write_text(json.dumps(
     {"K": int(K), "sweep": rows, "selected": win,
-     "converged": last is not None and last <= 0.0,
+     "converged": last is not None and last < 0.5,
+     "stop_rule": "gain over previous doubling < 0.5%",
      "final_gain_per_doubling_pct": last, "matched_slots": True}, indent=2))
 print(json.dumps({"K": int(K), "slots": win["train_slots"], "budget": win["budget"],
                   "val_rel_mse": win["best_val_rel_mse"],
-                  "converged": last is not None and last <= 0.0}))
+                  "converged": last is not None and last < 0.5}))
 PY
   rm -rf "$BANKS/m$K"
   echo "=== matched K=$K done ==="
