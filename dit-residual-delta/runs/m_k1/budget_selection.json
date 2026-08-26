@@ -1,0 +1,43 @@
+{
+  "K": 1,
+  "sweep": [
+    {
+      "budget": 16000,
+      "best_val_rel_mse": 0.2905453954356992,
+      "best_step": 15600,
+      "train_slots": 50176,
+      "epochs": 15.3,
+      "best_is_last_step": false
+    },
+    {
+      "budget": 32000,
+      "best_val_rel_mse": 0.2845748009627778,
+      "best_step": 32000,
+      "train_slots": 50176,
+      "epochs": 30.6,
+      "best_is_last_step": true,
+      "gain_vs_half_pct": 2.05
+    },
+    {
+      "budget": 64000,
+      "best_val_rel_mse": 0.28500641279662187,
+      "best_step": 60800,
+      "train_slots": 50176,
+      "epochs": 61.2,
+      "best_is_last_step": false,
+      "gain_vs_half_pct": -0.15
+    }
+  ],
+  "selected": {
+    "budget": 32000,
+    "best_val_rel_mse": 0.2845748009627778,
+    "best_step": 32000,
+    "train_slots": 50176,
+    "epochs": 30.6,
+    "best_is_last_step": true,
+    "gain_vs_half_pct": 2.05
+  },
+  "converged": true,
+  "final_gain_per_doubling_pct": -0.15,
+  "matched_slots": true
+}
