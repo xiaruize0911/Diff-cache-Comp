@@ -1,0 +1,36 @@
+[
+ {
+  "name": "cache i5 (no corr)",
+  "cache_interval": 5,
+  "num_segments": 1
+ },
+ {
+  "name": "K=1 s0.75",
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/m_k1/best.pt",
+  "surrogate_scale": 0.75
+ },
+ {
+  "name": "K=2 s0.3",
+  "cache_interval": 5,
+  "num_segments": 2,
+  "surrogate_checkpoint": "runs/m_k2/best.pt",
+  "surrogate_scale": 0.3
+ },
+ {
+  "name": "K=4 s0.3",
+  "cache_interval": 5,
+  "num_segments": 4,
+  "surrogate_checkpoint": "runs/m_k4/best.pt",
+  "surrogate_scale": 0.3
+ },
+ {
+  "name": "K=7 s0.2",
+  "cache_interval": 5,
+  "num_segments": 7,
+  "surrogate_checkpoint": "runs/m_k7/best.pt",
+  "surrogate_scale": 0.2,
+  "deploy_dtype": "fp32"
+ }
+]

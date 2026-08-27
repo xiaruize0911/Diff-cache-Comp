@@ -1,0 +1,49 @@
+[
+ {
+  "name": "base_i5",
+  "cache_interval": 5,
+  "num_segments": 1
+ },
+ {
+  "name": "resid_s75",
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/m_k1/best.pt",
+  "surrogate_scale": 0.75
+ },
+ {
+  "name": "lat_s020",
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/lat_k1/best.pt",
+  "surrogate_scale": 0.2
+ },
+ {
+  "name": "lat_s030",
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/lat_k1/best.pt",
+  "surrogate_scale": 0.3
+ },
+ {
+  "name": "lat_s040",
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/lat_k1/best.pt",
+  "surrogate_scale": 0.4
+ },
+ {
+  "name": "lat_s050",
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/lat_k1/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "name": "lat_s060",
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/lat_k1/best.pt",
+  "surrogate_scale": 0.6
+ }
+]
