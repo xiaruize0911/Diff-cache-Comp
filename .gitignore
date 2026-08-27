@@ -39,3 +39,4 @@ cases.partial.json
 # macOS resource forks
 ._*
 .DS_Store
+scratch_banks/
