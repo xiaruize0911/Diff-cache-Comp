@@ -19,7 +19,9 @@ _B={}
 def bank(spec):
     p=spec.get("surrogate_checkpoint")
     if p is None: return None
-    if p not in _B: _B[p]=load_surrogate_bank(p)
+    if p not in _B:
+        _B[p]=load_surrogate_bank(p, dtype=(torch.float16 if a.surrogate_dtype == "fp16"
+                                            else torch.float32))
     return _B[p]
 
 ap=argparse.ArgumentParser()
@@ -30,6 +32,10 @@ ap.add_argument("--seed", type=int, default=9401)
 ap.add_argument("--limit", type=int, default=5)
 ap.add_argument("--variants-file", required=True)
 ap.add_argument("--output-dir", required=True)
+ap.add_argument("--surrogate-dtype", choices=["fp16", "fp32"], default="fp16",
+                help="deploy precision. fp16 matches every earlier result, but a "
+                     "corrector trained to convergence can overflow it -- m_k7 "
+                     "returns inf on 111 of 112 calls and the image is all NaN")
 a=ap.parse_args()
 
 import ImageReward as RM
