@@ -47,6 +47,7 @@ METRICS = (
 
 
 _BANK_CACHE: dict[str, object] = {}
+_BANK_DTYPE = torch.float16      # set from --surrogate-dtype before any variant runs
 
 
 def surrogate_for(variant):
@@ -54,7 +55,7 @@ def surrogate_for(variant):
     if path is None:
         return None
     if path not in _BANK_CACHE:
-        _BANK_CACHE[path] = load_surrogate_bank(path)
+        _BANK_CACHE[path] = load_surrogate_bank(path, dtype=_BANK_DTYPE)
         info = getattr(_BANK_CACHE[path], "checkpoint_info", {})
         print(json.dumps({"loaded_surrogate": path, **info}), flush=True)
     return _BANK_CACHE[path]
@@ -115,7 +116,12 @@ def main() -> None:
                         help="also score prompt alignment. SSIM/LPIPS measure fidelity to\n                             the exact output; CLIP asks the different question of whether\n                             the accelerated image still matches the prompt as well.")
     parser.add_argument("--embeddings", required=True,
                         help="precomputed prompt embeddings (.pt) from prepare_assets.py")
+    parser.add_argument("--surrogate-dtype", choices=["fp16", "fp32"], default="fp16",
+                        help="precision the corrector is DEPLOYED in. fp16 is the default\n                             because every earlier result used it, but a corrector trained\n                             to convergence can overflow it: m_k7 returns inf on 111 of\n                             112 calls in fp16 and the image comes out all-NaN")
     args = parser.parse_args()
+
+    global _BANK_DTYPE
+    _BANK_DTYPE = torch.float16 if args.surrogate_dtype == "fp16" else torch.float32
 
     cfg = load_config(args.config)
     model_cfg = cfg["model"]
