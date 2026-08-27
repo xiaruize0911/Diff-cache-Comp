@@ -38,10 +38,19 @@ from dit_residual_delta.surrogate import load_surrogate_bank
 from dit_residual_delta.variants import build_variant, runtime_for_variant
 
 
-def decode(pipe, latents):
-    """Differentiable VAE decode of one latent to [0,1] image space."""
+def decode(pipe, latents, checkpoint=True):
+    """Differentiable VAE decode of one latent to [0,1] image space.
+
+    Checkpointed by default: the decoder at 512x512 stores several GB of activations,
+    which is what pushed this over the card while a ladder rung was training. Trading
+    one recomputation for that memory is the right side of the deal here, since the
+    decode happens once per training step against a 20-step rollout.
+    """
     x = latents / pipe.vae.config.scaling_factor
-    img = pipe.vae.decode(x, return_dict=False)[0]
+    def _dec(z):
+        return pipe.vae.decode(z, return_dict=False)[0]
+    img = (torch.utils.checkpoint.checkpoint(_dec, x, use_reentrant=False)
+           if checkpoint and torch.is_grad_enabled() else _dec(x))
     return (img / 2 + 0.5).clamp(0, 1)
 
 
@@ -209,7 +218,7 @@ def main() -> None:
             tot += float(l)
         return tot / len(val_p)
 
-    history, best = [], {"latent_rel_err": float("inf"), "step": -1}
+    history, best = [], {"objective": float("inf"), "step": -1}
     start = time.perf_counter()
     for step in range(1, a.steps + 1):
         p = train_p[(step - 1) % len(train_p)]
