@@ -38,8 +38,15 @@ from dit_residual_delta.surrogate import load_surrogate_bank
 from dit_residual_delta.variants import build_variant, runtime_for_variant
 
 
+def decode(pipe, latents):
+    """Differentiable VAE decode of one latent to [0,1] image space."""
+    x = latents / pipe.vae.config.scaling_factor
+    img = pipe.vae.decode(x, return_dict=False)[0]
+    return (img / 2 + 0.5).clamp(0, 1)
+
+
 def rollout(pipe, embed, steps, cfg, generator, *, variant=None, bank=None,
-            anchor_every=None, grad=False, reference=None):
+            anchor_every=None, grad=False, reference=None, trunc_intervals=1):
     """One denoising trajectory. Returns the per-step latents.
 
     With `reference` given, accumulates a relative squared error against it at every
@@ -61,11 +68,17 @@ def rollout(pipe, embed, steps, cfg, generator, *, variant=None, bank=None,
     guidance = float(cfg["guidance_scale"])
 
     out, loss = [], latents.new_zeros((), dtype=torch.float32)
+    anchors_seen = 0
     for i, t in enumerate(timesteps):
         is_anchor = anchor_every is None or (i % anchor_every == 0)
-        # anchor steps run all 28 real blocks and refresh the cache from exact values,
-        # so nothing there depends on the corrector -- keep them out of the graph
-        with torch.set_grad_enabled(grad and not is_anchor):
+        # With trunc_intervals=1 an anchor step can stay out of the graph: nothing in
+        # it depends on the corrector and the graph is cut there anyway. Spanning more
+        # than one interval requires the opposite -- the latent flows THROUGH the
+        # anchor step, so leaving it in no_grad would sever the chain and silently
+        # give a one-interval gradient under a multi-interval label. Cost of keeping
+        # it: one full 0.6B forward's activations per anchor.
+        in_graph = grad and (trunc_intervals > 1 or not is_anchor)
+        with torch.set_grad_enabled(in_graph):
             model_in = sched.scale_model_input(torch.cat([latents] * 2), t)
             ts = t.expand(model_in.shape[0]) if torch.is_tensor(t) else \
                 torch.tensor([t], device="cuda").expand(model_in.shape[0])
@@ -86,7 +99,9 @@ def rollout(pipe, embed, steps, cfg, generator, *, variant=None, bank=None,
             loss = loss + ((cur - ref) ** 2).sum() / (ref ** 2).sum()
         out.append(latents if reference is None else latents.detach())
         if is_anchor:
-            latents = latents.detach()      # truncate the graph at anchor boundaries
+            anchors_seen += 1
+            if anchors_seen % trunc_intervals == 0:
+                latents = latents.detach()  # cut the graph every trunc_intervals anchors
     return (out, loss) if reference is not None else out
 
 
@@ -107,6 +122,18 @@ def main() -> None:
     ap.add_argument("--val-images", type=int, default=12)
     ap.add_argument("--validate-every", type=int, default=25)
     ap.add_argument("--seed", type=int, default=4001)
+    ap.add_argument("--objective", choices=["latent", "image"], default="latent",
+                    help="what the loss is computed on. 'latent' matches the trajectory; "
+                         "'image' decodes the final latent through the VAE and scores "
+                         "LPIPS against the exact image, which is what deployment is "
+                         "measured with. Extending the horizon improved the latent "
+                         "objective (0.833 vs 0.871) but moved the image metric by "
+                         "-0.0039 (t=-0.8), i.e. the proxy became the bottleneck.")
+    ap.add_argument("--truncate-intervals", type=int, default=1,
+                    help="how many anchor intervals the backprop spans. >1 pulls the "
+                         "anchor steps into the graph (a full 0.6B forward each) and "
+                         "makes the gradient traverse the (I+J) product measured at "
+                         "rho~10.8 over 20 steps, so watch grad_norm and peak memory")
     a = ap.parse_args()
 
     model_cfg = load_config(a.config)["model"]
@@ -135,19 +162,50 @@ def main() -> None:
     opt = torch.optim.AdamW(trainable, lr=a.learning_rate, weight_decay=0.0)
     out = Path(a.output_dir); out.mkdir(parents=True, exist_ok=True)
 
+    perceptual = None
+    if a.objective == "image":
+        import lpips as lpips_pkg
+        # called directly, not through metrics.lpips_alex: that wrapper is inside
+        # torch.no_grad() and returns a float, so it cannot carry a gradient
+        perceptual = lpips_pkg.LPIPS(net="alex").to("cuda").eval()
+        perceptual.requires_grad_(False)
+        if a.truncate_intervals < 5:
+            raise SystemExit(
+                "--objective image needs --truncate-intervals covering the whole "
+                "rollout: the graph is cut at every anchor otherwise, so only the "
+                "last interval's corrector calls would receive gradient")
+
     def reference_for(prompt, seed):
         g = torch.Generator(device="cuda").manual_seed(seed)
         with torch.no_grad():
             return rollout(pipe, emb[prompt], n_steps, model_cfg, g)
 
+    def image_loss(prompt, seed, ref_latents, grad):
+        """LPIPS between the decoded final latent and the exact image."""
+        with torch.no_grad():
+            ref_img = decode(pipe, ref_latents[-1])
+        g = torch.Generator(device="cuda").manual_seed(seed)
+        with torch.set_grad_enabled(grad):
+            got = rollout(pipe, emb[prompt], n_steps, model_cfg, g,
+                          anchor_every=a.cache_interval, grad=grad,
+                          trunc_intervals=a.truncate_intervals)
+            cand = decode(pipe, got[-1])
+            return perceptual(cand * 2 - 1, ref_img * 2 - 1).mean()
+
     def evaluate():
         tot = 0.0
         for j, p in enumerate(val_p):
-            ref = reference_for(p, a.seed + 90000 + j)
-            g = torch.Generator(device="cuda").manual_seed(a.seed + 90000 + j)
-            with torch.no_grad(), runtime_for_variant(pipe.transformer, variant, bank):
-                _, l = rollout(pipe, emb[p], n_steps, model_cfg, g, anchor_every=a.cache_interval,
-                               grad=False, reference=ref)
+            sd = a.seed + 90000 + j
+            ref = reference_for(p, sd)
+            with runtime_for_variant(pipe.transformer, variant, bank):
+                if a.objective == "image":
+                    with torch.no_grad():
+                        tot += float(image_loss(p, sd, ref, grad=False))
+                    continue
+                g = torch.Generator(device="cuda").manual_seed(sd)
+                with torch.no_grad():
+                    _, l = rollout(pipe, emb[p], n_steps, model_cfg, g,
+                                   anchor_every=a.cache_interval, grad=False, reference=ref)
             tot += float(l)
         return tot / len(val_p)
 
@@ -157,10 +215,14 @@ def main() -> None:
         p = train_p[(step - 1) % len(train_p)]
         seed = a.seed + (step - 1) // len(train_p)
         ref = reference_for(p, seed)
-        g = torch.Generator(device="cuda").manual_seed(seed)
         with runtime_for_variant(pipe.transformer, variant, bank):
-            _, loss = rollout(pipe, emb[p], n_steps, model_cfg, g,
-                              anchor_every=a.cache_interval, grad=True, reference=ref)
+            if a.objective == "image":
+                loss = image_loss(p, seed, ref, grad=True)
+            else:
+                g = torch.Generator(device="cuda").manual_seed(seed)
+                _, loss = rollout(pipe, emb[p], n_steps, model_cfg, g,
+                                  anchor_every=a.cache_interval, grad=True, reference=ref,
+                                  trunc_intervals=a.truncate_intervals)
         opt.zero_grad(set_to_none=True)
         loss.backward()
         gnorm = torch.nn.utils.clip_grad_norm_(trainable, 1.0)
@@ -175,20 +237,20 @@ def main() -> None:
         opt.step()
         if step % a.validate_every == 0 or step == a.steps:
             v = evaluate()
-            history.append({"step": step, "train_loss": float(loss), "val_latent_rel_err": v})
+            history.append({"step": step, "train_loss": float(loss), "val_objective": v})
             print(json.dumps({"step": step, "train_loss": round(float(loss), 5),
                               "grad_norm": round(float(gnorm), 4),
-                              "val_latent_rel_err": round(v, 5),
+                              "val_objective": round(v, 5),
                               "seconds": round(time.perf_counter() - start)}), flush=True)
-            if v < best["latent_rel_err"]:
-                best = {"latent_rel_err": v, "step": step}
+            if v < best["objective"]:
+                best = {"objective": v, "step": step}
                 torch.save({"model": {k: v.half() for k, v in bank.model.state_dict().items()}, "config": bank.model.cfg.__dict__,
-                            "scale": bank.scale, "step": step, "val_latent_rel_err": v},
+                            "scale": bank.scale, "step": step, "val_objective": v},
                            out / "best.pt")
     (out / "train_report.json").write_text(json.dumps(
         {"args": vars(a), "history": history, "best": best,
-         "objective": "latent_trajectory"}, indent=2))
-    print(json.dumps({"best_val_latent_rel_err": best["latent_rel_err"],
+         "objective": a.objective}, indent=2))
+    print(json.dumps({"best_val_objective": best["objective"],
                       "best_step": best["step"]}, indent=1))
 
 

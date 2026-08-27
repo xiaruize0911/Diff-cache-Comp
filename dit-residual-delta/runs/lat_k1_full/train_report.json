@@ -1,0 +1,106 @@
+{
+  "args": {
+    "config": "configs/pixart_sigma_512.toml",
+    "prompt_file": "data/prompts/train112.txt",
+    "embeddings": "data/embeddings/train112.pt",
+    "init_checkpoint": "runs/m_k1/best.pt",
+    "output_dir": "runs/lat_k1_full",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "surrogate_scale": 0.75,
+    "steps": 400,
+    "learning_rate": 3e-06,
+    "train_images": 48,
+    "val_images": 12,
+    "validate_every": 25,
+    "seed": 4001,
+    "truncate_intervals": 5
+  },
+  "history": [
+    {
+      "step": 25,
+      "train_loss": 0.9960129261016846,
+      "val_latent_rel_err": 1.1687311679124832
+    },
+    {
+      "step": 50,
+      "train_loss": 0.7611293196678162,
+      "val_latent_rel_err": 1.0982178300619125
+    },
+    {
+      "step": 75,
+      "train_loss": 2.445552349090576,
+      "val_latent_rel_err": 0.9728569959600767
+    },
+    {
+      "step": 100,
+      "train_loss": 1.182543396949768,
+      "val_latent_rel_err": 1.1126523315906525
+    },
+    {
+      "step": 125,
+      "train_loss": 0.7247893810272217,
+      "val_latent_rel_err": 0.9970548003911972
+    },
+    {
+      "step": 150,
+      "train_loss": 0.8339373469352722,
+      "val_latent_rel_err": 1.0135973592599232
+    },
+    {
+      "step": 175,
+      "train_loss": 0.9235900044441223,
+      "val_latent_rel_err": 1.0048542420069377
+    },
+    {
+      "step": 200,
+      "train_loss": 0.7716988325119019,
+      "val_latent_rel_err": 0.9987164934476217
+    },
+    {
+      "step": 225,
+      "train_loss": 0.7557423114776611,
+      "val_latent_rel_err": 0.9201540226737658
+    },
+    {
+      "step": 250,
+      "train_loss": 0.3230881690979004,
+      "val_latent_rel_err": 0.9217915932337443
+    },
+    {
+      "step": 275,
+      "train_loss": 0.5727165937423706,
+      "val_latent_rel_err": 0.934963787595431
+    },
+    {
+      "step": 300,
+      "train_loss": 1.8537194728851318,
+      "val_latent_rel_err": 0.9295800551772118
+    },
+    {
+      "step": 325,
+      "train_loss": 0.7866220474243164,
+      "val_latent_rel_err": 0.9585008025169373
+    },
+    {
+      "step": 350,
+      "train_loss": 1.2752325534820557,
+      "val_latent_rel_err": 0.9570038591821989
+    },
+    {
+      "step": 375,
+      "train_loss": 0.5247963666915894,
+      "val_latent_rel_err": 1.0228202988704045
+    },
+    {
+      "step": 400,
+      "train_loss": 0.8771652579307556,
+      "val_latent_rel_err": 0.9460794577995936
+    }
+  ],
+  "best": {
+    "latent_rel_err": 0.9201540226737658,
+    "step": 225
+  },
+  "objective": "latent_trajectory"
+}
