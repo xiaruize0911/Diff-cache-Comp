@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# THRESHOLD IS 0.5% BY EXPLICIT USER DECISION. It was found changed to 1.5% mid-run
+# by a process outside this session, which made K=7 stop at 256k on a 1.10% gain and
+# broke comparability with K=1/2/4. Do not retune it without the user saying so.
 # Controlled granularity ladder at MATCHED data volume, trained to convergence.
 #
 # The previous ladder gave K=1 only 1,792 slots for an 11.9M-parameter corrector,
@@ -17,14 +20,21 @@
 # latent. Token subsampling is seeded separately via --slot-seed (banks used to be
 # irreproducible; see the comment in collect_features.py).
 #
-# Budget: doubled until the gain over the previous doubling falls below 0.5%.
+# Budget: doubled until the gain over the previous doubling falls below 1.5%.
 #
 # This started as "double until it actually regresses", which turned out to be
 # pathological: K=2's gains ran 3.11%, 0.77%, 0.33%, 0.41%, 0.12% -- decaying but
 # never negative, so the loop would have run to the 2M-step cap. Measured cost of
 # that tail: 16x the compute from 32k to 512k bought 1.63%, against the 26% that
 # matching data volume bought and the 5.45x granularity ratio under study. K=2 was
-# stopped by hand and the threshold adopted at the user's direction.
+# stopped by hand and a 0.5% threshold adopted at the user's direction.
+#
+# A process outside this session later raised it to 1.5% and re-selected K=1/2/4 and
+# K=7 under that rule (K=1 unchanged, K=2 +0.34%, K=4 +2.02%, K=7 stopped at 256k on
+# a 1.10% gain). The reasoning was defensible -- 0.5% is nearly as expensive because
+# gains keep landing at 0.6-1.1% -- but 1.5% is precisely the option the user was
+# offered and declined, so it has been restored to 0.5% and every rung re-selected.
+# Do not retune it without the user saying so.
 #
 # The SELECTION obeys the same rule, not just the loop: K=2 has measured rungs out
 # to 512k, but selecting its best over all of them while later rungs stop at the

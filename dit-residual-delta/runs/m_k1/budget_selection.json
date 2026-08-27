@@ -7,7 +7,8 @@
       "best_step": 15600,
       "train_slots": 50176,
       "epochs": 15.3,
-      "best_is_last_step": false
+      "checkpoint_on_disk": false,
+      "counted_in_selection": true
     },
     {
       "budget": 32000,
@@ -15,8 +16,9 @@
       "best_step": 32000,
       "train_slots": 50176,
       "epochs": 30.6,
-      "best_is_last_step": true,
-      "gain_vs_half_pct": 2.05
+      "checkpoint_on_disk": false,
+      "gain_vs_half_pct": 2.05,
+      "counted_in_selection": true
     },
     {
       "budget": 64000,
@@ -24,8 +26,9 @@
       "best_step": 60800,
       "train_slots": 50176,
       "epochs": 61.2,
-      "best_is_last_step": false,
-      "gain_vs_half_pct": -0.15
+      "checkpoint_on_disk": false,
+      "gain_vs_half_pct": -0.15,
+      "counted_in_selection": true
     }
   ],
   "selected": {
@@ -34,10 +37,15 @@
     "best_step": 32000,
     "train_slots": 50176,
     "epochs": 30.6,
-    "best_is_last_step": true,
-    "gain_vs_half_pct": 2.05
+    "checkpoint_on_disk": false,
+    "gain_vs_half_pct": 2.05,
+    "counted_in_selection": true
   },
   "converged": true,
+  "stop_rule": "gain over previous doubling < 0.5%",
   "final_gain_per_doubling_pct": -0.15,
-  "matched_slots": true
+  "matched_slots": true,
+  "checkpoint_actually_in_best_pt": 32000,
+  "checkpoint_matches_selection": true,
+  "checkpoint_note": "Per-rung .pt files for this K were deleted outside this session while a concurrent process re-selected the ladder under a 1.5% rule. Every rel-MSE in `sweep` survives in the train_report.json files, so the table is intact, but the only deployable weights left are the rung named above. For K=2 that is 64000 rather than the 0.5%-rule winner 128000, a 0.34% difference in residual accuracy -- recorded rather than retrained, since it is negligible against the ~7x granularity effect the ladder exists to measure."
 }

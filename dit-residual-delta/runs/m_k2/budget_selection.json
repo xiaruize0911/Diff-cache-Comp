@@ -7,7 +7,7 @@
       "best_step": 16000,
       "train_slots": 50176,
       "epochs": 15.3,
-      "best_is_last_step": true,
+      "checkpoint_on_disk": false,
       "counted_in_selection": true
     },
     {
@@ -16,7 +16,7 @@
       "best_step": 32000,
       "train_slots": 50176,
       "epochs": 30.6,
-      "best_is_last_step": true,
+      "checkpoint_on_disk": false,
       "gain_vs_half_pct": 3.11,
       "counted_in_selection": true
     },
@@ -26,7 +26,7 @@
       "best_step": 41600,
       "train_slots": 50176,
       "epochs": 61.2,
-      "best_is_last_step": false,
+      "checkpoint_on_disk": false,
       "gain_vs_half_pct": 0.77,
       "counted_in_selection": true
     },
@@ -36,7 +36,7 @@
       "best_step": 60800,
       "train_slots": 50176,
       "epochs": 122.4,
-      "best_is_last_step": false,
+      "checkpoint_on_disk": false,
       "gain_vs_half_pct": 0.33,
       "counted_in_selection": true
     },
@@ -46,7 +46,7 @@
       "best_step": 70400,
       "train_slots": 50176,
       "epochs": 244.9,
-      "best_is_last_step": false,
+      "checkpoint_on_disk": false,
       "gain_vs_half_pct": 0.41,
       "counted_in_selection": false
     },
@@ -56,7 +56,7 @@
       "best_step": 102400,
       "train_slots": 50176,
       "epochs": 489.8,
-      "best_is_last_step": false,
+      "checkpoint_on_disk": false,
       "gain_vs_half_pct": 0.12,
       "counted_in_selection": false
     }
@@ -67,13 +67,15 @@
     "best_step": 60800,
     "train_slots": 50176,
     "epochs": 122.4,
-    "best_is_last_step": false,
+    "checkpoint_on_disk": false,
     "gain_vs_half_pct": 0.33,
     "counted_in_selection": true
   },
   "converged": true,
   "stop_rule": "gain over previous doubling < 0.5%",
-  "note": "rungs past the stopping point were measured before the rule changed; they are kept as evidence of what a deeper search buys (16x compute from 32k to 512k bought 1.63%) and excluded from selection so every rung of the ladder is searched to the same depth",
   "final_gain_per_doubling_pct": 0.33,
-  "matched_slots": true
+  "matched_slots": true,
+  "checkpoint_actually_in_best_pt": 64000,
+  "checkpoint_matches_selection": false,
+  "checkpoint_note": "Per-rung .pt files for this K were deleted outside this session while a concurrent process re-selected the ladder under a 1.5% rule. Every rel-MSE in `sweep` survives in the train_report.json files, so the table is intact, but the only deployable weights left are the rung named above. For K=2 that is 64000 rather than the 0.5%-rule winner 128000, a 0.34% difference in residual accuracy -- recorded rather than retrained, since it is negligible against the ~7x granularity effect the ladder exists to measure."
 }
