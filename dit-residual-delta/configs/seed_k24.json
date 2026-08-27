@@ -1,0 +1,35 @@
+[
+ {
+  "name": "base_i5",
+  "cache_interval": 5,
+  "num_segments": 1
+ },
+ {
+  "name": "old_k2",
+  "cache_interval": 5,
+  "num_segments": 2,
+  "surrogate_checkpoint": "runs/ctrl_k2/best.pt",
+  "surrogate_scale": 0.2
+ },
+ {
+  "name": "new_k2",
+  "cache_interval": 5,
+  "num_segments": 2,
+  "surrogate_checkpoint": "runs/m_k2/best.pt",
+  "surrogate_scale": 0.3
+ },
+ {
+  "name": "old_k4",
+  "cache_interval": 5,
+  "num_segments": 4,
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 0.3
+ },
+ {
+  "name": "new_k4",
+  "cache_interval": 5,
+  "num_segments": 4,
+  "surrogate_checkpoint": "runs/m_k4/best.pt",
+  "surrogate_scale": 0.3
+ }
+]

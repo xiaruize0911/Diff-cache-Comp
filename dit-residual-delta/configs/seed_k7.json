@@ -1,0 +1,21 @@
+[
+ {
+  "name": "base_i5",
+  "cache_interval": 5,
+  "num_segments": 1
+ },
+ {
+  "name": "old_k7",
+  "cache_interval": 5,
+  "num_segments": 7,
+  "surrogate_checkpoint": "runs/ctrl_k7/best.pt",
+  "surrogate_scale": 0.2
+ },
+ {
+  "name": "new_k7",
+  "cache_interval": 5,
+  "num_segments": 7,
+  "surrogate_checkpoint": "runs/m_k7/best.pt",
+  "surrogate_scale": 0.2
+ }
+]
