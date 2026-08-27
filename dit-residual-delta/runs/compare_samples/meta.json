@@ -1,0 +1,94 @@
+{
+ "p0": {
+  "prompt": "a pencil sketch of a marble sculpture of a horse at sunrise",
+  "reference": {
+   "ssim": 1.0,
+   "reward": 1.7585927248001099
+  },
+  "exact_10": {
+   "ssim": 0.8534116921490988,
+   "reward": 1.4293521642684937
+  },
+  "cache_i5": {
+   "ssim": 0.6191646432545527,
+   "reward": -0.7303765416145325
+  },
+  "old_k1_s50": {
+   "ssim": 0.7301136292869256,
+   "reward": -0.1352306604385376
+  },
+  "new_k1_s75": {
+   "ssim": 0.7584572769225036,
+   "reward": -0.2548981010913849
+  }
+ },
+ "p1": {
+  "prompt": "a studio product photograph of a violinist tuning backstage under heavy rain",
+  "reference": {
+   "ssim": 1.0,
+   "reward": 1.9269570112228394
+  },
+  "exact_10": {
+   "ssim": 0.7768504838581388,
+   "reward": 1.9082266092300415
+  },
+  "cache_i5": {
+   "ssim": 0.4597781280724594,
+   "reward": 1.3066413402557373
+  },
+  "old_k1_s50": {
+   "ssim": 0.4184449721726086,
+   "reward": 1.8398432731628418
+  },
+  "new_k1_s75": {
+   "ssim": 0.5437828552433818,
+   "reward": 1.8502496480941772
+  }
+ },
+ "p2": {
+  "prompt": "a detailed digital illustration of a marble sculpture of a horse at sunrise",
+  "reference": {
+   "ssim": 1.0,
+   "reward": 1.917548418045044
+  },
+  "exact_10": {
+   "ssim": 0.8499970745386137,
+   "reward": 1.8426274061203003
+  },
+  "cache_i5": {
+   "ssim": 0.6882460124683929,
+   "reward": 1.5149238109588623
+  },
+  "old_k1_s50": {
+   "ssim": 0.7234208754606329,
+   "reward": 1.4747320413589478
+  },
+  "new_k1_s75": {
+   "ssim": 0.7299710092893293,
+   "reward": 1.5651670694351196
+  }
+ },
+ "p3": {
+  "prompt": "a studio product photograph of a hot air balloon over farmland at blue hour",
+  "reference": {
+   "ssim": 1.0,
+   "reward": 1.5794790983200073
+  },
+  "exact_10": {
+   "ssim": 0.856608363986214,
+   "reward": 1.6912645101547241
+  },
+  "cache_i5": {
+   "ssim": 0.6293551990953791,
+   "reward": 1.074210524559021
+  },
+  "old_k1_s50": {
+   "ssim": 0.6380326557839312,
+   "reward": 1.0847123861312866
+  },
+  "new_k1_s75": {
+   "ssim": 0.7117492629615393,
+   "reward": 1.5352815389633179
+  }
+ }
+}

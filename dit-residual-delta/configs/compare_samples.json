@@ -1,0 +1,29 @@
+[
+ {
+  "name": "exact_10",
+  "steps": 10,
+  "exact": true
+ },
+ {
+  "name": "cache_i5",
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 1
+ },
+ {
+  "name": "old_k1_s50",
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/ctrl_k1/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "name": "new_k1_s75",
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/m_k1/best.pt",
+  "surrogate_scale": 0.75
+ }
+]

@@ -1,0 +1,203 @@
+[
+ {
+  "name": "base_i5",
+  "cache_interval": 5,
+  "num_segments": 1
+ },
+ {
+  "name": "o1_s005",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k1/best.pt",
+  "surrogate_scale": 0.05,
+  "num_segments": 1
+ },
+ {
+  "name": "o1_s010",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k1/best.pt",
+  "surrogate_scale": 0.1,
+  "num_segments": 1
+ },
+ {
+  "name": "o1_s020",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k1/best.pt",
+  "surrogate_scale": 0.2,
+  "num_segments": 1
+ },
+ {
+  "name": "o1_s030",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k1/best.pt",
+  "surrogate_scale": 0.3,
+  "num_segments": 1
+ },
+ {
+  "name": "o1_s050",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k1/best.pt",
+  "surrogate_scale": 0.5,
+  "num_segments": 1
+ },
+ {
+  "name": "o1_s075",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k1/best.pt",
+  "surrogate_scale": 0.75,
+  "num_segments": 1
+ },
+ {
+  "name": "o1_s100",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k1/best.pt",
+  "surrogate_scale": 1.0,
+  "num_segments": 1
+ },
+ {
+  "name": "o2_s005",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k2/best.pt",
+  "surrogate_scale": 0.05,
+  "num_segments": 2
+ },
+ {
+  "name": "o2_s010",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k2/best.pt",
+  "surrogate_scale": 0.1,
+  "num_segments": 2
+ },
+ {
+  "name": "o2_s020",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k2/best.pt",
+  "surrogate_scale": 0.2,
+  "num_segments": 2
+ },
+ {
+  "name": "o2_s030",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k2/best.pt",
+  "surrogate_scale": 0.3,
+  "num_segments": 2
+ },
+ {
+  "name": "o2_s050",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k2/best.pt",
+  "surrogate_scale": 0.5,
+  "num_segments": 2
+ },
+ {
+  "name": "o2_s075",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k2/best.pt",
+  "surrogate_scale": 0.75,
+  "num_segments": 2
+ },
+ {
+  "name": "o2_s100",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k2/best.pt",
+  "surrogate_scale": 1.0,
+  "num_segments": 2
+ },
+ {
+  "name": "o4_s005",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 0.05,
+  "num_segments": 4
+ },
+ {
+  "name": "o4_s010",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 0.1,
+  "num_segments": 4
+ },
+ {
+  "name": "o4_s020",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 0.2,
+  "num_segments": 4
+ },
+ {
+  "name": "o4_s030",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 0.3,
+  "num_segments": 4
+ },
+ {
+  "name": "o4_s050",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 0.5,
+  "num_segments": 4
+ },
+ {
+  "name": "o4_s075",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 0.75,
+  "num_segments": 4
+ },
+ {
+  "name": "o4_s100",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 1.0,
+  "num_segments": 4
+ },
+ {
+  "name": "o7_s005",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k7/best.pt",
+  "surrogate_scale": 0.05,
+  "num_segments": 7
+ },
+ {
+  "name": "o7_s010",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k7/best.pt",
+  "surrogate_scale": 0.1,
+  "num_segments": 7
+ },
+ {
+  "name": "o7_s020",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k7/best.pt",
+  "surrogate_scale": 0.2,
+  "num_segments": 7
+ },
+ {
+  "name": "o7_s030",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k7/best.pt",
+  "surrogate_scale": 0.3,
+  "num_segments": 7
+ },
+ {
+  "name": "o7_s050",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k7/best.pt",
+  "surrogate_scale": 0.5,
+  "num_segments": 7
+ },
+ {
+  "name": "o7_s075",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k7/best.pt",
+  "surrogate_scale": 0.75,
+  "num_segments": 7
+ },
+ {
+  "name": "o7_s100",
+  "cache_interval": 5,
+  "surrogate_checkpoint": "runs/ctrl_k7/best.pt",
+  "surrogate_scale": 1.0,
+  "num_segments": 7
+ }
+]
