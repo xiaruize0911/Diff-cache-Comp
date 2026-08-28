@@ -1,0 +1,89 @@
+{
+  "args": {
+    "config": "configs/pixart_sigma_512.toml",
+    "prompt_file": "data/prompts/train112.txt",
+    "embeddings": "data/embeddings/train112.pt",
+    "init_checkpoint": "runs/m_k1/best.pt",
+    "output_dir": "runs/rw_k1_lr1e-6",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "surrogate_scale": 0.6,
+    "steps": 300,
+    "learning_rate": 1e-06,
+    "grad_clip": 1500.0,
+    "train_images": 48,
+    "val_images": 12,
+    "validate_every": 25,
+    "seed": 4001,
+    "objective": "reward",
+    "adaptive_clip": 0.0,
+    "truncate_intervals": 5
+  },
+  "history": [
+    {
+      "step": 25,
+      "train_loss": -0.6976674795150757,
+      "val_objective": -1.2239243686199188
+    },
+    {
+      "step": 50,
+      "train_loss": -0.7680346965789795,
+      "val_objective": -1.2612103049953778
+    },
+    {
+      "step": 75,
+      "train_loss": -1.8585996627807617,
+      "val_objective": -1.2629603048165639
+    },
+    {
+      "step": 100,
+      "train_loss": -1.8293883800506592,
+      "val_objective": -1.1581795737147331
+    },
+    {
+      "step": 125,
+      "train_loss": -1.764945387840271,
+      "val_objective": -1.0483720634753506
+    },
+    {
+      "step": 150,
+      "train_loss": -1.6369082927703857,
+      "val_objective": -1.2275739170921345
+    },
+    {
+      "step": 175,
+      "train_loss": -0.34975671768188477,
+      "val_objective": -1.2179823877910774
+    },
+    {
+      "step": 200,
+      "train_loss": 0.5848684310913086,
+      "val_objective": -1.3491878807544708
+    },
+    {
+      "step": 225,
+      "train_loss": -1.8663266897201538,
+      "val_objective": -1.2657669537390273
+    },
+    {
+      "step": 250,
+      "train_loss": 0.033571913838386536,
+      "val_objective": -1.257494666070367
+    },
+    {
+      "step": 275,
+      "train_loss": -1.6498008966445923,
+      "val_objective": -1.37304791311423
+    },
+    {
+      "step": 300,
+      "train_loss": -0.945408821105957,
+      "val_objective": -1.2777780008812745
+    }
+  ],
+  "best": {
+    "objective": -1.37304791311423,
+    "step": 275
+  },
+  "objective": "reward"
+}

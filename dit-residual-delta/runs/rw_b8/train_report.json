@@ -1,0 +1,90 @@
+{
+  "args": {
+    "config": "configs/pixart_sigma_512.toml",
+    "prompt_file": "data/prompts/train112.txt",
+    "embeddings": "data/embeddings/train112.pt",
+    "init_checkpoint": "runs/m_k1/best.pt",
+    "output_dir": "runs/rw_b8",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "surrogate_scale": 0.6,
+    "steps": 120,
+    "learning_rate": 1e-06,
+    "reward_batch": 8,
+    "grad_clip": 1500.0,
+    "train_images": 48,
+    "val_images": 12,
+    "validate_every": 10,
+    "seed": 4001,
+    "objective": "reward",
+    "adaptive_clip": 0.0,
+    "truncate_intervals": 5
+  },
+  "history": [
+    {
+      "step": 10,
+      "train_loss": -0.7934909462928772,
+      "val_objective": 0.2638658881187439
+    },
+    {
+      "step": 20,
+      "train_loss": -0.7842314839363098,
+      "val_objective": 0.3161376292506854
+    },
+    {
+      "step": 30,
+      "train_loss": -0.9613834023475647,
+      "val_objective": 0.3309151157736778
+    },
+    {
+      "step": 40,
+      "train_loss": -1.191118836402893,
+      "val_objective": 0.32297438010573387
+    },
+    {
+      "step": 50,
+      "train_loss": -1.3629533052444458,
+      "val_objective": 0.3173855009178321
+    },
+    {
+      "step": 60,
+      "train_loss": -1.3576545715332031,
+      "val_objective": 0.29223962873220444
+    },
+    {
+      "step": 70,
+      "train_loss": -1.4454922676086426,
+      "val_objective": 0.2795281559228897
+    },
+    {
+      "step": 80,
+      "train_loss": -0.9483209848403931,
+      "val_objective": 0.28696827838818234
+    },
+    {
+      "step": 90,
+      "train_loss": -1.2669909000396729,
+      "val_objective": 0.2681461547811826
+    },
+    {
+      "step": 100,
+      "train_loss": -1.0512477159500122,
+      "val_objective": 0.25291645030180615
+    },
+    {
+      "step": 110,
+      "train_loss": -0.6789969801902771,
+      "val_objective": 0.1961344505349795
+    },
+    {
+      "step": 120,
+      "train_loss": -1.1071981191635132,
+      "val_objective": 0.24000776062409082
+    }
+  ],
+  "best": {
+    "objective": 0.1961344505349795,
+    "step": 110
+  },
+  "objective": "reward"
+}

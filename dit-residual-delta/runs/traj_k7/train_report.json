@@ -1,0 +1,108 @@
+{
+  "args": {
+    "config": "configs/pixart_sigma_512.toml",
+    "prompt_file": "data/prompts/train112.txt",
+    "embeddings": "data/embeddings/train112.pt",
+    "init_checkpoint": "runs/m_k7/best.pt",
+    "output_dir": "runs/traj_k7",
+    "cache_interval": 5,
+    "num_segments": 7,
+    "surrogate_scale": 0.2,
+    "steps": 400,
+    "learning_rate": 1e-05,
+    "train_images": 48,
+    "val_images": 12,
+    "validate_every": 25,
+    "seed": 4001,
+    "objective": "latent",
+    "adaptive_clip": 0.0,
+    "truncate_intervals": 1
+  },
+  "history": [
+    {
+      "step": 25,
+      "train_loss": 1.3649442195892334,
+      "val_objective": 1.155174806714058
+    },
+    {
+      "step": 50,
+      "train_loss": 0.9580260515213013,
+      "val_objective": 1.0670612106720607
+    },
+    {
+      "step": 75,
+      "train_loss": 1.9093945026397705,
+      "val_objective": 1.08975254992644
+    },
+    {
+      "step": 100,
+      "train_loss": 1.1301567554473877,
+      "val_objective": 1.081665168205897
+    },
+    {
+      "step": 125,
+      "train_loss": 0.7776927947998047,
+      "val_objective": 1.0980386783679326
+    },
+    {
+      "step": 150,
+      "train_loss": 0.95677649974823,
+      "val_objective": 1.1279776642719905
+    },
+    {
+      "step": 175,
+      "train_loss": 1.1375224590301514,
+      "val_objective": 1.2504326403141022
+    },
+    {
+      "step": 200,
+      "train_loss": 1.3630189895629883,
+      "val_objective": 1.0224371353785198
+    },
+    {
+      "step": 225,
+      "train_loss": 1.00767982006073,
+      "val_objective": 0.9529281804958979
+    },
+    {
+      "step": 250,
+      "train_loss": 0.4539138078689575,
+      "val_objective": 0.935534343123436
+    },
+    {
+      "step": 275,
+      "train_loss": 0.7996610403060913,
+      "val_objective": 0.9270956466595331
+    },
+    {
+      "step": 300,
+      "train_loss": 1.5720484256744385,
+      "val_objective": 0.9320329328378042
+    },
+    {
+      "step": 325,
+      "train_loss": 1.0007081031799316,
+      "val_objective": 0.932470440864563
+    },
+    {
+      "step": 350,
+      "train_loss": 1.218444585800171,
+      "val_objective": 0.9543029417594274
+    },
+    {
+      "step": 375,
+      "train_loss": 0.3866223990917206,
+      "val_objective": 0.9000732451677322
+    },
+    {
+      "step": 400,
+      "train_loss": 0.8064498901367188,
+      "val_objective": 0.9021535714467367
+    }
+  ],
+  "best": {
+    "objective": 0.9000732451677322,
+    "step": 375
+  },
+  "objective": "latent"
+}

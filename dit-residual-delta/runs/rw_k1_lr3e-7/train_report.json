@@ -1,0 +1,89 @@
+{
+  "args": {
+    "config": "configs/pixart_sigma_512.toml",
+    "prompt_file": "data/prompts/train112.txt",
+    "embeddings": "data/embeddings/train112.pt",
+    "init_checkpoint": "runs/m_k1/best.pt",
+    "output_dir": "runs/rw_k1_lr3e-7",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "surrogate_scale": 0.6,
+    "steps": 300,
+    "learning_rate": 3e-07,
+    "grad_clip": 1500.0,
+    "train_images": 48,
+    "val_images": 12,
+    "validate_every": 25,
+    "seed": 4001,
+    "objective": "reward",
+    "adaptive_clip": 0.0,
+    "truncate_intervals": 5
+  },
+  "history": [
+    {
+      "step": 25,
+      "train_loss": -0.1794833093881607,
+      "val_objective": -1.3014151727159817
+    },
+    {
+      "step": 50,
+      "train_loss": -0.6846495866775513,
+      "val_objective": -1.3159146656592686
+    },
+    {
+      "step": 75,
+      "train_loss": -1.8813343048095703,
+      "val_objective": -1.268155371149381
+    },
+    {
+      "step": 100,
+      "train_loss": -1.8338837623596191,
+      "val_objective": -1.253222784648339
+    },
+    {
+      "step": 125,
+      "train_loss": -1.6703579425811768,
+      "val_objective": -1.2838821733991306
+    },
+    {
+      "step": 150,
+      "train_loss": -1.6864298582077026,
+      "val_objective": -1.2928293695052464
+    },
+    {
+      "step": 175,
+      "train_loss": -0.1347370594739914,
+      "val_objective": -1.3288629750410716
+    },
+    {
+      "step": 200,
+      "train_loss": 0.6295000314712524,
+      "val_objective": -1.299212654431661
+    },
+    {
+      "step": 225,
+      "train_loss": -1.8846360445022583,
+      "val_objective": -1.2954004903634389
+    },
+    {
+      "step": 250,
+      "train_loss": 0.6387080550193787,
+      "val_objective": -1.262052457779646
+    },
+    {
+      "step": 275,
+      "train_loss": -1.7498201131820679,
+      "val_objective": -1.2799460639556248
+    },
+    {
+      "step": 300,
+      "train_loss": -0.23582017421722412,
+      "val_objective": -1.2914906417330105
+    }
+  ],
+  "best": {
+    "objective": -1.3288629750410716,
+    "step": 175
+  },
+  "objective": "reward"
+}
