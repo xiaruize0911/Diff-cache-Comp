@@ -54,6 +54,28 @@ def decode(pipe, latents, checkpoint=True):
     return (img / 2 + 0.5).clamp(0, 1)
 
 
+def _ckpt_bank(bank):
+    """Wrap the corrector so its activations are recomputed instead of stored.
+
+    With trunc_intervals=1 the graph over one reuse step is K corrector forwards, so
+    memory grows linearly in K: 7.49 GB at K=1, 12.77 GB at K=2, and past the 44 GB
+    card by K=14. Checkpointing each call trades one recomputation for that, which is
+    the right side of the deal -- the corrector is 11.9M-43.7M parameters against a
+    0.6B transformer whose blocks are skipped entirely on cached steps.
+    """
+    inner = bank.forward
+
+    def fwd(delta_h, anchor_residual, anchor_hidden, timestep, horizon, block_id):
+        if not torch.is_grad_enabled():
+            return inner(delta_h, anchor_residual, anchor_hidden, timestep, horizon, block_id)
+        return torch.utils.checkpoint.checkpoint(
+            lambda a, b, c: inner(a, b, c, timestep, horizon, block_id),
+            delta_h, anchor_residual, anchor_hidden, use_reentrant=False)
+
+    bank.forward = fwd
+    return bank
+
+
 def rollout(pipe, embed, steps, cfg, generator, *, variant=None, bank=None,
             anchor_every=None, grad=False, reference=None, trunc_intervals=1):
     """One denoising trajectory. Returns the per-step latents.
@@ -127,17 +149,38 @@ def main() -> None:
     ap.add_argument("--surrogate-scale", type=float, default=0.5)
     ap.add_argument("--steps", type=int, default=400)
     ap.add_argument("--learning-rate", type=float, default=1e-5)
+    ap.add_argument("--checkpoint-corrector", action="store_true",
+                    help="recompute corrector activations instead of storing them. "
+                         "Needed past K=7: memory over one reuse step is K corrector "
+                         "forwards, which exceeds a 44 GB card by K=14.")
+    ap.add_argument("--reward-batch", type=int, default=1,
+                    help="prompts accumulated per optimiser step. Only this reduces "
+                         "gradient variance; pairing the reward against the exact "
+                         "image does NOT, because IR(exact) is constant in the "
+                         "parameters and cancels from the gradient. Pairing helps the "
+                         "val METRIC, batching helps the gradient.")
+    ap.add_argument("--grad-clip", type=float, default=1.0,
+                    help="gradient-norm clip. The default suits the latent and LPIPS "
+                         "objectives (measured norms 1.4-6.8). ImageReward comes in at "
+                         "1278-1746 because its output spans +/-2 and BLIP's visual "
+                         "encoder amplifies the backward pass, so a clip of 1.0 there "
+                         "discards magnitude entirely and flattens the relative weight "
+                         "of samples -- set it near the measured norm instead.")
     ap.add_argument("--train-images", type=int, default=48)
     ap.add_argument("--val-images", type=int, default=12)
     ap.add_argument("--validate-every", type=int, default=25)
     ap.add_argument("--seed", type=int, default=4001)
-    ap.add_argument("--objective", choices=["latent", "image"], default="latent",
+    ap.add_argument("--objective", choices=["latent", "image", "reward"], default="latent",
                     help="what the loss is computed on. 'latent' matches the trajectory; "
                          "'image' decodes the final latent through the VAE and scores "
                          "LPIPS against the exact image, which is what deployment is "
                          "measured with. Extending the horizon improved the latent "
                          "objective (0.833 vs 0.871) but moved the image metric by "
-                         "-0.0039 (t=-0.8), i.e. the proxy became the bottleneck.")
+                         "-0.0039 (t=-0.8), i.e. the proxy became the bottleneck. "
+                         "'reward' maximises ImageReward on the decoded image, which is "
+                         "the only option not capped at matching the exact output: LPIPS "
+                         "and SSIM measure similarity TO the 20-step image, while a "
+                         "preference score can in principle exceed it.")
     ap.add_argument("--adaptive-clip", type=float, default=0.0,
                     help="clip at this multiple of the running median gradient norm "
                          "(0 = fixed clip at 1.0, the previous behaviour)")
@@ -154,6 +197,8 @@ def main() -> None:
     pipe.transformer.requires_grad_(False)
     bank = load_surrogate_bank(a.init_checkpoint).float()   # fp32 master weights
     bank.requires_grad_(True)
+    if a.checkpoint_corrector:
+        bank = _ckpt_bank(bank)
     trainable = [p for p in bank.parameters() if p.requires_grad]
     print(json.dumps({"trainable_params": sum(p.numel() for p in trainable)}), flush=True)
 
@@ -174,7 +219,27 @@ def main() -> None:
     opt = torch.optim.AdamW(trainable, lr=a.learning_rate, weight_decay=0.0)
     out = Path(a.output_dir); out.mkdir(parents=True, exist_ok=True)
 
-    perceptual = None
+    perceptual = reward_model = None
+    if a.objective == "reward":
+        import ImageReward as RM
+        reward_model = RM.load("ImageReward-v1.0", device="cuda")
+        reward_model.requires_grad_(False)
+        # score() takes a PIL image and preprocesses with no gradient path, so the
+        # library's own score_gard() entry point is used and its preprocessing
+        # (resize 224 bicubic, centre crop, CLIP normalise) reproduced on tensors
+        _MEAN = torch.tensor([0.48145466, 0.4578275, 0.40821073], device="cuda").view(1, 3, 1, 1)
+        _STD = torch.tensor([0.26862954, 0.26130258, 0.27577711], device="cuda").view(1, 3, 1, 1)
+        if a.truncate_intervals < 5:
+            raise SystemExit("--objective reward needs the whole rollout in the graph")
+
+        def reward_of(prompt, img01):
+            x = torch.nn.functional.interpolate(img01, size=224, mode="bicubic",
+                                                align_corners=False, antialias=True)
+            x = ((x - _MEAN) / _STD).to(next(reward_model.parameters()).dtype)
+            tok = reward_model.blip.tokenizer(prompt, padding="max_length", truncation=True,
+                                              max_length=35, return_tensors="pt").to("cuda")
+            return reward_model.score_gard(tok.input_ids, tok.attention_mask, x).squeeze()
+
     if a.objective == "image":
         import lpips as lpips_pkg
         # called directly, not through metrics.lpips_alex: that wrapper is inside
@@ -193,16 +258,32 @@ def main() -> None:
             return rollout(pipe, emb[prompt], n_steps, model_cfg, g)
 
     def image_loss(prompt, seed, ref_latents, grad):
-        """LPIPS between the decoded final latent and the exact image."""
-        with torch.no_grad():
-            ref_img = decode(pipe, ref_latents[-1])
+        """LPIPS to the exact image, or negative ImageReward on the image alone."""
+        need_ref = a.objective == "image"
+        if need_ref:
+            with torch.no_grad():
+                ref_img = decode(pipe, ref_latents[-1])
         g = torch.Generator(device="cuda").manual_seed(seed)
         with torch.set_grad_enabled(grad):
             got = rollout(pipe, emb[prompt], n_steps, model_cfg, g,
                           anchor_every=a.cache_interval, grad=grad,
                           trunc_intervals=a.truncate_intervals)
             cand = decode(pipe, got[-1])
-            return perceptual(cand * 2 - 1, ref_img * 2 - 1).mean()
+            if need_ref:
+                return perceptual(cand * 2 - 1, ref_img * 2 - 1).mean()
+            # negated: the loop minimises, a preference score is maximised. Nothing
+            # anchors this to the exact output -- the only objective of the three that
+            # is not capped at matching it.
+            loss = -reward_of(prompt, cand)
+            if not grad:
+                # val only: subtract the exact image's score. Prompt difficulty spans
+                # IR -2.3 to +1.9 across this split, far more than any corrector moves
+                # it, so the unpaired mean is noise-dominated. This cancels exactly in
+                # the gradient, which is why it is applied to the metric alone.
+                with torch.no_grad():
+                    ref_img2 = decode(pipe, ref_latents[-1], checkpoint=False)
+                    loss = loss + reward_of(prompt, ref_img2)
+            return loss
 
     def evaluate():
         tot = 0.0
@@ -210,7 +291,7 @@ def main() -> None:
             sd = a.seed + 90000 + j
             ref = reference_for(p, sd)
             with runtime_for_variant(pipe.transformer, variant, bank):
-                if a.objective == "image":
+                if a.objective in ("image", "reward"):
                     with torch.no_grad():
                         tot += float(image_loss(p, sd, ref, grad=False))
                     continue
@@ -228,17 +309,24 @@ def main() -> None:
     for step in range(1, a.steps + 1):
         p = train_p[(step - 1) % len(train_p)]
         seed = a.seed + (step - 1) // len(train_p)
-        ref = reference_for(p, seed)
-        with runtime_for_variant(pipe.transformer, variant, bank):
-            if a.objective == "image":
-                loss = image_loss(p, seed, ref, grad=True)
-            else:
-                g = torch.Generator(device="cuda").manual_seed(seed)
-                _, loss = rollout(pipe, emb[p], n_steps, model_cfg, g,
-                                  anchor_every=a.cache_interval, grad=True, reference=ref,
-                                  trunc_intervals=a.truncate_intervals)
         opt.zero_grad(set_to_none=True)
-        loss.backward()
+        batch = a.reward_batch if a.objective == "reward" else 1
+        total = 0.0
+        for bi in range(batch):
+            pb = train_p[(step - 1 + bi * 7) % len(train_p)]   # stride 7: coprime with 48
+            sb = a.seed + (step - 1) // len(train_p)
+            ref = reference_for(pb, sb)
+            with runtime_for_variant(pipe.transformer, variant, bank):
+                if a.objective in ("image", "reward"):
+                    loss = image_loss(pb, sb, ref, grad=True) / batch
+                else:
+                    g = torch.Generator(device="cuda").manual_seed(sb)
+                    _, loss = rollout(pipe, emb[pb], n_steps, model_cfg, g,
+                                      anchor_every=a.cache_interval, grad=True, reference=ref,
+                                      trunc_intervals=a.truncate_intervals)
+            loss.backward()          # accumulate; the graph is freed each time
+            total += float(loss)
+        loss = torch.tensor(total, device="cuda")
         # Fixed clipping at 1.0 against a grad_norm that swings 6.8-124.6 at full
         # horizon means almost every step is scaled by 1/norm, i.e. the magnitude is
         # discarded and only the direction survives. An adaptive clip tracks the
@@ -252,7 +340,7 @@ def main() -> None:
             thresh = sorted(recent)[len(recent) // 2] * a.adaptive_clip
             gnorm = torch.nn.utils.clip_grad_norm_(trainable, max(thresh, 1e-8))
         else:
-            gnorm = torch.nn.utils.clip_grad_norm_(trainable, 1.0)
+            gnorm = torch.nn.utils.clip_grad_norm_(trainable, a.grad_clip)
         if step == 1:
             # the point of the truncation is a bounded graph; report it rather than assume
             reached = sum(1 for p in trainable if p.grad is not None and float(p.grad.abs().sum()) > 0)

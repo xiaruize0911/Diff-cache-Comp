@@ -24,7 +24,7 @@ for spec in 2:0.3 4:0.3 7:0.2 14:0.2 28:0.2; do
     --prompt-file data/prompts/train112.txt --embeddings data/embeddings/train112.pt \
     --init-checkpoint runs/m_k$K/best.pt --output-dir $OUT \
     --cache-interval 5 $SEGARG --surrogate-scale $SG \
-    --objective latent --truncate-intervals 1 \
+    --objective latent --truncate-intervals 1 --checkpoint-corrector \
     --steps 400 --learning-rate 1e-5 --train-images 48 --val-images 12 --validate-every 25
   echo "=== traj K=$K done ==="
 done
