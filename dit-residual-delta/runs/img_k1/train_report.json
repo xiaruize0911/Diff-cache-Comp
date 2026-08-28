@@ -1,0 +1,88 @@
+{
+  "args": {
+    "config": "configs/pixart_sigma_512.toml",
+    "prompt_file": "data/prompts/train112.txt",
+    "embeddings": "data/embeddings/train112.pt",
+    "init_checkpoint": "runs/m_k1/best.pt",
+    "output_dir": "runs/img_k1",
+    "cache_interval": 5,
+    "num_segments": 1,
+    "surrogate_scale": 0.6,
+    "steps": 300,
+    "learning_rate": 1e-05,
+    "train_images": 48,
+    "val_images": 12,
+    "validate_every": 25,
+    "seed": 4001,
+    "objective": "image",
+    "adaptive_clip": 0.0,
+    "truncate_intervals": 5
+  },
+  "history": [
+    {
+      "step": 25,
+      "train_loss": 0.5859479308128357,
+      "val_objective": 0.39755484461784363
+    },
+    {
+      "step": 50,
+      "train_loss": 0.4363160729408264,
+      "val_objective": 0.4258347774545352
+    },
+    {
+      "step": 75,
+      "train_loss": 0.3386491537094116,
+      "val_objective": 0.42525243883331615
+    },
+    {
+      "step": 100,
+      "train_loss": 0.4542175829410553,
+      "val_objective": 0.40569499631722766
+    },
+    {
+      "step": 125,
+      "train_loss": 0.3515262007713318,
+      "val_objective": 0.40541815261046094
+    },
+    {
+      "step": 150,
+      "train_loss": 0.3743332624435425,
+      "val_objective": 0.3970792939265569
+    },
+    {
+      "step": 175,
+      "train_loss": 0.3706183135509491,
+      "val_objective": 0.3697456941008568
+    },
+    {
+      "step": 200,
+      "train_loss": 0.33334922790527344,
+      "val_objective": 0.3783445817728837
+    },
+    {
+      "step": 225,
+      "train_loss": 0.4371575713157654,
+      "val_objective": 0.38367119679848355
+    },
+    {
+      "step": 250,
+      "train_loss": 0.20542891323566437,
+      "val_objective": 0.3943039985994498
+    },
+    {
+      "step": 275,
+      "train_loss": 0.3572886884212494,
+      "val_objective": 0.38553501665592194
+    },
+    {
+      "step": 300,
+      "train_loss": 0.4155563712120056,
+      "val_objective": 0.3632894530892372
+    }
+  ],
+  "best": {
+    "objective": 0.3632894530892372,
+    "step": 300
+  },
+  "objective": "image"
+}

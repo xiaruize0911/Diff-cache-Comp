@@ -138,6 +138,9 @@ def main() -> None:
                          "measured with. Extending the horizon improved the latent "
                          "objective (0.833 vs 0.871) but moved the image metric by "
                          "-0.0039 (t=-0.8), i.e. the proxy became the bottleneck.")
+    ap.add_argument("--adaptive-clip", type=float, default=0.0,
+                    help="clip at this multiple of the running median gradient norm "
+                         "(0 = fixed clip at 1.0, the previous behaviour)")
     ap.add_argument("--truncate-intervals", type=int, default=1,
                     help="how many anchor intervals the backprop spans. >1 pulls the "
                          "anchor steps into the graph (a full 0.6B forward each) and "
@@ -219,6 +222,8 @@ def main() -> None:
         return tot / len(val_p)
 
     history, best = [], {"objective": float("inf"), "step": -1}
+
+    recent: list[float] = []
     start = time.perf_counter()
     for step in range(1, a.steps + 1):
         p = train_p[(step - 1) % len(train_p)]
@@ -234,7 +239,20 @@ def main() -> None:
                                   trunc_intervals=a.truncate_intervals)
         opt.zero_grad(set_to_none=True)
         loss.backward()
-        gnorm = torch.nn.utils.clip_grad_norm_(trainable, 1.0)
+        # Fixed clipping at 1.0 against a grad_norm that swings 6.8-124.6 at full
+        # horizon means almost every step is scaled by 1/norm, i.e. the magnitude is
+        # discarded and only the direction survives. An adaptive clip tracks the
+        # running median instead, so ordinary steps pass through and only genuine
+        # spikes are cut -- the cheap alternative to bootstrapping for what is really
+        # a variance-control problem.
+        if a.adaptive_clip:
+            gn = torch.nn.utils.clip_grad_norm_(trainable, float("inf"))  # measure only
+            recent.append(float(gn))
+            if len(recent) > 50: recent.pop(0)
+            thresh = sorted(recent)[len(recent) // 2] * a.adaptive_clip
+            gnorm = torch.nn.utils.clip_grad_norm_(trainable, max(thresh, 1e-8))
+        else:
+            gnorm = torch.nn.utils.clip_grad_norm_(trainable, 1.0)
         if step == 1:
             # the point of the truncation is a bounded graph; report it rather than assume
             reached = sum(1 for p in trainable if p.grad is not None and float(p.grad.abs().sum()) > 0)
