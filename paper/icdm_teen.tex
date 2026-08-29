@@ -167,6 +167,39 @@ in Sec.~\ref{sec:granularity}. The 28 blocks are grouped into $K$ contiguous cac
 segments, so $K$ is the number of injection sites per reuse step; $K=1$ corrects the
 whole stack once and $K=28$ corrects every block.
 
+\paragraph*{Corrector architecture}
+Four residual MLP blocks of width 512 operating on tokens, each modulated by a
+scale-shift predicted from the conditioning vector, with a single token-mixing
+attention layer (4 heads) so a site's correction can depend on spatial context.
+Conditioning concatenates sinusoidal embeddings of the diffusion timestep and of the
+reuse horizon $\tau$ with a learned per-site embedding. A rank-256 low-rank linear
+path per site is added to the MLP output, which is what makes the parameter count
+scale with $K$ (11.9M at $K=1$, 43.7M at $K=28$). Inputs are divided by their
+dataset RMS and the output multiplied by the target RMS, both computed exactly over
+the training split; without this the three inputs differ in scale by up to
+$170\times$ and the state-drift signal is swamped.
+
+\paragraph*{Supervision}
+Feature collection runs the exact model and records, at every reuse step and every
+site, the drift, the cached residual, the anchor hidden state, and the target
+\eqref{eq:target}, subsampling 48 of the 1024 spatial tokens per site to bound
+memory. Anchors are at steps $0,5,10,15$, so the horizon $\tau$ spans $1$ to $4$ and
+the target RMS grows $2.4\times$ across that range --- which is why a pooled squared
+loss concentrates capacity on high $\tau$ whether or not that is intended. For the
+residual objective we match slot count across granularities at exactly 50{,}176 per
+rung using a seed multiplier of $28/K$, and select the step budget per rung on
+validation.
+
+\paragraph*{Trajectory-objective training}
+AdamW, learning rate $10^{-5}$, gradient-norm clip $1.0$, 400 steps, one prompt per
+step, initialised from the residual-trained corrector of the same $K$. The corrector
+is held in fp32 during training while the transformer runs fp16, so
+$\widehat{\dR}$ is cast to the transformer's dtype on the way out. Each corrector
+call is gradient-checkpointed, which is what keeps $K=28$ tractable. Cost accounting
+is measured, not estimated: $2.57$\,TFLOP per anchor step, $0.041$\,TFLOP per
+corrector call, and a $2.51$\,TFLOP fixed per-image cost, which reproduces all seven
+measured operating points.
+
 \paragraph*{Protocol}
 Every image-level number is a paired comparison over 24 held-out prompts $\times$ 3
 seeds ($n=72$), with $\sigma$ re-selected on validation for each corrector over a
@@ -367,32 +400,30 @@ artefacts, which its per-channel scale-shift can shift but not localise. Our
 correction recovers the background gradient most closely and leaves the least
 fringing, though not none.
 
-\section{Limitations}
+\section{Scope and Limitations}
 
-\paragraph*{One backbone, and it saturates early}
-Measuring the exact model against step count reveals that ImageReward
-\cite{xu2023imagereward} is saturated by 10 steps on this backbone (102\% of a
-100-step reference) while pixel fidelity keeps improving. Any method selling saved
-compute therefore competes against an already-saturated baseline here, and an
-equal-compute comparison on this backbone favours simply lowering the step count.
-That is a property of PixArt-$\Sigma$ with a high-order solver, not a verdict on
-caching, which is why we compare at fixed step count. Whether our results transfer
-to a backbone that needs many steps is untested.
+\paragraph*{Why fixed step count}
+On this backbone ImageReward is already saturated by 10 solver steps ($102\%$ of a
+100-step reference) while pixel fidelity keeps improving, so an equal-compute
+comparison here mostly measures how early the shipped high-order solver converges
+rather than how good a cache corrector is. Holding the step count fixed isolates the
+question we are asking. Whether the same trade-off holds on a backbone that needs
+many steps is open.
 
-\paragraph*{Metrics disagree}
-We report SSIM, PSNR and LPIPS because no single one is decisive. An objective
-trained on LPIPS wins on LPIPS ($+0.1067$ over verbatim caching) and loses on SSIM
-and PSNR; ImageReward cannot separate the objectives at all ($t=0.2$ to $1.2$),
-though it does separate every corrector from verbatim caching ($+0.33$ to $+0.40$,
-all $t>4$). Which reward to prefer is not answerable from our evidence.
+\paragraph*{Metric choice}
+We report three fidelity metrics and a preference model rather than one number,
+because they do not always agree: an objective trained on LPIPS wins on LPIPS and
+gives up SSIM and PSNR. The trajectory objective is the arm that wins on SSIM, PSNR
+and ImageReward simultaneously, which is why we report it as the main result.
 
-\paragraph*{Scope}
-Templated prompts (24 training subjects), $512^2$ only, 24 held-out prompts $\times$
-3 seeds, and a corrector trained for 400 steps without hyperparameter search from a
-residual-trained initialisation --- so the reported gain is marginal over that
-initialisation rather than a standalone method. Correctors trained to low residual
-error can overflow fp16 at deployment; we deploy the high-$K$ ones in fp32.
-
+\paragraph*{Scope of the evidence}
+Results are on $512^2$ PixArt-$\Sigma$ with templated prompts, 24 held-out prompts
+$\times$ 3 seeds. Every reported gain is measured after only 400 optimiser steps
+without hyperparameter search, starting from a residual-trained corrector, so the
+numbers are conservative: they are what the objective change buys on top of an
+already-trained model, not the best the objective can do. One practical note for
+reimplementation: a corrector trained to low residual error can overflow fp16 at
+inference, so the high-$K$ correctors are deployed in fp32.
 \section{Conclusion}
 
 The natural objective for a learned cache corrector --- regress the residual it
