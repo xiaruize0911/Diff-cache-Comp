@@ -1,0 +1,31 @@
+[
+ {
+  "name": "cache",
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 1
+ },
+ {
+  "name": "taylor",
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 1,
+  "taylor_order": 1
+ },
+ {
+  "name": "blockcache",
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/bc_k1/best.pt",
+  "surrogate_scale": 1.0
+ },
+ {
+  "name": "ours",
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/lat_k1/best.pt",
+  "surrogate_scale": 0.6
+ }
+]

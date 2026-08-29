@@ -1,0 +1,71 @@
+{
+ "p0": {
+  "prompt": "a pencil sketch of a marble sculpture of a horse at sunrise",
+  "reference": {
+   "ssim": 1.0,
+   "reward": 1.7585927248001099
+  },
+  "cache": {
+   "ssim": 0.6191646432545527,
+   "reward": -0.7303765416145325
+  },
+  "taylor": {
+   "ssim": 0.555658026450134,
+   "reward": 0.26120126247406006
+  },
+  "blockcache": {
+   "ssim": 0.6878617165300372,
+   "reward": -0.6347926259040833
+  },
+  "ours": {
+   "ssim": 0.7680165926980743,
+   "reward": -0.18540063500404358
+  }
+ },
+ "p1": {
+  "prompt": "a studio product photograph of a violinist tuning backstage under heavy rain",
+  "reference": {
+   "ssim": 1.0,
+   "reward": 1.9269570112228394
+  },
+  "cache": {
+   "ssim": 0.4597781280724594,
+   "reward": 1.3066413402557373
+  },
+  "taylor": {
+   "ssim": 0.39319137374809915,
+   "reward": 0.8984221816062927
+  },
+  "blockcache": {
+   "ssim": 0.5242927104934352,
+   "reward": 1.7845911979675293
+  },
+  "ours": {
+   "ssim": 0.5404514695396787,
+   "reward": 1.8315541744232178
+  }
+ },
+ "p2": {
+  "prompt": "a detailed digital illustration of a marble sculpture of a horse at sunrise",
+  "reference": {
+   "ssim": 1.0,
+   "reward": 1.917548418045044
+  },
+  "cache": {
+   "ssim": 0.6882460124683929,
+   "reward": 1.5149238109588623
+  },
+  "taylor": {
+   "ssim": 0.6542137405591948,
+   "reward": 1.5523414611816406
+  },
+  "blockcache": {
+   "ssim": 0.6942202116453312,
+   "reward": 1.3534796237945557
+  },
+  "ours": {
+   "ssim": 0.7017911307611744,
+   "reward": 1.476337194442749
+  }
+ }
+}

@@ -1,0 +1,3379 @@
+{
+ "reference_steps": 20,
+ "n": 72,
+ "variants": [
+  {
+   "name": "cache_i5",
+   "steps": 20,
+   "cache_interval": 5,
+   "num_segments": 1
+  },
+  {
+   "name": "taylor1",
+   "steps": 20,
+   "cache_interval": 5,
+   "num_segments": 1,
+   "taylor_order": 1
+  },
+  {
+   "name": "taylor2",
+   "steps": 20,
+   "cache_interval": 5,
+   "num_segments": 1,
+   "taylor_order": 2
+  },
+  {
+   "name": "blockcache",
+   "steps": 20,
+   "cache_interval": 5,
+   "num_segments": 1,
+   "surrogate_checkpoint": "runs/bc_k1/best.pt",
+   "surrogate_scale": 1.0
+  },
+  {
+   "name": "resid",
+   "steps": 20,
+   "cache_interval": 5,
+   "num_segments": 1,
+   "surrogate_checkpoint": "runs/m_k1/best.pt",
+   "surrogate_scale": 0.75
+  },
+  {
+   "name": "traj",
+   "steps": 20,
+   "cache_interval": 5,
+   "num_segments": 1,
+   "surrogate_checkpoint": "runs/lat_k1/best.pt",
+   "surrogate_scale": 0.6
+  }
+ ],
+ "aggregate": {
+  "exact_reward": {
+   "mean": 1.530213697684101,
+   "std": 0.4885638501230789,
+   "min": -0.6087384223937988,
+   "max": 1.927882194519043,
+   "count": 72
+  },
+  "cache_i5": {
+   "reward": {
+    "mean": 0.7433734185243439,
+    "std": 0.8844462959354863,
+    "min": -1.6747267246246338,
+    "max": 1.8118541240692139,
+    "count": 72
+   },
+   "ssim_vs_exact": {
+    "mean": 0.6269464306861645,
+    "std": 0.11625436528805289,
+    "min": 0.36200133469368584,
+    "max": 0.8567071755943094,
+    "count": 72
+   },
+   "lpips_vs_exact": {
+    "mean": 0.46690011479788357,
+    "std": 0.12449150021450375,
+    "min": 0.1919344663619995,
+    "max": 0.7301220893859863,
+    "count": 72
+   },
+   "seconds": {
+    "mean": 0.26989628322836423,
+    "std": 0.006665248092788184,
+    "min": 0.2627810649573803,
+    "max": 0.2983078211545944,
+    "count": 72
+   },
+   "reward_minus_exact": {
+    "mean": -0.786840279159757,
+    "std": 0.7928298844436391,
+    "min": -2.7940317392349243,
+    "max": 0.5634954981505871,
+    "count": 72
+   }
+  },
+  "taylor1": {
+   "reward": {
+    "mean": 0.5841758713229663,
+    "std": 0.8808280319582376,
+    "min": -2.232300043106079,
+    "max": 1.7773092985153198,
+    "count": 72
+   },
+   "ssim_vs_exact": {
+    "mean": 0.5874274676814892,
+    "std": 0.1120390887629138,
+    "min": 0.2921304123452076,
+    "max": 0.8070452450337137,
+    "count": 72
+   },
+   "lpips_vs_exact": {
+    "mean": 0.507984476784865,
+    "std": 0.08267963631273997,
+    "min": 0.30809226632118225,
+    "max": 0.6900795102119446,
+    "count": 72
+   },
+   "seconds": {
+    "mean": 0.2720672183463143,
+    "std": 0.005090237253199964,
+    "min": 0.26564710959792137,
+    "max": 0.296393770724535,
+    "count": 72
+   },
+   "reward_minus_exact": {
+    "mean": -0.9460378263611346,
+    "std": 0.7004646567065181,
+    "min": -2.8155224323272705,
+    "max": 0.22307664155960083,
+    "count": 72
+   }
+  },
+  "taylor2": {
+   "reward": {
+    "mean": -0.31588717793217963,
+    "std": 0.8926206814594669,
+    "min": -2.148818254470825,
+    "max": 1.5047836303710938,
+    "count": 72
+   },
+   "ssim_vs_exact": {
+    "mean": 0.4782426462528415,
+    "std": 0.10140525857348887,
+    "min": 0.21438788359363734,
+    "max": 0.679849412583108,
+    "count": 72
+   },
+   "lpips_vs_exact": {
+    "mean": 0.6386211464802424,
+    "std": 0.048388853670689805,
+    "min": 0.5609120726585388,
+    "max": 0.7704100608825684,
+    "count": 72
+   },
+   "seconds": {
+    "mean": 0.2745104345182578,
+    "std": 0.00689257798042148,
+    "min": 0.268354382365942,
+    "max": 0.3043987452983856,
+    "count": 72
+   },
+   "reward_minus_exact": {
+    "mean": -1.8461008756162807,
+    "std": 0.9032131559226388,
+    "min": -3.844813108444214,
+    "max": 0.020214498043060303,
+    "count": 72
+   }
+  },
+  "blockcache": {
+   "reward": {
+    "mean": 0.5887366881749282,
+    "std": 0.9908403878228373,
+    "min": -1.9653894901275635,
+    "max": 1.7845911979675293,
+    "count": 72
+   },
+   "ssim_vs_exact": {
+    "mean": 0.6329834823469824,
+    "std": 0.10932886252437965,
+    "min": 0.40780587406024815,
+    "max": 0.8454201814039605,
+    "count": 72
+   },
+   "lpips_vs_exact": {
+    "mean": 0.4593572511027257,
+    "std": 0.12166751471346578,
+    "min": 0.20518185198307037,
+    "max": 0.7031715512275696,
+    "count": 72
+   },
+   "seconds": {
+    "mean": 0.29391360624382895,
+    "std": 0.014858731358324082,
+    "min": 0.28113173320889473,
+    "max": 0.40166381746530533,
+    "count": 72
+   },
+   "reward_minus_exact": {
+    "mean": -0.9414770095091727,
+    "std": 0.8833915018720918,
+    "min": -2.956017851829529,
+    "max": 0.22033369541168213,
+    "count": 72
+   }
+  },
+  "resid": {
+   "reward": {
+    "mean": 1.068729851498372,
+    "std": 0.8261017982709616,
+    "min": -1.5803248882293701,
+    "max": 1.8911479711532593,
+    "count": 72
+   },
+   "ssim_vs_exact": {
+    "mean": 0.6676302350106895,
+    "std": 0.10665552284026417,
+    "min": 0.4532675342649816,
+    "max": 0.8584409703676599,
+    "count": 72
+   },
+   "lpips_vs_exact": {
+    "mean": 0.3795212298217747,
+    "std": 0.1099554843619862,
+    "min": 0.15607871115207672,
+    "max": 0.6453784704208374,
+    "count": 72
+   },
+   "seconds": {
+    "mean": 0.31719996785331106,
+    "std": 0.12720705910633723,
+    "min": 0.28946641832590103,
+    "max": 1.3737269006669521,
+    "count": 72
+   },
+   "reward_minus_exact": {
+    "mean": -0.4614838461857289,
+    "std": 0.6459457495290344,
+    "min": -3.031150221824646,
+    "max": 0.7080858126282692,
+    "count": 72
+   }
+  },
+  "traj": {
+   "reward": {
+    "mean": 1.0810728917519252,
+    "std": 0.7817961851020032,
+    "min": -1.0017722845077515,
+    "max": 1.8595460653305054,
+    "count": 72
+   },
+   "ssim_vs_exact": {
+    "mean": 0.6820224389268651,
+    "std": 0.0984978135321655,
+    "min": 0.414804907013363,
+    "max": 0.8546934638780112,
+    "count": 72
+   },
+   "lpips_vs_exact": {
+    "mean": 0.38829666790035033,
+    "std": 0.0942098969006543,
+    "min": 0.18005609512329102,
+    "max": 0.5809811353683472,
+    "count": 72
+   },
+   "seconds": {
+    "mean": 0.3166592506588333,
+    "std": 0.1316711798163959,
+    "min": 0.2911861650645733,
+    "max": 1.4125515595078468,
+    "count": 72
+   },
+   "reward_minus_exact": {
+    "mean": -0.44914080593217576,
+    "std": 0.5841758647612391,
+    "min": -2.313277304172516,
+    "max": 0.34170183539390564,
+    "count": 72
+   }
+  }
+ },
+ "cases": [
+  {
+   "case": "prompt-000-seed-5101",
+   "prompt": "a pencil sketch of a marble sculpture of a horse at sunrise",
+   "exact_reward": 1.6923339366912842,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.0484899282455444,
+     "ssim_vs_exact": 0.7108454799620048,
+     "lpips_vs_exact": 0.3157036006450653,
+     "seconds": 0.27555155754089355
+    },
+    "taylor1": {
+     "reward": 0.3894386291503906,
+     "ssim_vs_exact": 0.6475604038733734,
+     "lpips_vs_exact": 0.4128075838088989,
+     "seconds": 0.27833466976881027
+    },
+    "taylor2": {
+     "reward": -0.6869021654129028,
+     "ssim_vs_exact": 0.5609747021323209,
+     "lpips_vs_exact": 0.5890460014343262,
+     "seconds": 0.2771080881357193
+    },
+    "blockcache": {
+     "reward": 0.5567945837974548,
+     "ssim_vs_exact": 0.7059404007766057,
+     "lpips_vs_exact": 0.34212741255760193,
+     "seconds": 0.40166381746530533
+    },
+    "resid": {
+     "reward": 1.0968602895736694,
+     "ssim_vs_exact": 0.7236426542809564,
+     "lpips_vs_exact": 0.29753053188323975,
+     "seconds": 1.3737269006669521
+    },
+    "traj": {
+     "reward": 1.3343780040740967,
+     "ssim_vs_exact": 0.740283570096603,
+     "lpips_vs_exact": 0.28747597336769104,
+     "seconds": 1.4125515595078468
+    }
+   }
+  },
+  {
+   "case": "prompt-000-seed-7717",
+   "prompt": "a pencil sketch of a marble sculpture of a horse at sunrise",
+   "exact_reward": 0.9906283617019653,
+   "variants": {
+    "cache_i5": {
+     "reward": -1.0743228197097778,
+     "ssim_vs_exact": 0.6495748621196452,
+     "lpips_vs_exact": 0.4843219518661499,
+     "seconds": 0.2645878382027149
+    },
+    "taylor1": {
+     "reward": -0.9474161863327026,
+     "ssim_vs_exact": 0.6031468164570711,
+     "lpips_vs_exact": 0.5438884496688843,
+     "seconds": 0.2671601176261902
+    },
+    "taylor2": {
+     "reward": -1.1821991205215454,
+     "ssim_vs_exact": 0.5218262068063907,
+     "lpips_vs_exact": 0.6368988752365112,
+     "seconds": 0.26948999986052513
+    },
+    "blockcache": {
+     "reward": -1.9653894901275635,
+     "ssim_vs_exact": 0.6602821679934152,
+     "lpips_vs_exact": 0.5369197130203247,
+     "seconds": 0.2832661271095276
+    },
+    "resid": {
+     "reward": -0.49620890617370605,
+     "ssim_vs_exact": 0.7202948094007687,
+     "lpips_vs_exact": 0.3493220806121826,
+     "seconds": 0.2908552475273609
+    },
+    "traj": {
+     "reward": -0.5489791631698608,
+     "ssim_vs_exact": 0.732816024869361,
+     "lpips_vs_exact": 0.42619240283966064,
+     "seconds": 0.29168054088950157
+    }
+   }
+  },
+  {
+   "case": "prompt-000-seed-9401",
+   "prompt": "a pencil sketch of a marble sculpture of a horse at sunrise",
+   "exact_reward": 1.7585927248001099,
+   "variants": {
+    "cache_i5": {
+     "reward": -0.7303765416145325,
+     "ssim_vs_exact": 0.6191646432545527,
+     "lpips_vs_exact": 0.48889458179473877,
+     "seconds": 0.26393329352140427
+    },
+    "taylor1": {
+     "reward": 0.26120126247406006,
+     "ssim_vs_exact": 0.555658026450134,
+     "lpips_vs_exact": 0.5745387077331543,
+     "seconds": 0.26748576015233994
+    },
+    "taylor2": {
+     "reward": -1.689663290977478,
+     "ssim_vs_exact": 0.5015291453342441,
+     "lpips_vs_exact": 0.6782410144805908,
+     "seconds": 0.268354382365942
+    },
+    "blockcache": {
+     "reward": -0.6347926259040833,
+     "ssim_vs_exact": 0.6878617165300372,
+     "lpips_vs_exact": 0.4269102215766907,
+     "seconds": 0.2850911505520344
+    },
+    "resid": {
+     "reward": -0.2548981010913849,
+     "ssim_vs_exact": 0.7584572769225036,
+     "lpips_vs_exact": 0.2913152277469635,
+     "seconds": 0.3003554381430149
+    },
+    "traj": {
+     "reward": -0.18540063500404358,
+     "ssim_vs_exact": 0.7680165926980743,
+     "lpips_vs_exact": 0.31159913539886475,
+     "seconds": 0.29223136231303215
+    }
+   }
+  },
+  {
+   "case": "prompt-001-seed-5101",
+   "prompt": "a studio product photograph of a violinist tuning backstage under heavy rain",
+   "exact_reward": 1.913980484008789,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.4406765699386597,
+     "ssim_vs_exact": 0.48195773674650355,
+     "lpips_vs_exact": 0.5549201965332031,
+     "seconds": 0.26823195815086365
+    },
+    "taylor1": {
+     "reward": 1.3239021301269531,
+     "ssim_vs_exact": 0.39575426738735225,
+     "lpips_vs_exact": 0.5352564454078674,
+     "seconds": 0.2884577810764313
+    },
+    "taylor2": {
+     "reward": 0.6181226372718811,
+     "ssim_vs_exact": 0.31336461142756283,
+     "lpips_vs_exact": 0.6087867021560669,
+     "seconds": 0.2686276249587536
+    },
+    "blockcache": {
+     "reward": 1.6427637338638306,
+     "ssim_vs_exact": 0.4905950669231572,
+     "lpips_vs_exact": 0.5539860725402832,
+     "seconds": 0.2854183651506901
+    },
+    "resid": {
+     "reward": 1.8911479711532593,
+     "ssim_vs_exact": 0.5128967617611874,
+     "lpips_vs_exact": 0.5067192912101746,
+     "seconds": 0.292452123016119
+    },
+    "traj": {
+     "reward": 1.8491851091384888,
+     "ssim_vs_exact": 0.5356781751628711,
+     "lpips_vs_exact": 0.49085450172424316,
+     "seconds": 0.2956549897789955
+    }
+   }
+  },
+  {
+   "case": "prompt-001-seed-7717",
+   "prompt": "a studio product photograph of a violinist tuning backstage under heavy rain",
+   "exact_reward": 1.927882194519043,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.5957738161087036,
+     "ssim_vs_exact": 0.36200133469368584,
+     "lpips_vs_exact": 0.6853444576263428,
+     "seconds": 0.26468145847320557
+    },
+    "taylor1": {
+     "reward": 0.7085039019584656,
+     "ssim_vs_exact": 0.2921304123452076,
+     "lpips_vs_exact": 0.6533879637718201,
+     "seconds": 0.26879775151610374
+    },
+    "taylor2": {
+     "reward": 0.514892578125,
+     "ssim_vs_exact": 0.21438788359363734,
+     "lpips_vs_exact": 0.6497324109077454,
+     "seconds": 0.27124615758657455
+    },
+    "blockcache": {
+     "reward": 1.5279508829116821,
+     "ssim_vs_exact": 0.40780587406024815,
+     "lpips_vs_exact": 0.6085684299468994,
+     "seconds": 0.2891169525682926
+    },
+    "resid": {
+     "reward": 1.826666235923767,
+     "ssim_vs_exact": 0.4649616908411202,
+     "lpips_vs_exact": 0.5707031488418579,
+     "seconds": 0.2914700098335743
+    },
+    "traj": {
+     "reward": 1.7201007604599,
+     "ssim_vs_exact": 0.414804907013363,
+     "lpips_vs_exact": 0.5747413635253906,
+     "seconds": 0.2912626415491104
+    }
+   }
+  },
+  {
+   "case": "prompt-001-seed-9401",
+   "prompt": "a studio product photograph of a violinist tuning backstage under heavy rain",
+   "exact_reward": 1.9269570112228394,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.3066413402557373,
+     "ssim_vs_exact": 0.4597781280724594,
+     "lpips_vs_exact": 0.6205568313598633,
+     "seconds": 0.2627810649573803
+    },
+    "taylor1": {
+     "reward": 0.8984221816062927,
+     "ssim_vs_exact": 0.39319137374809915,
+     "lpips_vs_exact": 0.6208734512329102,
+     "seconds": 0.26564710959792137
+    },
+    "taylor2": {
+     "reward": -1.3084771633148193,
+     "ssim_vs_exact": 0.2854785511563978,
+     "lpips_vs_exact": 0.6570873260498047,
+     "seconds": 0.2691561132669449
+    },
+    "blockcache": {
+     "reward": 1.7845911979675293,
+     "ssim_vs_exact": 0.5242927104934352,
+     "lpips_vs_exact": 0.4479932487010956,
+     "seconds": 0.29348597675561905
+    },
+    "resid": {
+     "reward": 1.8502496480941772,
+     "ssim_vs_exact": 0.5437828552433818,
+     "lpips_vs_exact": 0.44534391164779663,
+     "seconds": 0.2933325096964836
+    },
+    "traj": {
+     "reward": 1.8315541744232178,
+     "ssim_vs_exact": 0.5404514695396787,
+     "lpips_vs_exact": 0.4463377892971039,
+     "seconds": 0.3050575330853462
+    }
+   }
+  },
+  {
+   "case": "prompt-002-seed-5101",
+   "prompt": "a detailed digital illustration of a marble sculpture of a horse at sunrise",
+   "exact_reward": 1.8996250629425049,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.8118541240692139,
+     "ssim_vs_exact": 0.6946391930936521,
+     "lpips_vs_exact": 0.3586134612560272,
+     "seconds": 0.2681005522608757
+    },
+    "taylor1": {
+     "reward": 1.7773092985153198,
+     "ssim_vs_exact": 0.6499272350080222,
+     "lpips_vs_exact": 0.383480042219162,
+     "seconds": 0.28800271078944206
+    },
+    "taylor2": {
+     "reward": 1.5047836303710938,
+     "ssim_vs_exact": 0.495443124048551,
+     "lpips_vs_exact": 0.5609120726585388,
+     "seconds": 0.2753785140812397
+    },
+    "blockcache": {
+     "reward": 1.7676500082015991,
+     "ssim_vs_exact": 0.6913637238143471,
+     "lpips_vs_exact": 0.38427844643592834,
+     "seconds": 0.3008156083524227
+    },
+    "resid": {
+     "reward": 1.8529155254364014,
+     "ssim_vs_exact": 0.7225085939497747,
+     "lpips_vs_exact": 0.29363858699798584,
+     "seconds": 0.3068903833627701
+    },
+    "traj": {
+     "reward": 1.8595460653305054,
+     "ssim_vs_exact": 0.7182901148275822,
+     "lpips_vs_exact": 0.3380357325077057,
+     "seconds": 0.2960706539452076
+    }
+   }
+  },
+  {
+   "case": "prompt-002-seed-7717",
+   "prompt": "a detailed digital illustration of a marble sculpture of a horse at sunrise",
+   "exact_reward": 1.919114112854004,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.2801059484481812,
+     "ssim_vs_exact": 0.6503682586298107,
+     "lpips_vs_exact": 0.4454515278339386,
+     "seconds": 0.2655198983848095
+    },
+    "taylor1": {
+     "reward": 1.0755529403686523,
+     "ssim_vs_exact": 0.587000249374361,
+     "lpips_vs_exact": 0.46624234318733215,
+     "seconds": 0.26853444054722786
+    },
+    "taylor2": {
+     "reward": 0.14000852406024933,
+     "ssim_vs_exact": 0.4477278770531597,
+     "lpips_vs_exact": 0.6140999794006348,
+     "seconds": 0.2851705327630043
+    },
+    "blockcache": {
+     "reward": 1.6033509969711304,
+     "ssim_vs_exact": 0.6445775619461513,
+     "lpips_vs_exact": 0.48122256994247437,
+     "seconds": 0.285651084035635
+    },
+    "resid": {
+     "reward": 1.7796216011047363,
+     "ssim_vs_exact": 0.6441320551705569,
+     "lpips_vs_exact": 0.42446815967559814,
+     "seconds": 0.313356164842844
+    },
+    "traj": {
+     "reward": 1.709097146987915,
+     "ssim_vs_exact": 0.6304860739723851,
+     "lpips_vs_exact": 0.4903436005115509,
+     "seconds": 0.30591588094830513
+    }
+   }
+  },
+  {
+   "case": "prompt-002-seed-9401",
+   "prompt": "a detailed digital illustration of a marble sculpture of a horse at sunrise",
+   "exact_reward": 1.917548418045044,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.5149238109588623,
+     "ssim_vs_exact": 0.6882460124683929,
+     "lpips_vs_exact": 0.4612831473350525,
+     "seconds": 0.2693246603012085
+    },
+    "taylor1": {
+     "reward": 1.5523414611816406,
+     "ssim_vs_exact": 0.6542137405591948,
+     "lpips_vs_exact": 0.4851725697517395,
+     "seconds": 0.27391235157847404
+    },
+    "taylor2": {
+     "reward": 0.41586601734161377,
+     "ssim_vs_exact": 0.5211462342699043,
+     "lpips_vs_exact": 0.6310063004493713,
+     "seconds": 0.2750866115093231
+    },
+    "blockcache": {
+     "reward": 1.3534796237945557,
+     "ssim_vs_exact": 0.6942202116453312,
+     "lpips_vs_exact": 0.4653399586677551,
+     "seconds": 0.2923216111958027
+    },
+    "resid": {
+     "reward": 1.5651670694351196,
+     "ssim_vs_exact": 0.7299710092893293,
+     "lpips_vs_exact": 0.3593251705169678,
+     "seconds": 0.29232332482934
+    },
+    "traj": {
+     "reward": 1.476337194442749,
+     "ssim_vs_exact": 0.7017911307611744,
+     "lpips_vs_exact": 0.4165092706680298,
+     "seconds": 0.2926980182528496
+    }
+   }
+  },
+  {
+   "case": "prompt-003-seed-5101",
+   "prompt": "a studio product photograph of a hot air balloon over farmland at blue hour",
+   "exact_reward": 1.5239131450653076,
+   "variants": {
+    "cache_i5": {
+     "reward": 0.6543194651603699,
+     "ssim_vs_exact": 0.5666230980842372,
+     "lpips_vs_exact": 0.4186643958091736,
+     "seconds": 0.2652001306414604
+    },
+    "taylor1": {
+     "reward": 0.07097483426332474,
+     "ssim_vs_exact": 0.5513592477211336,
+     "lpips_vs_exact": 0.48300671577453613,
+     "seconds": 0.26888512074947357
+    },
+    "taylor2": {
+     "reward": -1.2230281829833984,
+     "ssim_vs_exact": 0.43278729799111626,
+     "lpips_vs_exact": 0.7077771425247192,
+     "seconds": 0.2705273702740669
+    },
+    "blockcache": {
+     "reward": 0.9067069888114929,
+     "ssim_vs_exact": 0.6089840271912822,
+     "lpips_vs_exact": 0.3621073365211487,
+     "seconds": 0.28638433292508125
+    },
+    "resid": {
+     "reward": 1.2487666606903076,
+     "ssim_vs_exact": 0.6656180785338511,
+     "lpips_vs_exact": 0.32709401845932007,
+     "seconds": 0.29473942145705223
+    },
+    "traj": {
+     "reward": 0.9841281175613403,
+     "ssim_vs_exact": 0.653638307045619,
+     "lpips_vs_exact": 0.37693333625793457,
+     "seconds": 0.2989473529160023
+    }
+   }
+  },
+  {
+   "case": "prompt-003-seed-7717",
+   "prompt": "a studio product photograph of a hot air balloon over farmland at blue hour",
+   "exact_reward": 1.644256830215454,
+   "variants": {
+    "cache_i5": {
+     "reward": 0.7106807827949524,
+     "ssim_vs_exact": 0.6224016067488205,
+     "lpips_vs_exact": 0.3778253197669983,
+     "seconds": 0.2724655829370022
+    },
+    "taylor1": {
+     "reward": 0.45316407084465027,
+     "ssim_vs_exact": 0.5901878864119763,
+     "lpips_vs_exact": 0.4418066740036011,
+     "seconds": 0.27285807207226753
+    },
+    "taylor2": {
+     "reward": 0.0893317386507988,
+     "ssim_vs_exact": 0.4727374594348224,
+     "lpips_vs_exact": 0.6545328497886658,
+     "seconds": 0.275690671056509
+    },
+    "blockcache": {
+     "reward": -0.42129847407341003,
+     "ssim_vs_exact": 0.6186137919489759,
+     "lpips_vs_exact": 0.34673094749450684,
+     "seconds": 0.2964913584291935
+    },
+    "resid": {
+     "reward": 1.4852893352508545,
+     "ssim_vs_exact": 0.6584942785416522,
+     "lpips_vs_exact": 0.34641942381858826,
+     "seconds": 0.30090682208538055
+    },
+    "traj": {
+     "reward": 1.157149314880371,
+     "ssim_vs_exact": 0.6465979521507488,
+     "lpips_vs_exact": 0.36624646186828613,
+     "seconds": 0.30798444896936417
+    }
+   }
+  },
+  {
+   "case": "prompt-003-seed-9401",
+   "prompt": "a studio product photograph of a hot air balloon over farmland at blue hour",
+   "exact_reward": 1.5794790983200073,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.074210524559021,
+     "ssim_vs_exact": 0.6293551990953791,
+     "lpips_vs_exact": 0.31433263421058655,
+     "seconds": 0.2710914686322212
+    },
+    "taylor1": {
+     "reward": 0.14788459241390228,
+     "ssim_vs_exact": 0.6018035911021112,
+     "lpips_vs_exact": 0.4230070114135742,
+     "seconds": 0.27899277955293655
+    },
+    "taylor2": {
+     "reward": -1.5613536834716797,
+     "ssim_vs_exact": 0.4758329038070345,
+     "lpips_vs_exact": 0.6627105474472046,
+     "seconds": 0.27353930473327637
+    },
+    "blockcache": {
+     "reward": 1.3689472675323486,
+     "ssim_vs_exact": 0.6823832751772612,
+     "lpips_vs_exact": 0.2920927107334137,
+     "seconds": 0.29363952204585075
+    },
+    "resid": {
+     "reward": 1.5352815389633179,
+     "ssim_vs_exact": 0.7117492629615393,
+     "lpips_vs_exact": 0.2770126461982727,
+     "seconds": 0.3087960295379162
+    },
+    "traj": {
+     "reward": 1.1000261306762695,
+     "ssim_vs_exact": 0.691934978309642,
+     "lpips_vs_exact": 0.3398442566394806,
+     "seconds": 0.30764420703053474
+    }
+   }
+  },
+  {
+   "case": "prompt-004-seed-5101",
+   "prompt": "an aerial photograph of a marble sculpture of a horse lit by a single window",
+   "exact_reward": 0.7275329828262329,
+   "variants": {
+    "cache_i5": {
+     "reward": -1.5307327508926392,
+     "ssim_vs_exact": 0.6050887917268296,
+     "lpips_vs_exact": 0.4220605492591858,
+     "seconds": 0.27818528190255165
+    },
+    "taylor1": {
+     "reward": -0.6261060237884521,
+     "ssim_vs_exact": 0.5665664448862201,
+     "lpips_vs_exact": 0.4707958400249481,
+     "seconds": 0.27459312230348587
+    },
+    "taylor2": {
+     "reward": -0.462483674287796,
+     "ssim_vs_exact": 0.42830704143531184,
+     "lpips_vs_exact": 0.6129642128944397,
+     "seconds": 0.2767987325787544
+    },
+    "blockcache": {
+     "reward": -0.12557214498519897,
+     "ssim_vs_exact": 0.5812741255508894,
+     "lpips_vs_exact": 0.4278925955295563,
+     "seconds": 0.2951091378927231
+    },
+    "resid": {
+     "reward": -0.581497073173523,
+     "ssim_vs_exact": 0.6267645536868874,
+     "lpips_vs_exact": 0.36021387577056885,
+     "seconds": 0.37023384124040604
+    },
+    "traj": {
+     "reward": -0.6160823702812195,
+     "ssim_vs_exact": 0.6217517733239514,
+     "lpips_vs_exact": 0.3919873833656311,
+     "seconds": 0.3069329857826233
+    }
+   }
+  },
+  {
+   "case": "prompt-004-seed-7717",
+   "prompt": "an aerial photograph of a marble sculpture of a horse lit by a single window",
+   "exact_reward": 0.5596993565559387,
+   "variants": {
+    "cache_i5": {
+     "reward": -1.6747267246246338,
+     "ssim_vs_exact": 0.5255997322926657,
+     "lpips_vs_exact": 0.6436882615089417,
+     "seconds": 0.26860928162932396
+    },
+    "taylor1": {
+     "reward": -2.232300043106079,
+     "ssim_vs_exact": 0.5170116082815783,
+     "lpips_vs_exact": 0.572905421257019,
+     "seconds": 0.2721633017063141
+    },
+    "taylor2": {
+     "reward": -2.1421618461608887,
+     "ssim_vs_exact": 0.3877630062881048,
+     "lpips_vs_exact": 0.6042879819869995,
+     "seconds": 0.27385084331035614
+    },
+    "blockcache": {
+     "reward": -1.195408582687378,
+     "ssim_vs_exact": 0.5160917402786817,
+     "lpips_vs_exact": 0.6170690059661865,
+     "seconds": 0.2963012605905533
+    },
+    "resid": {
+     "reward": -0.8625448346138,
+     "ssim_vs_exact": 0.4914027209510285,
+     "lpips_vs_exact": 0.5417176485061646,
+     "seconds": 0.30181022360920906
+    },
+    "traj": {
+     "reward": -1.0017722845077515,
+     "ssim_vs_exact": 0.5489733023270075,
+     "lpips_vs_exact": 0.4918229877948761,
+     "seconds": 0.30154379457235336
+    }
+   }
+  },
+  {
+   "case": "prompt-004-seed-9401",
+   "prompt": "an aerial photograph of a marble sculpture of a horse lit by a single window",
+   "exact_reward": 0.03359929844737053,
+   "variants": {
+    "cache_i5": {
+     "reward": -0.3513789474964142,
+     "ssim_vs_exact": 0.6713241948669876,
+     "lpips_vs_exact": 0.4611258804798126,
+     "seconds": 0.27027494087815285
+    },
+    "taylor1": {
+     "reward": -1.4284411668777466,
+     "ssim_vs_exact": 0.629788692260481,
+     "lpips_vs_exact": 0.4806790053844452,
+     "seconds": 0.2723819985985756
+    },
+    "taylor2": {
+     "reward": -1.689470887184143,
+     "ssim_vs_exact": 0.4307950644633128,
+     "lpips_vs_exact": 0.6179197430610657,
+     "seconds": 0.2751723453402519
+    },
+    "blockcache": {
+     "reward": -0.8222380876541138,
+     "ssim_vs_exact": 0.6416938819475453,
+     "lpips_vs_exact": 0.4369732141494751,
+     "seconds": 0.3005913905799389
+    },
+    "resid": {
+     "reward": -0.36680567264556885,
+     "ssim_vs_exact": 0.6346386502064827,
+     "lpips_vs_exact": 0.44942769408226013,
+     "seconds": 0.34056926891207695
+    },
+    "traj": {
+     "reward": -0.697503924369812,
+     "ssim_vs_exact": 0.6322717290681042,
+     "lpips_vs_exact": 0.4610954821109772,
+     "seconds": 0.3004607520997524
+    }
+   }
+  },
+  {
+   "case": "prompt-005-seed-5101",
+   "prompt": "a 35mm film photograph of a violinist tuning backstage lit by a single window",
+   "exact_reward": 0.9971559643745422,
+   "variants": {
+    "cache_i5": {
+     "reward": -0.017790338024497032,
+     "ssim_vs_exact": 0.4851741403129431,
+     "lpips_vs_exact": 0.4686451256275177,
+     "seconds": 0.2643587216734886
+    },
+    "taylor1": {
+     "reward": 0.06249237433075905,
+     "ssim_vs_exact": 0.4481482345122689,
+     "lpips_vs_exact": 0.5735077857971191,
+     "seconds": 0.26945802941918373
+    },
+    "taylor2": {
+     "reward": 0.3134641647338867,
+     "ssim_vs_exact": 0.4418389809255093,
+     "lpips_vs_exact": 0.6840356588363647,
+     "seconds": 0.27073028311133385
+    },
+    "blockcache": {
+     "reward": 0.13342992961406708,
+     "ssim_vs_exact": 0.47223753721693146,
+     "lpips_vs_exact": 0.4306545853614807,
+     "seconds": 0.286507248878479
+    },
+    "resid": {
+     "reward": 0.0778399258852005,
+     "ssim_vs_exact": 0.5173695689421299,
+     "lpips_vs_exact": 0.3516429662704468,
+     "seconds": 0.29768089577555656
+    },
+    "traj": {
+     "reward": 0.7540221810340881,
+     "ssim_vs_exact": 0.6118837741324185,
+     "lpips_vs_exact": 0.32905763387680054,
+     "seconds": 0.29391636699438095
+    }
+   }
+  },
+  {
+   "case": "prompt-005-seed-7717",
+   "prompt": "a 35mm film photograph of a violinist tuning backstage lit by a single window",
+   "exact_reward": 1.6181528568267822,
+   "variants": {
+    "cache_i5": {
+     "reward": -1.175878882408142,
+     "ssim_vs_exact": 0.6292352891490084,
+     "lpips_vs_exact": 0.4496525526046753,
+     "seconds": 0.2657214403152466
+    },
+    "taylor1": {
+     "reward": -1.1973695755004883,
+     "ssim_vs_exact": 0.623805876277321,
+     "lpips_vs_exact": 0.47265225648880005,
+     "seconds": 0.28350789472460747
+    },
+    "taylor2": {
+     "reward": -1.5485925674438477,
+     "ssim_vs_exact": 0.5683100291926957,
+     "lpips_vs_exact": 0.6341677904129028,
+     "seconds": 0.2735675312578678
+    },
+    "blockcache": {
+     "reward": -0.9238290786743164,
+     "ssim_vs_exact": 0.5800581578854754,
+     "lpips_vs_exact": 0.3993380069732666,
+     "seconds": 0.29413293674588203
+    },
+    "resid": {
+     "reward": -0.14604565501213074,
+     "ssim_vs_exact": 0.5791669549561357,
+     "lpips_vs_exact": 0.41002756357192993,
+     "seconds": 0.2948107197880745
+    },
+    "traj": {
+     "reward": 0.15243248641490936,
+     "ssim_vs_exact": 0.7438922272229264,
+     "lpips_vs_exact": 0.3456161320209503,
+     "seconds": 0.29941476136446
+    }
+   }
+  },
+  {
+   "case": "prompt-005-seed-9401",
+   "prompt": "a 35mm film photograph of a violinist tuning backstage lit by a single window",
+   "exact_reward": 1.4508253335952759,
+   "variants": {
+    "cache_i5": {
+     "reward": -0.436335027217865,
+     "ssim_vs_exact": 0.6257813492144663,
+     "lpips_vs_exact": 0.49199312925338745,
+     "seconds": 0.2807306535542011
+    },
+    "taylor1": {
+     "reward": -0.33488932251930237,
+     "ssim_vs_exact": 0.643947591152254,
+     "lpips_vs_exact": 0.4842562973499298,
+     "seconds": 0.27553144842386246
+    },
+    "taylor2": {
+     "reward": -1.162399411201477,
+     "ssim_vs_exact": 0.5339154293965581,
+     "lpips_vs_exact": 0.6008367538452148,
+     "seconds": 0.27820779755711555
+    },
+    "blockcache": {
+     "reward": -1.074722170829773,
+     "ssim_vs_exact": 0.6074499299835295,
+     "lpips_vs_exact": 0.4234134554862976,
+     "seconds": 0.2844379059970379
+    },
+    "resid": {
+     "reward": -1.5803248882293701,
+     "ssim_vs_exact": 0.6174303886381552,
+     "lpips_vs_exact": 0.47918081283569336,
+     "seconds": 0.2903960719704628
+    },
+    "traj": {
+     "reward": 0.6254433393478394,
+     "ssim_vs_exact": 0.7321063740236949,
+     "lpips_vs_exact": 0.39622822403907776,
+     "seconds": 0.29226498678326607
+    }
+   }
+  },
+  {
+   "case": "prompt-006-seed-5101",
+   "prompt": "an aerial photograph of a desert observatory dome beneath a starlit sky",
+   "exact_reward": 1.9110084772109985,
+   "variants": {
+    "cache_i5": {
+     "reward": 0.9425830841064453,
+     "ssim_vs_exact": 0.6917891942413729,
+     "lpips_vs_exact": 0.4252491593360901,
+     "seconds": 0.2663491703569889
+    },
+    "taylor1": {
+     "reward": 1.3314887285232544,
+     "ssim_vs_exact": 0.6859231900116008,
+     "lpips_vs_exact": 0.41385048627853394,
+     "seconds": 0.26839347556233406
+    },
+    "taylor2": {
+     "reward": 0.5199949145317078,
+     "ssim_vs_exact": 0.5401926303250336,
+     "lpips_vs_exact": 0.5611372590065002,
+     "seconds": 0.27086271718144417
+    },
+    "blockcache": {
+     "reward": 1.2911564111709595,
+     "ssim_vs_exact": 0.6541546681293854,
+     "lpips_vs_exact": 0.42917272448539734,
+     "seconds": 0.2826721630990505
+    },
+    "resid": {
+     "reward": 1.58988356590271,
+     "ssim_vs_exact": 0.7299599922316974,
+     "lpips_vs_exact": 0.3293439447879791,
+     "seconds": 0.2924294285476208
+    },
+    "traj": {
+     "reward": 1.6143808364868164,
+     "ssim_vs_exact": 0.7137402232310527,
+     "lpips_vs_exact": 0.37314873933792114,
+     "seconds": 0.2918315716087818
+    }
+   }
+  },
+  {
+   "case": "prompt-006-seed-7717",
+   "prompt": "an aerial photograph of a desert observatory dome beneath a starlit sky",
+   "exact_reward": 1.8714306354522705,
+   "variants": {
+    "cache_i5": {
+     "reward": 0.48647379875183105,
+     "ssim_vs_exact": 0.5287645578055181,
+     "lpips_vs_exact": 0.6730836629867554,
+     "seconds": 0.2652737386524677
+    },
+    "taylor1": {
+     "reward": -0.1996103972196579,
+     "ssim_vs_exact": 0.4966046451703017,
+     "lpips_vs_exact": 0.6442368626594543,
+     "seconds": 0.2690650559961796
+    },
+    "taylor2": {
+     "reward": -0.5929267406463623,
+     "ssim_vs_exact": 0.3879687967798129,
+     "lpips_vs_exact": 0.6816601753234863,
+     "seconds": 0.2743133045732975
+    },
+    "blockcache": {
+     "reward": 0.7112798094749451,
+     "ssim_vs_exact": 0.5840666062768739,
+     "lpips_vs_exact": 0.5487003326416016,
+     "seconds": 0.28427552804350853
+    },
+    "resid": {
+     "reward": 1.7790796756744385,
+     "ssim_vs_exact": 0.6962263429280139,
+     "lpips_vs_exact": 0.3619104325771332,
+     "seconds": 0.292330764234066
+    },
+    "traj": {
+     "reward": 1.4633134603500366,
+     "ssim_vs_exact": 0.6258364232364153,
+     "lpips_vs_exact": 0.4067208468914032,
+     "seconds": 0.2922328859567642
+    }
+   }
+  },
+  {
+   "case": "prompt-006-seed-9401",
+   "prompt": "an aerial photograph of a desert observatory dome beneath a starlit sky",
+   "exact_reward": 1.8337301015853882,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.3777990341186523,
+     "ssim_vs_exact": 0.5822647923222702,
+     "lpips_vs_exact": 0.4731466770172119,
+     "seconds": 0.2684482969343662
+    },
+    "taylor1": {
+     "reward": 1.5529742240905762,
+     "ssim_vs_exact": 0.5809534536324569,
+     "lpips_vs_exact": 0.5342303514480591,
+     "seconds": 0.2667391113936901
+    },
+    "taylor2": {
+     "reward": 0.39436036348342896,
+     "ssim_vs_exact": 0.4580437802135866,
+     "lpips_vs_exact": 0.6774745583534241,
+     "seconds": 0.27367908135056496
+    },
+    "blockcache": {
+     "reward": 1.4130760431289673,
+     "ssim_vs_exact": 0.6093965086906328,
+     "lpips_vs_exact": 0.4312664270401001,
+     "seconds": 0.2843204401433468
+    },
+    "resid": {
+     "reward": 1.43435537815094,
+     "ssim_vs_exact": 0.7053595552576742,
+     "lpips_vs_exact": 0.3241434097290039,
+     "seconds": 0.293318185955286
+    },
+    "traj": {
+     "reward": 1.6127171516418457,
+     "ssim_vs_exact": 0.6976396622505674,
+     "lpips_vs_exact": 0.36595919728279114,
+     "seconds": 0.2911861650645733
+    }
+   }
+  },
+  {
+   "case": "prompt-007-seed-5101",
+   "prompt": "an oil painting of a violinist tuning backstage against a plain grey backdrop",
+   "exact_reward": 1.8282997608184814,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.280382513999939,
+     "ssim_vs_exact": 0.6154370894760013,
+     "lpips_vs_exact": 0.5532901883125305,
+     "seconds": 0.266479779034853
+    },
+    "taylor1": {
+     "reward": 1.5787941217422485,
+     "ssim_vs_exact": 0.5655407298255839,
+     "lpips_vs_exact": 0.6081026792526245,
+     "seconds": 0.26731986925005913
+    },
+    "taylor2": {
+     "reward": 0.9721107482910156,
+     "ssim_vs_exact": 0.4525014621749374,
+     "lpips_vs_exact": 0.6834655404090881,
+     "seconds": 0.273650623857975
+    },
+    "blockcache": {
+     "reward": 1.4136338233947754,
+     "ssim_vs_exact": 0.6634721688835378,
+     "lpips_vs_exact": 0.4708573818206787,
+     "seconds": 0.28113173320889473
+    },
+    "resid": {
+     "reward": 1.6715556383132935,
+     "ssim_vs_exact": 0.649594787905745,
+     "lpips_vs_exact": 0.4486709535121918,
+     "seconds": 0.28946641832590103
+    },
+    "traj": {
+     "reward": 1.7007983922958374,
+     "ssim_vs_exact": 0.6816762845579151,
+     "lpips_vs_exact": 0.4153706431388855,
+     "seconds": 0.29403913766145706
+    }
+   }
+  },
+  {
+   "case": "prompt-007-seed-7717",
+   "prompt": "an oil painting of a violinist tuning backstage against a plain grey backdrop",
+   "exact_reward": 1.879987120628357,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.5572526454925537,
+     "ssim_vs_exact": 0.6303772885744405,
+     "lpips_vs_exact": 0.5620500445365906,
+     "seconds": 0.26529885828495026
+    },
+    "taylor1": {
+     "reward": 0.9921855330467224,
+     "ssim_vs_exact": 0.5865997178101356,
+     "lpips_vs_exact": 0.6076383590698242,
+     "seconds": 0.27115777134895325
+    },
+    "taylor2": {
+     "reward": 0.2293982207775116,
+     "ssim_vs_exact": 0.43749270660009715,
+     "lpips_vs_exact": 0.694580614566803,
+     "seconds": 0.2711905874311924
+    },
+    "blockcache": {
+     "reward": 0.9137833714485168,
+     "ssim_vs_exact": 0.6137203350374677,
+     "lpips_vs_exact": 0.5520889759063721,
+     "seconds": 0.2868683636188507
+    },
+    "resid": {
+     "reward": 1.7048490047454834,
+     "ssim_vs_exact": 0.6382662598148704,
+     "lpips_vs_exact": 0.4743466079235077,
+     "seconds": 0.29520798847079277
+    },
+    "traj": {
+     "reward": 1.6544947624206543,
+     "ssim_vs_exact": 0.6520670521386459,
+     "lpips_vs_exact": 0.47109365463256836,
+     "seconds": 0.2931205630302429
+    }
+   }
+  },
+  {
+   "case": "prompt-007-seed-9401",
+   "prompt": "an oil painting of a violinist tuning backstage against a plain grey backdrop",
+   "exact_reward": 1.8999574184417725,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.1311079263687134,
+     "ssim_vs_exact": 0.7379896945046869,
+     "lpips_vs_exact": 0.4270757734775543,
+     "seconds": 0.26644354313611984
+    },
+    "taylor1": {
+     "reward": 0.35492706298828125,
+     "ssim_vs_exact": 0.6744517409779819,
+     "lpips_vs_exact": 0.5190448760986328,
+     "seconds": 0.26895131915807724
+    },
+    "taylor2": {
+     "reward": 0.2536303400993347,
+     "ssim_vs_exact": 0.523816158131348,
+     "lpips_vs_exact": 0.6828934550285339,
+     "seconds": 0.2714858837425709
+    },
+    "blockcache": {
+     "reward": 1.5986392498016357,
+     "ssim_vs_exact": 0.7358046490964703,
+     "lpips_vs_exact": 0.4170793294906616,
+     "seconds": 0.28662939742207527
+    },
+    "resid": {
+     "reward": 1.639233112335205,
+     "ssim_vs_exact": 0.7649368999424077,
+     "lpips_vs_exact": 0.33622556924819946,
+     "seconds": 0.29922930151224136
+    },
+    "traj": {
+     "reward": 1.5815441608428955,
+     "ssim_vs_exact": 0.7458151999653319,
+     "lpips_vs_exact": 0.3894355595111847,
+     "seconds": 0.2925166077911854
+    }
+   }
+  },
+  {
+   "case": "prompt-008-seed-5101",
+   "prompt": "a pencil sketch of a marble sculpture of a horse in dense fog",
+   "exact_reward": 1.6381160020828247,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.6071267127990723,
+     "ssim_vs_exact": 0.772658556489723,
+     "lpips_vs_exact": 0.3635937571525574,
+     "seconds": 0.267475463449955
+    },
+    "taylor1": {
+     "reward": 1.3834396600723267,
+     "ssim_vs_exact": 0.7445696498642805,
+     "lpips_vs_exact": 0.41073960065841675,
+     "seconds": 0.27347666770219803
+    },
+    "taylor2": {
+     "reward": -0.49654674530029297,
+     "ssim_vs_exact": 0.6510350143409634,
+     "lpips_vs_exact": 0.6243081092834473,
+     "seconds": 0.2693839780986309
+    },
+    "blockcache": {
+     "reward": 1.4247920513153076,
+     "ssim_vs_exact": 0.7636581898729481,
+     "lpips_vs_exact": 0.3522467315196991,
+     "seconds": 0.28530411794781685
+    },
+    "resid": {
+     "reward": 1.7716177701950073,
+     "ssim_vs_exact": 0.7826990587052219,
+     "lpips_vs_exact": 0.3224374055862427,
+     "seconds": 0.2937839664518833
+    },
+    "traj": {
+     "reward": 1.751562476158142,
+     "ssim_vs_exact": 0.7903415228804577,
+     "lpips_vs_exact": 0.31129908561706543,
+     "seconds": 0.2913929522037506
+    }
+   }
+  },
+  {
+   "case": "prompt-008-seed-7717",
+   "prompt": "a pencil sketch of a marble sculpture of a horse in dense fog",
+   "exact_reward": 1.5674307346343994,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.7370232343673706,
+     "ssim_vs_exact": 0.8212485899020437,
+     "lpips_vs_exact": 0.2947467863559723,
+     "seconds": 0.2657669335603714
+    },
+    "taylor1": {
+     "reward": 0.128824844956398,
+     "ssim_vs_exact": 0.7623477425855789,
+     "lpips_vs_exact": 0.42893126606941223,
+     "seconds": 0.26855558902025223
+    },
+    "taylor2": {
+     "reward": -0.32279929518699646,
+     "ssim_vs_exact": 0.679849412583108,
+     "lpips_vs_exact": 0.6094446182250977,
+     "seconds": 0.27036289498209953
+    },
+    "blockcache": {
+     "reward": 1.7365269660949707,
+     "ssim_vs_exact": 0.8146052635426667,
+     "lpips_vs_exact": 0.26257243752479553,
+     "seconds": 0.2826944775879383
+    },
+    "resid": {
+     "reward": 1.60592782497406,
+     "ssim_vs_exact": 0.8391246422634079,
+     "lpips_vs_exact": 0.21491189301013947,
+     "seconds": 0.29450081661343575
+    },
+    "traj": {
+     "reward": 1.6550239324569702,
+     "ssim_vs_exact": 0.8218384510636155,
+     "lpips_vs_exact": 0.2863708734512329,
+     "seconds": 0.29158521071076393
+    }
+   }
+  },
+  {
+   "case": "prompt-008-seed-9401",
+   "prompt": "a pencil sketch of a marble sculpture of a horse in dense fog",
+   "exact_reward": 1.7770321369171143,
+   "variants": {
+    "cache_i5": {
+     "reward": -0.22492530941963196,
+     "ssim_vs_exact": 0.7679342951257516,
+     "lpips_vs_exact": 0.4021126627922058,
+     "seconds": 0.27159323170781136
+    },
+    "taylor1": {
+     "reward": -0.11392368376255035,
+     "ssim_vs_exact": 0.6688079402887795,
+     "lpips_vs_exact": 0.5587723255157471,
+     "seconds": 0.2687446288764477
+    },
+    "taylor2": {
+     "reward": -1.752448320388794,
+     "ssim_vs_exact": 0.5905051504113881,
+     "lpips_vs_exact": 0.7067010402679443,
+     "seconds": 0.2721360996365547
+    },
+    "blockcache": {
+     "reward": 0.22571687400341034,
+     "ssim_vs_exact": 0.8067640663886517,
+     "lpips_vs_exact": 0.3616901636123657,
+     "seconds": 0.28563931211829185
+    },
+    "resid": {
+     "reward": 1.0123927593231201,
+     "ssim_vs_exact": 0.8532153579466027,
+     "lpips_vs_exact": 0.23287320137023926,
+     "seconds": 0.29283466935157776
+    },
+    "traj": {
+     "reward": 1.0327677726745605,
+     "ssim_vs_exact": 0.8509946949801354,
+     "lpips_vs_exact": 0.252623051404953,
+     "seconds": 0.29461563751101494
+    }
+   }
+  },
+  {
+   "case": "prompt-009-seed-5101",
+   "prompt": "a cinematic photograph of a row of beach huts at sunrise",
+   "exact_reward": 1.5720112323760986,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.3182120323181152,
+     "ssim_vs_exact": 0.5722111190880371,
+     "lpips_vs_exact": 0.3986208140850067,
+     "seconds": 0.2674601152539253
+    },
+    "taylor1": {
+     "reward": 1.2592157125473022,
+     "ssim_vs_exact": 0.5318576698410918,
+     "lpips_vs_exact": 0.4496862590312958,
+     "seconds": 0.2702653147280216
+    },
+    "taylor2": {
+     "reward": -0.17190083861351013,
+     "ssim_vs_exact": 0.40169484215165036,
+     "lpips_vs_exact": 0.6600068807601929,
+     "seconds": 0.2715365067124367
+    },
+    "blockcache": {
+     "reward": 1.2567750215530396,
+     "ssim_vs_exact": 0.5679216020125454,
+     "lpips_vs_exact": 0.43828707933425903,
+     "seconds": 0.28967713564634323
+    },
+    "resid": {
+     "reward": 1.538174033164978,
+     "ssim_vs_exact": 0.5712885237994567,
+     "lpips_vs_exact": 0.43137264251708984,
+     "seconds": 0.29323676973581314
+    },
+    "traj": {
+     "reward": 1.4591089487075806,
+     "ssim_vs_exact": 0.5856264247075763,
+     "lpips_vs_exact": 0.43593835830688477,
+     "seconds": 0.2950885705649853
+    }
+   }
+  },
+  {
+   "case": "prompt-009-seed-7717",
+   "prompt": "a cinematic photograph of a row of beach huts at sunrise",
+   "exact_reward": 1.604067325592041,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.4974640607833862,
+     "ssim_vs_exact": 0.5662199220469832,
+     "lpips_vs_exact": 0.3727330267429352,
+     "seconds": 0.26628317311406136
+    },
+    "taylor1": {
+     "reward": 1.1220556497573853,
+     "ssim_vs_exact": 0.5270827830480235,
+     "lpips_vs_exact": 0.4617423117160797,
+     "seconds": 0.26916414871811867
+    },
+    "taylor2": {
+     "reward": 0.725723147392273,
+     "ssim_vs_exact": 0.39423695797868535,
+     "lpips_vs_exact": 0.6556041240692139,
+     "seconds": 0.27041667327284813
+    },
+    "blockcache": {
+     "reward": 1.4039517641067505,
+     "ssim_vs_exact": 0.5722856044467424,
+     "lpips_vs_exact": 0.38262540102005005,
+     "seconds": 0.29108885303139687
+    },
+    "resid": {
+     "reward": 1.4808621406555176,
+     "ssim_vs_exact": 0.5788216625451906,
+     "lpips_vs_exact": 0.33885687589645386,
+     "seconds": 0.29457803070545197
+    },
+    "traj": {
+     "reward": 1.4975172281265259,
+     "ssim_vs_exact": 0.578472656399878,
+     "lpips_vs_exact": 0.38704442977905273,
+     "seconds": 0.29624007642269135
+    }
+   }
+  },
+  {
+   "case": "prompt-009-seed-9401",
+   "prompt": "a cinematic photograph of a row of beach huts at sunrise",
+   "exact_reward": 1.5253334045410156,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.1855376958847046,
+     "ssim_vs_exact": 0.595137269603435,
+     "lpips_vs_exact": 0.36799314618110657,
+     "seconds": 0.2660655863583088
+    },
+    "taylor1": {
+     "reward": 0.7665525674819946,
+     "ssim_vs_exact": 0.5639310426271423,
+     "lpips_vs_exact": 0.45077794790267944,
+     "seconds": 0.2694908678531647
+    },
+    "taylor2": {
+     "reward": -1.2019109725952148,
+     "ssim_vs_exact": 0.4160710696858165,
+     "lpips_vs_exact": 0.6542729139328003,
+     "seconds": 0.27148008719086647
+    },
+    "blockcache": {
+     "reward": 1.4912868738174438,
+     "ssim_vs_exact": 0.5759060701268296,
+     "lpips_vs_exact": 0.38329648971557617,
+     "seconds": 0.2852178178727627
+    },
+    "resid": {
+     "reward": 1.5642857551574707,
+     "ssim_vs_exact": 0.619237333914988,
+     "lpips_vs_exact": 0.3056781589984894,
+     "seconds": 0.29281995072960854
+    },
+    "traj": {
+     "reward": 1.4862016439437866,
+     "ssim_vs_exact": 0.5836277323308475,
+     "lpips_vs_exact": 0.41359424591064453,
+     "seconds": 0.2921396866440773
+    }
+   }
+  },
+  {
+   "case": "prompt-010-seed-5101",
+   "prompt": "a detailed digital illustration of a desert observatory dome beneath a starlit sky",
+   "exact_reward": 1.9169789552688599,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.0583624839782715,
+     "ssim_vs_exact": 0.5107292823079668,
+     "lpips_vs_exact": 0.5983051657676697,
+     "seconds": 0.26794807985424995
+    },
+    "taylor1": {
+     "reward": 0.3923923969268799,
+     "ssim_vs_exact": 0.46009417074164755,
+     "lpips_vs_exact": 0.5504708886146545,
+     "seconds": 0.2733542062342167
+    },
+    "taylor2": {
+     "reward": -1.6874324083328247,
+     "ssim_vs_exact": 0.35968050549965724,
+     "lpips_vs_exact": 0.5854026675224304,
+     "seconds": 0.27210017293691635
+    },
+    "blockcache": {
+     "reward": 1.3120753765106201,
+     "ssim_vs_exact": 0.5138411692711704,
+     "lpips_vs_exact": 0.6112969517707825,
+     "seconds": 0.2910812422633171
+    },
+    "resid": {
+     "reward": 1.731029748916626,
+     "ssim_vs_exact": 0.608871643071518,
+     "lpips_vs_exact": 0.4242248237133026,
+     "seconds": 0.3097682222723961
+    },
+    "traj": {
+     "reward": 1.7798850536346436,
+     "ssim_vs_exact": 0.6121254988098329,
+     "lpips_vs_exact": 0.4491485059261322,
+     "seconds": 0.29633141309022903
+    }
+   }
+  },
+  {
+   "case": "prompt-010-seed-7717",
+   "prompt": "a detailed digital illustration of a desert observatory dome beneath a starlit sky",
+   "exact_reward": 1.8921735286712646,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.063110113143921,
+     "ssim_vs_exact": 0.5745095159821617,
+     "lpips_vs_exact": 0.5249571800231934,
+     "seconds": 0.2734990082681179
+    },
+    "taylor1": {
+     "reward": 0.5985280871391296,
+     "ssim_vs_exact": 0.48578471837584924,
+     "lpips_vs_exact": 0.5293223261833191,
+     "seconds": 0.2737065553665161
+    },
+    "taylor2": {
+     "reward": 0.30445390939712524,
+     "ssim_vs_exact": 0.38352709479358277,
+     "lpips_vs_exact": 0.5783701539039612,
+     "seconds": 0.2800195887684822
+    },
+    "blockcache": {
+     "reward": 1.421848177909851,
+     "ssim_vs_exact": 0.6152058972766392,
+     "lpips_vs_exact": 0.5585401058197021,
+     "seconds": 0.31692373752593994
+    },
+    "resid": {
+     "reward": 1.836322546005249,
+     "ssim_vs_exact": 0.656396751221579,
+     "lpips_vs_exact": 0.4060561954975128,
+     "seconds": 0.31478533893823624
+    },
+    "traj": {
+     "reward": 1.7777929306030273,
+     "ssim_vs_exact": 0.6164063832890531,
+     "lpips_vs_exact": 0.4519630968570709,
+     "seconds": 0.3154880218207836
+    }
+   }
+  },
+  {
+   "case": "prompt-010-seed-9401",
+   "prompt": "a detailed digital illustration of a desert observatory dome beneath a starlit sky",
+   "exact_reward": 1.8524706363677979,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.6842472553253174,
+     "ssim_vs_exact": 0.5535136983584072,
+     "lpips_vs_exact": 0.5872586965560913,
+     "seconds": 0.2713961526751518
+    },
+    "taylor1": {
+     "reward": 1.6626465320587158,
+     "ssim_vs_exact": 0.4749490201782869,
+     "lpips_vs_exact": 0.6354564428329468,
+     "seconds": 0.2721964307129383
+    },
+    "taylor2": {
+     "reward": 0.6455170512199402,
+     "ssim_vs_exact": 0.3999063705820147,
+     "lpips_vs_exact": 0.6292397975921631,
+     "seconds": 0.27896111086010933
+    },
+    "blockcache": {
+     "reward": 1.4927517175674438,
+     "ssim_vs_exact": 0.5871052688469693,
+     "lpips_vs_exact": 0.5768078565597534,
+     "seconds": 0.29681719839572906
+    },
+    "resid": {
+     "reward": 1.7802478075027466,
+     "ssim_vs_exact": 0.7184499535189212,
+     "lpips_vs_exact": 0.34614109992980957,
+     "seconds": 0.30684782192111015
+    },
+    "traj": {
+     "reward": 1.7864538431167603,
+     "ssim_vs_exact": 0.6643968939992446,
+     "lpips_vs_exact": 0.4455491900444031,
+     "seconds": 0.3015221208333969
+    }
+   }
+  },
+  {
+   "case": "prompt-011-seed-5101",
+   "prompt": "an aerial photograph of a violinist tuning backstage under harsh midday sun",
+   "exact_reward": 0.5380899906158447,
+   "variants": {
+    "cache_i5": {
+     "reward": -0.5339428186416626,
+     "ssim_vs_exact": 0.4851086547567984,
+     "lpips_vs_exact": 0.5924602150917053,
+     "seconds": 0.28187714517116547
+    },
+    "taylor1": {
+     "reward": -0.8881165981292725,
+     "ssim_vs_exact": 0.4678189154862585,
+     "lpips_vs_exact": 0.59247225522995,
+     "seconds": 0.296393770724535
+    },
+    "taylor2": {
+     "reward": -0.634580135345459,
+     "ssim_vs_exact": 0.3428751190795192,
+     "lpips_vs_exact": 0.6771330237388611,
+     "seconds": 0.2946865148842335
+    },
+    "blockcache": {
+     "reward": 0.32449430227279663,
+     "ssim_vs_exact": 0.5271735661965181,
+     "lpips_vs_exact": 0.5396521091461182,
+     "seconds": 0.3113271929323673
+    },
+    "resid": {
+     "reward": 0.2518202066421509,
+     "ssim_vs_exact": 0.5453907040121907,
+     "lpips_vs_exact": 0.5043166875839233,
+     "seconds": 0.3367576263844967
+    },
+    "traj": {
+     "reward": 0.7288048267364502,
+     "ssim_vs_exact": 0.5600247780981609,
+     "lpips_vs_exact": 0.5004442930221558,
+     "seconds": 0.34603581577539444
+    }
+   }
+  },
+  {
+   "case": "prompt-011-seed-7717",
+   "prompt": "an aerial photograph of a violinist tuning backstage under harsh midday sun",
+   "exact_reward": 1.2438952922821045,
+   "variants": {
+    "cache_i5": {
+     "reward": -0.7796121835708618,
+     "ssim_vs_exact": 0.533033494324964,
+     "lpips_vs_exact": 0.6379433274269104,
+     "seconds": 0.2722105532884598
+    },
+    "taylor1": {
+     "reward": -0.8937445878982544,
+     "ssim_vs_exact": 0.5312342128246859,
+     "lpips_vs_exact": 0.5847302079200745,
+     "seconds": 0.2684459574520588
+    },
+    "taylor2": {
+     "reward": -1.7298223972320557,
+     "ssim_vs_exact": 0.4035821326196998,
+     "lpips_vs_exact": 0.6503921747207642,
+     "seconds": 0.2751625217497349
+    },
+    "blockcache": {
+     "reward": -1.004305124282837,
+     "ssim_vs_exact": 0.4611565822867334,
+     "lpips_vs_exact": 0.6744346618652344,
+     "seconds": 0.2924226000905037
+    },
+    "resid": {
+     "reward": -0.8223838210105896,
+     "ssim_vs_exact": 0.5481612920047412,
+     "lpips_vs_exact": 0.5178411602973938,
+     "seconds": 0.2933417968451977
+    },
+    "traj": {
+     "reward": 0.07541877031326294,
+     "ssim_vs_exact": 0.5378328903503101,
+     "lpips_vs_exact": 0.5519679188728333,
+     "seconds": 0.301678903400898
+    }
+   }
+  },
+  {
+   "case": "prompt-011-seed-9401",
+   "prompt": "an aerial photograph of a violinist tuning backstage under harsh midday sun",
+   "exact_reward": -0.011705754324793816,
+   "variants": {
+    "cache_i5": {
+     "reward": 0.033494435250759125,
+     "ssim_vs_exact": 0.4891018244684304,
+     "lpips_vs_exact": 0.558372974395752,
+     "seconds": 0.26768580824136734
+    },
+    "taylor1": {
+     "reward": -0.6463176608085632,
+     "ssim_vs_exact": 0.5392523902742581,
+     "lpips_vs_exact": 0.5168612599372864,
+     "seconds": 0.2699958235025406
+    },
+    "taylor2": {
+     "reward": -0.739335298538208,
+     "ssim_vs_exact": 0.46611239918103226,
+     "lpips_vs_exact": 0.5748913288116455,
+     "seconds": 0.27018239349126816
+    },
+    "blockcache": {
+     "reward": -0.26434576511383057,
+     "ssim_vs_exact": 0.441505691793078,
+     "lpips_vs_exact": 0.6110193729400635,
+     "seconds": 0.29663071408867836
+    },
+    "resid": {
+     "reward": -0.23079346120357513,
+     "ssim_vs_exact": 0.5551180873492813,
+     "lpips_vs_exact": 0.4426446855068207,
+     "seconds": 0.29715143889188766
+    },
+    "traj": {
+     "reward": -0.19143010675907135,
+     "ssim_vs_exact": 0.6182630752170742,
+     "lpips_vs_exact": 0.3884088695049286,
+     "seconds": 0.29388007521629333
+    }
+   }
+  },
+  {
+   "case": "prompt-012-seed-5101",
+   "prompt": "a 35mm film photograph of a marble sculpture of a horse beneath a starlit sky",
+   "exact_reward": 1.7261255979537964,
+   "variants": {
+    "cache_i5": {
+     "reward": 0.6194895505905151,
+     "ssim_vs_exact": 0.6399378419392222,
+     "lpips_vs_exact": 0.6316367983818054,
+     "seconds": 0.26613063365221024
+    },
+    "taylor1": {
+     "reward": 1.3539259433746338,
+     "ssim_vs_exact": 0.577148095011692,
+     "lpips_vs_exact": 0.5786846876144409,
+     "seconds": 0.27327151224017143
+    },
+    "taylor2": {
+     "reward": -0.13953784108161926,
+     "ssim_vs_exact": 0.4396847675829025,
+     "lpips_vs_exact": 0.5713273882865906,
+     "seconds": 0.27193712815642357
+    },
+    "blockcache": {
+     "reward": -0.45750176906585693,
+     "ssim_vs_exact": 0.6091403281435679,
+     "lpips_vs_exact": 0.6791141629219055,
+     "seconds": 0.29345816001296043
+    },
+    "resid": {
+     "reward": 0.3670496344566345,
+     "ssim_vs_exact": 0.6447981731724964,
+     "lpips_vs_exact": 0.46867066621780396,
+     "seconds": 0.2958715185523033
+    },
+    "traj": {
+     "reward": 1.3697086572647095,
+     "ssim_vs_exact": 0.6729169211013096,
+     "lpips_vs_exact": 0.5010671019554138,
+     "seconds": 0.294811874628067
+    }
+   }
+  },
+  {
+   "case": "prompt-012-seed-7717",
+   "prompt": "a 35mm film photograph of a marble sculpture of a horse beneath a starlit sky",
+   "exact_reward": 1.8324147462844849,
+   "variants": {
+    "cache_i5": {
+     "reward": -0.5445014238357544,
+     "ssim_vs_exact": 0.43530535290476563,
+     "lpips_vs_exact": 0.6748188734054565,
+     "seconds": 0.26938842236995697
+    },
+    "taylor1": {
+     "reward": 1.7147228717803955,
+     "ssim_vs_exact": 0.4081948560168545,
+     "lpips_vs_exact": 0.6019120812416077,
+     "seconds": 0.2702464424073696
+    },
+    "taylor2": {
+     "reward": -0.2539639472961426,
+     "ssim_vs_exact": 0.36026237777646714,
+     "lpips_vs_exact": 0.5661722421646118,
+     "seconds": 0.2710995711386204
+    },
+    "blockcache": {
+     "reward": -0.5502080321311951,
+     "ssim_vs_exact": 0.4344169926222358,
+     "lpips_vs_exact": 0.6999420523643494,
+     "seconds": 0.29111507162451744
+    },
+    "resid": {
+     "reward": 1.5868241786956787,
+     "ssim_vs_exact": 0.4532675342649816,
+     "lpips_vs_exact": 0.6411634087562561,
+     "seconds": 0.2959231324493885
+    },
+    "traj": {
+     "reward": 1.6588702201843262,
+     "ssim_vs_exact": 0.5729920007706047,
+     "lpips_vs_exact": 0.5726691484451294,
+     "seconds": 0.2955113723874092
+    }
+   }
+  },
+  {
+   "case": "prompt-012-seed-9401",
+   "prompt": "a 35mm film photograph of a marble sculpture of a horse beneath a starlit sky",
+   "exact_reward": 1.3816887140274048,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.4876563549041748,
+     "ssim_vs_exact": 0.4863301958575838,
+     "lpips_vs_exact": 0.6991860866546631,
+     "seconds": 0.2650808095932007
+    },
+    "taylor1": {
+     "reward": 0.5264515280723572,
+     "ssim_vs_exact": 0.47507447899269345,
+     "lpips_vs_exact": 0.6497388482093811,
+     "seconds": 0.26884179934859276
+    },
+    "taylor2": {
+     "reward": -0.3981640040874481,
+     "ssim_vs_exact": 0.4187649025528262,
+     "lpips_vs_exact": 0.6202484965324402,
+     "seconds": 0.27324915304780006
+    },
+    "blockcache": {
+     "reward": -1.1669093370437622,
+     "ssim_vs_exact": 0.5226586780568159,
+     "lpips_vs_exact": 0.6067149043083191,
+     "seconds": 0.30542078614234924
+    },
+    "resid": {
+     "reward": 0.979103147983551,
+     "ssim_vs_exact": 0.6117292776916011,
+     "lpips_vs_exact": 0.5098335146903992,
+     "seconds": 0.29483505338430405
+    },
+    "traj": {
+     "reward": -0.7079699039459229,
+     "ssim_vs_exact": 0.6348498977875753,
+     "lpips_vs_exact": 0.5183261036872864,
+     "seconds": 0.2976327911019325
+    }
+   }
+  },
+  {
+   "case": "prompt-013-seed-5101",
+   "prompt": "a watercolor painting of a hot air balloon over farmland against a plain grey backdrop",
+   "exact_reward": 1.3544265031814575,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.5403470993041992,
+     "ssim_vs_exact": 0.7232593701792084,
+     "lpips_vs_exact": 0.39314353466033936,
+     "seconds": 0.2687206156551838
+    },
+    "taylor1": {
+     "reward": 1.383342981338501,
+     "ssim_vs_exact": 0.6634660235080518,
+     "lpips_vs_exact": 0.4932861626148224,
+     "seconds": 0.27086301892995834
+    },
+    "taylor2": {
+     "reward": 0.7812102437019348,
+     "ssim_vs_exact": 0.5604986707320799,
+     "lpips_vs_exact": 0.6430798768997192,
+     "seconds": 0.271725632250309
+    },
+    "blockcache": {
+     "reward": 1.5747601985931396,
+     "ssim_vs_exact": 0.7096924063257943,
+     "lpips_vs_exact": 0.4289228022098541,
+     "seconds": 0.2880079001188278
+    },
+    "resid": {
+     "reward": 1.5494024753570557,
+     "ssim_vs_exact": 0.7032353169026032,
+     "lpips_vs_exact": 0.42370957136154175,
+     "seconds": 0.2926253527402878
+    },
+    "traj": {
+     "reward": 1.5717723369598389,
+     "ssim_vs_exact": 0.7585935924659047,
+     "lpips_vs_exact": 0.3001990020275116,
+     "seconds": 0.2969268336892128
+    }
+   }
+  },
+  {
+   "case": "prompt-013-seed-7717",
+   "prompt": "a watercolor painting of a hot air balloon over farmland against a plain grey backdrop",
+   "exact_reward": 1.332441806793213,
+   "variants": {
+    "cache_i5": {
+     "reward": 0.9147511720657349,
+     "ssim_vs_exact": 0.5686081308945258,
+     "lpips_vs_exact": 0.5315477252006531,
+     "seconds": 0.2657984308898449
+    },
+    "taylor1": {
+     "reward": -0.0981559008359909,
+     "ssim_vs_exact": 0.5173062158028725,
+     "lpips_vs_exact": 0.561313271522522,
+     "seconds": 0.2747223377227783
+    },
+    "taylor2": {
+     "reward": 0.007953250780701637,
+     "ssim_vs_exact": 0.4307066134654287,
+     "lpips_vs_exact": 0.6588467955589294,
+     "seconds": 0.2712922766804695
+    },
+    "blockcache": {
+     "reward": -0.020444555208086967,
+     "ssim_vs_exact": 0.587367694940344,
+     "lpips_vs_exact": 0.5343966484069824,
+     "seconds": 0.28937579318881035
+    },
+    "resid": {
+     "reward": 1.4097849130630493,
+     "ssim_vs_exact": 0.7131370700391737,
+     "lpips_vs_exact": 0.32843559980392456,
+     "seconds": 0.2975368872284889
+    },
+    "traj": {
+     "reward": 1.3863334655761719,
+     "ssim_vs_exact": 0.7316607101964726,
+     "lpips_vs_exact": 0.29550328850746155,
+     "seconds": 0.30027520284056664
+    }
+   }
+  },
+  {
+   "case": "prompt-013-seed-9401",
+   "prompt": "a watercolor painting of a hot air balloon over farmland against a plain grey backdrop",
+   "exact_reward": 1.2468466758728027,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.4149681329727173,
+     "ssim_vs_exact": 0.6499509660350914,
+     "lpips_vs_exact": 0.4180282652378082,
+     "seconds": 0.26518188416957855
+    },
+    "taylor1": {
+     "reward": 0.27908796072006226,
+     "ssim_vs_exact": 0.5953007997002177,
+     "lpips_vs_exact": 0.49128997325897217,
+     "seconds": 0.26886122673749924
+    },
+    "taylor2": {
+     "reward": -1.2601293325424194,
+     "ssim_vs_exact": 0.5022361906863428,
+     "lpips_vs_exact": 0.6203293800354004,
+     "seconds": 0.27154526114463806
+    },
+    "blockcache": {
+     "reward": 0.7629345059394836,
+     "ssim_vs_exact": 0.649618060236667,
+     "lpips_vs_exact": 0.44629883766174316,
+     "seconds": 0.29383403062820435
+    },
+    "resid": {
+     "reward": 1.3864811658859253,
+     "ssim_vs_exact": 0.6581298681294462,
+     "lpips_vs_exact": 0.4608757197856903,
+     "seconds": 0.2930180989205837
+    },
+    "traj": {
+     "reward": 0.966105043888092,
+     "ssim_vs_exact": 0.6743032897807679,
+     "lpips_vs_exact": 0.4201798737049103,
+     "seconds": 0.2944595217704773
+    }
+   }
+  },
+  {
+   "case": "prompt-014-seed-5101",
+   "prompt": "an architectural photograph of a desert observatory dome in warm evening light",
+   "exact_reward": 1.8436495065689087,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.7281922101974487,
+     "ssim_vs_exact": 0.7857398967948842,
+     "lpips_vs_exact": 0.26489126682281494,
+     "seconds": 0.27892007678747177
+    },
+    "taylor1": {
+     "reward": 1.7139372825622559,
+     "ssim_vs_exact": 0.7203811797260005,
+     "lpips_vs_exact": 0.3794119358062744,
+     "seconds": 0.2722910977900028
+    },
+    "taylor2": {
+     "reward": 0.22785155475139618,
+     "ssim_vs_exact": 0.568774613987797,
+     "lpips_vs_exact": 0.6687191724777222,
+     "seconds": 0.27690041437745094
+    },
+    "blockcache": {
+     "reward": 1.7228600978851318,
+     "ssim_vs_exact": 0.7929002064358097,
+     "lpips_vs_exact": 0.2825191915035248,
+     "seconds": 0.30090950801968575
+    },
+    "resid": {
+     "reward": 1.815853238105774,
+     "ssim_vs_exact": 0.8175693641872653,
+     "lpips_vs_exact": 0.20323507487773895,
+     "seconds": 0.3171652480959892
+    },
+    "traj": {
+     "reward": 1.4229217767715454,
+     "ssim_vs_exact": 0.8162832833204604,
+     "lpips_vs_exact": 0.2232658714056015,
+     "seconds": 0.36088965460658073
+    }
+   }
+  },
+  {
+   "case": "prompt-014-seed-7717",
+   "prompt": "an architectural photograph of a desert observatory dome in warm evening light",
+   "exact_reward": 1.8842501640319824,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.780556559562683,
+     "ssim_vs_exact": 0.8567071755943094,
+     "lpips_vs_exact": 0.1919344663619995,
+     "seconds": 0.2855268493294716
+    },
+    "taylor1": {
+     "reward": 1.7363941669464111,
+     "ssim_vs_exact": 0.8070452450337137,
+     "lpips_vs_exact": 0.30809226632118225,
+     "seconds": 0.27761024981737137
+    },
+    "taylor2": {
+     "reward": 0.9914602637290955,
+     "ssim_vs_exact": 0.642665975344502,
+     "lpips_vs_exact": 0.632392168045044,
+     "seconds": 0.2765573672950268
+    },
+    "blockcache": {
+     "reward": 1.7400099039077759,
+     "ssim_vs_exact": 0.8454201814039605,
+     "lpips_vs_exact": 0.20518185198307037,
+     "seconds": 0.31730787828564644
+    },
+    "resid": {
+     "reward": 1.8754092454910278,
+     "ssim_vs_exact": 0.8389274955682664,
+     "lpips_vs_exact": 0.15607871115207672,
+     "seconds": 0.3112078532576561
+    },
+    "traj": {
+     "reward": 1.7243069410324097,
+     "ssim_vs_exact": 0.8546934638780112,
+     "lpips_vs_exact": 0.18005609512329102,
+     "seconds": 0.33766404911875725
+    }
+   }
+  },
+  {
+   "case": "prompt-014-seed-9401",
+   "prompt": "an architectural photograph of a desert observatory dome in warm evening light",
+   "exact_reward": 1.8291170597076416,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.050843596458435,
+     "ssim_vs_exact": 0.795477821688194,
+     "lpips_vs_exact": 0.328659325838089,
+     "seconds": 0.2673086114227772
+    },
+    "taylor1": {
+     "reward": -0.05967607721686363,
+     "ssim_vs_exact": 0.7481917350773873,
+     "lpips_vs_exact": 0.44194889068603516,
+     "seconds": 0.26840099692344666
+    },
+    "taylor2": {
+     "reward": -1.281413197517395,
+     "ssim_vs_exact": 0.5678622373093144,
+     "lpips_vs_exact": 0.6942523717880249,
+     "seconds": 0.27258526161313057
+    },
+    "blockcache": {
+     "reward": 1.7311538457870483,
+     "ssim_vs_exact": 0.799228113565397,
+     "lpips_vs_exact": 0.2768329977989197,
+     "seconds": 0.29400334134697914
+    },
+    "resid": {
+     "reward": 1.5668025016784668,
+     "ssim_vs_exact": 0.8108417637635822,
+     "lpips_vs_exact": 0.2370951622724533,
+     "seconds": 0.2944778501987457
+    },
+    "traj": {
+     "reward": 1.8279130458831787,
+     "ssim_vs_exact": 0.8148222085693734,
+     "lpips_vs_exact": 0.2536051571369171,
+     "seconds": 0.29415085166692734
+    }
+   }
+  },
+  {
+   "case": "prompt-015-seed-5101",
+   "prompt": "a long-exposure photograph of a hot air balloon over farmland against a plain grey backdrop",
+   "exact_reward": 1.5720643997192383,
+   "variants": {
+    "cache_i5": {
+     "reward": 0.8620261549949646,
+     "ssim_vs_exact": 0.7210066101264316,
+     "lpips_vs_exact": 0.38770899176597595,
+     "seconds": 0.2657647170126438
+    },
+    "taylor1": {
+     "reward": 0.4031354784965515,
+     "ssim_vs_exact": 0.6911780520489522,
+     "lpips_vs_exact": 0.4767918586730957,
+     "seconds": 0.2677415795624256
+    },
+    "taylor2": {
+     "reward": -0.8320955634117126,
+     "ssim_vs_exact": 0.5896682837071846,
+     "lpips_vs_exact": 0.6892635822296143,
+     "seconds": 0.27207741886377335
+    },
+    "blockcache": {
+     "reward": 0.3086449205875397,
+     "ssim_vs_exact": 0.7104140724194979,
+     "lpips_vs_exact": 0.3818112015724182,
+     "seconds": 0.29938434809446335
+    },
+    "resid": {
+     "reward": 1.1856082677841187,
+     "ssim_vs_exact": 0.749800813189462,
+     "lpips_vs_exact": 0.3271726667881012,
+     "seconds": 0.29790278151631355
+    },
+    "traj": {
+     "reward": 1.4637705087661743,
+     "ssim_vs_exact": 0.7503278688342468,
+     "lpips_vs_exact": 0.37574073672294617,
+     "seconds": 0.29463648051023483
+    }
+   }
+  },
+  {
+   "case": "prompt-015-seed-7717",
+   "prompt": "a long-exposure photograph of a hot air balloon over farmland against a plain grey backdrop",
+   "exact_reward": 1.5794328451156616,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.1006686687469482,
+     "ssim_vs_exact": 0.724336690891675,
+     "lpips_vs_exact": 0.41328316926956177,
+     "seconds": 0.26566198468208313
+    },
+    "taylor1": {
+     "reward": 0.5259816646575928,
+     "ssim_vs_exact": 0.701025002602481,
+     "lpips_vs_exact": 0.5072659850120544,
+     "seconds": 0.26826513186097145
+    },
+    "taylor2": {
+     "reward": -0.1489950716495514,
+     "ssim_vs_exact": 0.5652973225533332,
+     "lpips_vs_exact": 0.7040614485740662,
+     "seconds": 0.26964572072029114
+    },
+    "blockcache": {
+     "reward": 0.29557928442955017,
+     "ssim_vs_exact": 0.7288914447498116,
+     "lpips_vs_exact": 0.2996446490287781,
+     "seconds": 0.28962647914886475
+    },
+    "resid": {
+     "reward": 1.4135483503341675,
+     "ssim_vs_exact": 0.7449624377806167,
+     "lpips_vs_exact": 0.26904529333114624,
+     "seconds": 0.2941492721438408
+    },
+    "traj": {
+     "reward": 1.327350378036499,
+     "ssim_vs_exact": 0.7266478453021511,
+     "lpips_vs_exact": 0.31327924132347107,
+     "seconds": 0.2941572666168213
+    }
+   }
+  },
+  {
+   "case": "prompt-015-seed-9401",
+   "prompt": "a long-exposure photograph of a hot air balloon over farmland against a plain grey backdrop",
+   "exact_reward": 1.556495189666748,
+   "variants": {
+    "cache_i5": {
+     "reward": 0.82275390625,
+     "ssim_vs_exact": 0.7623678127996243,
+     "lpips_vs_exact": 0.3477635979652405,
+     "seconds": 0.26651567593216896
+    },
+    "taylor1": {
+     "reward": 0.6240658164024353,
+     "ssim_vs_exact": 0.7457785048237033,
+     "lpips_vs_exact": 0.46707040071487427,
+     "seconds": 0.2705266661942005
+    },
+    "taylor2": {
+     "reward": -1.4156996011734009,
+     "ssim_vs_exact": 0.6159055480732188,
+     "lpips_vs_exact": 0.7420092821121216,
+     "seconds": 0.27251729741692543
+    },
+    "blockcache": {
+     "reward": 0.45528537034988403,
+     "ssim_vs_exact": 0.7749699714728028,
+     "lpips_vs_exact": 0.28337520360946655,
+     "seconds": 0.2964838333427906
+    },
+    "resid": {
+     "reward": 0.6049290895462036,
+     "ssim_vs_exact": 0.7991369646484477,
+     "lpips_vs_exact": 0.24559271335601807,
+     "seconds": 0.2980685606598854
+    },
+    "traj": {
+     "reward": 0.8866435289382935,
+     "ssim_vs_exact": 0.7885718533066585,
+     "lpips_vs_exact": 0.30384087562561035,
+     "seconds": 0.29673734679818153
+    }
+   }
+  },
+  {
+   "case": "prompt-016-seed-5101",
+   "prompt": "a cinematic photograph of a row of beach huts reflected in still water",
+   "exact_reward": 1.6387598514556885,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.3206504583358765,
+     "ssim_vs_exact": 0.707688552886088,
+     "lpips_vs_exact": 0.3609215319156647,
+     "seconds": 0.27240870893001556
+    },
+    "taylor1": {
+     "reward": 1.2874031066894531,
+     "ssim_vs_exact": 0.6876045734364822,
+     "lpips_vs_exact": 0.39533355832099915,
+     "seconds": 0.27410635352134705
+    },
+    "taylor2": {
+     "reward": 0.910107433795929,
+     "ssim_vs_exact": 0.5431033433801901,
+     "lpips_vs_exact": 0.5742178559303284,
+     "seconds": 0.2803836911916733
+    },
+    "blockcache": {
+     "reward": 1.5335681438446045,
+     "ssim_vs_exact": 0.7370060827431598,
+     "lpips_vs_exact": 0.31395602226257324,
+     "seconds": 0.28822943940758705
+    },
+    "resid": {
+     "reward": 1.4829442501068115,
+     "ssim_vs_exact": 0.7754165469419408,
+     "lpips_vs_exact": 0.2545921504497528,
+     "seconds": 0.2952176705002785
+    },
+    "traj": {
+     "reward": 1.5227746963500977,
+     "ssim_vs_exact": 0.6949314491745021,
+     "lpips_vs_exact": 0.3375682234764099,
+     "seconds": 0.29637347161769867
+    }
+   }
+  },
+  {
+   "case": "prompt-016-seed-7717",
+   "prompt": "a cinematic photograph of a row of beach huts reflected in still water",
+   "exact_reward": 1.6028939485549927,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.6397943496704102,
+     "ssim_vs_exact": 0.6833496644409583,
+     "lpips_vs_exact": 0.3418967127799988,
+     "seconds": 0.26623133569955826
+    },
+    "taylor1": {
+     "reward": 1.5606497526168823,
+     "ssim_vs_exact": 0.6370848386458406,
+     "lpips_vs_exact": 0.4635609984397888,
+     "seconds": 0.27060384675860405
+    },
+    "taylor2": {
+     "reward": 0.7398879528045654,
+     "ssim_vs_exact": 0.4430425103587771,
+     "lpips_vs_exact": 0.6776929497718811,
+     "seconds": 0.27338458597660065
+    },
+    "blockcache": {
+     "reward": 1.5168896913528442,
+     "ssim_vs_exact": 0.6849734451039525,
+     "lpips_vs_exact": 0.36445721983909607,
+     "seconds": 0.2881452180445194
+    },
+    "resid": {
+     "reward": 1.6073050498962402,
+     "ssim_vs_exact": 0.7129433013288179,
+     "lpips_vs_exact": 0.2782578766345978,
+     "seconds": 0.29632217437028885
+    },
+    "traj": {
+     "reward": 1.614720344543457,
+     "ssim_vs_exact": 0.6566670687633198,
+     "lpips_vs_exact": 0.3810182809829712,
+     "seconds": 0.3210570886731148
+    }
+   }
+  },
+  {
+   "case": "prompt-016-seed-9401",
+   "prompt": "a cinematic photograph of a row of beach huts reflected in still water",
+   "exact_reward": 1.6107382774353027,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.695379614830017,
+     "ssim_vs_exact": 0.6441288385209056,
+     "lpips_vs_exact": 0.3196970224380493,
+     "seconds": 0.2699426896870136
+    },
+    "taylor1": {
+     "reward": 1.5788394212722778,
+     "ssim_vs_exact": 0.6122728309115947,
+     "lpips_vs_exact": 0.38195139169692993,
+     "seconds": 0.2729376591742039
+    },
+    "taylor2": {
+     "reward": 0.8750746846199036,
+     "ssim_vs_exact": 0.46498567907488875,
+     "lpips_vs_exact": 0.6121813654899597,
+     "seconds": 0.27207525819540024
+    },
+    "blockcache": {
+     "reward": 1.5632456541061401,
+     "ssim_vs_exact": 0.6572116009637307,
+     "lpips_vs_exact": 0.3144893944263458,
+     "seconds": 0.286946389824152
+    },
+    "resid": {
+     "reward": 1.676160454750061,
+     "ssim_vs_exact": 0.6501662860805791,
+     "lpips_vs_exact": 0.34254777431488037,
+     "seconds": 0.29321667924523354
+    },
+    "traj": {
+     "reward": 1.667568564414978,
+     "ssim_vs_exact": 0.6689568476831251,
+     "lpips_vs_exact": 0.2801911234855652,
+     "seconds": 0.2950575016438961
+    }
+   }
+  },
+  {
+   "case": "prompt-017-seed-5101",
+   "prompt": "an architectural photograph of a marble sculpture of a horse beneath a starlit sky",
+   "exact_reward": 1.8075847625732422,
+   "variants": {
+    "cache_i5": {
+     "reward": -0.175477534532547,
+     "ssim_vs_exact": 0.5426888404512269,
+     "lpips_vs_exact": 0.6243420839309692,
+     "seconds": 0.2654193192720413
+    },
+    "taylor1": {
+     "reward": 0.087518110871315,
+     "ssim_vs_exact": 0.5073736301861992,
+     "lpips_vs_exact": 0.6250531673431396,
+     "seconds": 0.2688235230743885
+    },
+    "taylor2": {
+     "reward": -0.559344470500946,
+     "ssim_vs_exact": 0.43115622591387504,
+     "lpips_vs_exact": 0.6344082951545715,
+     "seconds": 0.27136192843317986
+    },
+    "blockcache": {
+     "reward": -0.1875162422657013,
+     "ssim_vs_exact": 0.49231325352945765,
+     "lpips_vs_exact": 0.6875738501548767,
+     "seconds": 0.28736361116170883
+    },
+    "resid": {
+     "reward": 0.7580733895301819,
+     "ssim_vs_exact": 0.5703565345530782,
+     "lpips_vs_exact": 0.5169435739517212,
+     "seconds": 0.2946992851793766
+    },
+    "traj": {
+     "reward": 0.2255905568599701,
+     "ssim_vs_exact": 0.5963581416040763,
+     "lpips_vs_exact": 0.521901547908783,
+     "seconds": 0.2945008873939514
+    }
+   }
+  },
+  {
+   "case": "prompt-017-seed-7717",
+   "prompt": "an architectural photograph of a marble sculpture of a horse beneath a starlit sky",
+   "exact_reward": 1.688996434211731,
+   "variants": {
+    "cache_i5": {
+     "reward": 0.8331159353256226,
+     "ssim_vs_exact": 0.48407669007000464,
+     "lpips_vs_exact": 0.6963546276092529,
+     "seconds": 0.2714507393538952
+    },
+    "taylor1": {
+     "reward": 1.1460407972335815,
+     "ssim_vs_exact": 0.44720301372362553,
+     "lpips_vs_exact": 0.6566792130470276,
+     "seconds": 0.27522148936986923
+    },
+    "taylor2": {
+     "reward": -0.41240403056144714,
+     "ssim_vs_exact": 0.35633244319491747,
+     "lpips_vs_exact": 0.6054331064224243,
+     "seconds": 0.27505670487880707
+    },
+    "blockcache": {
+     "reward": -0.7562839388847351,
+     "ssim_vs_exact": 0.48889602693060547,
+     "lpips_vs_exact": 0.7031715512275696,
+     "seconds": 0.2994154840707779
+    },
+    "resid": {
+     "reward": 1.727691411972046,
+     "ssim_vs_exact": 0.5028467092661307,
+     "lpips_vs_exact": 0.6453784704208374,
+     "seconds": 0.31349990889430046
+    },
+    "traj": {
+     "reward": -0.6242808699607849,
+     "ssim_vs_exact": 0.5739004094669298,
+     "lpips_vs_exact": 0.5809811353683472,
+     "seconds": 0.33382074907422066
+    }
+   }
+  },
+  {
+   "case": "prompt-017-seed-9401",
+   "prompt": "an architectural photograph of a marble sculpture of a horse beneath a starlit sky",
+   "exact_reward": 1.8497565984725952,
+   "variants": {
+    "cache_i5": {
+     "reward": -0.008647304028272629,
+     "ssim_vs_exact": 0.4608420848028569,
+     "lpips_vs_exact": 0.7301220893859863,
+     "seconds": 0.2661365009844303
+    },
+    "taylor1": {
+     "reward": 1.5578207969665527,
+     "ssim_vs_exact": 0.4395691698091942,
+     "lpips_vs_exact": 0.6900795102119446,
+     "seconds": 0.2699034996330738
+    },
+    "taylor2": {
+     "reward": 0.0792590081691742,
+     "ssim_vs_exact": 0.3885629145321648,
+     "lpips_vs_exact": 0.6731424331665039,
+     "seconds": 0.2706143632531166
+    },
+    "blockcache": {
+     "reward": -0.3694518506526947,
+     "ssim_vs_exact": 0.49294979433594976,
+     "lpips_vs_exact": 0.6982678771018982,
+     "seconds": 0.2888915538787842
+    },
+    "resid": {
+     "reward": 1.3127024173736572,
+     "ssim_vs_exact": 0.5284954059420978,
+     "lpips_vs_exact": 0.5819904804229736,
+     "seconds": 0.29329998791217804
+    },
+    "traj": {
+     "reward": 0.27751609683036804,
+     "ssim_vs_exact": 0.5877795635938442,
+     "lpips_vs_exact": 0.5518807768821716,
+     "seconds": 0.29339148476719856
+    }
+   }
+  },
+  {
+   "case": "prompt-018-seed-5101",
+   "prompt": "a pencil sketch of a violinist tuning backstage in warm evening light",
+   "exact_reward": 1.434411883354187,
+   "variants": {
+    "cache_i5": {
+     "reward": 0.49389395117759705,
+     "ssim_vs_exact": 0.5875174628456451,
+     "lpips_vs_exact": 0.5071846842765808,
+     "seconds": 0.26802145689725876
+    },
+    "taylor1": {
+     "reward": 0.06910397857427597,
+     "ssim_vs_exact": 0.5393130823786173,
+     "lpips_vs_exact": 0.5469380617141724,
+     "seconds": 0.2700367011129856
+    },
+    "taylor2": {
+     "reward": -0.38590630888938904,
+     "ssim_vs_exact": 0.4823934610937413,
+     "lpips_vs_exact": 0.6085449457168579,
+     "seconds": 0.2704571932554245
+    },
+    "blockcache": {
+     "reward": 0.037273917347192764,
+     "ssim_vs_exact": 0.5629540459799207,
+     "lpips_vs_exact": 0.545586884021759,
+     "seconds": 0.2915366627275944
+    },
+    "resid": {
+     "reward": 0.7278830409049988,
+     "ssim_vs_exact": 0.5598812603378635,
+     "lpips_vs_exact": 0.4979601204395294,
+     "seconds": 0.32238809391856194
+    },
+    "traj": {
+     "reward": 0.40067604184150696,
+     "ssim_vs_exact": 0.620099988679239,
+     "lpips_vs_exact": 0.4654116630554199,
+     "seconds": 0.31813644245266914
+    }
+   }
+  },
+  {
+   "case": "prompt-018-seed-7717",
+   "prompt": "a pencil sketch of a violinist tuning backstage in warm evening light",
+   "exact_reward": 1.2076091766357422,
+   "variants": {
+    "cache_i5": {
+     "reward": 0.6598067283630371,
+     "ssim_vs_exact": 0.6274216193346284,
+     "lpips_vs_exact": 0.44879716634750366,
+     "seconds": 0.265511866658926
+    },
+    "taylor1": {
+     "reward": 0.06581100821495056,
+     "ssim_vs_exact": 0.5920136694686297,
+     "lpips_vs_exact": 0.47925692796707153,
+     "seconds": 0.26896026358008385
+    },
+    "taylor2": {
+     "reward": 0.06990539282560349,
+     "ssim_vs_exact": 0.48946557743956287,
+     "lpips_vs_exact": 0.6008038520812988,
+     "seconds": 0.27521663904190063
+    },
+    "blockcache": {
+     "reward": 0.17548929154872894,
+     "ssim_vs_exact": 0.635472952892954,
+     "lpips_vs_exact": 0.48546895384788513,
+     "seconds": 0.2899460457265377
+    },
+    "resid": {
+     "reward": 0.7042478322982788,
+     "ssim_vs_exact": 0.6410384275391685,
+     "lpips_vs_exact": 0.43376287817955017,
+     "seconds": 0.2962455227971077
+    },
+    "traj": {
+     "reward": 0.3415195047855377,
+     "ssim_vs_exact": 0.6290886750991852,
+     "lpips_vs_exact": 0.4344469904899597,
+     "seconds": 0.2952001206576824
+    }
+   }
+  },
+  {
+   "case": "prompt-018-seed-9401",
+   "prompt": "a pencil sketch of a violinist tuning backstage in warm evening light",
+   "exact_reward": -0.6087384223937988,
+   "variants": {
+    "cache_i5": {
+     "reward": -0.045242924243211746,
+     "ssim_vs_exact": 0.6859429175471371,
+     "lpips_vs_exact": 0.3606024384498596,
+     "seconds": 0.26769670471549034
+    },
+    "taylor1": {
+     "reward": -0.385661780834198,
+     "ssim_vs_exact": 0.652854524846013,
+     "lpips_vs_exact": 0.40869325399398804,
+     "seconds": 0.2688051909208298
+    },
+    "taylor2": {
+     "reward": -0.5885239243507385,
+     "ssim_vs_exact": 0.5183739734746697,
+     "lpips_vs_exact": 0.5741048455238342,
+     "seconds": 0.2709059789776802
+    },
+    "blockcache": {
+     "reward": -0.9006189703941345,
+     "ssim_vs_exact": 0.6788514877946362,
+     "lpips_vs_exact": 0.37718313932418823,
+     "seconds": 0.2884542644023895
+    },
+    "resid": {
+     "reward": 0.09934739023447037,
+     "ssim_vs_exact": 0.7076211293212505,
+     "lpips_vs_exact": 0.3273026645183563,
+     "seconds": 0.2945820279419422
+    },
+    "traj": {
+     "reward": -0.2670365869998932,
+     "ssim_vs_exact": 0.6611347799417259,
+     "lpips_vs_exact": 0.3931719958782196,
+     "seconds": 0.2949290759861469
+    }
+   }
+  },
+  {
+   "case": "prompt-019-seed-5101",
+   "prompt": "a macro photograph of a desert observatory dome at sunrise",
+   "exact_reward": 1.7423269748687744,
+   "variants": {
+    "cache_i5": {
+     "reward": 0.5355514883995056,
+     "ssim_vs_exact": 0.7740091192366417,
+     "lpips_vs_exact": 0.403444766998291,
+     "seconds": 0.26755519211292267
+    },
+    "taylor1": {
+     "reward": 0.5896567702293396,
+     "ssim_vs_exact": 0.7160355848617539,
+     "lpips_vs_exact": 0.473903626203537,
+     "seconds": 0.2706534378230572
+    },
+    "taylor2": {
+     "reward": -0.17254853248596191,
+     "ssim_vs_exact": 0.5726186508397464,
+     "lpips_vs_exact": 0.7071873545646667,
+     "seconds": 0.2712165601551533
+    },
+    "blockcache": {
+     "reward": 0.2774397134780884,
+     "ssim_vs_exact": 0.7732262352487892,
+     "lpips_vs_exact": 0.42141103744506836,
+     "seconds": 0.2975603826344013
+    },
+    "resid": {
+     "reward": 1.5900019407272339,
+     "ssim_vs_exact": 0.8017863519389352,
+     "lpips_vs_exact": 0.2755635976791382,
+     "seconds": 0.3233197070658207
+    },
+    "traj": {
+     "reward": 1.6395220756530762,
+     "ssim_vs_exact": 0.8039318778293327,
+     "lpips_vs_exact": 0.28752636909484863,
+     "seconds": 0.2958318628370762
+    }
+   }
+  },
+  {
+   "case": "prompt-019-seed-7717",
+   "prompt": "a macro photograph of a desert observatory dome at sunrise",
+   "exact_reward": 1.865390658378601,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.5325047969818115,
+     "ssim_vs_exact": 0.7903728240445954,
+     "lpips_vs_exact": 0.3401215672492981,
+     "seconds": 0.2983078211545944
+    },
+    "taylor1": {
+     "reward": 1.5568526983261108,
+     "ssim_vs_exact": 0.7361056939361971,
+     "lpips_vs_exact": 0.42913180589675903,
+     "seconds": 0.27086443454027176
+    },
+    "taylor2": {
+     "reward": -0.030574722215533257,
+     "ssim_vs_exact": 0.624314991841822,
+     "lpips_vs_exact": 0.6579021215438843,
+     "seconds": 0.2847839593887329
+    },
+    "blockcache": {
+     "reward": 1.5465571880340576,
+     "ssim_vs_exact": 0.789799583235301,
+     "lpips_vs_exact": 0.337356835603714,
+     "seconds": 0.29980456456542015
+    },
+    "resid": {
+     "reward": 1.7368860244750977,
+     "ssim_vs_exact": 0.8314420708113911,
+     "lpips_vs_exact": 0.23970726132392883,
+     "seconds": 0.34946011006832123
+    },
+    "traj": {
+     "reward": 1.5254933834075928,
+     "ssim_vs_exact": 0.7855710845707821,
+     "lpips_vs_exact": 0.3546534478664398,
+     "seconds": 0.313840813934803
+    }
+   }
+  },
+  {
+   "case": "prompt-019-seed-9401",
+   "prompt": "a macro photograph of a desert observatory dome at sunrise",
+   "exact_reward": 1.9018526077270508,
+   "variants": {
+    "cache_i5": {
+     "reward": -0.36174726486206055,
+     "ssim_vs_exact": 0.7623736544756573,
+     "lpips_vs_exact": 0.4055870771408081,
+     "seconds": 0.2822750471532345
+    },
+    "taylor1": {
+     "reward": 0.1406240016222,
+     "ssim_vs_exact": 0.7508598772395727,
+     "lpips_vs_exact": 0.44837477803230286,
+     "seconds": 0.2718479782342911
+    },
+    "taylor2": {
+     "reward": -0.3913242518901825,
+     "ssim_vs_exact": 0.6328152404603533,
+     "lpips_vs_exact": 0.6531903743743896,
+     "seconds": 0.2945295162498951
+    },
+    "blockcache": {
+     "reward": -0.758916437625885,
+     "ssim_vs_exact": 0.7719055693326037,
+     "lpips_vs_exact": 0.39226189255714417,
+     "seconds": 0.3094137944281101
+    },
+    "resid": {
+     "reward": 0.6117982864379883,
+     "ssim_vs_exact": 0.7836044662846356,
+     "lpips_vs_exact": 0.2930868864059448,
+     "seconds": 0.33921384811401367
+    },
+    "traj": {
+     "reward": 1.452830195426941,
+     "ssim_vs_exact": 0.800828621656606,
+     "lpips_vs_exact": 0.34838876128196716,
+     "seconds": 0.3100782707333565
+    }
+   }
+  },
+  {
+   "case": "prompt-020-seed-5101",
+   "prompt": "a documentary photograph of a hot air balloon over farmland in dense fog",
+   "exact_reward": 1.7348380088806152,
+   "variants": {
+    "cache_i5": {
+     "reward": 0.4080040156841278,
+     "ssim_vs_exact": 0.6732332258442808,
+     "lpips_vs_exact": 0.42978811264038086,
+     "seconds": 0.26749397814273834
+    },
+    "taylor1": {
+     "reward": 0.08094316720962524,
+     "ssim_vs_exact": 0.6217866656539496,
+     "lpips_vs_exact": 0.5529491305351257,
+     "seconds": 0.2718922235071659
+    },
+    "taylor2": {
+     "reward": -1.8595603704452515,
+     "ssim_vs_exact": 0.5062467480956837,
+     "lpips_vs_exact": 0.7704100608825684,
+     "seconds": 0.26951752230525017
+    },
+    "blockcache": {
+     "reward": 1.3888626098632812,
+     "ssim_vs_exact": 0.6842710940079663,
+     "lpips_vs_exact": 0.4264873266220093,
+     "seconds": 0.29467717558145523
+    },
+    "resid": {
+     "reward": -0.2898392975330353,
+     "ssim_vs_exact": 0.7687517700699492,
+     "lpips_vs_exact": 0.3058350086212158,
+     "seconds": 0.2960498109459877
+    },
+    "traj": {
+     "reward": 1.1690045595169067,
+     "ssim_vs_exact": 0.8512244790936291,
+     "lpips_vs_exact": 0.26306501030921936,
+     "seconds": 0.29551912099123
+    }
+   }
+  },
+  {
+   "case": "prompt-020-seed-7717",
+   "prompt": "a documentary photograph of a hot air balloon over farmland in dense fog",
+   "exact_reward": 1.6959948539733887,
+   "variants": {
+    "cache_i5": {
+     "reward": -0.2773926258087158,
+     "ssim_vs_exact": 0.776137972364313,
+     "lpips_vs_exact": 0.40184351801872253,
+     "seconds": 0.26825230196118355
+    },
+    "taylor1": {
+     "reward": -0.12782369554042816,
+     "ssim_vs_exact": 0.7066293413908432,
+     "lpips_vs_exact": 0.5607706904411316,
+     "seconds": 0.27245839312672615
+    },
+    "taylor2": {
+     "reward": -2.148818254470825,
+     "ssim_vs_exact": 0.6072075150878695,
+     "lpips_vs_exact": 0.7320802807807922,
+     "seconds": 0.273359764367342
+    },
+    "blockcache": {
+     "reward": -0.2192140370607376,
+     "ssim_vs_exact": 0.8029125855212431,
+     "lpips_vs_exact": 0.3905147910118103,
+     "seconds": 0.28915973380208015
+    },
+    "resid": {
+     "reward": 1.4905970096588135,
+     "ssim_vs_exact": 0.8149400644580244,
+     "lpips_vs_exact": 0.2571472227573395,
+     "seconds": 0.30152035877108574
+    },
+    "traj": {
+     "reward": 1.5923110246658325,
+     "ssim_vs_exact": 0.8291963762414195,
+     "lpips_vs_exact": 0.3013943135738373,
+     "seconds": 0.29499752819538116
+    }
+   }
+  },
+  {
+   "case": "prompt-020-seed-9401",
+   "prompt": "a documentary photograph of a hot air balloon over farmland in dense fog",
+   "exact_reward": 1.7853155136108398,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.5544875860214233,
+     "ssim_vs_exact": 0.7722785723576227,
+     "lpips_vs_exact": 0.3461431860923767,
+     "seconds": 0.2654716297984123
+    },
+    "taylor1": {
+     "reward": 0.28329068422317505,
+     "ssim_vs_exact": 0.6657669404589878,
+     "lpips_vs_exact": 0.49959084391593933,
+     "seconds": 0.26844390109181404
+    },
+    "taylor2": {
+     "reward": -1.3800382614135742,
+     "ssim_vs_exact": 0.558391698483146,
+     "lpips_vs_exact": 0.7147564888000488,
+     "seconds": 0.27055877447128296
+    },
+    "blockcache": {
+     "reward": -0.15002693235874176,
+     "ssim_vs_exact": 0.7088686675782703,
+     "lpips_vs_exact": 0.4584702253341675,
+     "seconds": 0.28784264624118805
+    },
+    "resid": {
+     "reward": 1.5496405363082886,
+     "ssim_vs_exact": 0.8584409703676599,
+     "lpips_vs_exact": 0.19244025647640228,
+     "seconds": 0.29401659220457077
+    },
+    "traj": {
+     "reward": 1.627345323562622,
+     "ssim_vs_exact": 0.8544992514462365,
+     "lpips_vs_exact": 0.24614833295345306,
+     "seconds": 0.2973235473036766
+    }
+   }
+  },
+  {
+   "case": "prompt-021-seed-5101",
+   "prompt": "a watercolor painting of a marble sculpture of a horse beneath a starlit sky",
+   "exact_reward": 0.9408872723579407,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.286849856376648,
+     "ssim_vs_exact": 0.4252920587421327,
+     "lpips_vs_exact": 0.6763334274291992,
+     "seconds": 0.2678515762090683
+    },
+    "taylor1": {
+     "reward": 0.7341122031211853,
+     "ssim_vs_exact": 0.3973222986505953,
+     "lpips_vs_exact": 0.6146858930587769,
+     "seconds": 0.2714836075901985
+    },
+    "taylor2": {
+     "reward": 0.7119596600532532,
+     "ssim_vs_exact": 0.2966041577155116,
+     "lpips_vs_exact": 0.664287269115448,
+     "seconds": 0.27300024405121803
+    },
+    "blockcache": {
+     "reward": 0.8128154873847961,
+     "ssim_vs_exact": 0.4872667272527363,
+     "lpips_vs_exact": 0.676044762134552,
+     "seconds": 0.289069227874279
+    },
+    "resid": {
+     "reward": 0.20772148668766022,
+     "ssim_vs_exact": 0.5329364578434,
+     "lpips_vs_exact": 0.49382317066192627,
+     "seconds": 0.2950352840125561
+    },
+    "traj": {
+     "reward": 0.08256012201309204,
+     "ssim_vs_exact": 0.5263943156110876,
+     "lpips_vs_exact": 0.5152028203010559,
+     "seconds": 0.2963830679655075
+    }
+   }
+  },
+  {
+   "case": "prompt-021-seed-7717",
+   "prompt": "a watercolor painting of a marble sculpture of a horse beneath a starlit sky",
+   "exact_reward": 0.9104872345924377,
+   "variants": {
+    "cache_i5": {
+     "reward": 0.3732069134712219,
+     "ssim_vs_exact": 0.45949986459990805,
+     "lpips_vs_exact": 0.6138821840286255,
+     "seconds": 0.26736605912446976
+    },
+    "taylor1": {
+     "reward": -0.030493665486574173,
+     "ssim_vs_exact": 0.44051020630157106,
+     "lpips_vs_exact": 0.5517382025718689,
+     "seconds": 0.2704121768474579
+    },
+    "taylor2": {
+     "reward": -0.10385800153017044,
+     "ssim_vs_exact": 0.36206444713461167,
+     "lpips_vs_exact": 0.5744873881340027,
+     "seconds": 0.27198541164398193
+    },
+    "blockcache": {
+     "reward": 0.5863364934921265,
+     "ssim_vs_exact": 0.5443455990449871,
+     "lpips_vs_exact": 0.5563277006149292,
+     "seconds": 0.2899806872010231
+    },
+    "resid": {
+     "reward": 0.18354131281375885,
+     "ssim_vs_exact": 0.49660325369760355,
+     "lpips_vs_exact": 0.554328441619873,
+     "seconds": 0.3248278722167015
+    },
+    "traj": {
+     "reward": 0.9012947678565979,
+     "ssim_vs_exact": 0.5898524250172992,
+     "lpips_vs_exact": 0.4475864768028259,
+     "seconds": 0.2968912348151207
+    }
+   }
+  },
+  {
+   "case": "prompt-021-seed-9401",
+   "prompt": "a watercolor painting of a marble sculpture of a horse beneath a starlit sky",
+   "exact_reward": 1.6833436489105225,
+   "variants": {
+    "cache_i5": {
+     "reward": 0.2024369090795517,
+     "ssim_vs_exact": 0.393143578250483,
+     "lpips_vs_exact": 0.6788648962974548,
+     "seconds": 0.2656068690121174
+    },
+    "taylor1": {
+     "reward": 0.9336447715759277,
+     "ssim_vs_exact": 0.41487294811388326,
+     "lpips_vs_exact": 0.5963143706321716,
+     "seconds": 0.2742423713207245
+    },
+    "taylor2": {
+     "reward": 0.20679962635040283,
+     "ssim_vs_exact": 0.3439898373839929,
+     "lpips_vs_exact": 0.6137574911117554,
+     "seconds": 0.27009255066514015
+    },
+    "blockcache": {
+     "reward": 0.3143136501312256,
+     "ssim_vs_exact": 0.45514854498054413,
+     "lpips_vs_exact": 0.6594538688659668,
+     "seconds": 0.2894531935453415
+    },
+    "resid": {
+     "reward": 0.9957484602928162,
+     "ssim_vs_exact": 0.4791909088850594,
+     "lpips_vs_exact": 0.5431176424026489,
+     "seconds": 0.29260726273059845
+    },
+    "traj": {
+     "reward": 0.3278672397136688,
+     "ssim_vs_exact": 0.5165621361041214,
+     "lpips_vs_exact": 0.5259625911712646,
+     "seconds": 0.301273450255394
+    }
+   }
+  },
+  {
+   "case": "prompt-022-seed-5101",
+   "prompt": "a watercolor painting of a hot air balloon over farmland in dense fog",
+   "exact_reward": 1.7061105966567993,
+   "variants": {
+    "cache_i5": {
+     "reward": -0.004077236168086529,
+     "ssim_vs_exact": 0.7716832467691654,
+     "lpips_vs_exact": 0.36786478757858276,
+     "seconds": 0.26544390618801117
+    },
+    "taylor1": {
+     "reward": 0.8909041881561279,
+     "ssim_vs_exact": 0.7404172907458239,
+     "lpips_vs_exact": 0.46009084582328796,
+     "seconds": 0.27272438257932663
+    },
+    "taylor2": {
+     "reward": 0.1554710417985916,
+     "ssim_vs_exact": 0.6626405828298271,
+     "lpips_vs_exact": 0.6191614866256714,
+     "seconds": 0.2746022455394268
+    },
+    "blockcache": {
+     "reward": -0.9658509492874146,
+     "ssim_vs_exact": 0.7601742453044605,
+     "lpips_vs_exact": 0.4257969260215759,
+     "seconds": 0.2954150438308716
+    },
+    "resid": {
+     "reward": 0.3827678859233856,
+     "ssim_vs_exact": 0.7347540561785637,
+     "lpips_vs_exact": 0.44201454520225525,
+     "seconds": 0.29419636726379395
+    },
+    "traj": {
+     "reward": 1.501868724822998,
+     "ssim_vs_exact": 0.8319231200171151,
+     "lpips_vs_exact": 0.2607637643814087,
+     "seconds": 0.2948939763009548
+    }
+   }
+  },
+  {
+   "case": "prompt-022-seed-7717",
+   "prompt": "a watercolor painting of a hot air balloon over farmland in dense fog",
+   "exact_reward": 1.7844769954681396,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.4561039209365845,
+     "ssim_vs_exact": 0.7817570267608164,
+     "lpips_vs_exact": 0.3825187087059021,
+     "seconds": 0.26745741814374924
+    },
+    "taylor1": {
+     "reward": 1.344565987586975,
+     "ssim_vs_exact": 0.7373502478489801,
+     "lpips_vs_exact": 0.4364452362060547,
+     "seconds": 0.27075791731476784
+    },
+    "taylor2": {
+     "reward": -0.15530279278755188,
+     "ssim_vs_exact": 0.6265137130280961,
+     "lpips_vs_exact": 0.6052848100662231,
+     "seconds": 0.2727898061275482
+    },
+    "blockcache": {
+     "reward": 1.3291800022125244,
+     "ssim_vs_exact": 0.7647707764474032,
+     "lpips_vs_exact": 0.37308353185653687,
+     "seconds": 0.2908896766602993
+    },
+    "resid": {
+     "reward": 1.3697601556777954,
+     "ssim_vs_exact": 0.7535878651928053,
+     "lpips_vs_exact": 0.32580646872520447,
+     "seconds": 0.2949082851409912
+    },
+    "traj": {
+     "reward": 1.4704381227493286,
+     "ssim_vs_exact": 0.7972598957789753,
+     "lpips_vs_exact": 0.28573861718177795,
+     "seconds": 0.29410042241215706
+    }
+   }
+  },
+  {
+   "case": "prompt-022-seed-9401",
+   "prompt": "a watercolor painting of a hot air balloon over farmland in dense fog",
+   "exact_reward": 1.78829026222229,
+   "variants": {
+    "cache_i5": {
+     "reward": 0.9951712489128113,
+     "ssim_vs_exact": 0.7791012269350501,
+     "lpips_vs_exact": 0.3321762681007385,
+     "seconds": 0.2814057767391205
+    },
+    "taylor1": {
+     "reward": 1.4111135005950928,
+     "ssim_vs_exact": 0.7455370202178472,
+     "lpips_vs_exact": 0.3505500257015228,
+     "seconds": 0.2725549414753914
+    },
+    "taylor2": {
+     "reward": 0.2690640985965729,
+     "ssim_vs_exact": 0.6526940239892318,
+     "lpips_vs_exact": 0.5718033909797668,
+     "seconds": 0.27129653841257095
+    },
+    "blockcache": {
+     "reward": 1.1765351295471191,
+     "ssim_vs_exact": 0.7608377374300946,
+     "lpips_vs_exact": 0.42222169041633606,
+     "seconds": 0.2918158508837223
+    },
+    "resid": {
+     "reward": 1.4879822731018066,
+     "ssim_vs_exact": 0.7524100910064982,
+     "lpips_vs_exact": 0.378537118434906,
+     "seconds": 0.29659661278128624
+    },
+    "traj": {
+     "reward": 1.5060771703720093,
+     "ssim_vs_exact": 0.8040225557737698,
+     "lpips_vs_exact": 0.2658959627151489,
+     "seconds": 0.3304297477006912
+    }
+   }
+  },
+  {
+   "case": "prompt-023-seed-5101",
+   "prompt": "a long-exposure photograph of a steaming bowl of noodles under harsh midday sun",
+   "exact_reward": 1.7151752710342407,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.4727953672409058,
+     "ssim_vs_exact": 0.6194167670592705,
+     "lpips_vs_exact": 0.4040033519268036,
+     "seconds": 0.29108938947319984
+    },
+    "taylor1": {
+     "reward": 1.5198259353637695,
+     "ssim_vs_exact": 0.5684906320447746,
+     "lpips_vs_exact": 0.4606475830078125,
+     "seconds": 0.27422279864549637
+    },
+    "taylor2": {
+     "reward": 1.0804800987243652,
+     "ssim_vs_exact": 0.48030206217756316,
+     "lpips_vs_exact": 0.5855679512023926,
+     "seconds": 0.3043987452983856
+    },
+    "blockcache": {
+     "reward": 1.314840316772461,
+     "ssim_vs_exact": 0.6371750492485675,
+     "lpips_vs_exact": 0.4724454879760742,
+     "seconds": 0.2902252897620201
+    },
+    "resid": {
+     "reward": 1.442085862159729,
+     "ssim_vs_exact": 0.65974401176451,
+     "lpips_vs_exact": 0.3834410011768341,
+     "seconds": 0.2957020327448845
+    },
+    "traj": {
+     "reward": 1.6038792133331299,
+     "ssim_vs_exact": 0.6880952869221955,
+     "lpips_vs_exact": 0.4006919264793396,
+     "seconds": 0.29425110295414925
+    }
+   }
+  },
+  {
+   "case": "prompt-023-seed-7717",
+   "prompt": "a long-exposure photograph of a steaming bowl of noodles under harsh midday sun",
+   "exact_reward": 1.623838186264038,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.5684200525283813,
+     "ssim_vs_exact": 0.5124621791913012,
+     "lpips_vs_exact": 0.42542046308517456,
+     "seconds": 0.2734762728214264
+    },
+    "taylor1": {
+     "reward": 1.6979511976242065,
+     "ssim_vs_exact": 0.4571299866787831,
+     "lpips_vs_exact": 0.4553692936897278,
+     "seconds": 0.2743433676660061
+    },
+    "taylor2": {
+     "reward": 0.9623364806175232,
+     "ssim_vs_exact": 0.3664341215683064,
+     "lpips_vs_exact": 0.5749719142913818,
+     "seconds": 0.302088163793087
+    },
+    "blockcache": {
+     "reward": 1.4334834814071655,
+     "ssim_vs_exact": 0.5288376616781375,
+     "lpips_vs_exact": 0.44356682896614075,
+     "seconds": 0.2993011251091957
+    },
+    "resid": {
+     "reward": 1.3994417190551758,
+     "ssim_vs_exact": 0.5865675983001798,
+     "lpips_vs_exact": 0.319425493478775,
+     "seconds": 0.32661275193095207
+    },
+    "traj": {
+     "reward": 1.6535300016403198,
+     "ssim_vs_exact": 0.6694156101913253,
+     "lpips_vs_exact": 0.32596448063850403,
+     "seconds": 0.3257036656141281
+    }
+   }
+  },
+  {
+   "case": "prompt-023-seed-9401",
+   "prompt": "a long-exposure photograph of a steaming bowl of noodles under harsh midday sun",
+   "exact_reward": 1.5045082569122314,
+   "variants": {
+    "cache_i5": {
+     "reward": 1.7217148542404175,
+     "ssim_vs_exact": 0.5715092662565988,
+     "lpips_vs_exact": 0.46022462844848633,
+     "seconds": 0.28375669941306114
+    },
+    "taylor1": {
+     "reward": 1.6277785301208496,
+     "ssim_vs_exact": 0.5315779858007383,
+     "lpips_vs_exact": 0.504636287689209,
+     "seconds": 0.2707761786878109
+    },
+    "taylor2": {
+     "reward": -0.5497179627418518,
+     "ssim_vs_exact": 0.43763195544607675,
+     "lpips_vs_exact": 0.5726205110549927,
+     "seconds": 0.27062899246811867
+    },
+    "blockcache": {
+     "reward": 1.6483741998672485,
+     "ssim_vs_exact": 0.586454002485399,
+     "lpips_vs_exact": 0.41811731457710266,
+     "seconds": 0.2981676459312439
+    },
+    "resid": {
+     "reward": 1.6933238506317139,
+     "ssim_vs_exact": 0.6359142906106139,
+     "lpips_vs_exact": 0.3285118341445923,
+     "seconds": 0.2949838973581791
+    },
+    "traj": {
+     "reward": 1.7564342021942139,
+     "ssim_vs_exact": 0.6688643831095821,
+     "lpips_vs_exact": 0.34707075357437134,
+     "seconds": 0.29446991533041
+    }
+   }
+  }
+ ]
+}

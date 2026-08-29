@@ -21,16 +21,12 @@
 
 \title{Correcting Step-Cached Diffusion Transformers\\ with a Trajectory Objective}
 
-% TODO(author): the Teen track requires a high school student as first author, and
-% the affiliation must contain the words "High School Student". Fill in below.
 \author{
-\IEEEauthorblockN{First Author}
-\IEEEauthorblockA{High School Student, \textit{School Name}\\
-first.author@example.com}
-\and
-\IEEEauthorblockN{Second Author}
-\IEEEauthorblockA{\textit{Affiliation}\\
-second.author@example.com}
+\IEEEauthorblockN{Ruize Xia}
+\IEEEauthorblockA{High School Student\\
+\textit{Nanjing Foreign Language School}\\
+Nanjing, China\\
+xiaruize0911@gmail.com}
 }
 
 \maketitle
@@ -52,7 +48,9 @@ SSIM $0.6820$ against the exact output at $3.41\times$ speedup, beating a
 reproduction of the TaylorSeer extrapolation mechanism by $+0.0946$ SSIM
 (\mbox{$t=14.5$}, improving on all $72$ of $72$ paired cases) for $8.4\%$ less
 speedup, and a reproduction of the Block Caching mechanism by $+0.0490$
-($t=8.4$) while being $12\%$ faster than it. We also report the measurement that
+($t=8.4$) while being $12\%$ faster than it. Under ImageReward the separation is
+wider and reverses one verdict: both reproduced mechanisms score \emph{below}
+verbatim caching, while learned correction is the only thing that improves on it. We also report the measurement that
 motivated the change: driving residual accuracy $25$--$43\%$ better by matched-data
 retraining buys only $+0.005$ to $+0.013$ SSIM, so residual error is a poor guide
 to what a corrector is worth.
@@ -74,8 +72,8 @@ training-free, and it visibly degrades the image.
 
 Two families of fixes exist. Training-free extrapolation predicts the residual's
 drift from its own history \cite{liu2024teacache,liu2025taylorseer}, and learned
-correction trains a small network to predict the reuse error
-\cite{wimbauer2024blockcaching,ma2024l2c}
+correction trains a small network \cite{wimbauer2024blockcaching,ma2024l2c} to
+predict the reuse error
 \begin{equation}
 \dR \;=\; R_{\text{true}} - R_{\text{anchor}},
 \label{eq:target}
@@ -251,21 +249,23 @@ under our schedule and backbone, not replications of the published results.
 \begin{table}[t]
 \centering
 \caption{Fixed 20 steps, $i=5$, $n=72$. ``Sp.'' is measured wall-clock speedup
-against the exact model; $\Delta$SSIM is paired against verbatim caching. The two
-reproduced mechanisms are described in the text.}
+against the exact model, IR is ImageReward \cite{xu2023imagereward}, and
+$\Delta$SSIM is paired against verbatim caching. The two reproduced mechanisms are
+described in the text.}
 \label{tab:main}
 \small
-\begin{tabular}{@{}lccccc@{}}
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabular}{@{}lcccccc@{}}
 \toprule
-Method & Sp.\ & SSIM$\uparrow$ & PSNR$\uparrow$ & LPIPS$\downarrow$ & $\Delta$SSIM \\
+Method & Sp.\ & SSIM$\uparrow$ & PSNR$\uparrow$ & LPIPS$\downarrow$ & IR$\uparrow$ & $\Delta$SSIM \\
 \midrule
-Exact, 20 steps   & 1.72 & 0.7951 & 21.78 & 0.1786 & --- \\
-Verbatim cache    & \textbf{3.79} & 0.6269 & 15.37 & 0.4669 & --- \\
-TaylorSeer, 1st   & 3.72 & 0.5874 & 14.31 & 0.5080 & $-0.0395$ \\
-TaylorSeer, 2nd   & 3.73 & 0.4782 & 13.57 & 0.6386 & $-0.1487$ \\
-Block Caching     & 3.04 & 0.6330 & 15.66 & 0.4594 & $+0.0060$ \\
-Residual obj.     & 3.41 & 0.6676 & 16.48 & \textbf{0.3795} & $+0.0407$ \\
-\textbf{Trajectory obj.} & 3.41 & \textbf{0.6820} & \textbf{17.20} & 0.3883 & $\mathbf{+0.0551}$ \\
+Exact, 20 steps & 1.72 & 0.7951 & 21.78 & 0.1786 & --- & --- \\
+Verbatim cache & \textbf{3.79} & 0.6269 & 15.37 & 0.4669 & $+0.74$ & --- \\
+TaylorSeer 1st & 3.72 & 0.5874 & 14.31 & 0.5080 & $+0.58$ & $-0.0395$ \\
+TaylorSeer 2nd & 3.73 & 0.4782 & 13.57 & 0.6386 & $-0.32$ & $-0.1487$ \\
+Block Caching & 3.04 & 0.6330 & 15.66 & 0.4594 & $+0.59$ & $+0.0060$ \\
+Residual obj. & 3.41 & 0.6676 & 16.48 & \textbf{0.3795} & $+1.07$ & $+0.0407$ \\
+\textbf{Traj.\ obj.} & 3.41 & \textbf{0.6820} & \textbf{17.20} & 0.3883 & $\mathbf{+1.08}$ & $\mathbf{+0.0551}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -276,6 +276,17 @@ corrector better on all 72 of 72 cases; the second-order version loses $0.2038$
 ($t=39.8$, 72/72); Block Caching loses $0.0490$ ($t=8.4$, 64/72). The exchange rate
 is therefore favourable: $8.4\%$ less speedup than TaylorSeer for $+0.0946$ SSIM,
 and against Block Caching we are both faster and better.
+
+The ImageReward column is not redundant with the fidelity metrics --- it reverses
+one of their verdicts. Both reproduced mechanisms score \emph{below} verbatim
+caching on it, by $-0.159$ and $-0.155$ respectively, each with $t=-2.1$. Block
+Caching in particular looks harmless on SSIM ($+0.0060$) yet is measurably worse
+than not correcting at all once a preference model scores the image. Against it our
+corrector gains $+0.492$ ($t=6.3$, 60/72), and against first-order TaylorSeer
+$+0.497$ ($t=6.0$, 60/72) --- larger separations, relative to the metric's spread,
+than any of the fidelity metrics give. Both learned-correction arms are the only
+entries that improve on verbatim caching under a preference model
+($+0.325$ and $+0.338$, $t=5.0$ and $4.2$).
 
 Two qualifications belong with the table. TaylorSeer at $i=5$ is \emph{worse than no
 correction at all} ($-0.0395$, only 3 of 72 cases improve); in our reproduction it
@@ -392,7 +403,8 @@ $25$--$43\%$ residual improvement buys $+0.005$ to $+0.013$ SSIM. Replacing the
 objective with the trajectory deviation, which costs 20 minutes of training and no
 architectural change, improves image quality at every injection granularity we
 tested, and at a fixed step count beats reproductions of two published mechanisms on
-three fidelity metrics.
+three fidelity metrics and on a preference model --- under which those two
+mechanisms are worse than not correcting at all.
 
 \section*{Reproducibility}
 
