@@ -21,6 +21,7 @@
 \newcommand{\dR}{\Delta R}
 
 \begin{document}
+\bstctlcite{IEEEtranBSTCTL}
 
 \title{A Trajectory Objective for Correcting\\ Step-Cached Diffusion Transformers}
 
@@ -132,7 +133,7 @@ verbatim caching; learned correction is the only method that improves on it.
 
 \section{Related Work}
 
-\paragraph*{Fewer steps versus cheaper steps}
+\subsection{Fewer Steps Versus Cheaper Steps}
 Latent diffusion \cite{rombach2022ldm} and DiT \cite{peebles2023dit} made
 iterative sampling the default; PixArt-$\Sigma$ \cite{chen2024pixartsigma}
 and rectified-flow transformers \cite{esser2024sd3,lipman2023flowmatching}
@@ -145,7 +146,7 @@ step cheaper, so the two compose. We hold the step count and the solver
 fixed, which isolates the caching question but also means our comparisons
 do not rank the two routes --- see Limitations.
 
-\paragraph*{Training-free feature caching}
+\subsection{Training-Free Feature Caching}
 DeepCache \cite{ma2024deepcache} reuses U-Net skip-branch features across
 steps. On transformers the natural unit is a block residual: FORA
 \cite{selvaraju2024fora} caches attention and MLP outputs on a fixed
@@ -160,7 +161,7 @@ quantity verbatim. Our correction-free baseline is uniform whole-stack step
 caching, i.e.\ FORA at the coarsest granularity. We take the schedule as
 given and ask what to add back.
 
-\paragraph*{Learned skip patterns and learned corrections}
+\subsection{Learned Corrections and Training Objectives}
 Learning-to-Cache \cite{ma2024l2c} learns which layers may be skipped.
 LazyDiT \cite{shen2025lazydit} places a linear predictor in front of each
 block and reuses from a first-order Taylor residual. Block Caching
@@ -173,8 +174,6 @@ propagation across injection sites multiplicative
 (Sec.~\ref{sec:granularity}), and it is why the training objective matters:
 a state-independent correction cannot be improved by observing the
 trajectory it produces.
-
-\paragraph*{Objective mismatch and closed-loop training}
 HarmoniCa \cite{huang2025harmonica} already names an ``objective mismatch''
 between aligning predicted noise and generating good images, and fixes it
 with an image-error-proxy objective and step-wise denoising training. We do
@@ -191,16 +190,14 @@ binding constraint --- the objective is --- and because a cached block never
 executes, backpropagating through the rollout is cheap enough to skip the
 resampling detour.
 
-\section{Setup}
+\section{Experimental Setup}
 
-\paragraph*{Backbone and schedule}
+\subsection{Backbone and Corrector}
 PixArt-$\Sigma$-XL-2-512 \cite{chen2024pixartsigma} ($0.6$B parameters, $28$
 blocks) with its shipped DPM-Solver++ scheduler \cite{lu2022dpmsolverpp} at $20$
 steps and $512^2$ resolution. Anchors are uniform at interval $i{=}5$, so $4$
 anchor steps and $16$ reuse steps. All numbers are against the same-seed exact
 $20$-step output.
-
-\paragraph*{Corrector}
 A conditioned MLP ($11.9$M parameters) reads the state drift
 $h_t-h_{\text{anchor}}$, the cached residual, and the anchor hidden state,
 conditioned on the diffusion timestep, the reuse horizon $\tau$, and the site
@@ -215,16 +212,14 @@ which matters in Sec.~\ref{sec:granularity}. The $28$ blocks are grouped into
 $K$ contiguous cached segments, so $K$ is the number of injection sites per
 reuse step: $K{=}1$ corrects the whole stack once and $K{=}28$ corrects every
 block.
-
-\paragraph*{Corrector architecture}
-Four residual MLP blocks of width $512$, AdaLN-modulated, with one
+The architecture is four residual MLP blocks of width $512$, AdaLN-modulated, with one
 token-mixing attention layer ($4$ heads) and a rank-$256$ per-site linear
 path, so the parameter count scales with $K$ ($11.9$M at $K{=}1$, $43.7$M
 at $K{=}28$). Inputs are divided by their dataset RMS and the output
 multiplied by the target RMS; without this the three inputs differ in scale
 by up to $170\times$ and the state-drift signal is swamped.
 
-\paragraph*{Supervision}
+\subsection{Training Protocol}
 Feature collection runs the exact model and records, at every reuse step and
 every site, the drift, the cached residual, the anchor hidden state, and the
 target \eqref{eq:target}, subsampling $48$ of the $1024$ spatial tokens per
@@ -234,16 +229,12 @@ which is why a pooled squared loss concentrates capacity on high $\tau$
 whether or not that is intended. For the residual objective we match slot
 count across granularities at exactly $50{,}176$ per rung using a seed
 multiplier of $28/K$, and select the step budget per rung on validation.
-
-\paragraph*{Trajectory-objective training}
-AdamW, learning rate $10^{-5}$, gradient-norm clip $1.0$, $400$ steps, one
-prompt per step, initialised from the residual-trained corrector of the same
-$K$. The corrector is held in fp32 against an fp16 transformer;
-each call is gradient-checkpointed, which keeps $K{=}28$ tractable. Cost is
-measured, not estimated: $2.57$\,TFLOP per anchor step, $0.041$\,TFLOP per
-corrector call, and $2.51$\,TFLOP fixed per image.
-
-\paragraph*{Protocol}
+Trajectory-objective runs use AdamW, learning rate $10^{-5}$, gradient-norm
+clip $1.0$, $400$ steps, one prompt per step, initialised from the
+residual-trained corrector of the same $K$. The corrector is held in fp32
+against an fp16 transformer; each call is gradient-checkpointed, which keeps
+$K{=}28$ tractable. Cost is measured, not estimated: $2.57$\,TFLOP per anchor
+step, $0.041$\,TFLOP per corrector call, and $2.51$\,TFLOP fixed per image.
 Every image-level number is a paired comparison over $24$ held-out prompts
 $\times$ $3$ seeds ($n{=}72$), with $\sigma$ re-selected on validation for
 each corrector over a common grid. We report SSIM \cite{wang2004ssim},
@@ -252,10 +243,10 @@ together with $t$ statistics and the number of cases that improve. Prompts
 are templated ($10$ styles $\times$ $24$ subjects $\times$ $10$ conditions);
 the held-out split shares no subject with training.
 
-\section{Residual accuracy is a poor training signal}
+\section{Residual Accuracy Is a Poor Training Signal}
 \label{sec:diagnosis}
 
-\paragraph*{Trajectory error integrates}
+\subsection{Trajectory Error Integrates}
 At each of the $20$ steps we measure
 $\|x_{\text{cached}}-x_{\text{exact}}\|/\|x_{\text{exact}}\|$.
 Deviation rises from $0.0089$ to $0.6092$, with only small dips at the four
@@ -263,7 +254,7 @@ anchors. This is the basic reason a per-step residual target is misaligned:
 the corrector's action at step $t$ changes the state at $t{+}1$, while
 \eqref{eq:target} is defined on the unperturbed trajectory.
 
-\paragraph*{Better residual accuracy barely helps}
+\subsection{Diminishing Returns of Residual Accuracy}
 To rule out the possibility that the residual objective simply had not been
 optimised hard enough, we rebuilt training from scratch: data volume matched
 across granularities at exactly $50{,}176$ slots per rung (a seed multiplier
@@ -275,7 +266,7 @@ along the granularity axis: the achievable residual improvement rises with
 $K$ ($-27.7\%$ at $K{=}1$ to $-42.9\%$ at $K{=}28$) while the image quality it
 buys falls.
 
-\paragraph*{A ceiling on the residual form}
+\subsection{An Oracle Ceiling}
 An oracle that recovers a fraction $\beta$ of the true residual has residual
 error $(1-\beta)^2$. Final-step trajectory error falls from $0.6102$ at
 $\beta{=}0$ to $0.4384$ at $\beta{=}0.8$, and to $0$ at $\beta{=}1$. The
@@ -288,7 +279,7 @@ to the trajectory. Residual error therefore distorts both ways: as an
 objective it overstates the gain, as a capability measure it understates
 the corrector.
 
-\section{Training against the trajectory}
+\section{Training Against the Trajectory}
 
 We keep the architecture, the schedule and the deployment rule
 \eqref{eq:deploy}, and change only the loss. Let $x_1,\dots,x_T$ be the cached
@@ -317,7 +308,7 @@ $400$ steps, about $20$ minutes on one A40.
 
 \section{Results}
 
-\subsection{Fixed step count against published mechanisms}
+\subsection{Fixed Step Count Against Published Mechanisms}
 
 Table~\ref{tab:main} compares at $20$ steps and $i{=}5$, so every arm skips
 the same blocks and speedup differs only by each method's correction overhead.
@@ -382,7 +373,7 @@ And TaylorSeer is training-free, while our corrector costs training time,
 $11.9$M parameters and $0.041$\,TFLOP per correction --- which is exactly
 where the $8.4\%$ goes.
 
-\subsection{The objective change helps at every granularity}
+\subsection{Gains at Every Injection Granularity}
 \label{sec:granularity}
 
 \begin{figure}[t]
@@ -456,7 +447,6 @@ leaves the least fringing, though not none.
 
 \section{Scope and Limitations}
 
-\paragraph*{Why fixed step count}
 On this backbone ImageReward is already saturated by $10$ solver steps
 ($102\%$ of a $100$-step reference) while pixel fidelity keeps improving, so
 an equal-compute comparison here mostly measures how early the shipped
@@ -464,14 +454,12 @@ high-order solver converges rather than how good a cache corrector is.
 Holding the step count fixed isolates the question we are asking. Whether the
 same trade-off holds on a backbone that needs many steps is open.
 
-\paragraph*{Metric choice}
 We report three fidelity metrics and a preference model rather than one
 number, because they do not always agree: an objective trained on LPIPS wins
 on LPIPS and gives up SSIM and PSNR. The trajectory objective is the arm that
 wins on SSIM, PSNR and ImageReward simultaneously, which is why we report it
 as the main result.
 
-\paragraph*{Scope of the evidence}
 Results are on $512^2$ PixArt-$\Sigma$ with templated prompts, $24$ held-out
 prompts $\times$ $3$ seeds. Every reported gain is measured after only $400$
 optimiser steps without hyperparameter search, starting from a
