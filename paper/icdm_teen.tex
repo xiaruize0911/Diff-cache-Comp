@@ -23,7 +23,7 @@
 \begin{document}
 \bstctlcite{IEEEtranBSTCTL}
 
-\title{A Trajectory Objective for Correcting\\ Step-Cached Diffusion Transformers}
+\title{Correcting Step-Cached Diffusion Transformers}
 
 \author{
 \IEEEauthorblockN{Ruize Xia}
@@ -111,19 +111,19 @@ deviation from the exact one does not reset at cache refreshes: it climbs
 almost monotonically ($0.0089$ at step~1 to $0.6092$ at step~19). An anchor
 refreshes the cache, not the latent, so error already injected into the state
 is permanent. Residual error is pointwise; trajectory error integrates.
-\item \textbf{Evidence that residual accuracy is a poor investment.} Matching
+\item \textbf{Matched-data residual retraining.} Matching
 training-data volume across granularities and training every rung to
 convergence improves residual error by $25$--$43\%$ and image SSIM by only
 $+0.005$ to $+0.013$, against $+0.033$ for the decision to add correction at
 all.
-\item \textbf{A trajectory objective that is cheap for a caching-specific
-reason.} We backpropagate through the cached rollout. A cached block never
+\item \textbf{A trajectory objective.} We backpropagate through the cached
+rollout. A cached block never
 runs, so the graph over one reuse step is $K$ corrector forwards rather than
 $K$ transformer blocks of a $0.6$B model. The change costs about $20$ minutes
 of training and no architectural modification. It improves image quality at
 every $K$, and by the largest margin where per-site residual training degrades
 most.
-\item \textbf{A same-step win against published mechanisms.} Holding the step
+\item \textbf{A same-step comparison with published mechanisms.} Holding the step
 count and skip schedule fixed, the trajectory-trained corrector outperforms
 reproductions of TaylorSeer and Block Caching on SSIM, PSNR and ImageReward,
 at an $8.4\%$ speedup cost against the former and a speedup \emph{advantage}
@@ -195,7 +195,7 @@ binding constraint --- the objective is --- and because a cached block never
 executes, backpropagating through the rollout is cheap enough to skip the
 resampling detour.
 
-\section{Residual Accuracy Is a Poor Training Signal}
+\section{The Residual Objective}
 \label{sec:diagnosis}
 
 The measurements below use PixArt-$\Sigma$-XL-2-512
@@ -207,7 +207,7 @@ are grouped into $K$ contiguous cached segments, so $K$ is the number of
 injection sites per reuse step: $K{=}1$ corrects the whole stack once and
 $K{=}28$ corrects every block.
 
-\subsection{Trajectory Error Integrates}
+\subsection{Trajectory Error}
 At each of the $20$ steps we measure
 $\|x_{\text{cached}}-x_{\text{exact}}\|/\|x_{\text{exact}}\|$.
 Deviation rises from $0.0089$ to $0.6092$, with only small dips at the four
@@ -215,7 +215,7 @@ anchors. This is the basic reason a per-step residual target is misaligned:
 the corrector's action at step $t$ changes the state at $t{+}1$, while
 \eqref{eq:target} is defined on the unperturbed trajectory.
 
-\subsection{Diminishing Returns of Residual Accuracy}
+\subsection{Residual Retraining}
 To rule out the possibility that the residual objective simply had not been
 optimised hard enough, we rebuilt training from scratch. Feature collection
 runs the exact model and records, at every reuse step and every site, the
@@ -233,7 +233,7 @@ all small. Two trends run opposite along the granularity axis: the achievable
 residual improvement rises with $K$ ($-27.7\%$ at $K{=}1$ to $-42.9\%$ at
 $K{=}28$) while the image quality it buys falls.
 
-\subsection{An Oracle Ceiling}
+\subsection{Oracle Correction}
 An oracle that recovers a fraction $\beta$ of the true residual has residual
 error $(1-\beta)^2$. Final-step trajectory error falls from $0.6102$ at
 $\beta{=}0$ to $0.4384$ at $\beta{=}0.8$, and to $0$ at $\beta{=}1$. The
@@ -246,7 +246,7 @@ to the trajectory. Residual error therefore distorts both ways: as an
 objective it overstates the gain, as a capability measure it understates
 the corrector.
 
-\section{Training Against the Trajectory}
+\section{Method}
 \label{sec:method}
 
 \subsection{Corrector}
@@ -312,7 +312,7 @@ together with $t$ statistics and the number of cases that improve. Prompts
 are templated ($10$ styles $\times$ $24$ subjects $\times$ $10$ conditions);
 the held-out split shares no subject with training.
 
-\subsection{Fixed Step Count Against Published Mechanisms}
+\subsection{Comparison at a Fixed Step Count}
 
 Table~\ref{tab:main} compares at $20$ steps and $i{=}5$, so every arm skips
 the same blocks and speedup differs only by each method's correction overhead.
@@ -377,7 +377,7 @@ And TaylorSeer is training-free, while our corrector costs training time,
 $11.9$M parameters and $0.041$\,TFLOP per correction --- which is exactly
 where the $8.4\%$ goes.
 
-\subsection{Gains at Every Injection Granularity}
+\subsection{Injection Granularity}
 \label{sec:granularity}
 
 \begin{figure}[t]
