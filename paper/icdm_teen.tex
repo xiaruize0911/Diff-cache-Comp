@@ -131,6 +131,11 @@ against the latter. Under ImageReward, both reproduced mechanisms score below
 verbatim caching; learned correction is the only method that improves on it.
 \end{enumerate}
 
+Section~\ref{sec:diagnosis} establishes the mismatch;
+Section~\ref{sec:method} replaces the objective without changing the
+architecture; Section~\ref{sec:experiments} tests the replacement at a
+fixed step count and at every injection granularity.
+
 \section{Related Work}
 
 \subsection{Fewer Steps Versus Cheaper Steps}
@@ -144,7 +149,7 @@ training \cite{salimans2022progressive,song2023consistency,luo2023lcm} cut
 it further, at the cost of a student. Caching instead makes each remaining
 step cheaper, so the two compose. We hold the step count and the solver
 fixed, which isolates the caching question but also means our comparisons
-do not rank the two routes --- see Limitations.
+do not rank the two routes (Sec.~\ref{sec:limitations}).
 
 \subsection{Training-Free Feature Caching}
 DeepCache \cite{ma2024deepcache} reuses U-Net skip-branch features across
@@ -190,61 +195,17 @@ binding constraint --- the objective is --- and because a cached block never
 executes, backpropagating through the rollout is cheap enough to skip the
 resampling detour.
 
-\section{Experimental Setup}
-
-\subsection{Backbone and Corrector}
-PixArt-$\Sigma$-XL-2-512 \cite{chen2024pixartsigma} ($0.6$B parameters, $28$
-blocks) with its shipped DPM-Solver++ scheduler \cite{lu2022dpmsolverpp} at $20$
-steps and $512^2$ resolution. Anchors are uniform at interval $i{=}5$, so $4$
-anchor steps and $16$ reuse steps. All numbers are against the same-seed exact
-$20$-step output.
-A conditioned MLP ($11.9$M parameters) reads the state drift
-$h_t-h_{\text{anchor}}$, the cached residual, and the anchor hidden state,
-conditioned on the diffusion timestep, the reuse horizon $\tau$, and the site
-index. At deployment
-\begin{equation}
-h_{\text{out}} \;=\; h_t + R_{\text{anchor}} + \sigma\,\widehat{\dR},
-\label{eq:deploy}
-\end{equation}
-where $\sigma$ is an injection strength selected on validation and never on
-test. The state-drift input is what makes the correction state-dependent,
-which matters in Sec.~\ref{sec:granularity}. The $28$ blocks are grouped into
-$K$ contiguous cached segments, so $K$ is the number of injection sites per
-reuse step: $K{=}1$ corrects the whole stack once and $K{=}28$ corrects every
-block.
-The architecture is four residual MLP blocks of width $512$, AdaLN-modulated, with one
-token-mixing attention layer ($4$ heads) and a rank-$256$ per-site linear
-path, so the parameter count scales with $K$ ($11.9$M at $K{=}1$, $43.7$M
-at $K{=}28$). Inputs are divided by their dataset RMS and the output
-multiplied by the target RMS; without this the three inputs differ in scale
-by up to $170\times$ and the state-drift signal is swamped.
-
-\subsection{Training Protocol}
-Feature collection runs the exact model and records, at every reuse step and
-every site, the drift, the cached residual, the anchor hidden state, and the
-target \eqref{eq:target}, subsampling $48$ of the $1024$ spatial tokens per
-site to bound memory. Anchors are at steps $0,5,10,15$, so the horizon $\tau$
-spans $1$ to $4$ and the target RMS grows $2.4\times$ across that range ---
-which is why a pooled squared loss concentrates capacity on high $\tau$
-whether or not that is intended. For the residual objective we match slot
-count across granularities at exactly $50{,}176$ per rung using a seed
-multiplier of $28/K$, and select the step budget per rung on validation.
-Trajectory-objective runs use AdamW, learning rate $10^{-5}$, gradient-norm
-clip $1.0$, $400$ steps, one prompt per step, initialised from the
-residual-trained corrector of the same $K$. The corrector is held in fp32
-against an fp16 transformer; each call is gradient-checkpointed, which keeps
-$K{=}28$ tractable. Cost is measured, not estimated: $2.57$\,TFLOP per anchor
-step, $0.041$\,TFLOP per corrector call, and $2.51$\,TFLOP fixed per image.
-Every image-level number is a paired comparison over $24$ held-out prompts
-$\times$ $3$ seeds ($n{=}72$), with $\sigma$ re-selected on validation for
-each corrector over a common grid. We report SSIM \cite{wang2004ssim},
-PSNR, LPIPS \cite{zhang2018lpips} and ImageReward \cite{xu2023imagereward},
-together with $t$ statistics and the number of cases that improve. Prompts
-are templated ($10$ styles $\times$ $24$ subjects $\times$ $10$ conditions);
-the held-out split shares no subject with training.
-
 \section{Residual Accuracy Is a Poor Training Signal}
 \label{sec:diagnosis}
+
+The measurements below use PixArt-$\Sigma$-XL-2-512
+\cite{chen2024pixartsigma} ($0.6$B parameters, $28$ blocks) with its shipped
+DPM-Solver++ scheduler \cite{lu2022dpmsolverpp} at $20$ steps and $512^2$.
+Anchors are uniform at interval $i{=}5$ ($4$ anchor steps, $16$ reuse steps).
+All numbers are against the same-seed exact $20$-step output. The $28$ blocks
+are grouped into $K$ contiguous cached segments, so $K$ is the number of
+injection sites per reuse step: $K{=}1$ corrects the whole stack once and
+$K{=}28$ corrects every block.
 
 \subsection{Trajectory Error Integrates}
 At each of the $20$ steps we measure
@@ -256,15 +217,21 @@ the corrector's action at step $t$ changes the state at $t{+}1$, while
 
 \subsection{Diminishing Returns of Residual Accuracy}
 To rule out the possibility that the residual objective simply had not been
-optimised hard enough, we rebuilt training from scratch: data volume matched
-across granularities at exactly $50{,}176$ slots per rung (a seed multiplier
-of $28/K$), and the step budget selected per rung on validation by doubling
-until the gain fell below $0.5\%$. Residual error improved by $25$--$43\%$
-depending on $K$. Image SSIM improved by $+0.0131$ at $K{=}1$, falling to
-$+0.0055$ at $K{=}7$ --- all significant, all small. Two trends run opposite
-along the granularity axis: the achievable residual improvement rises with
-$K$ ($-27.7\%$ at $K{=}1$ to $-42.9\%$ at $K{=}28$) while the image quality it
-buys falls.
+optimised hard enough, we rebuilt training from scratch. Feature collection
+runs the exact model and records, at every reuse step and every site, the
+drift, the cached residual, the anchor hidden state, and the target
+\eqref{eq:target}, subsampling $48$ of the $1024$ spatial tokens per site.
+Anchors are at steps $0,5,10,15$, so the horizon $\tau$ spans $1$ to $4$ and
+the target RMS grows $2.4\times$ across that range --- which is why a pooled
+squared loss concentrates capacity on high $\tau$ whether or not that is
+intended. Data volume is matched across granularities at exactly $50{,}176$
+slots per rung (a seed multiplier of $28/K$), and the step budget is selected
+per rung on validation by doubling until the gain fell below $0.5\%$.
+Residual error improved by $25$--$43\%$ depending on $K$. Image SSIM improved
+by $+0.0131$ at $K{=}1$, falling to $+0.0055$ at $K{=}7$ --- all significant,
+all small. Two trends run opposite along the granularity axis: the achievable
+residual improvement rises with $K$ ($-27.7\%$ at $K{=}1$ to $-42.9\%$ at
+$K{=}28$) while the image quality it buys falls.
 
 \subsection{An Oracle Ceiling}
 An oracle that recovers a fraction $\beta$ of the true residual has residual
@@ -280,7 +247,28 @@ objective it overstates the gain, as a capability measure it understates
 the corrector.
 
 \section{Training Against the Trajectory}
+\label{sec:method}
 
+\subsection{Corrector}
+A conditioned MLP ($11.9$M parameters) reads the state drift
+$h_t-h_{\text{anchor}}$, the cached residual, and the anchor hidden state,
+conditioned on the diffusion timestep, the reuse horizon $\tau$, and the site
+index. At deployment
+\begin{equation}
+h_{\text{out}} \;=\; h_t + R_{\text{anchor}} + \sigma\,\widehat{\dR},
+\label{eq:deploy}
+\end{equation}
+where $\sigma$ is an injection strength selected on validation and never on
+test. The state-drift input is what makes the correction state-dependent,
+which matters in Sec.~\ref{sec:granularity}.
+The architecture is four residual MLP blocks of width $512$, AdaLN-modulated,
+with one token-mixing attention layer ($4$ heads) and a rank-$256$ per-site
+linear path, so the parameter count scales with $K$ ($11.9$M at $K{=}1$,
+$43.7$M at $K{=}28$). Inputs are divided by their dataset RMS and the output
+multiplied by the target RMS; without this the three inputs differ in scale
+by up to $170\times$ and the state-drift signal is swamped.
+
+\subsection{Trajectory Objective}
 We keep the architecture, the schedule and the deployment rule
 \eqref{eq:deploy}, and change only the loss. Let $x_1,\dots,x_T$ be the cached
 latents and $x^\star_1,\dots,x^\star_T$ the exact ones under the same seed.
@@ -303,10 +291,26 @@ corrector call brings $K{=}14$ from over $44$\,GB down to $4.2$\,GB. Second,
 gradients are cut at anchor steps, where the cache is refreshed from exact
 values, so a corrector call can only influence later intervals through the
 latent. Extending the graph across intervals improves \eqref{eq:loss} but does
-not improve image metrics, so we keep the one-interval truncation. Training is
-$400$ steps, about $20$ minutes on one A40.
+not improve image metrics, so we keep the one-interval truncation.
 
-\section{Results}
+Training uses AdamW, learning rate $10^{-5}$, gradient-norm clip $1.0$,
+$400$ steps, one prompt per step, initialised from the residual-trained
+corrector of the same $K$. The corrector is held in fp32 against an fp16
+transformer; each call is gradient-checkpointed, which keeps $K{=}28$
+tractable. Cost is measured, not estimated: $2.57$\,TFLOP per anchor step,
+$0.041$\,TFLOP per corrector call, and $2.51$\,TFLOP fixed per image.
+The run is about $20$ minutes on one A40.
+
+\section{Experiments}
+\label{sec:experiments}
+
+Every image-level number is a paired comparison over $24$ held-out prompts
+$\times$ $3$ seeds ($n{=}72$), with $\sigma$ re-selected on validation for
+each corrector over a common grid. We report SSIM \cite{wang2004ssim},
+PSNR, LPIPS \cite{zhang2018lpips} and ImageReward \cite{xu2023imagereward},
+together with $t$ statistics and the number of cases that improve. Prompts
+are templated ($10$ styles $\times$ $24$ subjects $\times$ $10$ conditions);
+the held-out split shares no subject with training.
 
 \subsection{Fixed Step Count Against Published Mechanisms}
 
@@ -445,7 +449,8 @@ Block Caching keeps structure cleaner but flattens tone and leaves local
 bloom. Our correction recovers the background gradient most closely and
 leaves the least fringing, though not none.
 
-\section{Scope and Limitations}
+\subsection{Scope and Limitations}
+\label{sec:limitations}
 
 On this backbone ImageReward is already saturated by $10$ solver steps
 ($102\%$ of a $100$-step reference) while pixel fidelity keeps improving, so
