@@ -19,11 +19,12 @@
 \usepackage{balance}
 
 \newcommand{\dR}{\Delta R}
+\newcommand{\troc}{TROC}
 
 \begin{document}
 \bstctlcite{IEEEtranBSTCTL}
 
-\title{Correcting Step-Cached Diffusion Transformers}
+\title{TROC: Trajectory-Objective Correction\\ for Step-Cached Diffusion Transformers}
 
 \author{
 \IEEEauthorblockN{Ruize Xia}
@@ -40,18 +41,19 @@ Step caching accelerates diffusion transformers by reusing a block residual
 across neighbouring solver steps. The resulting speedup is training-free, but
 the image degrades. A learned corrector can predict that reuse error; the
 standard way to train it is residual regression. We show that this objective is
-misaligned with deployed image quality, and we replace it with a
-\emph{trajectory objective} that is strictly stronger at inference and costs
+misaligned with deployed image quality, and we replace it with
+\troc{} (\emph{Trajectory-Objective Correction}): the same architecture
+trained against latent-trajectory deviation by backpropagating through the
+cached rollout. The change is strictly stronger at inference and costs
 about twenty minutes of training.
 
 Cache error is integrated along the sampling trajectory: an anchor refreshes
 the cache, not the latent, so a per-step residual target is defined on a
-trajectory the deployed corrector never visits. Training the same architecture
-against latent-trajectory deviation, by backpropagating through the cached
-rollout, improves image quality at every injection granularity we tested
+trajectory the deployed corrector never visits. \troc{} improves image
+quality at every injection granularity we tested
 ($K{=}1$ to $28$, all significant, $t{=}2.7$ to $7.0$, $n{=}72$).
-At a fixed step count on PixArt-$\Sigma$-XL-2-512 the trajectory-trained
-corrector reaches SSIM $0.6820$ against the exact output at $3.41\times$
+At a fixed step count on PixArt-$\Sigma$-XL-2-512, \troc{} reaches
+SSIM $0.6820$ against the exact output at $3.41\times$
 speedup. It outperforms a reproduction of TaylorSeer's extrapolation mechanism
 by $+0.0946$ SSIM (\mbox{$t{=}14.5$}, $72$ of $72$ paired cases) at an $8.4\%$
 speedup cost, and a reproduction of Block Caching by $+0.0490$ ($t{=}8.4$)
@@ -98,10 +100,10 @@ harder therefore buys almost nothing in image quality. We keep the
 architecture, the cache schedule and the deployment rule, and train the same
 corrector against the deviation of the latent trajectory by differentiating
 through the cached rollout. Because a cached block never executes, that graph
-is cheap. The resulting corrector improves image quality at every injection
-granularity we tested, and at a fixed step count it outperforms reproductions
-of two published mechanisms on three fidelity metrics and on a preference
-model.
+is cheap. The resulting method, \troc{}, improves image quality at every
+injection granularity we tested, and at a fixed step count it outperforms
+reproductions of two published mechanisms on three fidelity metrics and on a
+preference model.
 
 Concretely, we contribute:
 
@@ -116,7 +118,7 @@ training-data volume across granularities and training every rung to
 convergence improves residual error by $25$--$43\%$ and image SSIM by only
 $+0.005$ to $+0.013$, against $+0.033$ for the decision to add correction at
 all.
-\item \textbf{A trajectory objective.} We backpropagate through the cached
+\item \textbf{\troc{}, a trajectory objective.} We backpropagate through the cached
 rollout. A cached block never
 runs, so the graph over one reuse step is $K$ corrector forwards rather than
 $K$ transformer blocks of a $0.6$B model. The change costs about $20$ minutes
@@ -124,7 +126,7 @@ of training and no architectural modification. It improves image quality at
 every $K$, and by the largest margin where per-site residual training degrades
 most.
 \item \textbf{A same-step comparison with published mechanisms.} Holding the step
-count and skip schedule fixed, the trajectory-trained corrector outperforms
+count and skip schedule fixed, \troc{} outperforms
 reproductions of TaylorSeer and Block Caching on SSIM, PSNR and ImageReward,
 at an $8.4\%$ speedup cost against the former and a speedup \emph{advantage}
 against the latter. Under ImageReward, both reproduced mechanisms score below
@@ -270,7 +272,8 @@ by up to $170\times$ and the state-drift signal is swamped.
 
 \subsection{Trajectory Objective}
 We keep the architecture, the schedule and the deployment rule
-\eqref{eq:deploy}, and change only the loss. Let $x_1,\dots,x_T$ be the cached
+\eqref{eq:deploy}, and change only the loss. We call the resulting method
+\troc{} (\emph{Trajectory-Objective Correction}). Let $x_1,\dots,x_T$ be the cached
 latents and $x^\star_1,\dots,x^\star_T$ the exact ones under the same seed.
 The objective is
 \begin{equation}
@@ -343,26 +346,26 @@ TaylorSeer 1st & 3.72 & 0.5874 & 14.31 & 0.5080 & $+0.58$ & $-0.0395$ \\
 TaylorSeer 2nd & 3.73 & 0.4782 & 13.57 & 0.6386 & $-0.32$ & $-0.1487$ \\
 Block Caching & 3.04 & 0.6330 & 15.66 & 0.4594 & $+0.59$ & $+0.0060$ \\
 Residual obj. & 3.41 & 0.6676 & 16.48 & \textbf{0.3795} & $+1.07$ & $+0.0407$ \\
-\textbf{Traj.\ obj.} & 3.41 & \textbf{0.6820} & \textbf{17.20} & 0.3883 & $\mathbf{+1.08}$ & $\mathbf{+0.0551}$ \\
+\textbf{\troc{}} & 3.41 & \textbf{0.6820} & \textbf{17.20} & 0.3883 & $\mathbf{+1.08}$ & $\mathbf{+0.0551}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Paired against the trajectory-objective corrector, the first-order TaylorSeer
+Paired against \troc{}, the first-order TaylorSeer
 mechanism loses $0.0946$ SSIM ($t{=}14.5$) and $0.1197$ LPIPS ($t{=}14.2$),
-with our corrector better on all $72$ of $72$ cases; the second-order version
+with \troc{} better on all $72$ of $72$ cases; the second-order version
 loses $0.2038$ ($t{=}39.8$, $72/72$); Block Caching loses $0.0490$ ($t{=}8.4$,
 $64/72$). That is a favourable trade: $8.4\%$ less speedup than TaylorSeer for
 $+0.0946$ SSIM, and against Block Caching we are both faster and better.
 Residual-trained correction already outperforms both reproduced mechanisms;
-the trajectory objective widens that lead.
+\troc{} widens that lead.
 
 The ImageReward column is not redundant with the fidelity metrics --- it
 reverses one of their verdicts. Both reproduced mechanisms score \emph{below}
 verbatim caching, by $-0.159$ and $-0.155$ respectively, each with $t{=}{-}2.1$.
 Block Caching in particular looks harmless on SSIM ($+0.0060$) yet is
 measurably worse than not correcting at all once a preference model scores the
-image. Against it our corrector gains $+0.492$ ($t{=}6.3$, $60/72$), and
+image. Against it \troc{} gains $+0.492$ ($t{=}6.3$, $60/72$), and
 against first-order TaylorSeer $+0.497$ ($t{=}6.0$, $60/72$) --- larger
 separations, relative to the metric's spread, than any of the fidelity metrics
 give. Both learned-correction arms are the only entries that improve on
@@ -373,7 +376,7 @@ Two caveats apply. TaylorSeer at $i{=}5$ is \emph{worse than no correction at
 all} ($-0.0395$, only $3$ of $72$ cases improve); in our reproduction it helps
 at $i{=}2$--$3$ and is past its useful extrapolation range by $i{=}5$, so
 Table~\ref{tab:main} is not evidence against it at its own operating point.
-And TaylorSeer is training-free, while our corrector costs training time,
+And TaylorSeer is training-free, while \troc{} costs training time,
 $11.9$M parameters and $0.041$\,TFLOP per correction --- which is exactly
 where the $8.4\%$ goes.
 
@@ -398,7 +401,7 @@ its own validation-selected $\sigma$.}
 \small
 \begin{tabular}{lccc}
 \toprule
-$K$ & Residual obj. & Trajectory obj. & Difference \\
+$K$ & Residual obj. & \troc{} & Difference \\
 \midrule
 1  & $+0.0406$ & $+0.0553$ ($\sigma{=}0.60$) & $+0.0147$ ($t{=}2.7$) \\
 2  & $+0.0149$ & $+0.0385$ ($\sigma{=}0.30$) & $+0.0236$ ($t{=}3.8$) \\
@@ -417,11 +420,11 @@ $+0.0147$ at $K{=}1$. This is consistent with the mechanism behind the
 degradation. A state-dependent correction turns error propagation across sites
 multiplicative rather than additive ---
 $\delta_{b+1}\approx(I+J_b)\delta_b+\epsilon$ with
-$J_b=\partial\widehat{\dR}/\partial h$ --- and the trajectory objective is
-the only one that observes the consequence of that compounding rather than
+$J_b=\partial\widehat{\dR}/\partial h$ --- and only \troc{}
+observes the consequence of that compounding rather than
 pointwise error. The degradation is weakened, not removed: the residual
-objective's gain falls $3$--$4\times$ from $K{=}1$ to high $K$, while the
-trajectory objective's falls $1.2$--$1.8\times$.
+objective's gain falls $3$--$4\times$ from $K{=}1$ to high $K$, while
+\troc{}'s falls $1.2$--$1.8\times$.
 
 Fig.~\ref{fig:main} (right) also shows why $\sigma$ must be re-selected per
 corrector. The optimum moves from $0.60$ at $K{=}1$ to $0.18$ at high $K$, and
@@ -461,7 +464,7 @@ same trade-off holds on a backbone that needs many steps is open.
 
 We report three fidelity metrics and a preference model rather than one
 number, because they do not always agree: an objective trained on LPIPS wins
-on LPIPS and gives up SSIM and PSNR. The trajectory objective is the arm that
+on LPIPS and gives up SSIM and PSNR. \troc{} is the arm that
 wins on SSIM, PSNR and ImageReward simultaneously, which is why we report it
 as the main result.
 
@@ -480,10 +483,10 @@ The natural objective for a learned cache corrector --- regress the residual
 it should have produced --- is misaligned with what caching actually damages.
 Cache error integrates along the sampling trajectory; residual error is
 pointwise. A $25$--$43\%$ residual improvement buys only $+0.005$ to
-$+0.013$ SSIM. Replacing the objective with the trajectory deviation, which
+$+0.013$ SSIM. Replacing the objective with \troc{}, which
 costs $20$ minutes of training and no architectural change, improves image
-quality at every injection granularity we tested. At a fixed step count the
-resulting corrector outperforms reproductions of two published mechanisms on
+quality at every injection granularity we tested. At a fixed step count
+\troc{} outperforms reproductions of two published mechanisms on
 three fidelity metrics and on a preference model, and is the only method in
 that comparison that improves on verbatim caching under the preference model.
 
