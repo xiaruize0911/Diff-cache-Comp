@@ -236,11 +236,10 @@ the corrector.
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.98\textwidth]{figs/icdm_method.pdf}
-\caption{(a)~Anchors run the DiT stack; reuse steps skip it and inject
-$C_\theta$ at $K$ sites.
-(b)~Residual regression supervises $C_\theta$ on the unperturbed path.
-(c)~\ourmethod{} applies the discrete adjoint of the cached rollout.}
+\includegraphics[width=0.92\textwidth]{figs/icdm_method.pdf}
+\caption{(a)~Residual regression supervises $C_\theta$ on the exact path.
+(b)~\ourmethod{} trains $C_\theta$ by the discrete adjoint of the cached
+rollout. Architecture and the skip schedule are in the text.}
 \label{fig:method}
 \end{figure*}
 
@@ -320,7 +319,7 @@ same seed. The pathwise objective is
 \end{equation}
 minimised by reverse-mode differentiation through the cached rollout ---
 the discrete adjoint of the sampler, restricted to reuse steps
-(Fig.~\ref{fig:method}c). Supervision is free: $x^\star$ is produced by the
+(Fig.~\ref{fig:method}b). Supervision is free: $x^\star$ is produced by the
 same forward pass that yields $C_\theta$'s input.
 
 The adjoint is cheap for a caching-specific reason. A cached block never
