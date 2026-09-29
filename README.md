@@ -1,27 +1,63 @@
-# Residual Accuracy Does Not Predict Deployed Quality in Cached Diffusion Transformers
+# Trajector: Pathwise Adjoint Correction of Step-Cached Diffusion Transformers
 
-Research code for the question: **when you add a learned corrector on top of step
-caching in a diffusion model, what objective should train and select it?**
+Code, configurations, logs and per-case metrics for the ICDM 2026 Teen Research Track
+paper ([`paper/icdm_teen.pdf`](paper/icdm_teen.pdf), source
+[`paper/icdm_teen.tex`](paper/icdm_teen.tex)).
 
-The short answer we arrived at is that the natural objective — reconstruction error in
-residual space — is unreliable as a proxy for deployed image quality. In one regime it
-is worse than unreliable: across injection granularity it ranks two designs in the
-*opposite* order. We are deliberate about how far that extends. Our own attempt to
-exploit the insight, a per-site scale-invariant training loss, helps on our templated
-prompt split and then **fails to replicate on a standard benchmark** — so we report the
-null and do not claim the fix. The paper in [`paper/`](paper/) documents all of this,
-gives a mechanism, and reports several negative results.
+Step caching speeds up a diffusion transformer by reusing each block's residual across
+neighbouring solver steps, and degrades the image. A learned corrector can predict the
+reuse error, and the standard way to train it is residual regression. The paper shows
+that this objective is misaligned with deployed quality: cache error integrates along
+the sampling trajectory, while residual error is pointwise. Trajector fine-tunes the
+same corrector against latent-trajectory deviation by differentiating through the
+cached rollout (about 20 minutes on one A40). On PixArt-Σ-XL-2-512 at 20 steps it
+improves image quality at every injection granularity tested ($K=1$ to $28$), and at a
+fixed step count it outperforms reproductions of TaylorSeer and Block Caching.
 
-## Layout
+## Where each number in the ICDM paper comes from
+
+All paths are under [`dit-residual-delta/`](dit-residual-delta/). Every table cell can
+be recomputed from the `results.json` in the listed run directory.
+
+| paper | run directory (`runs/…`) | config / script |
+|---|---|---|
+| Sec. 3.1 trajectory error | `step_error/` | `configs/step_error.json` |
+| Sec. 3.2 matched-data residual retraining | `m_k{1,2,4,7,14,28}/`, `m_k*_b*/` | `scripts/train_surrogate.py` |
+| Sec. 3.3 oracle correction | `oracle_ceiling/` | `configs/oracle_ceiling.json` |
+| Sec. 4.3 Trajector training | `lat_k1/`, `traj_k{2,4,7,14,28}/` | `scripts/train_latent_objective.py` |
+| Table 1 (fixed-step comparison) | `same_steps/`, ImageReward in `ir_main/` | `configs/same_steps_compare.json` |
+| Table 2, Fig. 2 (injection granularity) | `traj_allk_eval/`, `traj_sigma_low/`, `traj_sigma_mid/` | `configs/traj_allk_eval.json` |
+| Fig. 3 (qualitative crops) | `icdm_qual/` | `configs/icdm_qual.json` |
+| Sec. 5.3 frozen adaptive-schedule pilot | `frozen_adaptive/` | `scripts/eval_frozen_adaptive.py` |
+
+Every Trajector run is initialised from the converged residual corrector of the same
+$K$ (`runs/m_k*/best.pt`, recorded as `init_checkpoint` in each `train_report.json`).
+
+## Research history
+
+The ICDM paper is the latest stage of a longer study. The rest of this README
+describes that study as a whole, including results that are not in the 5-page paper
+and several negative ones. [`report/REPORT.md`](report/REPORT.md) is the full lab
+notebook (in Chinese).
+
+The question behind the study: **when you add a learned corrector on top of step
+caching in a diffusion model, what objective should train and select it?** The first
+answer was that reconstruction error in residual space is unreliable as a proxy for
+deployed image quality; across injection granularity it can rank two designs in the
+*opposite* order. An earlier attempt to exploit this, a per-site scale-invariant
+training loss, helped on our templated prompt split and then **failed to replicate on
+COCO**, so we report that null. The trajectory objective in the ICDM paper replaced it.
+
+### Layout
 
 | directory | what it is | status |
 |---|---|---|
 | [`dit-residual-delta/`](dit-residual-delta/) | primary arm: PixArt-Σ-XL-2-512 (0.6B, 28 blocks) | main results |
 | [`flux-residual-delta/`](flux-residual-delta/) | secondary arm: FLUX.1-dev (12B, 57 blocks, flow matching) | gates pass; loss fix does **not** replicate |
 | [`sd15-residual-delta/`](sd15-residual-delta/) | first arm: SD1.5 U-Net attention modules | closed, negative result |
-| [`paper/`](paper/) | LaTeX source + compiled PDF | see status below |
+| [`paper/`](paper/) | `icdm_teen.tex` is the ICDM paper; `paper.tex` is an earlier long draft | |
 
-## Headline results (primary arm)
+### Earlier headline results (primary arm)
 
 - **Correction works, and it survives a standard benchmark.** On 1989 COCO captions a
   whole-stack corrector halves the distributional divergence from the exact model
@@ -47,7 +83,7 @@ gives a mechanism, and reports several negative results.
 
 Three of the five findings are negative, including one that contradicts an earlier draft.
 
-## Honest status
+### Status of the earlier long draft
 
 The paper was reviewed by four independent adversarial reviewers during development.
 That round scored it **weak reject (4/10)** for a top-tier venue; a reproducibility
