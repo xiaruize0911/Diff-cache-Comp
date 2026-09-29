@@ -69,7 +69,8 @@ diffusion transformers, feature caching, pathwise objectives, inference accelera
 Sampling a diffusion transformer \cite{peebles2023dit} costs one full stack
 forward pass per solver step. Step caching exploits the smoothness of that
 trajectory: an
-\emph{anchor} step stores each block's residual $R=\mathrm{block}(h)-h$, and
+\emph{anchor} step, taken every $i$ steps, stores each block's residual
+$R=\mathrm{block}(h)-h$ for input $h$, and
 the next $i-1$ \emph{reuse} steps skip the block and add the stored residual
 instead \cite{ma2024deepcache,selvaraju2024fora,chen2024deltadit}. The method
 is training-free and fast, and it visibly degrades the image.
