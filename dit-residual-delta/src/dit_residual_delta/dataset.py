@@ -28,13 +28,25 @@ class SlotDataset:
             shards = shards[:limit_shards]
         if not shards:
             raise SystemExit(f"no shards in {directory}")
-        parts: dict[str, list[torch.Tensor]] = {k: [] for k in FEATURE_KEYS + META_KEYS}
-        for shard in shards:
-            payload = torch.load(shard, map_location="cpu", weights_only=True)
-            for k in FEATURE_KEYS + META_KEYS:
-                parts[k].append(payload[k])
         store = store or device
-        self.data = {k: torch.cat(v).to(store) for k, v in parts.items()}
+        # Shards are memory-mapped and copied into one preallocated tensor per key on
+        # the store device. The previous torch.cat over fully loaded shards held the
+        # bank in host RAM twice (~40 GB for a 50k-slot split), which a 50 GB pod
+        # cannot survive. Same order as torch.cat, so the bank is bit-identical.
+        payloads = [torch.load(s, map_location="cpu", weights_only=True, mmap=True)
+                    for s in shards]
+        total = sum(p["delta_h"].shape[0] for p in payloads)
+        self.data = {}
+        for k in FEATURE_KEYS + META_KEYS:
+            first = payloads[0][k]
+            dest = torch.empty((total, *first.shape[1:]), dtype=first.dtype, device=store)
+            offset = 0
+            for p in payloads:
+                n = p[k].shape[0]
+                dest[offset:offset + n].copy_(p[k])
+                offset += n
+            self.data[k] = dest
+        del payloads
         if store == "cpu" and device != "cpu":
             # pin once so every later staging copy is async-capable
             self.data = {k: v.pin_memory() for k, v in self.data.items()}

@@ -16,22 +16,35 @@ fixed step count it outperforms reproductions of TaylorSeer and Block Caching.
 
 ## Where each number in the ICDM paper comes from
 
-All paths are under [`dit-residual-delta/`](dit-residual-delta/). Every table cell can
-be recomputed from the `results.json` in the listed run directory.
+The camera-ready numbers come from a full rerun (`scripts/camera_ready_train.sh`,
+`scripts/camera_ready_eval.sh`) that fixed three problems in the submitted version:
+its "Exact, 20 steps" row was verbatim caching at interval 2 (an `"exact": true` spec
+was ignored; fixed in `src/dit_residual_delta/variants.py`), its image metrics were
+reported on the same `val24` prompts used to select the injection strength σ, and its
+σ search was wider for Trajector than for the residual arms. In the rerun every
+corrector is retrained, σ is selected on `val24` × 3 seeds over one 13-value grid
+shared by all correctors (`scripts/cr_tools.py`), and every reported number is on
+`test24` × 3 seeds. `python scripts/cr_report.py` recomputes all of them into
+`runs/cr/report.json`.
 
-| paper | run directory (`runs/…`) | config / script |
-|---|---|---|
-| Sec. 3.1 trajectory error | `step_error/` | `configs/step_error.json` |
-| Sec. 3.2 matched-data residual retraining | `m_k{1,2,4,7,14,28}/`, `m_k*_b*/` | `scripts/train_surrogate.py` |
-| Sec. 3.3 oracle correction | `oracle_ceiling/` | `configs/oracle_ceiling.json` |
-| Sec. 4.3 Trajector training | `lat_k1/`, `traj_k{2,4,7,14,28}/` | `scripts/train_latent_objective.py` |
-| Table 1 (fixed-step comparison) | `same_steps/`, ImageReward in `ir_main/` | `configs/same_steps_compare.json` |
-| Table 2, Fig. 2 (injection granularity) | `traj_allk_eval/`, `traj_sigma_low/`, `traj_sigma_mid/` | `configs/traj_allk_eval.json` |
-| Fig. 3 (qualitative crops) | `icdm_qual/` | `configs/icdm_qual.json` |
-| Sec. 5.3 frozen adaptive-schedule pilot | `frozen_adaptive/` | `scripts/eval_frozen_adaptive.py` |
+All paths are under [`dit-residual-delta/`](dit-residual-delta/).
 
-Every Trajector run is initialised from the converged residual corrector of the same
-$K$ (`runs/m_k*/best.pt`, recorded as `init_checkpoint` in each `train_report.json`).
+| paper | source (`runs/…`) |
+|---|---|
+| Sec. 3.1 trajectory error, Sec. 3.3 oracle | `cr/oracle_test/step_error.json`, `cr/equivalent_beta.json` |
+| Sec. 3.2 matched-data retraining | `m_k*/train_report.json` vs `ctrl_k*/train_report.json`; images in `cr/test_*` |
+| Sec. 4.3 Trajector training | `traj_k{1,2,4,7,14,28}/train_report.json` |
+| σ selection, Fig. 2 right | `cr/sweep_{a,b,c,d}/`, `cr/sigma.json` |
+| Table 1, Fig. 3 | `cr/test_table1/` (timed run), ImageReward in `cr/test_ir/` |
+| Table 2, Fig. 2 left | `cr/test_table1/`, `cr/test_ctrl1/`, `cr/test_perk/` |
+| Sec. 5.3 non-uniform schedule | `cr/frozen_test/` (`scripts/eval_frozen_schedule.py`) |
+
+Every Trajector run is initialised from the residual corrector of the same $K$
+(`init_checkpoint` in each `traj_k*/train_report.json`). Figures are drawn by
+[`paper/figs/make_icdm_figs.py`](paper/figs/make_icdm_figs.py). Run directories not
+listed here belong to the earlier study described below; the submitted version's
+evaluation runs (`same_steps/`, `ir_main/`, `traj_allk_eval/`, `traj_sigma_*/`) are
+kept for the record.
 
 ## Research history
 
