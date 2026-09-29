@@ -18,6 +18,13 @@ from .runtime import DiTBlockRuntime, DiTSegmentRuntime, uniform_segments
 
 
 def resolve_anchor_steps(spec: dict, num_steps: int) -> set[int]:
+    # `"exact": true` used to fall through to the interval-2 default below, so the
+    # "exact_20" arm of runs/same_steps was verbatim caching at i=2, not the exact
+    # model. An explicit exact spec now refreshes every step.
+    if spec.get("exact"):
+        if "anchor_steps" in spec or "cache_interval" in spec:
+            raise ValueError(f"exact spec {spec['name']!r} must not also set a schedule")
+        return set(range(num_steps))
     if "anchor_steps" in spec:
         return {int(s) for s in spec["anchor_steps"]}
     interval = int(spec.get("cache_interval", 2))
