@@ -16,7 +16,6 @@
 \usepackage{xcolor}
 \usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=blue]{hyperref}
 \usepackage{microtype}
-\usepackage{balance}
 
 \newcommand{\dR}{\Delta R}
 \newcommand{\ourmethod}{Trajector}
@@ -28,7 +27,7 @@
 
 \author{
 \IEEEauthorblockN{Ruize Xia}
-\IEEEauthorblockA{High School Student\\
+\IEEEauthorblockA{\textit{High School Student}\\
 \textit{\mbox{Nanjing Foreign Language School}}\\
 Nanjing, China\\
 xiaruize0911@gmail.com}
@@ -41,15 +40,14 @@ Step caching accelerates diffusion transformers by reusing a block residual
 across neighbouring solver steps. The resulting speedup is training-free, but
 the image degrades. A learned corrector can predict that reuse error; the
 standard way to train it is residual regression. We show that this objective is
-misaligned with deployed image quality, and we replace it with
-\ourmethod{} (\emph{pathwise adjoint correction}): the same architecture
-trained against latent-trajectory deviation by reverse-mode differentiation
-through the cached rollout. The change is strictly stronger at inference and
-costs about twenty minutes of training.
-
-Cache error is integrated along the sampling trajectory: an anchor refreshes
-the cache, not the latent, so a per-step residual target is defined on a
-trajectory the deployed corrector never visits. \ourmethod{} improves image
+misaligned with deployed image quality: cache error integrates along the
+sampling trajectory, because an anchor refreshes the cache but not the latent,
+so a per-step residual target is defined on a trajectory the deployed corrector
+never visits. Driving residual accuracy $25$--$43\%$ higher by matched-data
+retraining buys only $+0.005$ to $+0.013$ SSIM. We therefore fine-tune the same
+corrector with \ourmethod{} (\emph{pathwise adjoint correction}), which
+minimises latent-trajectory deviation by reverse-mode differentiation through
+the cached rollout in about twenty minutes of training. \ourmethod{} improves image
 quality at every injection granularity we tested
 ($K{=}1$ to $28$, all significant, $t{=}2.7$ to $7.0$, $n{=}72$).
 At a fixed step count on PixArt-$\Sigma$-XL-2-512, \ourmethod{} reaches
@@ -57,12 +55,9 @@ SSIM $0.6820$ against the exact output at $3.41\times$
 speedup. It outperforms a reproduction of TaylorSeer's extrapolation mechanism
 by $+0.0946$ SSIM (\mbox{$t{=}14.5$}, $72$ of $72$ paired cases) at an $8.4\%$
 speedup cost, and a reproduction of Block Caching by $+0.0490$ ($t{=}8.4$)
-while running $12\%$ faster. Under ImageReward the separation is larger and one
-verdict reverses: both reproduced mechanisms score \emph{below} verbatim
-caching, while learned correction is the only method that improves on it.
-The measurement that motivated the change is equally sharp: driving residual
-accuracy $25$--$43\%$ better by matched-data retraining buys only $+0.005$ to
-$+0.013$ SSIM, so residual error is a poor guide to what a corrector is worth.
+while running $12\%$ faster. Under ImageReward both reproduced mechanisms score
+\emph{below} verbatim caching, and learned correction is the only method that
+improves on it.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -87,56 +82,34 @@ predict the reuse error
 \dR \;=\; R_{\text{true}} - R_{\text{anchor}},
 \label{eq:target}
 \end{equation}
-which is exactly the error verbatim reuse commits. This paper studies the
+where $R_{\text{true}}$ is the residual the block would produce on the
+current hidden state and $R_{\text{anchor}}$ is the one stored at the most
+recent anchor. $\dR$ is exactly the error verbatim reuse commits. This paper studies the
 second family. Its default training signal is supervised regression on
 \eqref{eq:target}, and every subsequent design choice --- architecture,
 checkpoint selection, and how much correction to inject --- is then made in
 residual space.
 
 We show that this signal is misaligned with deployed quality, and that a
-cheap replacement exists. Cache error is integrated along the sampling
-trajectory, while residual error is pointwise; pushing residual accuracy
-harder therefore buys almost nothing in image quality. We keep the
-architecture, the cache schedule and the deployment rule, and train the same
-corrector against the deviation of the latent trajectory by differentiating
-through the cached rollout. Because a cached block never executes, that graph
-is cheap. The resulting method, \ourmethod{}, improves image quality at every
-injection granularity we tested, and at a fixed step count it outperforms
-reproductions of two published mechanisms on three fidelity metrics and on a
-preference model.
-
-Concretely, we contribute:
+cheap second training stage fixes much of it. Concretely, we contribute:
 
 \begin{enumerate}
 \item \textbf{A diagnosis of the residual objective.} The cached trajectory's
-deviation from the exact one does not reset at cache refreshes: it climbs
-almost monotonically ($0.0089$ at step~1 to $0.6092$ at step~19). An anchor
-refreshes the cache, not the latent, so error already injected into the state
-is permanent. Residual error is pointwise; trajectory error integrates.
-\item \textbf{Matched-data residual retraining.} Matching
-training-data volume across granularities and training every rung to
-convergence improves residual error by $25$--$43\%$ and image SSIM by only
-$+0.005$ to $+0.013$, against $+0.033$ for the decision to add correction at
-all.
-\item \textbf{\ourmethod{}.} We differentiate through the cached
-rollout. A cached block never
-runs, so the graph over one reuse step is $K$ corrector forwards rather than
-$K$ transformer blocks of a $0.6$B model. The change costs about $20$ minutes
-of training and no architectural modification. It improves image quality at
-every $K$, and by the largest margin where per-site residual training degrades
-most.
-\item \textbf{A same-step comparison with published mechanisms.} Holding the step
-count and skip schedule fixed, \ourmethod{} outperforms
-reproductions of TaylorSeer and Block Caching on SSIM, PSNR and ImageReward,
-at an $8.4\%$ speedup cost against the former and a speedup \emph{advantage}
-against the latter. Under ImageReward, both reproduced mechanisms score below
-verbatim caching; learned correction is the only method that improves on it.
+deviation from the exact one climbs almost monotonically ($0.0089$ at
+step~1 to $0.6092$ at step~19): an anchor refreshes the cache, not the
+latent. Residual error is pointwise; trajectory error integrates. Retraining
+with matched data to convergence improves residual error by $25$--$43\%$ but
+image SSIM by only $+0.005$ to $+0.013$.
+\item \textbf{\ourmethod{}.} Keeping the architecture, schedule and
+deployment rule, we fine-tune the corrector by differentiating through the
+cached rollout. A cached block never runs, so the graph over one reuse step
+is $K$ corrector forwards rather than $K$ blocks of a $0.6$B model; training
+takes about $20$ minutes. It improves image quality at every $K$, most where
+per-site residual training degrades most.
+\item \textbf{A same-step comparison with published mechanisms.} At a fixed
+step count and skip schedule, \ourmethod{} outperforms reproductions of
+TaylorSeer and Block Caching on SSIM, PSNR and ImageReward.
 \end{enumerate}
-
-Section~\ref{sec:diagnosis} establishes the mismatch;
-Section~\ref{sec:method} replaces the objective without changing the
-architecture; Section~\ref{sec:experiments} tests the replacement at a
-fixed step count and at every injection granularity.
 
 \section{Related Work}
 
@@ -244,19 +217,24 @@ rollout. Architecture and the skip schedule are in the text.}
 \end{figure*}
 
 \subsection{Step Caching}
-A DiT block is residual,
-$R_b(h)=\mathrm{block}_b(h)-h$, so one exact block maps $h\mapsto h+R_b(h)$.
-Let $\mathcal{A}$ be the anchor set (here $\{0,5,10,15\}$ at interval $i{=}5$).
+A DiT block $b$ is residual,
+$R_b(h)=\mathrm{block}_b(h)-h$, where $h$ is its input hidden state
+($1024$ tokens $\times$ $1152$ channels), so one exact block maps
+$h\mapsto h+R_b(h)$.
+Let $t=0,\dots,T{-}1$ index solver steps ($T{=}20$) and $\mathcal{A}$ be the
+anchor set (here $\{0,5,10,15\}$ at interval $i{=}5$).
 On $t\in\mathcal{A}$ every block runs and the residual is stored. On a reuse
 step the stored residual is added instead:
 \begin{equation}
 h \;\mapsto\; h + R_b(h_a),\qquad
-a=\max\{s\in\mathcal{A}:s\le t\}.
+a=\max\{s\in\mathcal{A}:s\le t\},
 \label{eq:reuse}
 \end{equation}
-The reuse error at site $k$ is exactly
-$\dR_{t,k}=R_{t,k}^{\mathrm{true}}-R_{t,k}(h_a)$, which is
-\eqref{eq:target}. The residual objective regresses it on the
+where $a$ is the latest anchor and $h_a$ the input the block saw there. With
+blocks grouped into $K$ sites, the reuse error at site $k$ of step $t$ is
+$\dR_{t,k}=R_{t,k}^{\mathrm{true}}-R_{t,k}(h_a)$, i.e.\
+\eqref{eq:target}. The residual objective regresses the corrector's
+prediction $\widehat{\dR}_{t,k}$ onto it on the
 \emph{unperturbed} hidden states of the exact trajectory,
 \begin{equation}
 \mathcal{L}_{\mathrm{res}}
@@ -273,7 +251,8 @@ The $28$ blocks are partitioned into $K$ contiguous cached segments. A
 shared network $C_\theta$ is applied at each site. It reads the state drift
 $\Delta h=h_t-h_a$, the cached residual $R_a$ and the anchor hidden state
 $h_a$, conditioned on the diffusion timestep $t$, the reuse horizon
-$\tau=t-a$ and the site index $k$. Inputs are RMS-normalised and the head is
+$\tau=t-a$ and the site index $k$. Each input is divided by its RMS over the
+training set ($s_{\Delta h}$, $s_R$, $s_h$) and the head is
 rescaled by the target RMS $s_{\dR}$,
 \begin{equation}
 \widehat{\dR}
@@ -307,9 +286,9 @@ multiplicative (Sec.~\ref{sec:granularity}).
 
 \subsection{Pathwise Adjoint Training}
 \ourmethod{} keeps \eqref{eq:corrector}--\eqref{eq:deploy} and replaces
-\eqref{eq:resloss}. Let $x_1,\dots,x_T$ be the cached latents under
-\eqref{eq:deploy} and $x^\star_1,\dots,x^\star_T$ the exact ones under the
-same seed. The pathwise objective is
+\eqref{eq:resloss}. Let $x_t$ be the latent after step $t$ of the cached
+rollout under \eqref{eq:deploy} and $x^\star_t$ the exact latent under the
+same prompt and seed. The pathwise objective is
 \begin{equation}
 \mathcal{L}
 \;=\;
@@ -332,9 +311,16 @@ corrector call influences later intervals only through the latent.
 Extending the graph across intervals improves \eqref{eq:loss} but not image
 metrics; we keep the one-interval truncation.
 
+\ourmethod{} is a second training stage, not a from-scratch replacement.
+Residual regression is a cheap, teacher-forced way to reach a corrector that
+already helps; we argue it is the wrong \emph{final} objective, not a useless
+one. We therefore initialise from the matched-data residual corrector of the
+same $K$ (Sec.~\ref{sec:diagnosis}), already trained until more steps stopped
+helping; it is also the ``Residual obj.'' arm below, so each comparison
+isolates the second stage. We did not test pathwise training from the
+zero-initialised corrector.
 Training uses AdamW, learning rate $10^{-5}$, gradient-norm clip $1.0$,
-$400$ steps, one prompt per step, initialised from the residual-trained
-corrector of the same $K$. $C_\theta$ is held in fp32 against an fp16
+$400$ steps, one prompt per step. $C_\theta$ is held in fp32 against an fp16
 transformer. Cost is measured: $2.57$\,TFLOP per anchor step,
 $0.041$\,TFLOP per corrector call, $2.51$\,TFLOP fixed per image. One run
 is about $20$ minutes on an A40.
@@ -390,8 +376,7 @@ Paired against \ourmethod{}, the first-order TaylorSeer
 mechanism loses $0.0946$ SSIM ($t{=}14.5$) and $0.1197$ LPIPS ($t{=}14.2$),
 with \ourmethod{} better on all $72$ of $72$ cases; the second-order version
 loses $0.2038$ ($t{=}39.8$, $72/72$); Block Caching loses $0.0490$ ($t{=}8.4$,
-$64/72$). That is a favourable trade: $8.4\%$ less speedup than TaylorSeer for
-$+0.0946$ SSIM, and against Block Caching we are both faster and better.
+$64/72$), while \ourmethod{} is $12\%$ faster than Block Caching.
 Residual-trained correction already outperforms both reproduced mechanisms;
 \ourmethod{} widens that lead.
 
@@ -448,7 +433,9 @@ where per-site residual training degrades worst: $+0.0370$ at $K{=}7$ against
 $+0.0147$ at $K{=}1$. This is consistent with the mechanism behind the
 degradation. A state-dependent correction turns error propagation across sites
 multiplicative rather than additive ---
-$\delta_{k+1}=(I+\sigma J_k)\delta_k+\varepsilon_k$ with
+$\delta_{k+1}=(I+\sigma J_k)\delta_k+\varepsilon_k$, where $\delta_k$ is
+the hidden-state deviation from the exact path entering site $k$,
+$\varepsilon_k$ the residual error committed there, and
 $J_k=\partial\widehat{\dR}_k/\partial h$ from \eqref{eq:corrector} --- and only \ourmethod{}
 observes the consequence of that compounding rather than
 pointwise error. The degradation is weakened, not removed: the residual
@@ -484,6 +471,21 @@ On this backbone ImageReward saturates by $10$ solver steps while pixel
 fidelity keeps improving, so an equal-compute comparison here mostly
 measures solver convergence. Holding the step count fixed isolates caching.
 Results are on $512^2$ PixArt-$\Sigma$ with templated prompts ($n{=}72$).
+
+\emph{Schedules.} All results use uniform anchors. Nothing in the method
+assumes them: $C_\theta$ is conditioned on $\tau$ rather than on $i$, and
+\eqref{eq:loss} is defined for any anchor set $\mathcal{A}$, so \ourmethod{}
+can be trained on the schedule it will be deployed with. Adaptive policies
+such as TeaCache or AdaCache couple the two. Their refresh decision reads the
+corrected state, so each corrector would choose its own schedule and compute
+budget. In a pilot with earlier residual-trained $K{=}1$ correctors we
+therefore froze a TeaCache-style accumulated-change schedule (without its
+fitted rescaling) chosen on a corrector-free rollout
+(e.g.\ anchors $\{0,11,15,18\}$, so $\tau$ reaches $11$ against $4$ in
+training). Correction still helped
+($+0.008$ and $+0.021$ SSIM for two training losses, $n{=}48$) but less than
+under uniform anchors ($+0.036$ and $+0.047$). We have not trained or
+tested \ourmethod{} on non-uniform schedules.
 Gains are after $400$ optimiser steps without hyperparameter search, from a
 residual-trained corrector, so they are what the objective change buys, not
 an upper bound. High-$K$ correctors are deployed in fp32 to avoid fp16
@@ -492,15 +494,13 @@ overflow.
 \section{Conclusion}
 
 The natural objective for a learned cache corrector --- regress the residual
-it should have produced --- is misaligned with what caching actually damages.
-Cache error integrates along the sampling trajectory; residual error is
-pointwise. A $25$--$43\%$ residual improvement buys only $+0.005$ to
-$+0.013$ SSIM. Replacing the objective with \ourmethod{}, which
-costs $20$ minutes of training and no architectural change, improves image
-quality at every injection granularity we tested. At a fixed step count
-\ourmethod{} outperforms reproductions of two published mechanisms on
-three fidelity metrics and on a preference model, and is the only method in
-that comparison that improves on verbatim caching under the preference model.
+it should have produced --- is misaligned with what caching damages: cache
+error integrates along the sampling trajectory, residual error is pointwise.
+Fine-tuning the same corrector against trajectory deviation, at a cost of
+$20$ minutes and no architectural change, improves image quality at every
+injection granularity we tested. In our fixed-step comparison, learned
+correction is the only approach that improves on verbatim caching under a
+preference model, and \ourmethod{} leads on SSIM and PSNR.
 
 \section*{Reproducibility}
 
@@ -508,7 +508,6 @@ Code, configurations, logs and the per-case metrics behind every number are
 at \url{https://github.com/xiaruize0911/Diff-cache-Comp}.
 Every table cell can be recomputed from the archived \texttt{results.json}.
 
-\balance
 \bibliographystyle{IEEEtran}
 \bibliography{refs}
 
