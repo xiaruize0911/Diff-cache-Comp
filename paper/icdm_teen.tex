@@ -398,7 +398,7 @@ typewriter keys and the window tracery, though blocky artefacts remain.
 We hold the step count fixed because on this backbone ImageReward saturates
 by $10$ solver steps, so an equal-compute comparison mostly measures solver
 convergence. Results are
-on $512^2$ PixArt-$\Sigma$ with templated prompts; the $72$ test cases come from $6$ subjects. With seeds averaged per prompt ($n{=}24$), every \ourmethod{}-over-residual SSIM gain keeps $t{>}3.1$, while the ImageReward difference and the frozen-schedule lead below fall to $t{\approx}2.1$.
+on $512^2$ PixArt-$\Sigma$ with templated prompts; the $72$ test cases come from $6$ subjects. With seeds averaged per prompt ($n{=}24$), every \ourmethod{}-over-residual SSIM gain keeps $t{>}3.1$, while the ImageReward difference and the frozen-schedule lead below fall to $t{\approx}2.1$. Averaged per subject ($n{=}6$, the unit of the split), \ourmethod{} still leads at every $K$, in $4$--$6$ of the $6$ subjects ($t{=}2.6$ to $6.2$).
 
 \emph{Schedules.} \ourmethod{} is trained with uniform anchors, but
 $C_\theta$ is conditioned on $\tau$ rather than $i$, and \eqref{eq:loss} holds
@@ -408,11 +408,26 @@ TeaCache-style rule (accumulated relative change, without its fitted
 rescaling) picks on an uncorrected rollout, and replayed it for every arm. It refreshes $4.0$ times on
 average, like the uniform schedule, but unevenly (e.g.\ anchors
 $\{0,11,15,18\}$), so $\tau$ reaches $8$--$11$ against $4$ in training.
-Without retraining, both $K{=}1$ correctors still help ($+0.020$ and $+0.027$
-SSIM, $t{=}4.1$ and $5.1$) and \ourmethod{} still leads ($+0.007$,
-$t{=}2.4$), but the gains shrink to about $40\%$ of their uniform-schedule
-values. Training on the deployed schedule is the natural remedy and is
-untested.
+Table~\ref{tab:sched} gives the result. Without retraining, both $K{=}1$
+correctors still help ($+0.020$ and $+0.027$ SSIM, $t{=}4.1$ and $5.1$) and
+\ourmethod{} still leads ($+0.007$, $t{=}2.4$), but the gains shrink to about
+$40\%$ of their uniform-schedule values. The schedule hurts verbatim caching
+perceptually (LPIPS $0.537\to0.603$) while leaving its SSIM unchanged, and on
+it \ourmethod{}'s lead extends to LPIPS ($0.024$ better, $t{=}5.7$) and PSNR
+($+0.28$\,dB, $t{=}4.4$), neither of which it has under uniform anchors at
+$K{=}1$. In LPIPS the residual objective loses more of its gain over verbatim caching
+($0.100\to0.059$) than \ourmethod{} does ($0.094\to0.083$). Training on the
+deployed schedule is the natural remedy and is untested.
+
+\begin{table}[t]
+\centering
+\caption{The $K{=}1$ correctors, trained with uniform anchors, under uniform
+anchors and under the frozen TeaCache-style schedule (test, $n{=}72$).}
+\label{tab:sched}
+\small
+\setlength{\tabcolsep}{3pt}
+\input{tab_sched}
+\end{table}
 
 Gains come from $400$ optimiser steps without hyperparameter search, so they
 are not an upper bound. Correctors at $K{\ge}2$ run in fp32 to avoid fp16

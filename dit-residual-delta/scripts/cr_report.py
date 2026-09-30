@@ -125,6 +125,40 @@ def main():
     # ---- Sec 5.3: frozen non-uniform schedule ------------------------------------------
     rep["frozen"] = {k: v for k, v in json.loads((R / "frozen_test" / "results.json")
                                                   .read_text()).items() if k != "cases"}
+    fcases = json.loads((R / "frozen_test" / "results.json").read_text())["cases"]
+    fc = lambda k, m: [c["variants"][k][m] for c in fcases]
+    rep["frozen_paired"] = {
+        sch: {"traj_minus_resid_ssim": paired(fc(f"{sch}_traj", "ssim"), fc(f"{sch}_resid", "ssim")),
+              "traj_minus_resid_psnr": paired(fc(f"{sch}_traj", "psnr"), fc(f"{sch}_resid", "psnr")),
+              "lpips_improvement_traj_over_resid": paired(fc(f"{sch}_resid", "lpips"),
+                                                          fc(f"{sch}_traj", "lpips"))}
+        for sch in ("uniform", "frozen")}
+
+    # ---- robustness: t with cases clustered by prompt (seeds averaged) and by subject --
+    prompt_of = {c: v for c, v in (
+        (c["case"], c["prompt"]) for n in ("test_table1",)
+        for c in json.loads((R / n / "results.json").read_text())["cases"])}
+    # the prompt template's 12 conditions; subject = text between "<style> of " and it
+    conds = ["in dense fog", "at sunrise", "under harsh midday sun", "beneath a starlit sky",
+             "in warm evening light", "under heavy rain", "against a plain grey backdrop",
+             "surrounded by autumn leaves", "reflected in still water", "at blue hour",
+             "lit by a single window", "during a snowstorm"]
+    def subject(prompt):
+        s = prompt.split(" of ", 1)[1]
+        for c in conds:
+            if s.endswith(" " + c):
+                return s[: -len(c) - 1]
+        raise ValueError(prompt)
+    def clustered(a, b, key):
+        g: dict[str, list] = {}
+        for c in sorted(cases):
+            g.setdefault(key(c), []).append(cases[c][a][SS] - cases[c][b][SS])
+        d = [st.mean(v) for v in g.values()]
+        return paired(d, [0.0] * len(d))
+    rep["clustered_t"] = {
+        f"K{K}": {"by_prompt": clustered(f"traj_k{K}", f"m_k{K}", lambda c: c.rsplit("-seed-", 1)[0]),
+                  "by_subject": clustered(f"traj_k{K}", f"m_k{K}", lambda c: subject(prompt_of[c]))}
+        for K in KS}
     (R / "report.json").write_text(json.dumps(rep, indent=1))
     print(json.dumps(rep, indent=1)[:20000])
 

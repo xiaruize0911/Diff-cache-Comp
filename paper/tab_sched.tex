@@ -1,0 +1,11 @@
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+ & \multicolumn{2}{c}{Uniform anchors} & \multicolumn{2}{c}{Frozen schedule} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Method & SSIM$\uparrow$ & LPIPS$\downarrow$ & SSIM$\uparrow$ & LPIPS$\downarrow$ \\
+\midrule
+Verbatim cache & 0.4635 & 0.5366 & 0.4647 & 0.6031 \\
+Residual obj. & 0.5145 & \textbf{0.4370} & 0.4846 & 0.5438 \\
+\ourmethod{} & \textbf{0.5320} & 0.4423 & \textbf{0.4916} & \textbf{0.5199} \\
+\bottomrule
+\end{tabular}

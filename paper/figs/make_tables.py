@@ -62,3 +62,21 @@ for k in ["1", "2", "4", "7", "14", "28"]:
 lines += [r"\bottomrule", r"\end{tabular}"]
 (HERE.parent / "tab_perk.tex").write_text("\n".join(lines) + "\n")
 print("wrote tab_main.tex, tab_perk.tex")
+
+# ---- Table 3: K=1 correctors under uniform vs frozen non-uniform anchors -------------
+fs = rep["frozen"]["summary"]
+lines = [r"\begin{tabular}{@{}lcccc@{}}", r"\toprule",
+         r" & \multicolumn{2}{c}{Uniform anchors} & \multicolumn{2}{c}{Frozen schedule} \\",
+         r"\cmidrule(lr){2-3}\cmidrule(lr){4-5}",
+         r"Method & SSIM$\uparrow$ & LPIPS$\downarrow$ & SSIM$\uparrow$ & LPIPS$\downarrow$ \\", r"\midrule"]
+for arm, name in (("plain", "Verbatim cache"), ("resid", "Residual obj."), ("traj", r"\ourmethod{}")):
+    cells = []
+    for sch in ("uniform", "frozen"):
+        for m, f in (("ssim", max), ("lpips", min)):
+            v = fs[sch][arm][m]
+            s_ = f"{v:.4f}"
+            cells.append(rf"\textbf{{{s_}}}" if v == f(fs[sch][a][m] for a in ("plain", "resid", "traj")) else s_)
+    lines.append(f"{name} & " + " & ".join(cells) + r" \\")
+lines += [r"\bottomrule", r"\end{tabular}"]
+(HERE.parent / "tab_sched.tex").write_text("\n".join(lines) + "\n")
+print("wrote tab_sched.tex")
