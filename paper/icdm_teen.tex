@@ -41,12 +41,12 @@ across solver steps, at a cost in image quality. A learned corrector can
 predict the reuse error; the natural way to train it is residual regression. We show that this objective is misaligned with
 deployed quality: an anchor refreshes the cache but not the latent, so cache
 error integrates along the trajectory while residual error is pointwise.
-Retraining it on more data to convergence lowers residual error by $25$--$30\%$ yet changes SSIM by only $-0.002$ to $+0.012$. We therefore fine-tune the same corrector with
+Retraining the residual corrector on more data to convergence lowers residual error by $25$--$30\%$ yet changes SSIM by only $-0.002$ to $+0.012$. We therefore fine-tune the same corrector with
 \ourmethod{} (\emph{pathwise adjoint correction}), which minimises latent trajectory
 deviation by differentiating through the cached rollout. On
 held-out prompts, \ourmethod{} improves SSIM over the residual-trained corrector at every injection granularity we tested ($K{=}1$ to $28$ correction sites per step, paired $t{=}4.5$ to $10.0$, $n{=}72$) and LPIPS at every $K{\ge}2$. At a fixed step count on
 PixArt-$\Sigma$-XL-2-512 it reaches SSIM $0.532$ against the exact output at
-$3.35\times$ speedup, $+0.098$ above a reproduction of TaylorSeer
+$3.39\times$ speedup, $+0.098$ above a reproduction of TaylorSeer
 ($t{=}12.8$) and $+0.053$ above one of Block Caching ($t{=}9.5$), at
 $8\%$ and $3\%$ less speedup. Under
 ImageReward, only state-dependent learned correction improves on verbatim
@@ -133,7 +133,7 @@ The measurements below use PixArt-$\Sigma$-XL-2-512
 \cite{chen2024pixartsigma} ($0.6$B parameters, $28$ blocks) with its shipped
 DPM-Solver++ scheduler \cite{lu2022dpmsolverpp} at $20$ steps and $512^2$.
 Anchors are uniform at interval $i{=}5$ ($4$ anchor steps, $16$ reuse steps).
-All numbers are against the exact $20$-step output from the same seed, on the
+All image and trajectory numbers are against the exact $20$-step output from the same seed, on the
 $24$ test prompts of Sec.~\ref{sec:experiments}. The $28$ blocks
 are grouped into $K$ contiguous cached segments, so $K$ is the number of
 injection sites per reuse step: $K{=}1$ corrects the whole stack once and
@@ -161,7 +161,7 @@ accuracy is a poor guide to what a corrector is worth.
 An oracle that recovers a fraction $\beta$ of the true residual has residual
 error $(1-\beta)^2$. Final-step trajectory error falls from $0.586$ at
 $\beta{=}0$ to $0.381$ at $\beta{=}0.8$, and to $0$ at $\beta{=}1$. The curve
-is flat in the middle and steep near $\beta{=}1$. Since $\beta{=}1$ reproduces the exact model, additive injection is not the bottleneck; partial residual accuracy simply buys little. Each residual-trained corrector lowers final error $0.9$--$1.1\times$ as much
+falls slowly up to $\beta{=}0.8$ and steeply after it. Additive injection can in principle recover the exact output ($\beta{=}1$); partial residual accuracy simply buys little. Each residual-trained corrector lowers final error $0.9$--$1.1\times$ as much
 as an oracle with its residual error, but a better residual fit barely moves it:
 the $27\%$ residual gain of matched-data retraining at $K{=}1$ maps to
 $0.515\to0.492$ on the curve, yet the real correctors move $0.505\to0.502$. \ourmethod{} reaches $0.462$, close to an oracle that recovers $60\%$ of the residual ($0.457$).
@@ -323,8 +323,7 @@ significant PSNR or LPIPS gain ($+0.15$\,dB, $t{=}1.2$; $0.005$ worse LPIPS, $t{
 Under ImageReward, first-order TaylorSeer scores below verbatim caching
 ($-0.38$, $t{=}{-}4.8$) and Block Caching does not improve on it ($-0.06$,
 $t{=}{-}1.0$). Only the two state-dependent learned correctors do ($+0.47$ and
-$+0.35$, $t{=}6.2$ and $4.5$), and the residual objective scores higher
-($+0.12$, $t{=}2.3$): at $K{=}1$, \ourmethod{}'s advantage is fidelity, not
+$+0.35$, $t{=}6.2$ and $4.5$), and the residual objective scores higher than \ourmethod{} ($+0.12$, $t{=}2.3$): at $K{=}1$, \ourmethod{}'s advantage is fidelity, not
 preference.
 
 TaylorSeer at $i{=}5$ is worse than no correction ($-0.0294$, $t{=}{-}8.3$);
@@ -383,7 +382,7 @@ $\sigma$.
 \includegraphics[width=0.98\columnwidth]{figs/icdm_qual.pdf}
 \caption{$250^2$ crops at native resolution, same seed and prompt across a row,
 full-image SSIM against the exact output below each panel. Each row is the case with the
-median \ourmethod{} gain for one of the first three test subjects, not a case
+median \ourmethod{}-over-cache SSIM gain for one of the first three test subjects, not a case
 picked by eye.}
 \label{fig:qual}
 \end{figure}
@@ -399,7 +398,7 @@ typewriter keys and the window tracery, though blocky artefacts remain.
 We hold the step count fixed because on this backbone ImageReward saturates
 by $10$ solver steps, so an equal-compute comparison mostly measures solver
 convergence. Results are
-on $512^2$ PixArt-$\Sigma$ with templated prompts; the $72$ test cases come from $6$ subjects. With seeds averaged per prompt ($n{=}24$), every \ourmethod{}-over-residual SSIM gain keeps $t{\ge}3.2$, while the ImageReward difference and the frozen-schedule lead below fall to $t{\approx}2.1$.
+on $512^2$ PixArt-$\Sigma$ with templated prompts; the $72$ test cases come from $6$ subjects. With seeds averaged per prompt ($n{=}24$), every \ourmethod{}-over-residual SSIM gain keeps $t{>}3.1$, while the ImageReward difference and the frozen-schedule lead below fall to $t{\approx}2.1$.
 
 \emph{Schedules.} \ourmethod{} is trained with uniform anchors, but
 $C_\theta$ is conditioned on $\tau$ rather than $i$, and \eqref{eq:loss} holds
@@ -430,7 +429,7 @@ Under the preference model, state-dependent learned correction is the only
 approach that improves on verbatim caching, with the residual objective ahead
 of \ourmethod{} at $K{=}1$. Code, configurations, logs and per-case metrics
 are at \url{https://github.com/xiaruize0911/Diff-cache-Comp};
-\texttt{dit-residual-delta/scripts/cr\_report.py} recomputes every table cell from the archived \texttt{results.json} files.
+\nolinkurl{dit-residual-delta/scripts/cr_report.py} recomputes every table cell from the archived \texttt{results.json} files.
 
 \bibliographystyle{IEEEtran}
 \bibliography{refs}

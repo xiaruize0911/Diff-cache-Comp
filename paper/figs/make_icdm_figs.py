@@ -64,9 +64,9 @@ fig.savefig("icdm_main.pdf", bbox_inches="tight")
 
 # ---- Fig. 3 ---------------------------------------------------------------------------
 QUAL = json.loads((RUNS / "qual_cases.json").read_text())["cases"]   # chosen by the rule stored alongside
-cols = [("exact", "exact, 20 steps"), ("cache_i5", "verbatim cache"),
-        ("taylor1", "TaylorSeer mech."), ("blockcache", "Block Caching mech."),
-        ("traj_k1", "Trajector")]
+cols = [("exact", "exact,\n20 steps"), ("cache_i5", "verbatim\ncache"),
+        ("taylor1", "TaylorSeer\nmech."), ("blockcache", "Block Caching\nmech."),
+        ("traj_k1", "Trajector\n")]
 cases = {c["case"]: c for c in json.loads((RUNS / "test_table1" / "results.json").read_text())["cases"]}
 fig, ax = plt.subplots(len(QUAL), len(cols), figsize=(7.2, 1.62 * len(QUAL) + 0.3))
 for r, q in enumerate(QUAL):
