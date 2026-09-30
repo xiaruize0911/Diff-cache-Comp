@@ -47,11 +47,12 @@ val_cache = json.loads((RUNS / "sweep_a" / "results.json").read_text())["aggrega
 for k in [4, 7, 14, 28]:
     for obj, ls, mk in (("traj", "-", "o"), ("m", ":", None)):
         curve = sig[f"{obj}_k{k}"]["curve"]
-        s = sorted(float(v) for v in curve if 0.05 <= float(v) <= 0.4)
+        s = sorted(float(v) for v in curve if 0.05 <= float(v) <= 0.3)
         base_val = sig[f"{obj}_k{k}"]["curve"]
         ax[1].plot(s, [base_val[f"{v:g}"] - val_cache for v in s], ls=ls, marker=mk, ms=3,
                    color=colors[k], lw=1.1 if obj == "traj" else 0.9,
                    label=f"$K{{=}}{k}$" if obj == "traj" else None)
+ax[1].set_ylim(-0.08, 0.065)   # the collapse past sigma=0.3 would flatten the peaks
 ax[1].set_xlabel(r"injection strength $\sigma$")
 ax[1].axhline(0, color="0.6", lw=0.6)
 ax[1].set_ylabel(r"validation $\Delta$SSIM")
@@ -61,7 +62,7 @@ fig.tight_layout(pad=0.4)
 fig.savefig("icdm_main.pdf", bbox_inches="tight")
 
 # ---- Fig. 3 ---------------------------------------------------------------------------
-QUAL = json.loads((RUNS / "qual_cases.json").read_text())   # [{"case":..., "box":[x0,y0]}]
+QUAL = json.loads((RUNS / "qual_cases.json").read_text())["cases"]   # chosen by the rule stored alongside
 cols = [("exact", "exact, 20 steps"), ("cache_i5", "verbatim cache"),
         ("taylor1", "TaylorSeer mech."), ("blockcache", "Block Caching mech."),
         ("traj_k1", "Trajector")]

@@ -1,0 +1,46 @@
+[
+ {
+  "name": "cache_i5",
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 1
+ },
+ {
+  "name": "taylor1",
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 1,
+  "taylor_order": 1
+ },
+ {
+  "name": "taylor2",
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 1,
+  "taylor_order": 2
+ },
+ {
+  "name": "blockcache",
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 1,
+  "surrogate_checkpoint": "runs/bc_k1/best.pt",
+  "surrogate_scale": 1.0
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 1,
+  "name": "m_k1",
+  "surrogate_checkpoint": "runs/m_k1/best.pt",
+  "surrogate_scale": 0.6
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 1,
+  "name": "traj_k1",
+  "surrogate_checkpoint": "runs/traj_k1/best.pt",
+  "surrogate_scale": 0.6
+ }
+]

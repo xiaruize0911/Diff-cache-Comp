@@ -1,0 +1,13 @@
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+Method & Sp.\ & SSIM$\uparrow$ & PSNR$\uparrow$ & LPIPS$\downarrow$ & IR$\uparrow$ & $\Delta$SSIM \\
+\midrule
+Exact, 20 steps & 1.00 & --- & --- & --- & $+1.43$ & --- \\
+Verbatim cache & \textbf{3.75} & 0.4635 & 14.29 & 0.5366 & $+0.70$ & --- \\
+TaylorSeer 1st & 3.66 & 0.4341 & 13.02 & 0.5544 & $+0.32$ & $-0.0294$ \\
+TaylorSeer 2nd & 3.64 & 0.3546 & 12.18 & 0.6252 & $-0.56$ & $-0.1089$ \\
+Block Caching & 3.48 & 0.4788 & 14.64 & 0.5411 & $+0.64$ & $+0.0153$ \\
+Residual obj. & 3.35 & 0.5145 & 15.12 & \textbf{0.4370} & $\mathbf{+1.17}$ & $+0.0511$ \\
+\textbf{\ourmethod{}} & 3.35 & \textbf{0.5320} & \textbf{15.27} & 0.4423 & $+1.05$ & $\mathbf{+0.0686}$ \\
+\bottomrule
+\end{tabular}

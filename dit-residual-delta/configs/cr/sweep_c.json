@@ -1,0 +1,314 @@
+[
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "ctrl_k2@0.05",
+  "surrogate_checkpoint": "runs/ctrl_k2/best.pt",
+  "surrogate_scale": 0.05
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "ctrl_k2@0.1",
+  "surrogate_checkpoint": "runs/ctrl_k2/best.pt",
+  "surrogate_scale": 0.1
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "ctrl_k2@0.15",
+  "surrogate_checkpoint": "runs/ctrl_k2/best.pt",
+  "surrogate_scale": 0.15
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "ctrl_k2@0.18",
+  "surrogate_checkpoint": "runs/ctrl_k2/best.pt",
+  "surrogate_scale": 0.18
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "ctrl_k2@0.2",
+  "surrogate_checkpoint": "runs/ctrl_k2/best.pt",
+  "surrogate_scale": 0.2
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "ctrl_k2@0.22",
+  "surrogate_checkpoint": "runs/ctrl_k2/best.pt",
+  "surrogate_scale": 0.22
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "ctrl_k2@0.25",
+  "surrogate_checkpoint": "runs/ctrl_k2/best.pt",
+  "surrogate_scale": 0.25
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "ctrl_k2@0.3",
+  "surrogate_checkpoint": "runs/ctrl_k2/best.pt",
+  "surrogate_scale": 0.3
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "ctrl_k2@0.4",
+  "surrogate_checkpoint": "runs/ctrl_k2/best.pt",
+  "surrogate_scale": 0.4
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "ctrl_k2@0.5",
+  "surrogate_checkpoint": "runs/ctrl_k2/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "ctrl_k2@0.6",
+  "surrogate_checkpoint": "runs/ctrl_k2/best.pt",
+  "surrogate_scale": 0.6
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "ctrl_k2@0.75",
+  "surrogate_checkpoint": "runs/ctrl_k2/best.pt",
+  "surrogate_scale": 0.75
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "ctrl_k2@1",
+  "surrogate_checkpoint": "runs/ctrl_k2/best.pt",
+  "surrogate_scale": 1.0
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 4,
+  "name": "ctrl_k4@0.05",
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 0.05
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 4,
+  "name": "ctrl_k4@0.1",
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 0.1
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 4,
+  "name": "ctrl_k4@0.15",
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 0.15
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 4,
+  "name": "ctrl_k4@0.18",
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 0.18
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 4,
+  "name": "ctrl_k4@0.2",
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 0.2
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 4,
+  "name": "ctrl_k4@0.22",
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 0.22
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 4,
+  "name": "ctrl_k4@0.25",
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 0.25
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 4,
+  "name": "ctrl_k4@0.3",
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 0.3
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 4,
+  "name": "ctrl_k4@0.4",
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 0.4
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 4,
+  "name": "ctrl_k4@0.5",
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 4,
+  "name": "ctrl_k4@0.6",
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 0.6
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 4,
+  "name": "ctrl_k4@0.75",
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 0.75
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 4,
+  "name": "ctrl_k4@1",
+  "surrogate_checkpoint": "runs/ctrl_k4/best.pt",
+  "surrogate_scale": 1.0
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 7,
+  "name": "ctrl_k7@0.05",
+  "surrogate_checkpoint": "runs/ctrl_k7/best.pt",
+  "surrogate_scale": 0.05
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 7,
+  "name": "ctrl_k7@0.1",
+  "surrogate_checkpoint": "runs/ctrl_k7/best.pt",
+  "surrogate_scale": 0.1
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 7,
+  "name": "ctrl_k7@0.15",
+  "surrogate_checkpoint": "runs/ctrl_k7/best.pt",
+  "surrogate_scale": 0.15
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 7,
+  "name": "ctrl_k7@0.18",
+  "surrogate_checkpoint": "runs/ctrl_k7/best.pt",
+  "surrogate_scale": 0.18
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 7,
+  "name": "ctrl_k7@0.2",
+  "surrogate_checkpoint": "runs/ctrl_k7/best.pt",
+  "surrogate_scale": 0.2
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 7,
+  "name": "ctrl_k7@0.22",
+  "surrogate_checkpoint": "runs/ctrl_k7/best.pt",
+  "surrogate_scale": 0.22
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 7,
+  "name": "ctrl_k7@0.25",
+  "surrogate_checkpoint": "runs/ctrl_k7/best.pt",
+  "surrogate_scale": 0.25
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 7,
+  "name": "ctrl_k7@0.3",
+  "surrogate_checkpoint": "runs/ctrl_k7/best.pt",
+  "surrogate_scale": 0.3
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 7,
+  "name": "ctrl_k7@0.4",
+  "surrogate_checkpoint": "runs/ctrl_k7/best.pt",
+  "surrogate_scale": 0.4
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 7,
+  "name": "ctrl_k7@0.5",
+  "surrogate_checkpoint": "runs/ctrl_k7/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 7,
+  "name": "ctrl_k7@0.6",
+  "surrogate_checkpoint": "runs/ctrl_k7/best.pt",
+  "surrogate_scale": 0.6
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 7,
+  "name": "ctrl_k7@0.75",
+  "surrogate_checkpoint": "runs/ctrl_k7/best.pt",
+  "surrogate_scale": 0.75
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 7,
+  "name": "ctrl_k7@1",
+  "surrogate_checkpoint": "runs/ctrl_k7/best.pt",
+  "surrogate_scale": 1.0
+ }
+]

@@ -19,16 +19,20 @@ ev () {  # ev OUT PROMPTS DTYPE VARIANTS [extra]
     --output-dir "$OUT" --surrogate-dtype "$DT" "$@"
 }
 
-# ---- 1. sigma sweep on val (four processes; no timing is read from these) ----------
+# ---- 1. sigma sweep on val (no timing is read from these) --------------------------
+# grouped by when the correctors become available, so early groups can run while the
+# last residual correctors are still training (`camera_ready_eval.sh sweeps-early`)
 python scripts/cr_tools.py sweep --with-cache --out configs/cr/sweep_a.json ctrl_k1 m_k1 traj_k1
-python scripts/cr_tools.py sweep --out configs/cr/sweep_b.json m_k2 m_k4 m_k7 m_k14
-python scripts/cr_tools.py sweep --out configs/cr/sweep_c.json m_k28 ctrl_k2 ctrl_k4 ctrl_k7
-python scripts/cr_tools.py sweep --out configs/cr/sweep_d.json traj_k2 traj_k4 traj_k7 traj_k14 traj_k28
+python scripts/cr_tools.py sweep --out configs/cr/sweep_b.json m_k4 m_k7 traj_k4 traj_k7
+python scripts/cr_tools.py sweep --out configs/cr/sweep_c.json ctrl_k2 ctrl_k4 ctrl_k7
+python scripts/cr_tools.py sweep --out configs/cr/sweep_d.json m_k2 traj_k2 m_k14 traj_k14 m_k28 traj_k28
 ev $R/sweep_a val24 fp16 configs/cr/sweep_a.json > $R/sweep_a.log 2>&1 &
 ev $R/sweep_b val24 fp32 configs/cr/sweep_b.json > $R/sweep_b.log 2>&1 &
 ev $R/sweep_c val24 fp32 configs/cr/sweep_c.json > $R/sweep_c.log 2>&1 &
+if [ "${1:-}" = "sweeps-early" ]; then wait; echo SWEEPS_EARLY_DONE; exit 0; fi
 ev $R/sweep_d val24 fp32 configs/cr/sweep_d.json > $R/sweep_d.log 2>&1 &
 wait
+for g in a b c d; do [ -f $R/sweep_$g/results.json ] || { echo "sweep_$g failed" >&2; exit 1; }; done
 python scripts/cr_tools.py select --out $R/sigma.json $R/sweep_{a,b,c,d}/results.json
 
 # ---- 2. test, once, at the selected sigma --------------------------------------------

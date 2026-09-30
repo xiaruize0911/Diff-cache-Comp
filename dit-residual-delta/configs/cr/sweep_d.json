@@ -1,0 +1,600 @@
+[
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "m_k2@0.05",
+  "surrogate_checkpoint": "runs/m_k2/best.pt",
+  "surrogate_scale": 0.05
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "m_k2@0.1",
+  "surrogate_checkpoint": "runs/m_k2/best.pt",
+  "surrogate_scale": 0.1
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "m_k2@0.15",
+  "surrogate_checkpoint": "runs/m_k2/best.pt",
+  "surrogate_scale": 0.15
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "m_k2@0.18",
+  "surrogate_checkpoint": "runs/m_k2/best.pt",
+  "surrogate_scale": 0.18
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "m_k2@0.2",
+  "surrogate_checkpoint": "runs/m_k2/best.pt",
+  "surrogate_scale": 0.2
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "m_k2@0.22",
+  "surrogate_checkpoint": "runs/m_k2/best.pt",
+  "surrogate_scale": 0.22
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "m_k2@0.25",
+  "surrogate_checkpoint": "runs/m_k2/best.pt",
+  "surrogate_scale": 0.25
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "m_k2@0.3",
+  "surrogate_checkpoint": "runs/m_k2/best.pt",
+  "surrogate_scale": 0.3
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "m_k2@0.4",
+  "surrogate_checkpoint": "runs/m_k2/best.pt",
+  "surrogate_scale": 0.4
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "m_k2@0.5",
+  "surrogate_checkpoint": "runs/m_k2/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "m_k2@0.6",
+  "surrogate_checkpoint": "runs/m_k2/best.pt",
+  "surrogate_scale": 0.6
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "m_k2@0.75",
+  "surrogate_checkpoint": "runs/m_k2/best.pt",
+  "surrogate_scale": 0.75
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "m_k2@1",
+  "surrogate_checkpoint": "runs/m_k2/best.pt",
+  "surrogate_scale": 1.0
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "traj_k2@0.05",
+  "surrogate_checkpoint": "runs/traj_k2/best.pt",
+  "surrogate_scale": 0.05
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "traj_k2@0.1",
+  "surrogate_checkpoint": "runs/traj_k2/best.pt",
+  "surrogate_scale": 0.1
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "traj_k2@0.15",
+  "surrogate_checkpoint": "runs/traj_k2/best.pt",
+  "surrogate_scale": 0.15
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "traj_k2@0.18",
+  "surrogate_checkpoint": "runs/traj_k2/best.pt",
+  "surrogate_scale": 0.18
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "traj_k2@0.2",
+  "surrogate_checkpoint": "runs/traj_k2/best.pt",
+  "surrogate_scale": 0.2
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "traj_k2@0.22",
+  "surrogate_checkpoint": "runs/traj_k2/best.pt",
+  "surrogate_scale": 0.22
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "traj_k2@0.25",
+  "surrogate_checkpoint": "runs/traj_k2/best.pt",
+  "surrogate_scale": 0.25
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "traj_k2@0.3",
+  "surrogate_checkpoint": "runs/traj_k2/best.pt",
+  "surrogate_scale": 0.3
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "traj_k2@0.4",
+  "surrogate_checkpoint": "runs/traj_k2/best.pt",
+  "surrogate_scale": 0.4
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "traj_k2@0.5",
+  "surrogate_checkpoint": "runs/traj_k2/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "traj_k2@0.6",
+  "surrogate_checkpoint": "runs/traj_k2/best.pt",
+  "surrogate_scale": 0.6
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "traj_k2@0.75",
+  "surrogate_checkpoint": "runs/traj_k2/best.pt",
+  "surrogate_scale": 0.75
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 2,
+  "name": "traj_k2@1",
+  "surrogate_checkpoint": "runs/traj_k2/best.pt",
+  "surrogate_scale": 1.0
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "m_k14@0.05",
+  "surrogate_checkpoint": "runs/m_k14/best.pt",
+  "surrogate_scale": 0.05
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "m_k14@0.1",
+  "surrogate_checkpoint": "runs/m_k14/best.pt",
+  "surrogate_scale": 0.1
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "m_k14@0.15",
+  "surrogate_checkpoint": "runs/m_k14/best.pt",
+  "surrogate_scale": 0.15
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "m_k14@0.18",
+  "surrogate_checkpoint": "runs/m_k14/best.pt",
+  "surrogate_scale": 0.18
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "m_k14@0.2",
+  "surrogate_checkpoint": "runs/m_k14/best.pt",
+  "surrogate_scale": 0.2
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "m_k14@0.22",
+  "surrogate_checkpoint": "runs/m_k14/best.pt",
+  "surrogate_scale": 0.22
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "m_k14@0.25",
+  "surrogate_checkpoint": "runs/m_k14/best.pt",
+  "surrogate_scale": 0.25
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "m_k14@0.3",
+  "surrogate_checkpoint": "runs/m_k14/best.pt",
+  "surrogate_scale": 0.3
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "m_k14@0.4",
+  "surrogate_checkpoint": "runs/m_k14/best.pt",
+  "surrogate_scale": 0.4
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "m_k14@0.5",
+  "surrogate_checkpoint": "runs/m_k14/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "m_k14@0.6",
+  "surrogate_checkpoint": "runs/m_k14/best.pt",
+  "surrogate_scale": 0.6
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "m_k14@0.75",
+  "surrogate_checkpoint": "runs/m_k14/best.pt",
+  "surrogate_scale": 0.75
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "m_k14@1",
+  "surrogate_checkpoint": "runs/m_k14/best.pt",
+  "surrogate_scale": 1.0
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "traj_k14@0.05",
+  "surrogate_checkpoint": "runs/traj_k14/best.pt",
+  "surrogate_scale": 0.05
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "traj_k14@0.1",
+  "surrogate_checkpoint": "runs/traj_k14/best.pt",
+  "surrogate_scale": 0.1
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "traj_k14@0.15",
+  "surrogate_checkpoint": "runs/traj_k14/best.pt",
+  "surrogate_scale": 0.15
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "traj_k14@0.18",
+  "surrogate_checkpoint": "runs/traj_k14/best.pt",
+  "surrogate_scale": 0.18
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "traj_k14@0.2",
+  "surrogate_checkpoint": "runs/traj_k14/best.pt",
+  "surrogate_scale": 0.2
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "traj_k14@0.22",
+  "surrogate_checkpoint": "runs/traj_k14/best.pt",
+  "surrogate_scale": 0.22
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "traj_k14@0.25",
+  "surrogate_checkpoint": "runs/traj_k14/best.pt",
+  "surrogate_scale": 0.25
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "traj_k14@0.3",
+  "surrogate_checkpoint": "runs/traj_k14/best.pt",
+  "surrogate_scale": 0.3
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "traj_k14@0.4",
+  "surrogate_checkpoint": "runs/traj_k14/best.pt",
+  "surrogate_scale": 0.4
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "traj_k14@0.5",
+  "surrogate_checkpoint": "runs/traj_k14/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "traj_k14@0.6",
+  "surrogate_checkpoint": "runs/traj_k14/best.pt",
+  "surrogate_scale": 0.6
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "traj_k14@0.75",
+  "surrogate_checkpoint": "runs/traj_k14/best.pt",
+  "surrogate_scale": 0.75
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "num_segments": 14,
+  "name": "traj_k14@1",
+  "surrogate_checkpoint": "runs/traj_k14/best.pt",
+  "surrogate_scale": 1.0
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "m_k28@0.05",
+  "surrogate_checkpoint": "runs/m_k28/best.pt",
+  "surrogate_scale": 0.05
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "m_k28@0.1",
+  "surrogate_checkpoint": "runs/m_k28/best.pt",
+  "surrogate_scale": 0.1
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "m_k28@0.15",
+  "surrogate_checkpoint": "runs/m_k28/best.pt",
+  "surrogate_scale": 0.15
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "m_k28@0.18",
+  "surrogate_checkpoint": "runs/m_k28/best.pt",
+  "surrogate_scale": 0.18
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "m_k28@0.2",
+  "surrogate_checkpoint": "runs/m_k28/best.pt",
+  "surrogate_scale": 0.2
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "m_k28@0.22",
+  "surrogate_checkpoint": "runs/m_k28/best.pt",
+  "surrogate_scale": 0.22
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "m_k28@0.25",
+  "surrogate_checkpoint": "runs/m_k28/best.pt",
+  "surrogate_scale": 0.25
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "m_k28@0.3",
+  "surrogate_checkpoint": "runs/m_k28/best.pt",
+  "surrogate_scale": 0.3
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "m_k28@0.4",
+  "surrogate_checkpoint": "runs/m_k28/best.pt",
+  "surrogate_scale": 0.4
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "m_k28@0.5",
+  "surrogate_checkpoint": "runs/m_k28/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "m_k28@0.6",
+  "surrogate_checkpoint": "runs/m_k28/best.pt",
+  "surrogate_scale": 0.6
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "m_k28@0.75",
+  "surrogate_checkpoint": "runs/m_k28/best.pt",
+  "surrogate_scale": 0.75
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "m_k28@1",
+  "surrogate_checkpoint": "runs/m_k28/best.pt",
+  "surrogate_scale": 1.0
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "traj_k28@0.05",
+  "surrogate_checkpoint": "runs/traj_k28/best.pt",
+  "surrogate_scale": 0.05
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "traj_k28@0.1",
+  "surrogate_checkpoint": "runs/traj_k28/best.pt",
+  "surrogate_scale": 0.1
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "traj_k28@0.15",
+  "surrogate_checkpoint": "runs/traj_k28/best.pt",
+  "surrogate_scale": 0.15
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "traj_k28@0.18",
+  "surrogate_checkpoint": "runs/traj_k28/best.pt",
+  "surrogate_scale": 0.18
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "traj_k28@0.2",
+  "surrogate_checkpoint": "runs/traj_k28/best.pt",
+  "surrogate_scale": 0.2
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "traj_k28@0.22",
+  "surrogate_checkpoint": "runs/traj_k28/best.pt",
+  "surrogate_scale": 0.22
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "traj_k28@0.25",
+  "surrogate_checkpoint": "runs/traj_k28/best.pt",
+  "surrogate_scale": 0.25
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "traj_k28@0.3",
+  "surrogate_checkpoint": "runs/traj_k28/best.pt",
+  "surrogate_scale": 0.3
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "traj_k28@0.4",
+  "surrogate_checkpoint": "runs/traj_k28/best.pt",
+  "surrogate_scale": 0.4
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "traj_k28@0.5",
+  "surrogate_checkpoint": "runs/traj_k28/best.pt",
+  "surrogate_scale": 0.5
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "traj_k28@0.6",
+  "surrogate_checkpoint": "runs/traj_k28/best.pt",
+  "surrogate_scale": 0.6
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "traj_k28@0.75",
+  "surrogate_checkpoint": "runs/traj_k28/best.pt",
+  "surrogate_scale": 0.75
+ },
+ {
+  "steps": 20,
+  "cache_interval": 5,
+  "name": "traj_k28@1",
+  "surrogate_checkpoint": "runs/traj_k28/best.pt",
+  "surrogate_scale": 1.0
+ }
+]

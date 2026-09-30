@@ -1,0 +1,35 @@
+{
+ "rule": "first three test subjects in prompt-file order; per subject the case with the median Trajector-minus-cache SSIM gain (upper median of 12); centre 250x250 crop",
+ "cases": [
+  {
+   "case": "prompt-21-seed-9401",
+   "box": [
+    131,
+    131
+   ],
+   "subject": "a cathedral rose window",
+   "prompt": "a long-exposure photograph of a cathedral rose window reflected in still water",
+   "traj_minus_cache_ssim": 0.0724
+  },
+  {
+   "case": "prompt-10-seed-9401",
+   "box": [
+    131,
+    131
+   ],
+   "subject": "a vintage typewriter on a desk",
+   "prompt": "a cinematic photograph of a vintage typewriter on a desk under harsh midday sun",
+   "traj_minus_cache_ssim": 0.1136
+  },
+  {
+   "case": "prompt-11-seed-5101",
+   "box": [
+    131,
+    131
+   ],
+   "subject": "a wheelbarrow of cut flowers",
+   "prompt": "a macro photograph of a wheelbarrow of cut flowers against a plain grey backdrop",
+   "traj_minus_cache_ssim": 0.0705
+  }
+ ]
+}

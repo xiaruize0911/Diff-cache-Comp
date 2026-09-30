@@ -35,13 +35,15 @@ All paths are under [`dit-residual-delta/`](dit-residual-delta/).
 | Sec. 3.2 matched-data retraining | `m_k*/train_report.json` vs `ctrl_k*/train_report.json`; images in `cr/test_*` |
 | Sec. 4.3 Trajector training | `traj_k{1,2,4,7,14,28}/train_report.json` |
 | σ selection, Fig. 2 right | `cr/sweep_{a,b,c,d}/`, `cr/sigma.json` |
-| Table 1, Fig. 3 | `cr/test_table1/` (timed run), ImageReward in `cr/test_ir/` |
+| Table 1, Fig. 3 | `cr/test_table1/` (timed run), ImageReward in `cr/test_ir/`; Fig. 3 cases chosen by the rule in `cr/qual_cases.json` |
 | Table 2, Fig. 2 left | `cr/test_table1/`, `cr/test_ctrl1/`, `cr/test_perk/` |
 | Sec. 5.3 non-uniform schedule | `cr/frozen_test/` (`scripts/eval_frozen_schedule.py`) |
 
 Every Trajector run is initialised from the residual corrector of the same $K$
 (`init_checkpoint` in each `traj_k*/train_report.json`). Figures are drawn by
-[`paper/figs/make_icdm_figs.py`](paper/figs/make_icdm_figs.py). Run directories not
+[`paper/figs/make_icdm_figs.py`](paper/figs/make_icdm_figs.py) and Tables 1–2 are written
+by [`paper/figs/make_tables.py`](paper/figs/make_tables.py), both from `runs/cr/report.json`.
+Trained weights are not in git (`*.pt` is ignored). Run directories not
 listed here belong to the earlier study described below; the submitted version's
 evaluation runs (`same_steps/`, `ir_main/`, `traj_allk_eval/`, `traj_sigma_*/`) are
 kept for the record.
