@@ -73,7 +73,7 @@ ax.annotate(
 )
 for x in xs:
     ax.plot(x, 4.55, "o", color=EXACT, ms=7, zorder=3)
-ax.text(5.0, 5.35, r"exact path $x^\star$", ha="center", fontsize=8.2, color=EXACT)
+ax.text(5.0, 5.65, r"exact path $x^\star$", ha="center", fontsize=8.2, color=EXACT)
 ax.text(1.6, 5.05, r"$t$", ha="center", fontsize=7.4, color=EXACT)
 ax.text(5.0, 5.05, r"$t{+}1$", ha="center", fontsize=7.4, color=EXACT)
 ax.text(8.4, 5.05, r"$t{+}2$", ha="center", fontsize=7.4, color=EXACT)
@@ -118,5 +118,5 @@ roundbox(ax, 1.35, 0.55, 3.5, 1.7, r"$C_\theta$  on $h_t$", OURS, fs=8.4)
 ax.text(6.7, 1.4, "adjoint through\nthe cached rollout", ha="center", fontsize=7.2, color="#1a5276")
 ax.text(5.0, 0.18, "closed-loop  ·  cut at anchors", ha="center", fontsize=7.0, color=MUTED)
 
-fig.savefig("/workspace/paper/figs/icdm_method.pdf", bbox_inches="tight", pad_inches=0.03)
-print("written /workspace/paper/figs/icdm_method.pdf")
+fig.savefig(str(__import__("pathlib").Path(__file__).resolve().parent / "icdm_method.pdf"), bbox_inches="tight", pad_inches=0.03)
+print("written icdm_method.pdf")

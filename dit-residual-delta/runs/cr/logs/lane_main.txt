@@ -1,0 +1,803 @@
+=== collect m7/train (4 seeds) ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  33%|███▎      | 1/3 [00:00<00:00,  8.62it/s]Loading pipeline components...:  67%|██████▋   | 2/3 [00:00<00:00,  7.09it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00,  9.95it/s]
+{"shard": 0, "rollouts_done": 2, "seconds": 27.3, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 4, "seconds": 53.3, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 6, "seconds": 78.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 3, "rollouts_done": 8, "seconds": 104.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 4, "rollouts_done": 10, "seconds": 130.9, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 5, "rollouts_done": 12, "seconds": 157.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 6, "rollouts_done": 14, "seconds": 183.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 7, "rollouts_done": 16, "seconds": 210.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 8, "rollouts_done": 18, "seconds": 228.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 9, "rollouts_done": 20, "seconds": 257.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 10, "rollouts_done": 22, "seconds": 280.0, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 11, "rollouts_done": 24, "seconds": 303.2, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 12, "rollouts_done": 26, "seconds": 331.6, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 13, "rollouts_done": 28, "seconds": 359.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 14, "rollouts_done": 30, "seconds": 389.0, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 15, "rollouts_done": 32, "seconds": 416.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 16, "rollouts_done": 34, "seconds": 446.1, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 17, "rollouts_done": 36, "seconds": 475.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 18, "rollouts_done": 38, "seconds": 504.6, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 19, "rollouts_done": 40, "seconds": 533.9, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 20, "rollouts_done": 42, "seconds": 563.9, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 21, "rollouts_done": 44, "seconds": 595.0, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 22, "rollouts_done": 46, "seconds": 624.9, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 23, "rollouts_done": 48, "seconds": 654.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 24, "rollouts_done": 50, "seconds": 684.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 25, "rollouts_done": 52, "seconds": 714.6, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 26, "rollouts_done": 54, "seconds": 745.9, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 27, "rollouts_done": 56, "seconds": 774.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 28, "rollouts_done": 58, "seconds": 801.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 29, "rollouts_done": 60, "seconds": 817.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 30, "rollouts_done": 62, "seconds": 860.1, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 31, "rollouts_done": 64, "seconds": 887.4, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 32, "rollouts_done": 66, "seconds": 912.3, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 33, "rollouts_done": 68, "seconds": 938.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 34, "rollouts_done": 70, "seconds": 965.1, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 35, "rollouts_done": 72, "seconds": 990.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 36, "rollouts_done": 74, "seconds": 1015.4, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 37, "rollouts_done": 76, "seconds": 1041.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 38, "rollouts_done": 78, "seconds": 1064.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 39, "rollouts_done": 80, "seconds": 1082.9, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 40, "rollouts_done": 82, "seconds": 1108.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 41, "rollouts_done": 84, "seconds": 1127.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 42, "rollouts_done": 86, "seconds": 1145.2, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 43, "rollouts_done": 88, "seconds": 1173.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 44, "rollouts_done": 90, "seconds": 1203.3, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 45, "rollouts_done": 92, "seconds": 1232.1, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 46, "rollouts_done": 94, "seconds": 1262.1, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 47, "rollouts_done": 96, "seconds": 1290.9, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 48, "rollouts_done": 98, "seconds": 1320.0, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 49, "rollouts_done": 100, "seconds": 1348.9, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 50, "rollouts_done": 102, "seconds": 1377.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 51, "rollouts_done": 104, "seconds": 1408.3, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 52, "rollouts_done": 106, "seconds": 1437.4, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 53, "rollouts_done": 108, "seconds": 1466.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 54, "rollouts_done": 110, "seconds": 1495.4, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 55, "rollouts_done": 112, "seconds": 1524.2, "slots": 896, "tokens": 48, "dim": 1152}
+{"shards": 56, "output": "/workspace/scratch_banks/m7/train"}
+=== collect m7/val (4 seeds) ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 22.41it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 22.37it/s]
+{"shard": 0, "rollouts_done": 2, "seconds": 30.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 4, "seconds": 60.9, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 6, "seconds": 90.6, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 3, "rollouts_done": 8, "seconds": 120.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 4, "rollouts_done": 10, "seconds": 136.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 5, "rollouts_done": 12, "seconds": 163.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 6, "rollouts_done": 14, "seconds": 187.6, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 7, "rollouts_done": 16, "seconds": 212.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 8, "rollouts_done": 18, "seconds": 236.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 9, "rollouts_done": 20, "seconds": 271.2, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 10, "rollouts_done": 22, "seconds": 295.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 11, "rollouts_done": 24, "seconds": 319.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shards": 12, "output": "/workspace/scratch_banks/m7/val"}
+=== m_k7 budget 512000 ===
+{"train_slots": 50176, "val_slots": 10752, "tokens": 48, "rms": {"delta_h": 0.07003, "anchor_hidden": 3.21809, "anchor_residual": 4.1708, "delta_residual": 0.80608}}
+parameters: 18.96M
+{"step": 12800, "loss": 0.15011, "val_rel_mse": 0.10436, "seconds": 544}
+{"step": 25600, "loss": 0.0377, "val_rel_mse": 0.09384, "seconds": 996}
+{"step": 38400, "loss": 0.07945, "val_rel_mse": 0.08734, "seconds": 1485}
+{"step": 51200, "loss": 0.09982, "val_rel_mse": 0.08651, "seconds": 1990}
+{"step": 64000, "loss": 0.05687, "val_rel_mse": 0.08459, "seconds": 2501}
+{"step": 76800, "loss": 0.05043, "val_rel_mse": 0.08311, "seconds": 2808}
+{"step": 89600, "loss": 0.06199, "val_rel_mse": 0.08311, "seconds": 3112}
+{"step": 102400, "loss": 0.03603, "val_rel_mse": 0.08299, "seconds": 3417}
+{"step": 115200, "loss": 0.03891, "val_rel_mse": 0.08457, "seconds": 3721}
+{"step": 128000, "loss": 0.05583, "val_rel_mse": 0.08315, "seconds": 4025}
+{"step": 140800, "loss": 0.10498, "val_rel_mse": 0.08234, "seconds": 4331}
+{"step": 153600, "loss": 0.03752, "val_rel_mse": 0.08285, "seconds": 4636}
+{"step": 166400, "loss": 0.03917, "val_rel_mse": 0.08275, "seconds": 4940}
+{"step": 179200, "loss": 0.03602, "val_rel_mse": 0.08244, "seconds": 5245}
+{"step": 192000, "loss": 0.06391, "val_rel_mse": 0.08347, "seconds": 5549}
+{"step": 204800, "loss": 0.03332, "val_rel_mse": 0.08298, "seconds": 5853}
+{"step": 217600, "loss": 0.04141, "val_rel_mse": 0.0828, "seconds": 6168}
+{"step": 230400, "loss": 0.05337, "val_rel_mse": 0.08294, "seconds": 6473}
+{"step": 243200, "loss": 0.04384, "val_rel_mse": 0.08372, "seconds": 6779}
+{"step": 256000, "loss": 0.03194, "val_rel_mse": 0.08398, "seconds": 7085}
+{"step": 268800, "loss": 0.05051, "val_rel_mse": 0.0835, "seconds": 7392}
+{"step": 281600, "loss": 0.06566, "val_rel_mse": 0.08373, "seconds": 7699}
+{"step": 294400, "loss": 0.04952, "val_rel_mse": 0.08395, "seconds": 8008}
+{"step": 307200, "loss": 0.03126, "val_rel_mse": 0.0846, "seconds": 8322}
+{"step": 320000, "loss": 0.06058, "val_rel_mse": 0.08484, "seconds": 8628}
+{"step": 332800, "loss": 0.06797, "val_rel_mse": 0.08483, "seconds": 8939}
+{"step": 345600, "loss": 0.02546, "val_rel_mse": 0.08547, "seconds": 9247}
+{"step": 358400, "loss": 0.05194, "val_rel_mse": 0.08582, "seconds": 9557}
+{"step": 371200, "loss": 0.06364, "val_rel_mse": 0.08626, "seconds": 9865}
+{"step": 384000, "loss": 0.01957, "val_rel_mse": 0.08681, "seconds": 10174}
+{"step": 396800, "loss": 0.07794, "val_rel_mse": 0.08723, "seconds": 10483}
+{"step": 409600, "loss": 0.04001, "val_rel_mse": 0.08771, "seconds": 10791}
+{"step": 422400, "loss": 0.02946, "val_rel_mse": 0.08805, "seconds": 11096}
+{"step": 435200, "loss": 0.05903, "val_rel_mse": 0.08837, "seconds": 11411}
+{"step": 448000, "loss": 0.02123, "val_rel_mse": 0.08875, "seconds": 11724}
+{"step": 460800, "loss": 0.05495, "val_rel_mse": 0.08895, "seconds": 12038}
+{"step": 473600, "loss": 0.03263, "val_rel_mse": 0.08913, "seconds": 12351}
+{"step": 486400, "loss": 0.03386, "val_rel_mse": 0.08917, "seconds": 12665}
+{"step": 499200, "loss": 0.04173, "val_rel_mse": 0.0892, "seconds": 12977}
+{"step": 512000, "loss": 0.02546, "val_rel_mse": 0.0892, "seconds": 13288}
+{
+ "best_val_rel_mse": 0.08233842469266178,
+ "best_step": 140800
+}
+=== collect m4/train (7 seeds) ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 17.09it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 17.05it/s]
+{"shard": 0, "rollouts_done": 2, "seconds": 20.6, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 4, "seconds": 39.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 6, "seconds": 59.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 3, "rollouts_done": 8, "seconds": 78.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 4, "rollouts_done": 10, "seconds": 98.3, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 5, "rollouts_done": 12, "seconds": 133.6, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 6, "rollouts_done": 14, "seconds": 174.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 7, "rollouts_done": 16, "seconds": 216.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 8, "rollouts_done": 18, "seconds": 258.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 9, "rollouts_done": 20, "seconds": 300.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 10, "rollouts_done": 22, "seconds": 342.3, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 11, "rollouts_done": 24, "seconds": 385.2, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 12, "rollouts_done": 26, "seconds": 427.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 13, "rollouts_done": 28, "seconds": 468.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 14, "rollouts_done": 30, "seconds": 511.4, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 15, "rollouts_done": 32, "seconds": 551.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 16, "rollouts_done": 34, "seconds": 594.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 17, "rollouts_done": 36, "seconds": 637.3, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 18, "rollouts_done": 38, "seconds": 678.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 19, "rollouts_done": 40, "seconds": 720.0, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 20, "rollouts_done": 42, "seconds": 760.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 21, "rollouts_done": 44, "seconds": 803.1, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 22, "rollouts_done": 46, "seconds": 844.6, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 23, "rollouts_done": 48, "seconds": 886.4, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 24, "rollouts_done": 50, "seconds": 927.9, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 25, "rollouts_done": 52, "seconds": 969.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 26, "rollouts_done": 54, "seconds": 1012.4, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 27, "rollouts_done": 56, "seconds": 1053.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 28, "rollouts_done": 58, "seconds": 1096.0, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 29, "rollouts_done": 60, "seconds": 1138.2, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 30, "rollouts_done": 62, "seconds": 1181.2, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 31, "rollouts_done": 64, "seconds": 1223.9, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 32, "rollouts_done": 66, "seconds": 1264.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 33, "rollouts_done": 68, "seconds": 1306.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 34, "rollouts_done": 70, "seconds": 1348.3, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 35, "rollouts_done": 72, "seconds": 1389.4, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 36, "rollouts_done": 74, "seconds": 1431.2, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 37, "rollouts_done": 76, "seconds": 1472.9, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 38, "rollouts_done": 78, "seconds": 1514.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 39, "rollouts_done": 80, "seconds": 1555.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 40, "rollouts_done": 82, "seconds": 1596.4, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 41, "rollouts_done": 84, "seconds": 1638.0, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 42, "rollouts_done": 86, "seconds": 1679.9, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 43, "rollouts_done": 88, "seconds": 1721.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 44, "rollouts_done": 90, "seconds": 1764.1, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 45, "rollouts_done": 92, "seconds": 1806.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 46, "rollouts_done": 94, "seconds": 1849.2, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 47, "rollouts_done": 96, "seconds": 1892.6, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 48, "rollouts_done": 98, "seconds": 1934.1, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 49, "rollouts_done": 100, "seconds": 1975.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 50, "rollouts_done": 102, "seconds": 2017.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 51, "rollouts_done": 104, "seconds": 2060.0, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 52, "rollouts_done": 106, "seconds": 2100.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 53, "rollouts_done": 108, "seconds": 2141.9, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 54, "rollouts_done": 110, "seconds": 2183.3, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 55, "rollouts_done": 112, "seconds": 2224.6, "slots": 896, "tokens": 48, "dim": 1152}
+{"shards": 56, "output": "/workspace/scratch_banks/m4/train"}
+=== collect m4/val (7 seeds) ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  33%|███▎      | 1/3 [00:00<00:00,  6.53it/s]Loading pipeline components...:  67%|██████▋   | 2/3 [00:00<00:00,  6.30it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00,  9.14it/s]
+{"shard": 0, "rollouts_done": 2, "seconds": 41.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 4, "seconds": 84.0, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 6, "seconds": 126.4, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 3, "rollouts_done": 8, "seconds": 169.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 4, "rollouts_done": 10, "seconds": 212.6, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 5, "rollouts_done": 12, "seconds": 255.4, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 6, "rollouts_done": 14, "seconds": 297.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 7, "rollouts_done": 16, "seconds": 340.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 8, "rollouts_done": 18, "seconds": 382.1, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 9, "rollouts_done": 20, "seconds": 424.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 10, "rollouts_done": 22, "seconds": 465.0, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 11, "rollouts_done": 24, "seconds": 506.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shards": 12, "output": "/workspace/scratch_banks/m4/val"}
+=== m_k4 budget 512000 ===
+{"train_slots": 50176, "val_slots": 10752, "tokens": 48, "rms": {"delta_h": 0.0699, "anchor_hidden": 2.08735, "anchor_residual": 5.68813, "delta_residual": 1.23756}}
+parameters: 15.42M
+{"step": 12800, "loss": 0.12307, "val_rel_mse": 0.17593, "seconds": 427}
+{"step": 25600, "loss": 0.08477, "val_rel_mse": 0.16937, "seconds": 760}
+{"step": 38400, "loss": 0.08524, "val_rel_mse": 0.16491, "seconds": 1091}
+{"step": 51200, "loss": 0.17922, "val_rel_mse": 0.16415, "seconds": 1408}
+{"step": 64000, "loss": 0.05069, "val_rel_mse": 0.16511, "seconds": 1733}
+{"step": 76800, "loss": 0.12059, "val_rel_mse": 0.16399, "seconds": 2056}
+{"step": 89600, "loss": 0.09973, "val_rel_mse": 0.16385, "seconds": 2373}
+{"step": 102400, "loss": 0.11281, "val_rel_mse": 0.16512, "seconds": 2694}
+{"step": 115200, "loss": 0.15226, "val_rel_mse": 0.16475, "seconds": 3016}
+{"step": 128000, "loss": 0.02943, "val_rel_mse": 0.16492, "seconds": 3345}
+{"step": 140800, "loss": 0.08024, "val_rel_mse": 0.16412, "seconds": 3661}
+{"step": 153600, "loss": 0.06389, "val_rel_mse": 0.16523, "seconds": 3976}
+{"step": 166400, "loss": 0.08556, "val_rel_mse": 0.16507, "seconds": 4292}
+{"step": 179200, "loss": 0.03062, "val_rel_mse": 0.16763, "seconds": 4611}
+{"step": 192000, "loss": 0.06932, "val_rel_mse": 0.16647, "seconds": 4925}
+{"step": 204800, "loss": 0.04464, "val_rel_mse": 0.16667, "seconds": 5244}
+{"step": 217600, "loss": 0.08782, "val_rel_mse": 0.16753, "seconds": 5562}
+{"step": 230400, "loss": 0.30105, "val_rel_mse": 0.1681, "seconds": 5875}
+{"step": 243200, "loss": 0.13169, "val_rel_mse": 0.16816, "seconds": 6186}
+{"step": 256000, "loss": 0.23691, "val_rel_mse": 0.17011, "seconds": 6502}
+{"step": 268800, "loss": 0.03429, "val_rel_mse": 0.17003, "seconds": 6812}
+{"step": 281600, "loss": 0.06812, "val_rel_mse": 0.17092, "seconds": 7123}
+{"step": 294400, "loss": 0.14412, "val_rel_mse": 0.17142, "seconds": 7430}
+{"step": 307200, "loss": 0.06617, "val_rel_mse": 0.1728, "seconds": 7745}
+{"step": 320000, "loss": 0.06394, "val_rel_mse": 0.17345, "seconds": 8057}
+{"step": 332800, "loss": 0.04347, "val_rel_mse": 0.17445, "seconds": 8365}
+{"step": 345600, "loss": 0.11023, "val_rel_mse": 0.17547, "seconds": 8670}
+{"step": 358400, "loss": 0.03984, "val_rel_mse": 0.17606, "seconds": 8982}
+{"step": 371200, "loss": 0.0985, "val_rel_mse": 0.17765, "seconds": 9295}
+{"step": 384000, "loss": 0.0762, "val_rel_mse": 0.17875, "seconds": 9606}
+{"step": 396800, "loss": 0.06084, "val_rel_mse": 0.17974, "seconds": 9915}
+{"step": 409600, "loss": 0.0572, "val_rel_mse": 0.18068, "seconds": 10227}
+{"step": 422400, "loss": 0.0365, "val_rel_mse": 0.18186, "seconds": 10535}
+{"step": 435200, "loss": 0.07018, "val_rel_mse": 0.18272, "seconds": 10843}
+{"step": 448000, "loss": 0.13421, "val_rel_mse": 0.18339, "seconds": 11153}
+{"step": 460800, "loss": 0.07425, "val_rel_mse": 0.184, "seconds": 11461}
+{"step": 473600, "loss": 0.0623, "val_rel_mse": 0.18441, "seconds": 11770}
+{"step": 486400, "loss": 0.12734, "val_rel_mse": 0.18464, "seconds": 12081}
+{"step": 499200, "loss": 0.1202, "val_rel_mse": 0.18465, "seconds": 12393}
+{"step": 512000, "loss": 0.09123, "val_rel_mse": 0.18466, "seconds": 12708}
+{
+ "best_val_rel_mse": 0.16385444111866154,
+ "best_step": 89600
+}
+=== collect m1/train (28 seeds) ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  33%|███▎      | 1/3 [00:00<00:00,  9.40it/s]Loading pipeline components...:  67%|██████▋   | 2/3 [00:00<00:00,  7.45it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 11.13it/s]
+{"shard": 0, "rollouts_done": 1, "seconds": 33.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 2, "seconds": 90.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 3, "seconds": 156.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 3, "rollouts_done": 4, "seconds": 222.8, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 4, "rollouts_done": 5, "seconds": 288.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 5, "rollouts_done": 6, "seconds": 354.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 6, "rollouts_done": 7, "seconds": 420.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 7, "rollouts_done": 8, "seconds": 487.8, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 8, "rollouts_done": 9, "seconds": 553.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 9, "rollouts_done": 10, "seconds": 619.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 10, "rollouts_done": 11, "seconds": 686.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 11, "rollouts_done": 12, "seconds": 752.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 12, "rollouts_done": 13, "seconds": 819.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 13, "rollouts_done": 14, "seconds": 886.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 14, "rollouts_done": 15, "seconds": 952.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 15, "rollouts_done": 16, "seconds": 1019.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 16, "rollouts_done": 17, "seconds": 1085.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 17, "rollouts_done": 18, "seconds": 1152.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 18, "rollouts_done": 19, "seconds": 1218.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 19, "rollouts_done": 20, "seconds": 1285.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 20, "rollouts_done": 21, "seconds": 1351.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 21, "rollouts_done": 22, "seconds": 1417.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 22, "rollouts_done": 23, "seconds": 1484.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 23, "rollouts_done": 24, "seconds": 1550.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 24, "rollouts_done": 25, "seconds": 1616.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 25, "rollouts_done": 26, "seconds": 1682.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 26, "rollouts_done": 27, "seconds": 1748.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 27, "rollouts_done": 28, "seconds": 1814.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 28, "rollouts_done": 29, "seconds": 1882.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 29, "rollouts_done": 30, "seconds": 1949.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 30, "rollouts_done": 31, "seconds": 2016.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 31, "rollouts_done": 32, "seconds": 2083.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 32, "rollouts_done": 33, "seconds": 2150.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 33, "rollouts_done": 34, "seconds": 2217.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 34, "rollouts_done": 35, "seconds": 2284.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 35, "rollouts_done": 36, "seconds": 2351.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 36, "rollouts_done": 37, "seconds": 2418.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 37, "rollouts_done": 38, "seconds": 2484.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 38, "rollouts_done": 39, "seconds": 2551.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 39, "rollouts_done": 40, "seconds": 2609.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 40, "rollouts_done": 41, "seconds": 2639.8, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 41, "rollouts_done": 42, "seconds": 2670.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 42, "rollouts_done": 43, "seconds": 2701.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 43, "rollouts_done": 44, "seconds": 2733.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 44, "rollouts_done": 45, "seconds": 2764.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 45, "rollouts_done": 46, "seconds": 2795.8, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 46, "rollouts_done": 47, "seconds": 2827.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 47, "rollouts_done": 48, "seconds": 2858.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 48, "rollouts_done": 49, "seconds": 2889.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 49, "rollouts_done": 50, "seconds": 2920.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 50, "rollouts_done": 51, "seconds": 2951.8, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 51, "rollouts_done": 52, "seconds": 2983.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 52, "rollouts_done": 53, "seconds": 3014.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 53, "rollouts_done": 54, "seconds": 3045.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 54, "rollouts_done": 55, "seconds": 3076.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 55, "rollouts_done": 56, "seconds": 3108.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 56, "rollouts_done": 57, "seconds": 3139.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 57, "rollouts_done": 58, "seconds": 3170.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 58, "rollouts_done": 59, "seconds": 3201.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 59, "rollouts_done": 60, "seconds": 3232.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 60, "rollouts_done": 61, "seconds": 3264.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 61, "rollouts_done": 62, "seconds": 3295.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 62, "rollouts_done": 63, "seconds": 3327.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 63, "rollouts_done": 64, "seconds": 3358.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 64, "rollouts_done": 65, "seconds": 3390.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 65, "rollouts_done": 66, "seconds": 3421.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 66, "rollouts_done": 67, "seconds": 3452.8, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 67, "rollouts_done": 68, "seconds": 3483.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 68, "rollouts_done": 69, "seconds": 3514.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 69, "rollouts_done": 70, "seconds": 3545.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 70, "rollouts_done": 71, "seconds": 3577.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 71, "rollouts_done": 72, "seconds": 3607.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 72, "rollouts_done": 73, "seconds": 3638.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 73, "rollouts_done": 74, "seconds": 3669.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 74, "rollouts_done": 75, "seconds": 3700.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 75, "rollouts_done": 76, "seconds": 3731.8, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 76, "rollouts_done": 77, "seconds": 3763.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 77, "rollouts_done": 78, "seconds": 3794.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 78, "rollouts_done": 79, "seconds": 3825.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 79, "rollouts_done": 80, "seconds": 3856.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 80, "rollouts_done": 81, "seconds": 3887.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 81, "rollouts_done": 82, "seconds": 3918.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 82, "rollouts_done": 83, "seconds": 3949.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 83, "rollouts_done": 84, "seconds": 3981.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 84, "rollouts_done": 85, "seconds": 4012.8, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 85, "rollouts_done": 86, "seconds": 4044.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 86, "rollouts_done": 87, "seconds": 4075.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 87, "rollouts_done": 88, "seconds": 4106.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 88, "rollouts_done": 89, "seconds": 4138.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 89, "rollouts_done": 90, "seconds": 4170.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 90, "rollouts_done": 91, "seconds": 4200.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 91, "rollouts_done": 92, "seconds": 4231.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 92, "rollouts_done": 93, "seconds": 4262.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 93, "rollouts_done": 94, "seconds": 4292.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 94, "rollouts_done": 95, "seconds": 4323.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 95, "rollouts_done": 96, "seconds": 4354.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 96, "rollouts_done": 97, "seconds": 4385.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 97, "rollouts_done": 98, "seconds": 4416.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 98, "rollouts_done": 99, "seconds": 4447.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 99, "rollouts_done": 100, "seconds": 4478.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 100, "rollouts_done": 101, "seconds": 4508.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 101, "rollouts_done": 102, "seconds": 4539.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 102, "rollouts_done": 103, "seconds": 4571.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 103, "rollouts_done": 104, "seconds": 4601.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 104, "rollouts_done": 105, "seconds": 4632.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 105, "rollouts_done": 106, "seconds": 4662.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 106, "rollouts_done": 107, "seconds": 4692.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 107, "rollouts_done": 108, "seconds": 4723.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 108, "rollouts_done": 109, "seconds": 4755.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 109, "rollouts_done": 110, "seconds": 4786.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 110, "rollouts_done": 111, "seconds": 4817.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 111, "rollouts_done": 112, "seconds": 4849.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shards": 112, "output": "/workspace/scratch_banks/m1/train"}
+=== collect m1/val (28 seeds) ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  33%|███▎      | 1/3 [00:00<00:00,  3.40it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00,  9.02it/s]
+{"shard": 0, "rollouts_done": 1, "seconds": 32.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 2, "seconds": 63.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 3, "seconds": 94.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 3, "rollouts_done": 4, "seconds": 126.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 4, "rollouts_done": 5, "seconds": 158.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 5, "rollouts_done": 6, "seconds": 190.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 6, "rollouts_done": 7, "seconds": 221.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 7, "rollouts_done": 8, "seconds": 253.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 8, "rollouts_done": 9, "seconds": 284.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 9, "rollouts_done": 10, "seconds": 314.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 10, "rollouts_done": 11, "seconds": 345.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 11, "rollouts_done": 12, "seconds": 376.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 12, "rollouts_done": 13, "seconds": 407.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 13, "rollouts_done": 14, "seconds": 438.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 14, "rollouts_done": 15, "seconds": 469.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 15, "rollouts_done": 16, "seconds": 501.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 16, "rollouts_done": 17, "seconds": 532.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 17, "rollouts_done": 18, "seconds": 563.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 18, "rollouts_done": 19, "seconds": 594.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 19, "rollouts_done": 20, "seconds": 626.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 20, "rollouts_done": 21, "seconds": 658.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 21, "rollouts_done": 22, "seconds": 690.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 22, "rollouts_done": 23, "seconds": 722.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 23, "rollouts_done": 24, "seconds": 754.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shards": 24, "output": "/workspace/scratch_banks/m1/val"}
+=== m_k1 budget 32000 ===
+{"train_slots": 50176, "val_slots": 10752, "tokens": 48, "rms": {"delta_h": 0.06993, "anchor_hidden": 0.75711, "anchor_residual": 12.33725, "delta_residual": 2.30666}}
+parameters: 11.88M
+{"step": 800, "loss": 0.38828, "val_rel_mse": 0.40152, "seconds": 21}
+{"step": 1600, "loss": 0.41664, "val_rel_mse": 0.35539, "seconds": 41}
+{"step": 2400, "loss": 0.30464, "val_rel_mse": 0.33909, "seconds": 62}
+{"step": 3200, "loss": 0.29129, "val_rel_mse": 0.32685, "seconds": 82}
+{"step": 4000, "loss": 0.38093, "val_rel_mse": 0.32052, "seconds": 102}
+{"step": 4800, "loss": 0.25332, "val_rel_mse": 0.31493, "seconds": 123}
+{"step": 5600, "loss": 0.33939, "val_rel_mse": 0.3111, "seconds": 143}
+{"step": 6400, "loss": 0.24731, "val_rel_mse": 0.30843, "seconds": 163}
+{"step": 7200, "loss": 0.38713, "val_rel_mse": 0.30435, "seconds": 182}
+{"step": 8000, "loss": 0.33796, "val_rel_mse": 0.30377, "seconds": 203}
+{"step": 8800, "loss": 0.32312, "val_rel_mse": 0.30226, "seconds": 224}
+{"step": 9600, "loss": 0.33296, "val_rel_mse": 0.29871, "seconds": 244}
+{"step": 10400, "loss": 0.29662, "val_rel_mse": 0.29845, "seconds": 264}
+{"step": 11200, "loss": 0.28955, "val_rel_mse": 0.29688, "seconds": 285}
+{"step": 12000, "loss": 0.35949, "val_rel_mse": 0.29482, "seconds": 305}
+{"step": 12800, "loss": 0.33797, "val_rel_mse": 0.2937, "seconds": 325}
+{"step": 13600, "loss": 0.2768, "val_rel_mse": 0.29363, "seconds": 346}
+{"step": 14400, "loss": 0.23423, "val_rel_mse": 0.29216, "seconds": 367}
+{"step": 15200, "loss": 0.34902, "val_rel_mse": 0.29137, "seconds": 388}
+{"step": 16000, "loss": 0.24427, "val_rel_mse": 0.29049, "seconds": 409}
+{"step": 16800, "loss": 0.25014, "val_rel_mse": 0.29035, "seconds": 430}
+{"step": 17600, "loss": 0.29884, "val_rel_mse": 0.28929, "seconds": 451}
+{"step": 18400, "loss": 0.30047, "val_rel_mse": 0.28858, "seconds": 472}
+{"step": 19200, "loss": 0.28853, "val_rel_mse": 0.2878, "seconds": 491}
+{"step": 20000, "loss": 0.30372, "val_rel_mse": 0.28783, "seconds": 510}
+{"step": 20800, "loss": 0.21599, "val_rel_mse": 0.28676, "seconds": 531}
+{"step": 21600, "loss": 0.27517, "val_rel_mse": 0.2868, "seconds": 551}
+{"step": 22400, "loss": 0.34008, "val_rel_mse": 0.28623, "seconds": 570}
+{"step": 23200, "loss": 0.28387, "val_rel_mse": 0.28592, "seconds": 591}
+{"step": 24000, "loss": 0.29053, "val_rel_mse": 0.28554, "seconds": 611}
+{"step": 24800, "loss": 0.28397, "val_rel_mse": 0.28523, "seconds": 630}
+{"step": 25600, "loss": 0.31205, "val_rel_mse": 0.28492, "seconds": 651}
+{"step": 26400, "loss": 0.25842, "val_rel_mse": 0.28454, "seconds": 671}
+{"step": 27200, "loss": 0.27553, "val_rel_mse": 0.28451, "seconds": 691}
+{"step": 28000, "loss": 0.24287, "val_rel_mse": 0.28426, "seconds": 712}
+{"step": 28800, "loss": 0.27569, "val_rel_mse": 0.28422, "seconds": 731}
+{"step": 29600, "loss": 0.32097, "val_rel_mse": 0.28408, "seconds": 752}
+{"step": 30400, "loss": 0.22458, "val_rel_mse": 0.284, "seconds": 772}
+{"step": 31200, "loss": 0.35031, "val_rel_mse": 0.28398, "seconds": 792}
+{"step": 32000, "loss": 0.27338, "val_rel_mse": 0.28396, "seconds": 812}
+{
+ "best_val_rel_mse": 0.2839550182582865,
+ "best_step": 32000
+}
+=== bc_k1 ===
+{"train_slots": 50176, "val_slots": 10752, "dim": 1152}
+parameters: 0.30M
+{"step": 1000, "loss": 2.557646, "val_rel_mse": 0.481, "seconds": 13}
+{"step": 2000, "loss": 2.40555, "val_rel_mse": 0.4793, "seconds": 26}
+{"step": 3000, "loss": 3.061538, "val_rel_mse": 0.47914, "seconds": 39}
+{"step": 4000, "loss": 3.122512, "val_rel_mse": 0.47891, "seconds": 53}
+{"step": 5000, "loss": 2.719973, "val_rel_mse": 0.47849, "seconds": 66}
+{"step": 6000, "loss": 2.406368, "val_rel_mse": 0.47787, "seconds": 78}
+{"step": 7000, "loss": 2.460988, "val_rel_mse": 0.47815, "seconds": 92}
+{"step": 8000, "loss": 2.969456, "val_rel_mse": 0.47749, "seconds": 105}
+{"best_rel_mse": 0.47749, "best_step": 8000}
+=== collect m2/train (14 seeds) ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  67%|██████▋   | 2/3 [00:00<00:00,  7.65it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 11.07it/s]
+{"shard": 0, "rollouts_done": 1, "seconds": 36.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 2, "seconds": 73.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 3, "seconds": 110.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 3, "rollouts_done": 4, "seconds": 147.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 4, "rollouts_done": 5, "seconds": 184.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 5, "rollouts_done": 6, "seconds": 220.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 6, "rollouts_done": 7, "seconds": 257.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 7, "rollouts_done": 8, "seconds": 293.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 8, "rollouts_done": 9, "seconds": 330.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 9, "rollouts_done": 10, "seconds": 367.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 10, "rollouts_done": 11, "seconds": 403.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 11, "rollouts_done": 12, "seconds": 440.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 12, "rollouts_done": 13, "seconds": 476.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 13, "rollouts_done": 14, "seconds": 513.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 14, "rollouts_done": 15, "seconds": 549.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 15, "rollouts_done": 16, "seconds": 586.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 16, "rollouts_done": 17, "seconds": 622.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 17, "rollouts_done": 18, "seconds": 659.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 18, "rollouts_done": 19, "seconds": 696.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 19, "rollouts_done": 20, "seconds": 732.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 20, "rollouts_done": 21, "seconds": 769.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 21, "rollouts_done": 22, "seconds": 805.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 22, "rollouts_done": 23, "seconds": 841.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 23, "rollouts_done": 24, "seconds": 877.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 24, "rollouts_done": 25, "seconds": 914.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 25, "rollouts_done": 26, "seconds": 950.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 26, "rollouts_done": 27, "seconds": 987.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 27, "rollouts_done": 28, "seconds": 1023.8, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 28, "rollouts_done": 29, "seconds": 1059.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 29, "rollouts_done": 30, "seconds": 1096.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 30, "rollouts_done": 31, "seconds": 1132.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 31, "rollouts_done": 32, "seconds": 1167.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 32, "rollouts_done": 33, "seconds": 1185.8, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 33, "rollouts_done": 34, "seconds": 1245.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 34, "rollouts_done": 35, "seconds": 1314.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 35, "rollouts_done": 36, "seconds": 1384.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 36, "rollouts_done": 37, "seconds": 1455.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 37, "rollouts_done": 38, "seconds": 1524.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 38, "rollouts_done": 39, "seconds": 1593.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 39, "rollouts_done": 40, "seconds": 1663.8, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 40, "rollouts_done": 41, "seconds": 1733.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 41, "rollouts_done": 42, "seconds": 1802.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 42, "rollouts_done": 43, "seconds": 1873.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 43, "rollouts_done": 44, "seconds": 1944.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 44, "rollouts_done": 45, "seconds": 2014.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 45, "rollouts_done": 46, "seconds": 2085.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 46, "rollouts_done": 47, "seconds": 2155.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 47, "rollouts_done": 48, "seconds": 2225.8, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 48, "rollouts_done": 49, "seconds": 2294.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 49, "rollouts_done": 50, "seconds": 2366.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 50, "rollouts_done": 51, "seconds": 2436.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 51, "rollouts_done": 52, "seconds": 2506.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 52, "rollouts_done": 53, "seconds": 2576.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 53, "rollouts_done": 54, "seconds": 2646.8, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 54, "rollouts_done": 55, "seconds": 2714.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 55, "rollouts_done": 56, "seconds": 2783.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 56, "rollouts_done": 57, "seconds": 2853.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 57, "rollouts_done": 58, "seconds": 2923.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 58, "rollouts_done": 59, "seconds": 2992.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 59, "rollouts_done": 60, "seconds": 3062.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 60, "rollouts_done": 61, "seconds": 3131.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 61, "rollouts_done": 62, "seconds": 3201.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 62, "rollouts_done": 63, "seconds": 3270.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 63, "rollouts_done": 64, "seconds": 3340.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 64, "rollouts_done": 65, "seconds": 3410.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 65, "rollouts_done": 66, "seconds": 3480.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 66, "rollouts_done": 67, "seconds": 3551.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 67, "rollouts_done": 68, "seconds": 3621.8, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 68, "rollouts_done": 69, "seconds": 3692.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 69, "rollouts_done": 70, "seconds": 3763.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 70, "rollouts_done": 71, "seconds": 3832.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 71, "rollouts_done": 72, "seconds": 3902.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 72, "rollouts_done": 73, "seconds": 3973.8, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 73, "rollouts_done": 74, "seconds": 4043.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 74, "rollouts_done": 75, "seconds": 4113.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 75, "rollouts_done": 76, "seconds": 4182.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 76, "rollouts_done": 77, "seconds": 4252.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 77, "rollouts_done": 78, "seconds": 4321.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 78, "rollouts_done": 79, "seconds": 4392.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 79, "rollouts_done": 80, "seconds": 4464.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 80, "rollouts_done": 81, "seconds": 4533.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 81, "rollouts_done": 82, "seconds": 4604.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 82, "rollouts_done": 83, "seconds": 4675.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 83, "rollouts_done": 84, "seconds": 4745.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 84, "rollouts_done": 85, "seconds": 4814.8, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 85, "rollouts_done": 86, "seconds": 4884.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 86, "rollouts_done": 87, "seconds": 4954.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 87, "rollouts_done": 88, "seconds": 5024.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 88, "rollouts_done": 89, "seconds": 5095.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 89, "rollouts_done": 90, "seconds": 5165.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 90, "rollouts_done": 91, "seconds": 5235.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 91, "rollouts_done": 92, "seconds": 5305.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 92, "rollouts_done": 93, "seconds": 5369.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 93, "rollouts_done": 94, "seconds": 5423.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 94, "rollouts_done": 95, "seconds": 5475.8, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 95, "rollouts_done": 96, "seconds": 5528.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 96, "rollouts_done": 97, "seconds": 5581.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 97, "rollouts_done": 98, "seconds": 5634.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 98, "rollouts_done": 99, "seconds": 5685.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 99, "rollouts_done": 100, "seconds": 5737.8, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 100, "rollouts_done": 101, "seconds": 5790.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 101, "rollouts_done": 102, "seconds": 5843.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 102, "rollouts_done": 103, "seconds": 5894.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 103, "rollouts_done": 104, "seconds": 5947.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 104, "rollouts_done": 105, "seconds": 5999.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 105, "rollouts_done": 106, "seconds": 6050.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 106, "rollouts_done": 107, "seconds": 6103.8, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 107, "rollouts_done": 108, "seconds": 6156.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 108, "rollouts_done": 109, "seconds": 6209.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 109, "rollouts_done": 110, "seconds": 6261.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 110, "rollouts_done": 111, "seconds": 6314.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 111, "rollouts_done": 112, "seconds": 6367.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shards": 112, "output": "/workspace/scratch_banks/m2/train"}
+=== collect m2/val (14 seeds) ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  33%|███▎      | 1/3 [00:00<00:00,  5.54it/s]Loading pipeline components...:  67%|██████▋   | 2/3 [00:00<00:00,  5.86it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00,  8.41it/s]
+{"shard": 0, "rollouts_done": 1, "seconds": 54.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 2, "seconds": 107.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 3, "seconds": 160.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 3, "rollouts_done": 4, "seconds": 213.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 4, "rollouts_done": 5, "seconds": 266.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 5, "rollouts_done": 6, "seconds": 320.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 6, "rollouts_done": 7, "seconds": 372.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 7, "rollouts_done": 8, "seconds": 425.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 8, "rollouts_done": 9, "seconds": 477.4, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 9, "rollouts_done": 10, "seconds": 530.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 10, "rollouts_done": 11, "seconds": 583.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 11, "rollouts_done": 12, "seconds": 636.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 12, "rollouts_done": 13, "seconds": 688.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 13, "rollouts_done": 14, "seconds": 741.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 14, "rollouts_done": 15, "seconds": 794.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 15, "rollouts_done": 16, "seconds": 846.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 16, "rollouts_done": 17, "seconds": 899.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 17, "rollouts_done": 18, "seconds": 951.8, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 18, "rollouts_done": 19, "seconds": 1004.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 19, "rollouts_done": 20, "seconds": 1056.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 20, "rollouts_done": 21, "seconds": 1109.5, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 21, "rollouts_done": 22, "seconds": 1160.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 22, "rollouts_done": 23, "seconds": 1213.1, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 23, "rollouts_done": 24, "seconds": 1265.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shards": 24, "output": "/workspace/scratch_banks/m2/val"}
+=== m_k2 budget 128000 ===
+{"train_slots": 50176, "val_slots": 10752, "tokens": 48, "rms": {"delta_h": 0.06995, "anchor_hidden": 1.35622, "anchor_residual": 8.75746, "delta_residual": 1.72774}}
+parameters: 13.06M
+{"step": 3200, "loss": 0.24299, "val_rel_mse": 0.26111, "seconds": 120}
+{"step": 6400, "loss": 0.10614, "val_rel_mse": 0.23936, "seconds": 240}
+{"step": 9600, "loss": 0.29755, "val_rel_mse": 0.23015, "seconds": 361}
+{"step": 12800, "loss": 0.06088, "val_rel_mse": 0.22568, "seconds": 481}
+{"step": 16000, "loss": 0.16695, "val_rel_mse": 0.22199, "seconds": 601}
+{"step": 19200, "loss": 0.33865, "val_rel_mse": 0.21969, "seconds": 721}
+{"step": 22400, "loss": 0.2514, "val_rel_mse": 0.21812, "seconds": 841}
+{"step": 25600, "loss": 0.28065, "val_rel_mse": 0.21721, "seconds": 961}
+{"step": 28800, "loss": 0.12056, "val_rel_mse": 0.21628, "seconds": 1081}
+{"step": 32000, "loss": 0.13192, "val_rel_mse": 0.21536, "seconds": 1201}
+{"step": 35200, "loss": 0.16204, "val_rel_mse": 0.21521, "seconds": 1320}
+{"step": 38400, "loss": 0.12198, "val_rel_mse": 0.21445, "seconds": 1440}
+{"step": 41600, "loss": 0.15673, "val_rel_mse": 0.2137, "seconds": 1560}
+{"step": 44800, "loss": 0.24284, "val_rel_mse": 0.21374, "seconds": 1679}
+{"step": 48000, "loss": 0.1858, "val_rel_mse": 0.21362, "seconds": 1798}
+{"step": 51200, "loss": 0.20019, "val_rel_mse": 0.21341, "seconds": 1918}
+{"step": 54400, "loss": 0.18193, "val_rel_mse": 0.21363, "seconds": 2037}
+{"step": 57600, "loss": 0.20528, "val_rel_mse": 0.21316, "seconds": 2115}
+{"step": 60800, "loss": 0.24739, "val_rel_mse": 0.21286, "seconds": 2193}
+{"step": 64000, "loss": 0.0957, "val_rel_mse": 0.2138, "seconds": 2272}
+{"step": 67200, "loss": 0.15474, "val_rel_mse": 0.21316, "seconds": 2351}
+{"step": 70400, "loss": 0.16846, "val_rel_mse": 0.21308, "seconds": 2431}
+{"step": 73600, "loss": 0.21661, "val_rel_mse": 0.2135, "seconds": 2510}
+{"step": 76800, "loss": 0.21639, "val_rel_mse": 0.21282, "seconds": 2588}
+{"step": 80000, "loss": 0.09374, "val_rel_mse": 0.21389, "seconds": 2665}
+{"step": 83200, "loss": 0.14713, "val_rel_mse": 0.21376, "seconds": 2745}
+{"step": 86400, "loss": 0.19257, "val_rel_mse": 0.2141, "seconds": 2826}
+{"step": 89600, "loss": 0.09575, "val_rel_mse": 0.21482, "seconds": 2904}
+{"step": 92800, "loss": 0.18524, "val_rel_mse": 0.21484, "seconds": 2982}
+{"step": 96000, "loss": 0.16255, "val_rel_mse": 0.21526, "seconds": 3061}
+{"step": 99200, "loss": 0.18402, "val_rel_mse": 0.21549, "seconds": 3139}
+{"step": 102400, "loss": 0.1704, "val_rel_mse": 0.21545, "seconds": 3217}
+{"step": 105600, "loss": 0.0921, "val_rel_mse": 0.21627, "seconds": 3295}
+{"step": 108800, "loss": 0.1221, "val_rel_mse": 0.21613, "seconds": 3372}
+{"step": 112000, "loss": 0.06656, "val_rel_mse": 0.21644, "seconds": 3452}
+{"step": 115200, "loss": 0.15237, "val_rel_mse": 0.21651, "seconds": 3530}
+{"step": 118400, "loss": 0.16683, "val_rel_mse": 0.21653, "seconds": 3607}
+{"step": 121600, "loss": 0.10238, "val_rel_mse": 0.21657, "seconds": 3686}
+{"step": 124800, "loss": 0.17796, "val_rel_mse": 0.21661, "seconds": 3763}
+{"step": 128000, "loss": 0.07002, "val_rel_mse": 0.21658, "seconds": 3842}
+{
+ "best_val_rel_mse": 0.21282129564940677,
+ "best_step": 76800
+}
+=== collect m14/train (2 seeds) ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 16.12it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 16.06it/s]
+{"shard": 0, "rollouts_done": 4, "seconds": 17.4, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 8, "seconds": 34.0, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 12, "seconds": 50.9, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 3, "rollouts_done": 16, "seconds": 69.2, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 4, "rollouts_done": 20, "seconds": 107.3, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 5, "rollouts_done": 24, "seconds": 144.0, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 6, "rollouts_done": 28, "seconds": 181.2, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 7, "rollouts_done": 32, "seconds": 220.3, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 8, "rollouts_done": 36, "seconds": 259.2, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 9, "rollouts_done": 40, "seconds": 298.1, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 10, "rollouts_done": 44, "seconds": 338.7, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 11, "rollouts_done": 48, "seconds": 378.9, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 12, "rollouts_done": 52, "seconds": 419.2, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 13, "rollouts_done": 56, "seconds": 457.8, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 14, "rollouts_done": 60, "seconds": 496.8, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 15, "rollouts_done": 64, "seconds": 533.9, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 16, "rollouts_done": 68, "seconds": 572.5, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 17, "rollouts_done": 72, "seconds": 609.8, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 18, "rollouts_done": 76, "seconds": 648.9, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 19, "rollouts_done": 80, "seconds": 686.4, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 20, "rollouts_done": 84, "seconds": 724.0, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 21, "rollouts_done": 88, "seconds": 763.5, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 22, "rollouts_done": 92, "seconds": 803.1, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 23, "rollouts_done": 96, "seconds": 841.8, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 24, "rollouts_done": 100, "seconds": 881.6, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 25, "rollouts_done": 104, "seconds": 920.8, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 26, "rollouts_done": 108, "seconds": 960.5, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 27, "rollouts_done": 112, "seconds": 1000.0, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shards": 28, "output": "/workspace/scratch_banks/m14/train"}
+=== collect m14/val (2 seeds) ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  67%|██████▋   | 2/3 [00:00<00:00,  5.87it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00,  7.39it/s]
+{"shard": 0, "rollouts_done": 4, "seconds": 39.9, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 8, "seconds": 78.9, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 12, "seconds": 117.4, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 3, "rollouts_done": 16, "seconds": 158.5, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 4, "rollouts_done": 20, "seconds": 195.8, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shard": 5, "rollouts_done": 24, "seconds": 235.5, "slots": 1792, "tokens": 48, "dim": 1152}
+{"shards": 6, "output": "/workspace/scratch_banks/m14/val"}
+=== m_k14 budget 256000 ===
+{"train_slots": 50176, "val_slots": 10752, "tokens": 48, "rms": {"delta_h": 0.06996, "anchor_hidden": 3.75346, "anchor_residual": 2.94322, "delta_residual": 0.50394}}
+parameters: 27.22M
+{"step": 6400, "loss": 0.03914, "val_rel_mse": 0.07534, "seconds": 180}
+{"step": 12800, "loss": 0.07406, "val_rel_mse": 0.06125, "seconds": 336}
+{"step": 19200, "loss": 0.04633, "val_rel_mse": 0.05561, "seconds": 493}
+{"step": 25600, "loss": 0.04878, "val_rel_mse": 0.05227, "seconds": 649}
+{"step": 32000, "loss": 0.0425, "val_rel_mse": 0.05072, "seconds": 805}
+{"step": 38400, "loss": 0.0421, "val_rel_mse": 0.05026, "seconds": 958}
+{"step": 44800, "loss": 0.02719, "val_rel_mse": 0.04858, "seconds": 1116}
+{"step": 51200, "loss": 0.05915, "val_rel_mse": 0.04866, "seconds": 1271}
+{"step": 57600, "loss": 0.02653, "val_rel_mse": 0.04708, "seconds": 1427}
+{"step": 64000, "loss": 0.02976, "val_rel_mse": 0.04689, "seconds": 1581}
+{"step": 70400, "loss": 0.03543, "val_rel_mse": 0.04696, "seconds": 1734}
+{"step": 76800, "loss": 0.05775, "val_rel_mse": 0.04568, "seconds": 1889}
+{"step": 83200, "loss": 0.04629, "val_rel_mse": 0.04593, "seconds": 2046}
+{"step": 89600, "loss": 0.04838, "val_rel_mse": 0.04575, "seconds": 2204}
+{"step": 96000, "loss": 0.01256, "val_rel_mse": 0.04522, "seconds": 2359}
+{"step": 102400, "loss": 0.01722, "val_rel_mse": 0.04486, "seconds": 2517}
+{"step": 108800, "loss": 0.02788, "val_rel_mse": 0.04499, "seconds": 2673}
+{"step": 115200, "loss": 0.02573, "val_rel_mse": 0.04467, "seconds": 2828}
+{"step": 121600, "loss": 0.03405, "val_rel_mse": 0.04441, "seconds": 2985}
+{"step": 128000, "loss": 0.0344, "val_rel_mse": 0.04483, "seconds": 3140}
+{"step": 134400, "loss": 0.02488, "val_rel_mse": 0.04419, "seconds": 3294}
+{"step": 140800, "loss": 0.05471, "val_rel_mse": 0.044, "seconds": 3451}
+{"step": 147200, "loss": 0.04155, "val_rel_mse": 0.04404, "seconds": 3606}
+{"step": 153600, "loss": 0.02445, "val_rel_mse": 0.04399, "seconds": 3763}
+{"step": 160000, "loss": 0.02007, "val_rel_mse": 0.04387, "seconds": 3921}
+{"step": 166400, "loss": 0.02665, "val_rel_mse": 0.044, "seconds": 4078}
+{"step": 172800, "loss": 0.01293, "val_rel_mse": 0.0438, "seconds": 4237}
+{"step": 179200, "loss": 0.01994, "val_rel_mse": 0.04371, "seconds": 4395}
+{"step": 185600, "loss": 0.02513, "val_rel_mse": 0.0438, "seconds": 4556}
+{"step": 192000, "loss": 0.03057, "val_rel_mse": 0.04373, "seconds": 4717}
+{"step": 198400, "loss": 0.02139, "val_rel_mse": 0.04374, "seconds": 4876}
+{"step": 204800, "loss": 0.02184, "val_rel_mse": 0.04378, "seconds": 5033}
+{"step": 211200, "loss": 0.02, "val_rel_mse": 0.04377, "seconds": 5193}
+{"step": 217600, "loss": 0.02412, "val_rel_mse": 0.04378, "seconds": 5353}
+{"step": 224000, "loss": 0.0264, "val_rel_mse": 0.04379, "seconds": 5508}
+{"step": 230400, "loss": 0.02506, "val_rel_mse": 0.0438, "seconds": 5665}
+{"step": 236800, "loss": 0.01515, "val_rel_mse": 0.04382, "seconds": 5825}
+{"step": 243200, "loss": 0.03742, "val_rel_mse": 0.0438, "seconds": 5984}
+{"step": 249600, "loss": 0.01744, "val_rel_mse": 0.0438, "seconds": 6142}
+{"step": 256000, "loss": 0.02684, "val_rel_mse": 0.04379, "seconds": 6300}
+{
+ "best_val_rel_mse": 0.04371021051667811,
+ "best_step": 179200
+}
+=== collect m28/train (1 seeds) ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 21.41it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 21.32it/s]
+{"shard": 0, "rollouts_done": 8, "seconds": 30.8, "slots": 3584, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 16, "seconds": 56.9, "slots": 3584, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 24, "seconds": 83.0, "slots": 3584, "tokens": 48, "dim": 1152}
+{"shard": 3, "rollouts_done": 32, "seconds": 104.7, "slots": 3584, "tokens": 48, "dim": 1152}
+{"shard": 4, "rollouts_done": 40, "seconds": 142.4, "slots": 3584, "tokens": 48, "dim": 1152}
+{"shard": 5, "rollouts_done": 48, "seconds": 199.7, "slots": 3584, "tokens": 48, "dim": 1152}
+{"shard": 6, "rollouts_done": 56, "seconds": 255.2, "slots": 3584, "tokens": 48, "dim": 1152}
+{"shard": 7, "rollouts_done": 64, "seconds": 314.5, "slots": 3584, "tokens": 48, "dim": 1152}
+{"shard": 8, "rollouts_done": 72, "seconds": 372.8, "slots": 3584, "tokens": 48, "dim": 1152}
+{"shard": 9, "rollouts_done": 80, "seconds": 428.6, "slots": 3584, "tokens": 48, "dim": 1152}
+{"shard": 10, "rollouts_done": 88, "seconds": 485.9, "slots": 3584, "tokens": 48, "dim": 1152}
+{"shard": 11, "rollouts_done": 96, "seconds": 558.0, "slots": 3584, "tokens": 48, "dim": 1152}
+{"shard": 12, "rollouts_done": 104, "seconds": 618.1, "slots": 3584, "tokens": 48, "dim": 1152}
+{"shard": 13, "rollouts_done": 112, "seconds": 685.4, "slots": 3584, "tokens": 48, "dim": 1152}
+{"shards": 14, "output": "/workspace/scratch_banks/m28/train"}
+=== collect m28/val (1 seeds) ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  67%|██████▋   | 2/3 [00:00<00:00,  7.83it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 10.52it/s]
+{"shard": 0, "rollouts_done": 8, "seconds": 59.9, "slots": 3584, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 16, "seconds": 118.5, "slots": 3584, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 24, "seconds": 173.1, "slots": 3584, "tokens": 48, "dim": 1152}
+{"shards": 3, "output": "/workspace/scratch_banks/m28/val"}
+=== m_k28 budget 256000 ===
+{"train_slots": 50176, "val_slots": 10752, "tokens": 48, "rms": {"delta_h": 0.07004, "anchor_hidden": 3.903, "anchor_residual": 2.04283, "delta_residual": 0.30082}}
+parameters: 43.74M
+{"step": 6400, "loss": 0.04046, "val_rel_mse": 0.07033, "seconds": 344}
+{"step": 12800, "loss": 0.07686, "val_rel_mse": 0.05455, "seconds": 689}
+{"step": 19200, "loss": 0.04969, "val_rel_mse": 0.04847, "seconds": 1033}
+{"step": 25600, "loss": 0.04174, "val_rel_mse": 0.04754, "seconds": 1377}
+{"step": 32000, "loss": 0.06309, "val_rel_mse": 0.0438, "seconds": 1720}
+{"step": 38400, "loss": 0.04649, "val_rel_mse": 0.04192, "seconds": 2064}
+{"step": 44800, "loss": 0.03753, "val_rel_mse": 0.04092, "seconds": 2407}
+{"step": 51200, "loss": 0.04815, "val_rel_mse": 0.04034, "seconds": 2751}
+{"step": 57600, "loss": 0.02583, "val_rel_mse": 0.03904, "seconds": 3096}
+{"step": 64000, "loss": 0.02405, "val_rel_mse": 0.03933, "seconds": 3440}
+{"step": 70400, "loss": 0.03523, "val_rel_mse": 0.03838, "seconds": 3784}
+{"step": 76800, "loss": 0.04426, "val_rel_mse": 0.04001, "seconds": 4128}
+{"step": 83200, "loss": 0.02864, "val_rel_mse": 0.03693, "seconds": 4471}
+{"step": 89600, "loss": 0.04226, "val_rel_mse": 0.03757, "seconds": 4643}
+{"step": 96000, "loss": 0.02009, "val_rel_mse": 0.03661, "seconds": 4799}
+{"step": 102400, "loss": 0.02098, "val_rel_mse": 0.03634, "seconds": 4955}
+{"step": 108800, "loss": 0.02747, "val_rel_mse": 0.03593, "seconds": 5112}
+{"step": 115200, "loss": 0.02591, "val_rel_mse": 0.03561, "seconds": 5268}
+{"step": 121600, "loss": 0.03243, "val_rel_mse": 0.03535, "seconds": 5424}
+{"step": 128000, "loss": 0.02265, "val_rel_mse": 0.03574, "seconds": 5579}
+{"step": 134400, "loss": 0.01749, "val_rel_mse": 0.03513, "seconds": 5737}
+{"step": 140800, "loss": 0.0419, "val_rel_mse": 0.03481, "seconds": 5896}
+{"step": 147200, "loss": 0.02453, "val_rel_mse": 0.0348, "seconds": 6057}
+{"step": 153600, "loss": 0.01593, "val_rel_mse": 0.03457, "seconds": 6215}
+{"step": 160000, "loss": 0.01847, "val_rel_mse": 0.03439, "seconds": 6370}
+{"step": 166400, "loss": 0.02724, "val_rel_mse": 0.03429, "seconds": 6526}
+{"step": 172800, "loss": 0.02222, "val_rel_mse": 0.0341, "seconds": 6681}
+{"step": 179200, "loss": 0.01458, "val_rel_mse": 0.03407, "seconds": 6838}
+{"step": 185600, "loss": 0.01947, "val_rel_mse": 0.03398, "seconds": 6996}
+{"step": 192000, "loss": 0.01256, "val_rel_mse": 0.03388, "seconds": 7157}
+{"step": 198400, "loss": 0.01815, "val_rel_mse": 0.03383, "seconds": 7318}
+{"step": 204800, "loss": 0.02327, "val_rel_mse": 0.03382, "seconds": 7479}
+{"step": 211200, "loss": 0.01772, "val_rel_mse": 0.03376, "seconds": 7639}
+{"step": 217600, "loss": 0.01922, "val_rel_mse": 0.03377, "seconds": 7800}
+{"step": 224000, "loss": 0.02181, "val_rel_mse": 0.03372, "seconds": 7963}
+{"step": 230400, "loss": 0.01834, "val_rel_mse": 0.0337, "seconds": 8128}
+{"step": 236800, "loss": 0.02579, "val_rel_mse": 0.03367, "seconds": 8290}
+{"step": 243200, "loss": 0.02045, "val_rel_mse": 0.03366, "seconds": 8455}
+{"step": 249600, "loss": 0.01756, "val_rel_mse": 0.03365, "seconds": 8618}
+{"step": 256000, "loss": 0.01427, "val_rel_mse": 0.03365, "seconds": 8782}
+{
+ "best_val_rel_mse": 0.033649529146218334,
+ "best_step": 256000
+}
+LANE_MAIN_DONE
+scripts/camera_ready_train.sh: line 118: CK: unbound variable

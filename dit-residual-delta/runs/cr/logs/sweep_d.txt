@@ -1,0 +1,638 @@
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  33%|███▎      | 1/3 [00:00<00:00,  8.62it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 10.30it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 10.09it/s]
+/root/venv/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/root/venv/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/root/venv/lib/python3.12/site-packages/lpips/lpips.py:107: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.load_state_dict(torch.load(model_path, map_location='cpu'), strict=False)
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: /root/venv/lib/python3.12/site-packages/lpips/weights/v0.1/alex.pth
+{"loaded_surrogate": "runs/m_k2/best.pt", "step": 76800, "val_rel_mse": 0.21282129564940677}
+{"loaded_surrogate": "runs/traj_k2/best.pt", "step": 225, "val_rel_mse": null}
+{"loaded_surrogate": "runs/m_k14/best.pt", "step": 179200, "val_rel_mse": 0.04371021051667811}
+/root/venv/lib/python3.12/site-packages/diffusers/image_processor.py:148: RuntimeWarning: invalid value encountered in cast
+  images = (images * 255).round().astype("uint8")
+{"loaded_surrogate": "runs/traj_k14/best.pt", "step": 400, "val_rel_mse": null}
+{"loaded_surrogate": "runs/m_k28/best.pt", "step": 256000, "val_rel_mse": 0.033649529146218334}
+{"loaded_surrogate": "runs/traj_k28/best.pt", "step": 325, "val_rel_mse": null}
+{"completed": 1, "case": "prompt-00-seed-5101"}
+{"completed": 2, "case": "prompt-00-seed-7717"}
+{"completed": 3, "case": "prompt-00-seed-9401"}
+{"completed": 4, "case": "prompt-01-seed-5101"}
+{"completed": 5, "case": "prompt-01-seed-7717"}
+{"completed": 6, "case": "prompt-01-seed-9401"}
+{"completed": 7, "case": "prompt-02-seed-5101"}
+{"completed": 8, "case": "prompt-02-seed-7717"}
+{"completed": 9, "case": "prompt-02-seed-9401"}
+{"completed": 10, "case": "prompt-03-seed-5101"}
+{"completed": 11, "case": "prompt-03-seed-7717"}
+{"completed": 12, "case": "prompt-03-seed-9401"}
+{"completed": 13, "case": "prompt-04-seed-5101"}
+{"completed": 14, "case": "prompt-04-seed-7717"}
+{"completed": 15, "case": "prompt-04-seed-9401"}
+{"completed": 16, "case": "prompt-05-seed-5101"}
+{"completed": 17, "case": "prompt-05-seed-7717"}
+{"completed": 18, "case": "prompt-05-seed-9401"}
+{"completed": 19, "case": "prompt-06-seed-5101"}
+{"completed": 20, "case": "prompt-06-seed-7717"}
+{"completed": 21, "case": "prompt-06-seed-9401"}
+{"completed": 22, "case": "prompt-07-seed-5101"}
+{"completed": 23, "case": "prompt-07-seed-7717"}
+{"completed": 24, "case": "prompt-07-seed-9401"}
+{"completed": 25, "case": "prompt-08-seed-5101"}
+{"completed": 26, "case": "prompt-08-seed-7717"}
+{"completed": 27, "case": "prompt-08-seed-9401"}
+{"completed": 28, "case": "prompt-09-seed-5101"}
+{"completed": 29, "case": "prompt-09-seed-7717"}
+{"completed": 30, "case": "prompt-09-seed-9401"}
+{"completed": 31, "case": "prompt-10-seed-5101"}
+{"completed": 32, "case": "prompt-10-seed-7717"}
+{"completed": 33, "case": "prompt-10-seed-9401"}
+{"completed": 34, "case": "prompt-11-seed-5101"}
+{"completed": 35, "case": "prompt-11-seed-7717"}
+{"completed": 36, "case": "prompt-11-seed-9401"}
+{"completed": 37, "case": "prompt-12-seed-5101"}
+{"completed": 38, "case": "prompt-12-seed-7717"}
+{"completed": 39, "case": "prompt-12-seed-9401"}
+{"completed": 40, "case": "prompt-13-seed-5101"}
+{"completed": 41, "case": "prompt-13-seed-7717"}
+{"completed": 42, "case": "prompt-13-seed-9401"}
+{"completed": 43, "case": "prompt-14-seed-5101"}
+{"completed": 44, "case": "prompt-14-seed-7717"}
+{"completed": 45, "case": "prompt-14-seed-9401"}
+{"completed": 46, "case": "prompt-15-seed-5101"}
+{"completed": 47, "case": "prompt-15-seed-7717"}
+{"completed": 48, "case": "prompt-15-seed-9401"}
+{"completed": 49, "case": "prompt-16-seed-5101"}
+{"completed": 50, "case": "prompt-16-seed-7717"}
+{"completed": 51, "case": "prompt-16-seed-9401"}
+{"completed": 52, "case": "prompt-17-seed-5101"}
+{"completed": 53, "case": "prompt-17-seed-7717"}
+{"completed": 54, "case": "prompt-17-seed-9401"}
+{"completed": 55, "case": "prompt-18-seed-5101"}
+{"completed": 56, "case": "prompt-18-seed-7717"}
+{"completed": 57, "case": "prompt-18-seed-9401"}
+{"completed": 58, "case": "prompt-19-seed-5101"}
+{"completed": 59, "case": "prompt-19-seed-7717"}
+{"completed": 60, "case": "prompt-19-seed-9401"}
+{"completed": 61, "case": "prompt-20-seed-5101"}
+{"completed": 62, "case": "prompt-20-seed-7717"}
+{"completed": 63, "case": "prompt-20-seed-9401"}
+{"completed": 64, "case": "prompt-21-seed-5101"}
+{"completed": 65, "case": "prompt-21-seed-7717"}
+{"completed": 66, "case": "prompt-21-seed-9401"}
+{"completed": 67, "case": "prompt-22-seed-5101"}
+{"completed": 68, "case": "prompt-22-seed-7717"}
+{"completed": 69, "case": "prompt-22-seed-9401"}
+{"completed": 70, "case": "prompt-23-seed-5101"}
+{"completed": 71, "case": "prompt-23-seed-7717"}
+{"completed": 72, "case": "prompt-23-seed-9401"}
+{
+ "m_k2@0.05": {
+  "speedup_vs_exact": 2.209963,
+  "mse_vs_exact": 0.030493,
+  "psnr_vs_exact": 15.703513,
+  "ssim_gaussian_vs_exact": 0.631302,
+  "lpips_alex_vs_exact": 0.451839
+ },
+ "m_k2@0.1": {
+  "speedup_vs_exact": 2.348301,
+  "mse_vs_exact": 0.029472,
+  "psnr_vs_exact": 15.879808,
+  "ssim_gaussian_vs_exact": 0.634397,
+  "lpips_alex_vs_exact": 0.440687
+ },
+ "m_k2@0.15": {
+  "speedup_vs_exact": 2.348521,
+  "mse_vs_exact": 0.028818,
+  "psnr_vs_exact": 15.93377,
+  "ssim_gaussian_vs_exact": 0.638614,
+  "lpips_alex_vs_exact": 0.431208
+ },
+ "m_k2@0.18": {
+  "speedup_vs_exact": 2.349044,
+  "mse_vs_exact": 0.028784,
+  "psnr_vs_exact": 15.901092,
+  "ssim_gaussian_vs_exact": 0.640822,
+  "lpips_alex_vs_exact": 0.426074
+ },
+ "m_k2@0.2": {
+  "speedup_vs_exact": 2.34997,
+  "mse_vs_exact": 0.02877,
+  "psnr_vs_exact": 15.893564,
+  "ssim_gaussian_vs_exact": 0.64229,
+  "lpips_alex_vs_exact": 0.42261
+ },
+ "m_k2@0.22": {
+  "speedup_vs_exact": 2.349463,
+  "mse_vs_exact": 0.02884,
+  "psnr_vs_exact": 15.877856,
+  "ssim_gaussian_vs_exact": 0.643336,
+  "lpips_alex_vs_exact": 0.421226
+ },
+ "m_k2@0.25": {
+  "speedup_vs_exact": 2.349995,
+  "mse_vs_exact": 0.029098,
+  "psnr_vs_exact": 15.828027,
+  "ssim_gaussian_vs_exact": 0.64393,
+  "lpips_alex_vs_exact": 0.420378
+ },
+ "m_k2@0.3": {
+  "speedup_vs_exact": 2.349903,
+  "mse_vs_exact": 0.029861,
+  "psnr_vs_exact": 15.726401,
+  "ssim_gaussian_vs_exact": 0.645227,
+  "lpips_alex_vs_exact": 0.419412
+ },
+ "m_k2@0.4": {
+  "speedup_vs_exact": 2.349852,
+  "mse_vs_exact": 0.033313,
+  "psnr_vs_exact": 15.259622,
+  "ssim_gaussian_vs_exact": 0.63789,
+  "lpips_alex_vs_exact": 0.434818
+ },
+ "m_k2@0.5": {
+  "speedup_vs_exact": 2.348807,
+  "mse_vs_exact": 0.039857,
+  "psnr_vs_exact": 14.485567,
+  "ssim_gaussian_vs_exact": 0.615943,
+  "lpips_alex_vs_exact": 0.469237
+ },
+ "m_k2@0.6": {
+  "speedup_vs_exact": 2.349302,
+  "mse_vs_exact": 0.051533,
+  "psnr_vs_exact": 13.331798,
+  "ssim_gaussian_vs_exact": 0.577855,
+  "lpips_alex_vs_exact": 0.514931
+ },
+ "m_k2@0.75": {
+  "speedup_vs_exact": 2.35168,
+  "mse_vs_exact": 0.088351,
+  "psnr_vs_exact": 11.176789,
+  "ssim_gaussian_vs_exact": 0.478215,
+  "lpips_alex_vs_exact": 0.611368
+ },
+ "m_k2@1": {
+  "speedup_vs_exact": 2.351942,
+  "mse_vs_exact": 0.171931,
+  "psnr_vs_exact": 8.297869,
+  "ssim_gaussian_vs_exact": 0.323577,
+  "lpips_alex_vs_exact": 0.772518
+ },
+ "traj_k2@0.05": {
+  "speedup_vs_exact": 2.333065,
+  "mse_vs_exact": 0.030167,
+  "psnr_vs_exact": 15.772955,
+  "ssim_gaussian_vs_exact": 0.634717,
+  "lpips_alex_vs_exact": 0.450032
+ },
+ "traj_k2@0.1": {
+  "speedup_vs_exact": 2.357435,
+  "mse_vs_exact": 0.028551,
+  "psnr_vs_exact": 16.017769,
+  "ssim_gaussian_vs_exact": 0.641025,
+  "lpips_alex_vs_exact": 0.436601
+ },
+ "traj_k2@0.15": {
+  "speedup_vs_exact": 2.355594,
+  "mse_vs_exact": 0.026991,
+  "psnr_vs_exact": 16.223189,
+  "ssim_gaussian_vs_exact": 0.648844,
+  "lpips_alex_vs_exact": 0.422285
+ },
+ "traj_k2@0.18": {
+  "speedup_vs_exact": 2.356803,
+  "mse_vs_exact": 0.026023,
+  "psnr_vs_exact": 16.349706,
+  "ssim_gaussian_vs_exact": 0.654172,
+  "lpips_alex_vs_exact": 0.414227
+ },
+ "traj_k2@0.2": {
+  "speedup_vs_exact": 2.357368,
+  "mse_vs_exact": 0.025539,
+  "psnr_vs_exact": 16.427343,
+  "ssim_gaussian_vs_exact": 0.656975,
+  "lpips_alex_vs_exact": 0.410653
+ },
+ "traj_k2@0.22": {
+  "speedup_vs_exact": 2.35752,
+  "mse_vs_exact": 0.025288,
+  "psnr_vs_exact": 16.476912,
+  "ssim_gaussian_vs_exact": 0.658734,
+  "lpips_alex_vs_exact": 0.408455
+ },
+ "traj_k2@0.25": {
+  "speedup_vs_exact": 2.357911,
+  "mse_vs_exact": 0.025045,
+  "psnr_vs_exact": 16.552449,
+  "ssim_gaussian_vs_exact": 0.660796,
+  "lpips_alex_vs_exact": 0.406335
+ },
+ "traj_k2@0.3": {
+  "speedup_vs_exact": 2.358097,
+  "mse_vs_exact": 0.025593,
+  "psnr_vs_exact": 16.51259,
+  "ssim_gaussian_vs_exact": 0.657177,
+  "lpips_alex_vs_exact": 0.411359
+ },
+ "traj_k2@0.4": {
+  "speedup_vs_exact": 2.357252,
+  "mse_vs_exact": 0.030154,
+  "psnr_vs_exact": 15.850873,
+  "ssim_gaussian_vs_exact": 0.624834,
+  "lpips_alex_vs_exact": 0.448063
+ },
+ "traj_k2@0.5": {
+  "speedup_vs_exact": 2.359221,
+  "mse_vs_exact": 0.039258,
+  "psnr_vs_exact": 14.766389,
+  "ssim_gaussian_vs_exact": 0.566198,
+  "lpips_alex_vs_exact": 0.50183
+ },
+ "traj_k2@0.6": {
+  "speedup_vs_exact": 2.35877,
+  "mse_vs_exact": 0.053531,
+  "psnr_vs_exact": 13.472789,
+  "ssim_gaussian_vs_exact": 0.492645,
+  "lpips_alex_vs_exact": 0.569128
+ },
+ "traj_k2@0.75": {
+  "speedup_vs_exact": 2.359053,
+  "mse_vs_exact": 0.08268,
+  "psnr_vs_exact": 11.580216,
+  "ssim_gaussian_vs_exact": 0.396391,
+  "lpips_alex_vs_exact": 0.657086
+ },
+ "traj_k2@1": {
+  "speedup_vs_exact": 2.357338,
+  "mse_vs_exact": 0.150337,
+  "psnr_vs_exact": 8.770819,
+  "ssim_gaussian_vs_exact": 0.281154,
+  "lpips_alex_vs_exact": 0.76843
+ },
+ "m_k14@0.05": {
+  "speedup_vs_exact": 0.704264,
+  "mse_vs_exact": 0.03254,
+  "psnr_vs_exact": 15.409197,
+  "ssim_gaussian_vs_exact": 0.629773,
+  "lpips_alex_vs_exact": 0.461209
+ },
+ "m_k14@0.1": {
+  "speedup_vs_exact": 0.709494,
+  "mse_vs_exact": 0.032659,
+  "psnr_vs_exact": 15.409184,
+  "ssim_gaussian_vs_exact": 0.633074,
+  "lpips_alex_vs_exact": 0.457793
+ },
+ "m_k14@0.15": {
+  "speedup_vs_exact": 0.709436,
+  "mse_vs_exact": 0.032759,
+  "psnr_vs_exact": 15.433546,
+  "ssim_gaussian_vs_exact": 0.636065,
+  "lpips_alex_vs_exact": 0.454618
+ },
+ "m_k14@0.18": {
+  "speedup_vs_exact": 0.709209,
+  "mse_vs_exact": 0.032963,
+  "psnr_vs_exact": 15.411754,
+  "ssim_gaussian_vs_exact": 0.637326,
+  "lpips_alex_vs_exact": 0.453926
+ },
+ "m_k14@0.2": {
+  "speedup_vs_exact": 0.709089,
+  "mse_vs_exact": 0.033251,
+  "psnr_vs_exact": 15.374078,
+  "ssim_gaussian_vs_exact": 0.637493,
+  "lpips_alex_vs_exact": 0.455572
+ },
+ "m_k14@0.22": {
+  "speedup_vs_exact": 0.709074,
+  "mse_vs_exact": 0.033718,
+  "psnr_vs_exact": 15.310152,
+  "ssim_gaussian_vs_exact": 0.63665,
+  "lpips_alex_vs_exact": 0.45809
+ },
+ "m_k14@0.25": {
+  "speedup_vs_exact": 0.708988,
+  "mse_vs_exact": 0.034745,
+  "psnr_vs_exact": 15.143441,
+  "ssim_gaussian_vs_exact": 0.633262,
+  "lpips_alex_vs_exact": 0.464844
+ },
+ "m_k14@0.3": {
+  "speedup_vs_exact": 0.708869,
+  "mse_vs_exact": 0.038808,
+  "psnr_vs_exact": 14.634565,
+  "ssim_gaussian_vs_exact": 0.619294,
+  "lpips_alex_vs_exact": 0.490304
+ },
+ "m_k14@0.4": {
+  "speedup_vs_exact": 0.70882,
+  "mse_vs_exact": 0.074173,
+  "psnr_vs_exact": 11.89776,
+  "ssim_gaussian_vs_exact": 0.496255,
+  "lpips_alex_vs_exact": 0.638093
+ },
+ "m_k14@0.5": {
+  "speedup_vs_exact": 0.708662,
+  "mse_vs_exact": 0.166682,
+  "psnr_vs_exact": 8.468619,
+  "ssim_gaussian_vs_exact": 0.252861,
+  "lpips_alex_vs_exact": 0.812772
+ },
+ "m_k14@0.6": {
+  "speedup_vs_exact": 0.708124,
+  "mse_vs_exact": 0.225779,
+  "psnr_vs_exact": 6.691465,
+  "ssim_gaussian_vs_exact": 0.071353,
+  "lpips_alex_vs_exact": 0.903904
+ },
+ "m_k14@0.75": {
+  "speedup_vs_exact": 0.710364,
+  "mse_vs_exact": 0.288032,
+  "psnr_vs_exact": 5.821889,
+  "ssim_gaussian_vs_exact": 0.044679,
+  "lpips_alex_vs_exact": 0.890155
+ },
+ "m_k14@1": {
+  "speedup_vs_exact": 0.734331,
+  "mse_vs_exact": 0.315064,
+  "psnr_vs_exact": 5.891309,
+  "ssim_gaussian_vs_exact": 0.02796,
+  "lpips_alex_vs_exact": 0.888669
+ },
+ "traj_k14@0.05": {
+  "speedup_vs_exact": 0.711846,
+  "mse_vs_exact": 0.029986,
+  "psnr_vs_exact": 15.781811,
+  "ssim_gaussian_vs_exact": 0.633327,
+  "lpips_alex_vs_exact": 0.452389
+ },
+ "traj_k14@0.1": {
+  "speedup_vs_exact": 0.717053,
+  "mse_vs_exact": 0.027087,
+  "psnr_vs_exact": 16.201539,
+  "ssim_gaussian_vs_exact": 0.643987,
+  "lpips_alex_vs_exact": 0.435515
+ },
+ "traj_k14@0.15": {
+  "speedup_vs_exact": 0.716821,
+  "mse_vs_exact": 0.024913,
+  "psnr_vs_exact": 16.575617,
+  "ssim_gaussian_vs_exact": 0.661347,
+  "lpips_alex_vs_exact": 0.422627
+ },
+ "traj_k14@0.18": {
+  "speedup_vs_exact": 0.716968,
+  "mse_vs_exact": 0.025349,
+  "psnr_vs_exact": 16.473431,
+  "ssim_gaussian_vs_exact": 0.662417,
+  "lpips_alex_vs_exact": 0.430933
+ },
+ "traj_k14@0.2": {
+  "speedup_vs_exact": 0.716851,
+  "mse_vs_exact": 0.02679,
+  "psnr_vs_exact": 16.198467,
+  "ssim_gaussian_vs_exact": 0.650638,
+  "lpips_alex_vs_exact": 0.446968
+ },
+ "traj_k14@0.22": {
+  "speedup_vs_exact": 0.716806,
+  "mse_vs_exact": 0.029912,
+  "psnr_vs_exact": 15.655059,
+  "ssim_gaussian_vs_exact": 0.626512,
+  "lpips_alex_vs_exact": 0.473342
+ },
+ "traj_k14@0.25": {
+  "speedup_vs_exact": 0.71681,
+  "mse_vs_exact": 0.039046,
+  "psnr_vs_exact": 14.425074,
+  "ssim_gaussian_vs_exact": 0.572464,
+  "lpips_alex_vs_exact": 0.523253
+ },
+ "traj_k14@0.3": {
+  "speedup_vs_exact": 0.71644,
+  "mse_vs_exact": 0.065548,
+  "psnr_vs_exact": 12.129101,
+  "ssim_gaussian_vs_exact": 0.457739,
+  "lpips_alex_vs_exact": 0.604694
+ },
+ "traj_k14@0.4": {
+  "speedup_vs_exact": 0.716353,
+  "mse_vs_exact": 0.171898,
+  "psnr_vs_exact": 8.134276,
+  "ssim_gaussian_vs_exact": 0.349595,
+  "lpips_alex_vs_exact": 0.735318
+ },
+ "traj_k14@0.5": {
+  "speedup_vs_exact": 0.715894,
+  "mse_vs_exact": 0.284045,
+  "psnr_vs_exact": 6.16756,
+  "ssim_gaussian_vs_exact": 0.316395,
+  "lpips_alex_vs_exact": 0.826332
+ },
+ "traj_k14@0.6": {
+  "speedup_vs_exact": 0.714649,
+  "mse_vs_exact": 0.317496,
+  "psnr_vs_exact": 5.595027,
+  "ssim_gaussian_vs_exact": 0.078714,
+  "lpips_alex_vs_exact": 0.892663
+ },
+ "traj_k14@0.75": {
+  "speedup_vs_exact": 0.735024,
+  "mse_vs_exact": 0.315064,
+  "psnr_vs_exact": 5.891309,
+  "ssim_gaussian_vs_exact": 0.02796,
+  "lpips_alex_vs_exact": 0.888669
+ },
+ "traj_k14@1": {
+  "speedup_vs_exact": 0.744765,
+  "mse_vs_exact": 0.315064,
+  "psnr_vs_exact": 5.891309,
+  "ssim_gaussian_vs_exact": 0.02796,
+  "lpips_alex_vs_exact": 0.888669
+ },
+ "m_k28@0.05": {
+  "speedup_vs_exact": 0.390649,
+  "mse_vs_exact": 0.032656,
+  "psnr_vs_exact": 15.375196,
+  "ssim_gaussian_vs_exact": 0.628238,
+  "lpips_alex_vs_exact": 0.463289
+ },
+ "m_k28@0.1": {
+  "speedup_vs_exact": 0.393835,
+  "mse_vs_exact": 0.032733,
+  "psnr_vs_exact": 15.39577,
+  "ssim_gaussian_vs_exact": 0.630374,
+  "lpips_alex_vs_exact": 0.460344
+ },
+ "m_k28@0.15": {
+  "speedup_vs_exact": 0.393808,
+  "mse_vs_exact": 0.0332,
+  "psnr_vs_exact": 15.356025,
+  "ssim_gaussian_vs_exact": 0.631384,
+  "lpips_alex_vs_exact": 0.459695
+ },
+ "m_k28@0.18": {
+  "speedup_vs_exact": 0.393763,
+  "mse_vs_exact": 0.033726,
+  "psnr_vs_exact": 15.298248,
+  "ssim_gaussian_vs_exact": 0.631204,
+  "lpips_alex_vs_exact": 0.46278
+ },
+ "m_k28@0.2": {
+  "speedup_vs_exact": 0.393424,
+  "mse_vs_exact": 0.034116,
+  "psnr_vs_exact": 15.244444,
+  "ssim_gaussian_vs_exact": 0.630669,
+  "lpips_alex_vs_exact": 0.464728
+ },
+ "m_k28@0.22": {
+  "speedup_vs_exact": 0.393648,
+  "mse_vs_exact": 0.034697,
+  "psnr_vs_exact": 15.154812,
+  "ssim_gaussian_vs_exact": 0.628681,
+  "lpips_alex_vs_exact": 0.468573
+ },
+ "m_k28@0.25": {
+  "speedup_vs_exact": 0.393615,
+  "mse_vs_exact": 0.036639,
+  "psnr_vs_exact": 14.916478,
+  "ssim_gaussian_vs_exact": 0.623555,
+  "lpips_alex_vs_exact": 0.478998
+ },
+ "m_k28@0.3": {
+  "speedup_vs_exact": 0.393539,
+  "mse_vs_exact": 0.044521,
+  "psnr_vs_exact": 14.05388,
+  "ssim_gaussian_vs_exact": 0.598753,
+  "lpips_alex_vs_exact": 0.520098
+ },
+ "m_k28@0.4": {
+  "speedup_vs_exact": 0.393322,
+  "mse_vs_exact": 0.121103,
+  "psnr_vs_exact": 9.668029,
+  "ssim_gaussian_vs_exact": 0.363805,
+  "lpips_alex_vs_exact": 0.73556
+ },
+ "m_k28@0.5": {
+  "speedup_vs_exact": 0.392788,
+  "mse_vs_exact": 0.221402,
+  "psnr_vs_exact": 6.655628,
+  "ssim_gaussian_vs_exact": 0.070157,
+  "lpips_alex_vs_exact": 0.884844
+ },
+ "m_k28@0.6": {
+  "speedup_vs_exact": 0.401547,
+  "mse_vs_exact": 0.315064,
+  "psnr_vs_exact": 5.891309,
+  "ssim_gaussian_vs_exact": 0.02796,
+  "lpips_alex_vs_exact": 0.888669
+ },
+ "m_k28@0.75": {
+  "speedup_vs_exact": 0.410126,
+  "mse_vs_exact": 0.315064,
+  "psnr_vs_exact": 5.891309,
+  "ssim_gaussian_vs_exact": 0.02796,
+  "lpips_alex_vs_exact": 0.888669
+ },
+ "m_k28@1": {
+  "speedup_vs_exact": 0.412288,
+  "mse_vs_exact": 0.315064,
+  "psnr_vs_exact": 5.891309,
+  "ssim_gaussian_vs_exact": 0.02796,
+  "lpips_alex_vs_exact": 0.888669
+ },
+ "traj_k28@0.05": {
+  "speedup_vs_exact": 0.39288,
+  "mse_vs_exact": 0.031186,
+  "psnr_vs_exact": 15.602677,
+  "ssim_gaussian_vs_exact": 0.634394,
+  "lpips_alex_vs_exact": 0.45654
+ },
+ "traj_k28@0.1": {
+  "speedup_vs_exact": 0.395219,
+  "mse_vs_exact": 0.028912,
+  "psnr_vs_exact": 15.936383,
+  "ssim_gaussian_vs_exact": 0.644647,
+  "lpips_alex_vs_exact": 0.444706
+ },
+ "traj_k28@0.15": {
+  "speedup_vs_exact": 0.395137,
+  "mse_vs_exact": 0.025795,
+  "psnr_vs_exact": 16.406206,
+  "ssim_gaussian_vs_exact": 0.66054,
+  "lpips_alex_vs_exact": 0.431718
+ },
+ "traj_k28@0.18": {
+  "speedup_vs_exact": 0.395069,
+  "mse_vs_exact": 0.024874,
+  "psnr_vs_exact": 16.582165,
+  "ssim_gaussian_vs_exact": 0.665959,
+  "lpips_alex_vs_exact": 0.435021
+ },
+ "traj_k28@0.2": {
+  "speedup_vs_exact": 0.395047,
+  "mse_vs_exact": 0.024845,
+  "psnr_vs_exact": 16.5638,
+  "ssim_gaussian_vs_exact": 0.660227,
+  "lpips_alex_vs_exact": 0.446923
+ },
+ "traj_k28@0.22": {
+  "speedup_vs_exact": 0.395006,
+  "mse_vs_exact": 0.026521,
+  "psnr_vs_exact": 16.234524,
+  "ssim_gaussian_vs_exact": 0.638502,
+  "lpips_alex_vs_exact": 0.471558
+ },
+ "traj_k28@0.25": {
+  "speedup_vs_exact": 0.394925,
+  "mse_vs_exact": 0.032766,
+  "psnr_vs_exact": 15.26489,
+  "ssim_gaussian_vs_exact": 0.578133,
+  "lpips_alex_vs_exact": 0.532454
+ },
+ "traj_k28@0.3": {
+  "speedup_vs_exact": 0.394884,
+  "mse_vs_exact": 0.0678,
+  "psnr_vs_exact": 12.177136,
+  "ssim_gaussian_vs_exact": 0.407951,
+  "lpips_alex_vs_exact": 0.662123
+ },
+ "traj_k28@0.4": {
+  "speedup_vs_exact": 0.394756,
+  "mse_vs_exact": 0.253422,
+  "psnr_vs_exact": 6.281392,
+  "ssim_gaussian_vs_exact": 0.180069,
+  "lpips_alex_vs_exact": 0.845713
+ },
+ "traj_k28@0.5": {
+  "speedup_vs_exact": 0.394161,
+  "mse_vs_exact": 0.242165,
+  "psnr_vs_exact": 6.546107,
+  "ssim_gaussian_vs_exact": 0.058682,
+  "lpips_alex_vs_exact": 0.861306
+ },
+ "traj_k28@0.6": {
+  "speedup_vs_exact": 0.405265,
+  "mse_vs_exact": 0.315064,
+  "psnr_vs_exact": 5.891309,
+  "ssim_gaussian_vs_exact": 0.02796,
+  "lpips_alex_vs_exact": 0.888669
+ },
+ "traj_k28@0.75": {
+  "speedup_vs_exact": 0.411662,
+  "mse_vs_exact": 0.315064,
+  "psnr_vs_exact": 5.891309,
+  "ssim_gaussian_vs_exact": 0.02796,
+  "lpips_alex_vs_exact": 0.888669
+ },
+ "traj_k28@1": {
+  "speedup_vs_exact": 0.412774,
+  "mse_vs_exact": 0.315064,
+  "psnr_vs_exact": 5.891309,
+  "ssim_gaussian_vs_exact": 0.02796,
+  "lpips_alex_vs_exact": 0.888669
+ }
+}

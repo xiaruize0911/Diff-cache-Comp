@@ -1,0 +1,5 @@
+40 variants -> configs/cr/sweep_a.json
+52 variants -> configs/cr/sweep_b.json
+39 variants -> configs/cr/sweep_c.json
+78 variants -> configs/cr/sweep_d.json
+SWEEPS_EARLY_DONE

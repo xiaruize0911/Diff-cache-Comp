@@ -1,0 +1,671 @@
+40 variants -> configs/cr/sweep_a.json
+52 variants -> configs/cr/sweep_b.json
+39 variants -> configs/cr/sweep_c.json
+78 variants -> configs/cr/sweep_d.json
+ctrl_k1 0.5 0.6529 
+ctrl_k2 0.15 0.6344 
+ctrl_k4 0.22 0.6373 
+ctrl_k7 0.18 0.6366 
+m_k1 0.6 0.6615 
+m_k14 0.2 0.6375 
+m_k2 0.3 0.6452 
+m_k28 0.15 0.6314 
+m_k4 0.18 0.6369 
+m_k7 0.22 0.6413 
+traj_k1 0.6 0.6791 
+traj_k14 0.18 0.6624 
+traj_k2 0.25 0.6608 
+traj_k28 0.18 0.666 
+traj_k4 0.22 0.6701 
+traj_k7 0.2 0.6751 
+6 variants -> configs/cr/test_table1.json
+1 variants -> configs/cr/test_ctrl1.json
+13 variants -> configs/cr/test_perk.json
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  67%|██████▋   | 2/3 [00:00<00:00, 19.70it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 11.46it/s]
+/root/venv/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/root/venv/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/root/venv/lib/python3.12/site-packages/lpips/lpips.py:107: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.load_state_dict(torch.load(model_path, map_location='cpu'), strict=False)
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: /root/venv/lib/python3.12/site-packages/lpips/weights/v0.1/alex.pth
+{"loaded_surrogate": "runs/bc_k1/best.pt", "kind": "scale_shift", "step": 8000, "val_rel_mse": 0.4774886900604276}
+{"loaded_surrogate": "runs/m_k1/best.pt", "step": 32000, "val_rel_mse": 0.2839550182582865}
+{"loaded_surrogate": "runs/traj_k1/best.pt", "step": 250, "val_rel_mse": null}
+{"completed": 1, "case": "prompt-00-seed-5101"}
+{"completed": 2, "case": "prompt-00-seed-7717"}
+{"completed": 3, "case": "prompt-00-seed-9401"}
+{"completed": 4, "case": "prompt-01-seed-5101"}
+{"completed": 5, "case": "prompt-01-seed-7717"}
+{"completed": 6, "case": "prompt-01-seed-9401"}
+{"completed": 7, "case": "prompt-02-seed-5101"}
+{"completed": 8, "case": "prompt-02-seed-7717"}
+{"completed": 9, "case": "prompt-02-seed-9401"}
+{"completed": 10, "case": "prompt-03-seed-5101"}
+{"completed": 11, "case": "prompt-03-seed-7717"}
+{"completed": 12, "case": "prompt-03-seed-9401"}
+{"completed": 13, "case": "prompt-04-seed-5101"}
+{"completed": 14, "case": "prompt-04-seed-7717"}
+{"completed": 15, "case": "prompt-04-seed-9401"}
+{"completed": 16, "case": "prompt-05-seed-5101"}
+{"completed": 17, "case": "prompt-05-seed-7717"}
+{"completed": 18, "case": "prompt-05-seed-9401"}
+{"completed": 19, "case": "prompt-06-seed-5101"}
+{"completed": 20, "case": "prompt-06-seed-7717"}
+{"completed": 21, "case": "prompt-06-seed-9401"}
+{"completed": 22, "case": "prompt-07-seed-5101"}
+{"completed": 23, "case": "prompt-07-seed-7717"}
+{"completed": 24, "case": "prompt-07-seed-9401"}
+{"completed": 25, "case": "prompt-08-seed-5101"}
+{"completed": 26, "case": "prompt-08-seed-7717"}
+{"completed": 27, "case": "prompt-08-seed-9401"}
+{"completed": 28, "case": "prompt-09-seed-5101"}
+{"completed": 29, "case": "prompt-09-seed-7717"}
+{"completed": 30, "case": "prompt-09-seed-9401"}
+{"completed": 31, "case": "prompt-10-seed-5101"}
+{"completed": 32, "case": "prompt-10-seed-7717"}
+{"completed": 33, "case": "prompt-10-seed-9401"}
+{"completed": 34, "case": "prompt-11-seed-5101"}
+{"completed": 35, "case": "prompt-11-seed-7717"}
+{"completed": 36, "case": "prompt-11-seed-9401"}
+{"completed": 37, "case": "prompt-12-seed-5101"}
+{"completed": 38, "case": "prompt-12-seed-7717"}
+{"completed": 39, "case": "prompt-12-seed-9401"}
+{"completed": 40, "case": "prompt-13-seed-5101"}
+{"completed": 41, "case": "prompt-13-seed-7717"}
+{"completed": 42, "case": "prompt-13-seed-9401"}
+{"completed": 43, "case": "prompt-14-seed-5101"}
+{"completed": 44, "case": "prompt-14-seed-7717"}
+{"completed": 45, "case": "prompt-14-seed-9401"}
+{"completed": 46, "case": "prompt-15-seed-5101"}
+{"completed": 47, "case": "prompt-15-seed-7717"}
+{"completed": 48, "case": "prompt-15-seed-9401"}
+{"completed": 49, "case": "prompt-16-seed-5101"}
+{"completed": 50, "case": "prompt-16-seed-7717"}
+{"completed": 51, "case": "prompt-16-seed-9401"}
+{"completed": 52, "case": "prompt-17-seed-5101"}
+{"completed": 53, "case": "prompt-17-seed-7717"}
+{"completed": 54, "case": "prompt-17-seed-9401"}
+{"completed": 55, "case": "prompt-18-seed-5101"}
+{"completed": 56, "case": "prompt-18-seed-7717"}
+{"completed": 57, "case": "prompt-18-seed-9401"}
+{"completed": 58, "case": "prompt-19-seed-5101"}
+{"completed": 59, "case": "prompt-19-seed-7717"}
+{"completed": 60, "case": "prompt-19-seed-9401"}
+{"completed": 61, "case": "prompt-20-seed-5101"}
+{"completed": 62, "case": "prompt-20-seed-7717"}
+{"completed": 63, "case": "prompt-20-seed-9401"}
+{"completed": 64, "case": "prompt-21-seed-5101"}
+{"completed": 65, "case": "prompt-21-seed-7717"}
+{"completed": 66, "case": "prompt-21-seed-9401"}
+{"completed": 67, "case": "prompt-22-seed-5101"}
+{"completed": 68, "case": "prompt-22-seed-7717"}
+{"completed": 69, "case": "prompt-22-seed-9401"}
+{"completed": 70, "case": "prompt-23-seed-5101"}
+{"completed": 71, "case": "prompt-23-seed-7717"}
+{"completed": 72, "case": "prompt-23-seed-9401"}
+{
+ "cache_i5": {
+  "speedup_vs_exact": 3.745339,
+  "mse_vs_exact": 0.040946,
+  "psnr_vs_exact": 14.289076,
+  "ssim_gaussian_vs_exact": 0.463468,
+  "lpips_alex_vs_exact": 0.536584
+ },
+ "taylor1": {
+  "speedup_vs_exact": 3.662001,
+  "mse_vs_exact": 0.054478,
+  "psnr_vs_exact": 13.022553,
+  "ssim_gaussian_vs_exact": 0.434081,
+  "lpips_alex_vs_exact": 0.554373
+ },
+ "taylor2": {
+  "speedup_vs_exact": 3.642682,
+  "mse_vs_exact": 0.064738,
+  "psnr_vs_exact": 12.182898,
+  "ssim_gaussian_vs_exact": 0.354592,
+  "lpips_alex_vs_exact": 0.625174
+ },
+ "blockcache": {
+  "speedup_vs_exact": 3.483345,
+  "mse_vs_exact": 0.037705,
+  "psnr_vs_exact": 14.643458,
+  "ssim_gaussian_vs_exact": 0.478789,
+  "lpips_alex_vs_exact": 0.541128
+ },
+ "m_k1": {
+  "speedup_vs_exact": 3.349905,
+  "mse_vs_exact": 0.033598,
+  "psnr_vs_exact": 15.121736,
+  "ssim_gaussian_vs_exact": 0.51454,
+  "lpips_alex_vs_exact": 0.437029
+ },
+ "traj_k1": {
+  "speedup_vs_exact": 3.347554,
+  "mse_vs_exact": 0.034056,
+  "psnr_vs_exact": 15.274732,
+  "ssim_gaussian_vs_exact": 0.532027,
+  "lpips_alex_vs_exact": 0.442294
+ }
+}
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  67%|██████▋   | 2/3 [00:00<00:00,  9.36it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00,  7.53it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00,  7.83it/s]
+/root/venv/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/root/venv/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/root/venv/lib/python3.12/site-packages/lpips/lpips.py:107: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.load_state_dict(torch.load(model_path, map_location='cpu'), strict=False)
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: /root/venv/lib/python3.12/site-packages/lpips/weights/v0.1/alex.pth
+{"loaded_surrogate": "runs/ctrl_k1/best.pt", "step": 2000, "val_rel_mse": 0.38960065591516735}
+{"completed": 1, "case": "prompt-00-seed-5101"}
+{"completed": 2, "case": "prompt-00-seed-7717"}
+{"completed": 3, "case": "prompt-00-seed-9401"}
+{"completed": 4, "case": "prompt-01-seed-5101"}
+{"completed": 5, "case": "prompt-01-seed-7717"}
+{"completed": 6, "case": "prompt-01-seed-9401"}
+{"completed": 7, "case": "prompt-02-seed-5101"}
+{"completed": 8, "case": "prompt-02-seed-7717"}
+{"completed": 9, "case": "prompt-02-seed-9401"}
+{"completed": 10, "case": "prompt-03-seed-5101"}
+{"completed": 11, "case": "prompt-03-seed-7717"}
+{"completed": 12, "case": "prompt-03-seed-9401"}
+{"completed": 13, "case": "prompt-04-seed-5101"}
+{"completed": 14, "case": "prompt-04-seed-7717"}
+{"completed": 15, "case": "prompt-04-seed-9401"}
+{"completed": 16, "case": "prompt-05-seed-5101"}
+{"completed": 17, "case": "prompt-05-seed-7717"}
+{"completed": 18, "case": "prompt-05-seed-9401"}
+{"completed": 19, "case": "prompt-06-seed-5101"}
+{"completed": 20, "case": "prompt-06-seed-7717"}
+{"completed": 21, "case": "prompt-06-seed-9401"}
+{"completed": 22, "case": "prompt-07-seed-5101"}
+{"completed": 23, "case": "prompt-07-seed-7717"}
+{"completed": 24, "case": "prompt-07-seed-9401"}
+{"completed": 25, "case": "prompt-08-seed-5101"}
+{"completed": 26, "case": "prompt-08-seed-7717"}
+{"completed": 27, "case": "prompt-08-seed-9401"}
+{"completed": 28, "case": "prompt-09-seed-5101"}
+{"completed": 29, "case": "prompt-09-seed-7717"}
+{"completed": 30, "case": "prompt-09-seed-9401"}
+{"completed": 31, "case": "prompt-10-seed-5101"}
+{"completed": 32, "case": "prompt-10-seed-7717"}
+{"completed": 33, "case": "prompt-10-seed-9401"}
+{"completed": 34, "case": "prompt-11-seed-5101"}
+{"completed": 35, "case": "prompt-11-seed-7717"}
+{"completed": 36, "case": "prompt-11-seed-9401"}
+{"completed": 37, "case": "prompt-12-seed-5101"}
+{"completed": 38, "case": "prompt-12-seed-7717"}
+{"completed": 39, "case": "prompt-12-seed-9401"}
+{"completed": 40, "case": "prompt-13-seed-5101"}
+{"completed": 41, "case": "prompt-13-seed-7717"}
+{"completed": 42, "case": "prompt-13-seed-9401"}
+{"completed": 43, "case": "prompt-14-seed-5101"}
+{"completed": 44, "case": "prompt-14-seed-7717"}
+{"completed": 45, "case": "prompt-14-seed-9401"}
+{"completed": 46, "case": "prompt-15-seed-5101"}
+{"completed": 47, "case": "prompt-15-seed-7717"}
+{"completed": 48, "case": "prompt-15-seed-9401"}
+{"completed": 49, "case": "prompt-16-seed-5101"}
+{"completed": 50, "case": "prompt-16-seed-7717"}
+{"completed": 51, "case": "prompt-16-seed-9401"}
+{"completed": 52, "case": "prompt-17-seed-5101"}
+{"completed": 53, "case": "prompt-17-seed-7717"}
+{"completed": 54, "case": "prompt-17-seed-9401"}
+{"completed": 55, "case": "prompt-18-seed-5101"}
+{"completed": 56, "case": "prompt-18-seed-7717"}
+{"completed": 57, "case": "prompt-18-seed-9401"}
+{"completed": 58, "case": "prompt-19-seed-5101"}
+{"completed": 59, "case": "prompt-19-seed-7717"}
+{"completed": 60, "case": "prompt-19-seed-9401"}
+{"completed": 61, "case": "prompt-20-seed-5101"}
+{"completed": 62, "case": "prompt-20-seed-7717"}
+{"completed": 63, "case": "prompt-20-seed-9401"}
+{"completed": 64, "case": "prompt-21-seed-5101"}
+{"completed": 65, "case": "prompt-21-seed-7717"}
+{"completed": 66, "case": "prompt-21-seed-9401"}
+{"completed": 67, "case": "prompt-22-seed-5101"}
+{"completed": 68, "case": "prompt-22-seed-7717"}
+{"completed": 69, "case": "prompt-22-seed-9401"}
+{"completed": 70, "case": "prompt-23-seed-5101"}
+{"completed": 71, "case": "prompt-23-seed-7717"}
+{"completed": 72, "case": "prompt-23-seed-9401"}
+{
+ "ctrl_k1": {
+  "speedup_vs_exact": 3.300324,
+  "mse_vs_exact": 0.035355,
+  "psnr_vs_exact": 14.970296,
+  "ssim_gaussian_vs_exact": 0.502145,
+  "lpips_alex_vs_exact": 0.453743
+ }
+}
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  67%|██████▋   | 2/3 [00:00<00:00, 19.37it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 10.23it/s]
+/root/venv/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/root/venv/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/root/venv/lib/python3.12/site-packages/lpips/lpips.py:107: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.load_state_dict(torch.load(model_path, map_location='cpu'), strict=False)
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: /root/venv/lib/python3.12/site-packages/lpips/weights/v0.1/alex.pth
+{"loaded_surrogate": "runs/ctrl_k2/best.pt", "step": 2000, "val_rel_mse": 0.2939820245487857}
+{"loaded_surrogate": "runs/ctrl_k4/best.pt", "step": 6000, "val_rel_mse": 0.21860584287044943}
+{"loaded_surrogate": "runs/ctrl_k7/best.pt", "step": 10000, "val_rel_mse": 0.11835974057612779}
+{"loaded_surrogate": "runs/m_k14/best.pt", "step": 179200, "val_rel_mse": 0.04371021051667811}
+{"loaded_surrogate": "runs/m_k2/best.pt", "step": 76800, "val_rel_mse": 0.21282129564940677}
+{"loaded_surrogate": "runs/m_k28/best.pt", "step": 256000, "val_rel_mse": 0.033649529146218334}
+{"loaded_surrogate": "runs/m_k4/best.pt", "step": 89600, "val_rel_mse": 0.16385444111866154}
+{"loaded_surrogate": "runs/m_k7/best.pt", "step": 140800, "val_rel_mse": 0.08233842469266178}
+{"loaded_surrogate": "runs/traj_k14/best.pt", "step": 400, "val_rel_mse": null}
+{"loaded_surrogate": "runs/traj_k2/best.pt", "step": 225, "val_rel_mse": null}
+{"loaded_surrogate": "runs/traj_k28/best.pt", "step": 325, "val_rel_mse": null}
+{"loaded_surrogate": "runs/traj_k4/best.pt", "step": 375, "val_rel_mse": null}
+{"loaded_surrogate": "runs/traj_k7/best.pt", "step": 275, "val_rel_mse": null}
+{"completed": 1, "case": "prompt-00-seed-5101"}
+{"completed": 2, "case": "prompt-00-seed-7717"}
+{"completed": 3, "case": "prompt-00-seed-9401"}
+{"completed": 4, "case": "prompt-01-seed-5101"}
+{"completed": 5, "case": "prompt-01-seed-7717"}
+{"completed": 6, "case": "prompt-01-seed-9401"}
+{"completed": 7, "case": "prompt-02-seed-5101"}
+{"completed": 8, "case": "prompt-02-seed-7717"}
+{"completed": 9, "case": "prompt-02-seed-9401"}
+{"completed": 10, "case": "prompt-03-seed-5101"}
+{"completed": 11, "case": "prompt-03-seed-7717"}
+{"completed": 12, "case": "prompt-03-seed-9401"}
+{"completed": 13, "case": "prompt-04-seed-5101"}
+{"completed": 14, "case": "prompt-04-seed-7717"}
+{"completed": 15, "case": "prompt-04-seed-9401"}
+{"completed": 16, "case": "prompt-05-seed-5101"}
+{"completed": 17, "case": "prompt-05-seed-7717"}
+{"completed": 18, "case": "prompt-05-seed-9401"}
+{"completed": 19, "case": "prompt-06-seed-5101"}
+{"completed": 20, "case": "prompt-06-seed-7717"}
+{"completed": 21, "case": "prompt-06-seed-9401"}
+{"completed": 22, "case": "prompt-07-seed-5101"}
+{"completed": 23, "case": "prompt-07-seed-7717"}
+{"completed": 24, "case": "prompt-07-seed-9401"}
+{"completed": 25, "case": "prompt-08-seed-5101"}
+{"completed": 26, "case": "prompt-08-seed-7717"}
+{"completed": 27, "case": "prompt-08-seed-9401"}
+{"completed": 28, "case": "prompt-09-seed-5101"}
+{"completed": 29, "case": "prompt-09-seed-7717"}
+{"completed": 30, "case": "prompt-09-seed-9401"}
+{"completed": 31, "case": "prompt-10-seed-5101"}
+{"completed": 32, "case": "prompt-10-seed-7717"}
+{"completed": 33, "case": "prompt-10-seed-9401"}
+{"completed": 34, "case": "prompt-11-seed-5101"}
+{"completed": 35, "case": "prompt-11-seed-7717"}
+{"completed": 36, "case": "prompt-11-seed-9401"}
+{"completed": 37, "case": "prompt-12-seed-5101"}
+{"completed": 38, "case": "prompt-12-seed-7717"}
+{"completed": 39, "case": "prompt-12-seed-9401"}
+{"completed": 40, "case": "prompt-13-seed-5101"}
+{"completed": 41, "case": "prompt-13-seed-7717"}
+{"completed": 42, "case": "prompt-13-seed-9401"}
+{"completed": 43, "case": "prompt-14-seed-5101"}
+{"completed": 44, "case": "prompt-14-seed-7717"}
+{"completed": 45, "case": "prompt-14-seed-9401"}
+{"completed": 46, "case": "prompt-15-seed-5101"}
+{"completed": 47, "case": "prompt-15-seed-7717"}
+{"completed": 48, "case": "prompt-15-seed-9401"}
+{"completed": 49, "case": "prompt-16-seed-5101"}
+{"completed": 50, "case": "prompt-16-seed-7717"}
+{"completed": 51, "case": "prompt-16-seed-9401"}
+{"completed": 52, "case": "prompt-17-seed-5101"}
+{"completed": 53, "case": "prompt-17-seed-7717"}
+{"completed": 54, "case": "prompt-17-seed-9401"}
+{"completed": 55, "case": "prompt-18-seed-5101"}
+{"completed": 56, "case": "prompt-18-seed-7717"}
+{"completed": 57, "case": "prompt-18-seed-9401"}
+{"completed": 58, "case": "prompt-19-seed-5101"}
+{"completed": 59, "case": "prompt-19-seed-7717"}
+{"completed": 60, "case": "prompt-19-seed-9401"}
+{"completed": 61, "case": "prompt-20-seed-5101"}
+{"completed": 62, "case": "prompt-20-seed-7717"}
+{"completed": 63, "case": "prompt-20-seed-9401"}
+{"completed": 64, "case": "prompt-21-seed-5101"}
+{"completed": 65, "case": "prompt-21-seed-7717"}
+{"completed": 66, "case": "prompt-21-seed-9401"}
+{"completed": 67, "case": "prompt-22-seed-5101"}
+{"completed": 68, "case": "prompt-22-seed-7717"}
+{"completed": 69, "case": "prompt-22-seed-9401"}
+{"completed": 70, "case": "prompt-23-seed-5101"}
+{"completed": 71, "case": "prompt-23-seed-7717"}
+{"completed": 72, "case": "prompt-23-seed-9401"}
+{
+ "ctrl_k2": {
+  "speedup_vs_exact": 2.194479,
+  "mse_vs_exact": 0.039041,
+  "psnr_vs_exact": 14.508746,
+  "ssim_gaussian_vs_exact": 0.478816,
+  "lpips_alex_vs_exact": 0.510742
+ },
+ "ctrl_k4": {
+  "speedup_vs_exact": 1.682268,
+  "mse_vs_exact": 0.042746,
+  "psnr_vs_exact": 14.179588,
+  "ssim_gaussian_vs_exact": 0.481809,
+  "lpips_alex_vs_exact": 0.517045
+ },
+ "ctrl_k7": {
+  "speedup_vs_exact": 1.183446,
+  "mse_vs_exact": 0.041045,
+  "psnr_vs_exact": 14.338857,
+  "ssim_gaussian_vs_exact": 0.477428,
+  "lpips_alex_vs_exact": 0.519322
+ },
+ "m_k14": {
+  "speedup_vs_exact": 0.709609,
+  "mse_vs_exact": 0.041889,
+  "psnr_vs_exact": 14.238768,
+  "ssim_gaussian_vs_exact": 0.4771,
+  "lpips_alex_vs_exact": 0.521455
+ },
+ "m_k2": {
+  "speedup_vs_exact": 2.324617,
+  "mse_vs_exact": 0.037846,
+  "psnr_vs_exact": 14.617306,
+  "ssim_gaussian_vs_exact": 0.491188,
+  "lpips_alex_vs_exact": 0.479359
+ },
+ "m_k28": {
+  "speedup_vs_exact": 0.388429,
+  "mse_vs_exact": 0.041687,
+  "psnr_vs_exact": 14.253207,
+  "ssim_gaussian_vs_exact": 0.469424,
+  "lpips_alex_vs_exact": 0.531283
+ },
+ "m_k4": {
+  "speedup_vs_exact": 1.672214,
+  "mse_vs_exact": 0.039654,
+  "psnr_vs_exact": 14.456717,
+  "ssim_gaussian_vs_exact": 0.479931,
+  "lpips_alex_vs_exact": 0.502622
+ },
+ "m_k7": {
+  "speedup_vs_exact": 1.190233,
+  "mse_vs_exact": 0.039373,
+  "psnr_vs_exact": 14.485957,
+  "ssim_gaussian_vs_exact": 0.483332,
+  "lpips_alex_vs_exact": 0.497065
+ },
+ "traj_k14": {
+  "speedup_vs_exact": 0.713774,
+  "mse_vs_exact": 0.036594,
+  "psnr_vs_exact": 14.929351,
+  "ssim_gaussian_vs_exact": 0.51428,
+  "lpips_alex_vs_exact": 0.484225
+ },
+ "traj_k2": {
+  "speedup_vs_exact": 2.334334,
+  "mse_vs_exact": 0.034442,
+  "psnr_vs_exact": 15.076502,
+  "ssim_gaussian_vs_exact": 0.514166,
+  "lpips_alex_vs_exact": 0.460734
+ },
+ "traj_k28": {
+  "speedup_vs_exact": 0.39142,
+  "mse_vs_exact": 0.03548,
+  "psnr_vs_exact": 14.990594,
+  "ssim_gaussian_vs_exact": 0.514298,
+  "lpips_alex_vs_exact": 0.487469
+ },
+ "traj_k4": {
+  "speedup_vs_exact": 1.689015,
+  "mse_vs_exact": 0.032954,
+  "psnr_vs_exact": 15.23235,
+  "ssim_gaussian_vs_exact": 0.524224,
+  "lpips_alex_vs_exact": 0.460073
+ },
+ "traj_k7": {
+  "speedup_vs_exact": 1.198343,
+  "mse_vs_exact": 0.033931,
+  "psnr_vs_exact": 15.171572,
+  "ssim_gaussian_vs_exact": 0.529927,
+  "lpips_alex_vs_exact": 0.462921
+ }
+}
+load checkpoint from /root/.cache/ImageReward/ImageReward.pt
+checkpoint loaded
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  67%|██████▋   | 2/3 [00:00<00:00, 17.78it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 24.63it/s]
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: /root/venv/lib/python3.12/site-packages/lpips/weights/v0.1/alex.pth
+{"completed": 20}
+{"completed": 40}
+{"completed": 60}
+{"written": "runs/cr/test_ir/results.json", "n": 72}
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  33%|███▎      | 1/3 [00:00<00:00,  7.00it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 15.44it/s]
+{"prompt_done": 1}
+{"prompt_done": 2}
+{"prompt_done": 3}
+{"prompt_done": 4}
+{"prompt_done": 5}
+{"prompt_done": 6}
+{"prompt_done": 7}
+{"prompt_done": 8}
+{"prompt_done": 9}
+{"prompt_done": 10}
+{"prompt_done": 11}
+{"prompt_done": 12}
+{"prompt_done": 13}
+{"prompt_done": 14}
+{"prompt_done": 15}
+{"prompt_done": 16}
+{"prompt_done": 17}
+{"prompt_done": 18}
+{"prompt_done": 19}
+{"prompt_done": 20}
+{"prompt_done": 21}
+{"prompt_done": 22}
+{"prompt_done": 23}
+{"prompt_done": 24}
+{
+ "written": "runs/cr/oracle_test/step_error.png",
+ "final_mean": {
+  "oracle_b0.000": 0.5856,
+  "oracle_b0.250": 0.5439,
+  "oracle_b0.376": 0.515,
+  "oracle_b0.467": 0.4922,
+  "oracle_b0.600": 0.4575,
+  "oracle_b0.800": 0.3811,
+  "oracle_b1.000": 0.0,
+  "m_k1 (real)": 0.5023,
+  "ctrl_k1 (real)": 0.5053,
+  "traj_k1 (real)": 0.4618
+ }
+}
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  67%|██████▋   | 2/3 [00:00<00:00, 11.29it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 16.04it/s]
+/root/venv/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/root/venv/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/root/venv/lib/python3.12/site-packages/lpips/lpips.py:107: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.load_state_dict(torch.load(model_path, map_location='cpu'), strict=False)
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: /root/venv/lib/python3.12/site-packages/lpips/weights/v0.1/alex.pth
+{"completed": 1, "n_refresh": 4}
+{"completed": 2, "n_refresh": 4}
+{"completed": 3, "n_refresh": 4}
+{"completed": 4, "n_refresh": 4}
+{"completed": 5, "n_refresh": 4}
+{"completed": 6, "n_refresh": 4}
+{"completed": 7, "n_refresh": 4}
+{"completed": 8, "n_refresh": 4}
+{"completed": 9, "n_refresh": 4}
+{"completed": 10, "n_refresh": 4}
+{"completed": 11, "n_refresh": 4}
+{"completed": 12, "n_refresh": 4}
+{"completed": 13, "n_refresh": 4}
+{"completed": 14, "n_refresh": 4}
+{"completed": 15, "n_refresh": 4}
+{"completed": 16, "n_refresh": 4}
+{"completed": 17, "n_refresh": 4}
+{"completed": 18, "n_refresh": 4}
+{"completed": 19, "n_refresh": 4}
+{"completed": 20, "n_refresh": 4}
+{"completed": 21, "n_refresh": 4}
+{"completed": 22, "n_refresh": 4}
+{"completed": 23, "n_refresh": 4}
+{"completed": 24, "n_refresh": 4}
+{"completed": 25, "n_refresh": 4}
+{"completed": 26, "n_refresh": 4}
+{"completed": 27, "n_refresh": 4}
+{"completed": 28, "n_refresh": 4}
+{"completed": 29, "n_refresh": 4}
+{"completed": 30, "n_refresh": 4}
+{"completed": 31, "n_refresh": 4}
+{"completed": 32, "n_refresh": 4}
+{"completed": 33, "n_refresh": 4}
+{"completed": 34, "n_refresh": 4}
+{"completed": 35, "n_refresh": 4}
+{"completed": 36, "n_refresh": 4}
+{"completed": 37, "n_refresh": 4}
+{"completed": 38, "n_refresh": 4}
+{"completed": 39, "n_refresh": 4}
+{"completed": 40, "n_refresh": 4}
+{"completed": 41, "n_refresh": 4}
+{"completed": 42, "n_refresh": 4}
+{"completed": 43, "n_refresh": 4}
+{"completed": 44, "n_refresh": 4}
+{"completed": 45, "n_refresh": 4}
+{"completed": 46, "n_refresh": 4}
+{"completed": 47, "n_refresh": 4}
+{"completed": 48, "n_refresh": 4}
+{"completed": 49, "n_refresh": 4}
+{"completed": 50, "n_refresh": 4}
+{"completed": 51, "n_refresh": 4}
+{"completed": 52, "n_refresh": 5}
+{"completed": 53, "n_refresh": 4}
+{"completed": 54, "n_refresh": 5}
+{"completed": 55, "n_refresh": 3}
+{"completed": 56, "n_refresh": 4}
+{"completed": 57, "n_refresh": 4}
+{"completed": 58, "n_refresh": 4}
+{"completed": 59, "n_refresh": 4}
+{"completed": 60, "n_refresh": 4}
+{"completed": 61, "n_refresh": 4}
+{"completed": 62, "n_refresh": 4}
+{"completed": 63, "n_refresh": 4}
+{"completed": 64, "n_refresh": 4}
+{"completed": 65, "n_refresh": 4}
+{"completed": 66, "n_refresh": 4}
+{"completed": 67, "n_refresh": 4}
+{"completed": 68, "n_refresh": 4}
+{"completed": 69, "n_refresh": 4}
+{"completed": 70, "n_refresh": 4}
+{"completed": 71, "n_refresh": 4}
+{"completed": 72, "n_refresh": 4}
+{
+ "threshold": 0.33,
+ "uniform_interval": 5,
+ "steps": 20,
+ "arms": [
+  {
+   "name": "plain",
+   "checkpoint": null,
+   "sigma": 1.0
+  },
+  {
+   "name": "resid",
+   "checkpoint": "runs/m_k1/best.pt",
+   "sigma": 0.6
+  },
+  {
+   "name": "traj",
+   "checkpoint": "runs/traj_k1/best.pt",
+   "sigma": 0.6
+  }
+ ],
+ "refresh_count_mean": 4.013888888888889,
+ "max_tau_range": [
+  8,
+  11
+ ],
+ "summary": {
+  "uniform": {
+   "plain": {
+    "ssim": 0.46346801872746285,
+    "lpips": 0.536584384739399,
+    "psnr": 14.289076429262975
+   },
+   "resid": {
+    "ssim": 0.5145403043300003,
+    "lpips": 0.43702937703993583,
+    "psnr": 15.121736349449376,
+    "vs_plain_ssim": {
+     "mean": 0.0510722856025375,
+     "t": 11.876690414575439,
+     "wins": 67,
+     "n": 72
+    }
+   },
+   "traj": {
+    "ssim": 0.5320272553774388,
+    "lpips": 0.44229360214538044,
+    "psnr": 15.274731951818959,
+    "vs_plain_ssim": {
+     "mean": 0.06855923664997592,
+     "t": 10.706160950580122,
+     "wins": 66,
+     "n": 72
+    }
+   },
+   "traj_minus_resid_ssim": {
+    "mean": 0.01748695104743841,
+    "t": 4.459205465590662,
+    "wins": 53,
+    "n": 72
+   }
+  },
+  "frozen": {
+   "plain": {
+    "ssim": 0.4646673024638196,
+    "lpips": 0.6031175495849715,
+    "psnr": 12.3026249059778
+   },
+   "resid": {
+    "ssim": 0.48462227411142217,
+    "lpips": 0.5437902828885449,
+    "psnr": 12.725590498848447,
+    "vs_plain_ssim": {
+     "mean": 0.019954971647602533,
+     "t": 4.06441253935506,
+     "wins": 53,
+     "n": 72
+    }
+   },
+   "traj": {
+    "ssim": 0.4916281445966367,
+    "lpips": 0.5199153965546025,
+    "psnr": 13.009322538897907,
+    "vs_plain_ssim": {
+     "mean": 0.02696084213281705,
+     "t": 5.149125901606629,
+     "wins": 55,
+     "n": 72
+    }
+   },
+   "traj_minus_resid_ssim": {
+    "mean": 0.007005870485214517,
+    "t": 2.4249240330516986,
+    "wins": 43,
+    "n": 72
+   }
+  }
+ },
+ "plain_frozen_minus_uniform_ssim": {
+  "mean": 0.0011992837363568,
+  "t": 0.1661914174878669,
+  "wins": 34,
+  "n": 72
+ }
+}
+EVAL_DONE

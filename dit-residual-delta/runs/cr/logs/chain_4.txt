@@ -1,0 +1,27 @@
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  67%|██████▋   | 2/3 [00:00<00:00, 11.93it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 16.96it/s]
+{"shard": 0, "rollouts_done": 2, "seconds": 64.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 4, "seconds": 119.1, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 6, "seconds": 202.1, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 3, "rollouts_done": 8, "seconds": 255.3, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 4, "rollouts_done": 10, "seconds": 308.6, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 5, "rollouts_done": 12, "seconds": 381.2, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 6, "rollouts_done": 14, "seconds": 435.1, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 7, "rollouts_done": 16, "seconds": 500.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 8, "rollouts_done": 18, "seconds": 554.1, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 9, "rollouts_done": 20, "seconds": 609.1, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 10, "rollouts_done": 22, "seconds": 663.1, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 11, "rollouts_done": 24, "seconds": 717.1, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 12, "rollouts_done": 26, "seconds": 769.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 13, "rollouts_done": 28, "seconds": 821.4, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 14, "rollouts_done": 30, "seconds": 875.4, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 15, "rollouts_done": 32, "seconds": 928.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 16, "rollouts_done": 34, "seconds": 982.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 17, "rollouts_done": 36, "seconds": 1036.9, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 18, "rollouts_done": 38, "seconds": 1090.0, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 19, "rollouts_done": 40, "seconds": 1144.1, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 20, "rollouts_done": 42, "seconds": 1197.5, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 21, "rollouts_done": 44, "seconds": 1254.0, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 22, "rollouts_done": 46, "seconds": 1307.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 23, "rollouts_done": 48, "seconds": 1362.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 24, "rollouts_done": 50, "seconds": 1416.9, "slots": 896, "tokens": 48, "dim": 1152}

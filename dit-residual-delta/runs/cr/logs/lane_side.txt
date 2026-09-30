@@ -1,0 +1,328 @@
+=== collect c1/train (1 seeds) ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  33%|███▎      | 1/3 [00:00<00:00,  5.43it/s]Loading pipeline components...:  67%|██████▋   | 2/3 [00:00<00:00,  6.02it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00,  8.61it/s]
+{"shard": 0, "rollouts_done": 8, "seconds": 14.9, "slots": 128, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 16, "seconds": 31.3, "slots": 128, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 24, "seconds": 46.6, "slots": 128, "tokens": 48, "dim": 1152}
+{"shard": 3, "rollouts_done": 32, "seconds": 62.7, "slots": 128, "tokens": 48, "dim": 1152}
+{"shard": 4, "rollouts_done": 40, "seconds": 78.1, "slots": 128, "tokens": 48, "dim": 1152}
+{"shard": 5, "rollouts_done": 48, "seconds": 92.4, "slots": 128, "tokens": 48, "dim": 1152}
+{"shard": 6, "rollouts_done": 56, "seconds": 107.7, "slots": 128, "tokens": 48, "dim": 1152}
+{"shard": 7, "rollouts_done": 64, "seconds": 122.6, "slots": 128, "tokens": 48, "dim": 1152}
+{"shard": 8, "rollouts_done": 72, "seconds": 137.9, "slots": 128, "tokens": 48, "dim": 1152}
+{"shard": 9, "rollouts_done": 80, "seconds": 152.8, "slots": 128, "tokens": 48, "dim": 1152}
+{"shard": 10, "rollouts_done": 88, "seconds": 169.4, "slots": 128, "tokens": 48, "dim": 1152}
+{"shard": 11, "rollouts_done": 96, "seconds": 185.2, "slots": 128, "tokens": 48, "dim": 1152}
+{"shard": 12, "rollouts_done": 104, "seconds": 200.0, "slots": 128, "tokens": 48, "dim": 1152}
+{"shard": 13, "rollouts_done": 112, "seconds": 216.4, "slots": 128, "tokens": 48, "dim": 1152}
+{"shards": 14, "output": "/workspace/scratch_banks/c1/train"}
+=== collect c1/val (1 seeds) ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 17.86it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 17.83it/s]
+{"shard": 0, "rollouts_done": 8, "seconds": 15.0, "slots": 128, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 16, "seconds": 31.8, "slots": 128, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 24, "seconds": 46.9, "slots": 128, "tokens": 48, "dim": 1152}
+{"shards": 3, "output": "/workspace/scratch_banks/c1/val"}
+=== ctrl_k1 ===
+{"train_slots": 1792, "val_slots": 384, "tokens": 48, "rms": {"delta_h": 0.07, "anchor_hidden": 0.75706, "anchor_residual": 12.33716, "delta_residual": 2.30626}}
+parameters: 11.88M
+{"step": 2000, "loss": 0.2326, "val_rel_mse": 0.3896, "seconds": 64}
+{"step": 4000, "loss": 0.24262, "val_rel_mse": 0.41476, "seconds": 128}
+{"step": 6000, "loss": 0.17205, "val_rel_mse": 0.43606, "seconds": 192}
+{"step": 8000, "loss": 0.1836, "val_rel_mse": 0.45503, "seconds": 256}
+{"step": 10000, "loss": 0.12462, "val_rel_mse": 0.46738, "seconds": 321}
+{"step": 12000, "loss": 0.15588, "val_rel_mse": 0.48356, "seconds": 385}
+{"step": 14000, "loss": 0.15051, "val_rel_mse": 0.49344, "seconds": 449}
+{"step": 16000, "loss": 0.12813, "val_rel_mse": 0.49572, "seconds": 514}
+{
+ "best_val_rel_mse": 0.38960065591516735,
+ "best_step": 2000
+}
+=== collect c2/train (1 seeds) ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 18.90it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 18.83it/s]
+{"shard": 0, "rollouts_done": 8, "seconds": 17.5, "slots": 256, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 16, "seconds": 50.5, "slots": 256, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 24, "seconds": 65.7, "slots": 256, "tokens": 48, "dim": 1152}
+{"shard": 3, "rollouts_done": 32, "seconds": 83.3, "slots": 256, "tokens": 48, "dim": 1152}
+{"shard": 4, "rollouts_done": 40, "seconds": 98.9, "slots": 256, "tokens": 48, "dim": 1152}
+{"shard": 5, "rollouts_done": 48, "seconds": 116.1, "slots": 256, "tokens": 48, "dim": 1152}
+{"shard": 6, "rollouts_done": 56, "seconds": 134.0, "slots": 256, "tokens": 48, "dim": 1152}
+{"shard": 7, "rollouts_done": 64, "seconds": 149.8, "slots": 256, "tokens": 48, "dim": 1152}
+{"shard": 8, "rollouts_done": 72, "seconds": 167.6, "slots": 256, "tokens": 48, "dim": 1152}
+{"shard": 9, "rollouts_done": 80, "seconds": 184.0, "slots": 256, "tokens": 48, "dim": 1152}
+{"shard": 10, "rollouts_done": 88, "seconds": 200.2, "slots": 256, "tokens": 48, "dim": 1152}
+{"shard": 11, "rollouts_done": 96, "seconds": 216.4, "slots": 256, "tokens": 48, "dim": 1152}
+{"shard": 12, "rollouts_done": 104, "seconds": 234.9, "slots": 256, "tokens": 48, "dim": 1152}
+{"shard": 13, "rollouts_done": 112, "seconds": 250.7, "slots": 256, "tokens": 48, "dim": 1152}
+{"shards": 14, "output": "/workspace/scratch_banks/c2/train"}
+=== collect c2/val (1 seeds) ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  33%|███▎      | 1/3 [00:00<00:00,  5.89it/s]Loading pipeline components...:  67%|██████▋   | 2/3 [00:00<00:00,  7.16it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00,  9.43it/s]
+{"shard": 0, "rollouts_done": 8, "seconds": 16.7, "slots": 256, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 16, "seconds": 32.8, "slots": 256, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 24, "seconds": 50.2, "slots": 256, "tokens": 48, "dim": 1152}
+{"shards": 3, "output": "/workspace/scratch_banks/c2/val"}
+=== ctrl_k2 ===
+{"train_slots": 3584, "val_slots": 768, "tokens": 48, "rms": {"delta_h": 0.07017, "anchor_hidden": 1.35691, "anchor_residual": 8.75751, "delta_residual": 1.72796}}
+parameters: 13.06M
+{"step": 2000, "loss": 0.1254, "val_rel_mse": 0.29398, "seconds": 64}
+{"step": 4000, "loss": 0.11346, "val_rel_mse": 0.29653, "seconds": 132}
+{"step": 6000, "loss": 0.11304, "val_rel_mse": 0.30815, "seconds": 197}
+{"step": 8000, "loss": 0.12613, "val_rel_mse": 0.32084, "seconds": 262}
+{"step": 10000, "loss": 0.06921, "val_rel_mse": 0.32916, "seconds": 328}
+{"step": 12000, "loss": 0.10188, "val_rel_mse": 0.33935, "seconds": 392}
+{"step": 14000, "loss": 0.11303, "val_rel_mse": 0.34578, "seconds": 458}
+{"step": 16000, "loss": 0.10018, "val_rel_mse": 0.34695, "seconds": 524}
+{
+ "best_val_rel_mse": 0.2939820245487857,
+ "best_step": 2000
+}
+=== collect c4/train (1 seeds) ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  67%|██████▋   | 2/3 [00:00<00:00,  9.43it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 12.65it/s]
+{"shard": 0, "rollouts_done": 8, "seconds": 25.7, "slots": 512, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 16, "seconds": 43.8, "slots": 512, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 24, "seconds": 64.1, "slots": 512, "tokens": 48, "dim": 1152}
+{"shard": 3, "rollouts_done": 32, "seconds": 84.2, "slots": 512, "tokens": 48, "dim": 1152}
+{"shard": 4, "rollouts_done": 40, "seconds": 104.1, "slots": 512, "tokens": 48, "dim": 1152}
+{"shard": 5, "rollouts_done": 48, "seconds": 133.3, "slots": 512, "tokens": 48, "dim": 1152}
+{"shard": 6, "rollouts_done": 56, "seconds": 152.5, "slots": 512, "tokens": 48, "dim": 1152}
+{"shard": 7, "rollouts_done": 64, "seconds": 171.4, "slots": 512, "tokens": 48, "dim": 1152}
+{"shard": 8, "rollouts_done": 72, "seconds": 187.7, "slots": 512, "tokens": 48, "dim": 1152}
+{"shard": 9, "rollouts_done": 80, "seconds": 198.7, "slots": 512, "tokens": 48, "dim": 1152}
+{"shard": 10, "rollouts_done": 88, "seconds": 209.7, "slots": 512, "tokens": 48, "dim": 1152}
+{"shard": 11, "rollouts_done": 96, "seconds": 221.0, "slots": 512, "tokens": 48, "dim": 1152}
+{"shard": 12, "rollouts_done": 104, "seconds": 231.9, "slots": 512, "tokens": 48, "dim": 1152}
+{"shard": 13, "rollouts_done": 112, "seconds": 243.3, "slots": 512, "tokens": 48, "dim": 1152}
+{"shards": 14, "output": "/workspace/scratch_banks/c4/train"}
+=== collect c4/val (1 seeds) ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 25.34it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 25.20it/s]
+{"shard": 0, "rollouts_done": 8, "seconds": 11.6, "slots": 512, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 16, "seconds": 22.9, "slots": 512, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 24, "seconds": 33.7, "slots": 512, "tokens": 48, "dim": 1152}
+{"shards": 3, "output": "/workspace/scratch_banks/c4/val"}
+=== ctrl_k4 ===
+{"train_slots": 7168, "val_slots": 1536, "tokens": 48, "rms": {"delta_h": 0.06991, "anchor_hidden": 2.09057, "anchor_residual": 5.68826, "delta_residual": 1.23672}}
+parameters: 15.42M
+{"step": 2000, "loss": 0.09519, "val_rel_mse": 0.24193, "seconds": 53}
+{"step": 4000, "loss": 0.1036, "val_rel_mse": 0.22264, "seconds": 135}
+{"step": 6000, "loss": 0.16569, "val_rel_mse": 0.21861, "seconds": 217}
+{"step": 8000, "loss": 0.07583, "val_rel_mse": 0.22247, "seconds": 299}
+{"step": 10000, "loss": 0.05643, "val_rel_mse": 0.22664, "seconds": 381}
+{"step": 12000, "loss": 0.04553, "val_rel_mse": 0.23158, "seconds": 463}
+{"step": 14000, "loss": 0.09244, "val_rel_mse": 0.23534, "seconds": 545}
+{"step": 16000, "loss": 0.04143, "val_rel_mse": 0.23612, "seconds": 624}
+{
+ "best_val_rel_mse": 0.21860584287044943,
+ "best_step": 6000
+}
+=== collect c7/train (1 seeds) ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  33%|███▎      | 1/3 [00:00<00:00,  3.96it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 10.32it/s]
+{"shard": 0, "rollouts_done": 8, "seconds": 32.0, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 16, "seconds": 62.0, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 24, "seconds": 92.1, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 3, "rollouts_done": 32, "seconds": 122.2, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 4, "rollouts_done": 40, "seconds": 151.4, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 5, "rollouts_done": 48, "seconds": 180.4, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 6, "rollouts_done": 56, "seconds": 209.4, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 7, "rollouts_done": 64, "seconds": 239.4, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 8, "rollouts_done": 72, "seconds": 269.6, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 9, "rollouts_done": 80, "seconds": 299.1, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 10, "rollouts_done": 88, "seconds": 328.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 11, "rollouts_done": 96, "seconds": 357.6, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 12, "rollouts_done": 104, "seconds": 386.8, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 13, "rollouts_done": 112, "seconds": 412.0, "slots": 896, "tokens": 48, "dim": 1152}
+{"shards": 14, "output": "/workspace/scratch_banks/c7/train"}
+=== collect c7/val (1 seeds) ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 18.18it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 18.11it/s]
+{"shard": 0, "rollouts_done": 8, "seconds": 31.7, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 16, "seconds": 60.0, "slots": 896, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 24, "seconds": 88.9, "slots": 896, "tokens": 48, "dim": 1152}
+{"shards": 3, "output": "/workspace/scratch_banks/c7/val"}
+=== ctrl_k7 ===
+{"train_slots": 12544, "val_slots": 2688, "tokens": 48, "rms": {"delta_h": 0.07009, "anchor_hidden": 3.21813, "anchor_residual": 4.17064, "delta_residual": 0.80598}}
+parameters: 18.96M
+{"step": 2000, "loss": 0.11763, "val_rel_mse": 0.16384, "seconds": 86}
+{"step": 4000, "loss": 0.1272, "val_rel_mse": 0.13294, "seconds": 172}
+{"step": 6000, "loss": 0.07421, "val_rel_mse": 0.12541, "seconds": 258}
+{"step": 8000, "loss": 0.0742, "val_rel_mse": 0.12114, "seconds": 345}
+{"step": 10000, "loss": 0.05632, "val_rel_mse": 0.11836, "seconds": 430}
+{"step": 12000, "loss": 0.06307, "val_rel_mse": 0.11847, "seconds": 516}
+=== ctrl_k7 ===
+{"train_slots": 12544, "val_slots": 2688, "tokens": 48, "rms": {"delta_h": 0.07009, "anchor_hidden": 3.21813, "anchor_residual": 4.17064, "delta_residual": 0.80598}}
+parameters: 18.96M
+{"step": 2000, "loss": 0.11763, "val_rel_mse": 0.16384, "seconds": 86}
+{"step": 4000, "loss": 0.1272, "val_rel_mse": 0.13294, "seconds": 173}
+{"step": 6000, "loss": 0.07421, "val_rel_mse": 0.12541, "seconds": 256}
+{"step": 8000, "loss": 0.0742, "val_rel_mse": 0.12114, "seconds": 343}
+{"step": 10000, "loss": 0.05632, "val_rel_mse": 0.11836, "seconds": 429}
+{"step": 12000, "loss": 0.06307, "val_rel_mse": 0.11847, "seconds": 515}
+{"step": 14000, "loss": 0.05114, "val_rel_mse": 0.11872, "seconds": 601}
+{"step": 16000, "loss": 0.06379, "val_rel_mse": 0.11869, "seconds": 687}
+{
+ "best_val_rel_mse": 0.11835974057612779,
+ "best_step": 10000
+}
+=== traj_k7 sigma 0.2 ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  67%|██████▋   | 2/3 [00:00<00:00,  5.97it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00,  8.22it/s]
+{"trainable_params": 18960128}
+/root/venv/lib/python3.12/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+{"peak_alloc_GB": 3.36, "params_with_nonzero_grad": 44, "trainable_tensors": 44, "grad_norm_step1": 2.03108, "loss_step1": 2.59243}
+{"step": 25, "train_loss": 1.14746, "grad_norm": 0.7652, "val_objective": 1.09343, "seconds": 199}
+{"step": 50, "train_loss": 0.78182, "grad_norm": 0.7722, "val_objective": 1.03585, "seconds": 397}
+{"step": 75, "train_loss": 1.91417, "grad_norm": 1.0359, "val_objective": 1.06423, "seconds": 595}
+{"step": 100, "train_loss": 1.10948, "grad_norm": 0.6818, "val_objective": 1.05889, "seconds": 792}
+{"step": 125, "train_loss": 0.71724, "grad_norm": 0.7919, "val_objective": 1.06385, "seconds": 992}
+{"step": 150, "train_loss": 0.96745, "grad_norm": 1.3056, "val_objective": 1.12189, "seconds": 1189}
+{"step": 175, "train_loss": 1.10393, "grad_norm": 0.6871, "val_objective": 1.24127, "seconds": 1388}
+{"step": 200, "train_loss": 1.32014, "grad_norm": 1.8854, "val_objective": 1.00662, "seconds": 1585}
+{"step": 225, "train_loss": 1.046, "grad_norm": 0.7874, "val_objective": 0.95976, "seconds": 1787}
+{"step": 250, "train_loss": 0.46241, "grad_norm": 0.4941, "val_objective": 0.9265, "seconds": 1986}
+{"step": 275, "train_loss": 0.7699, "grad_norm": 0.3108, "val_objective": 0.90701, "seconds": 2177}
+{"step": 300, "train_loss": 1.40905, "grad_norm": 1.3764, "val_objective": 0.92532, "seconds": 2376}
+{"step": 325, "train_loss": 0.90725, "grad_norm": 1.4746, "val_objective": 0.94679, "seconds": 2575}
+{"step": 350, "train_loss": 1.21486, "grad_norm": 0.4026, "val_objective": 0.9278, "seconds": 2710}
+{"step": 375, "train_loss": 0.41204, "grad_norm": 1.0441, "val_objective": 0.92391, "seconds": 2838}
+{"step": 400, "train_loss": 0.78267, "grad_norm": 1.2268, "val_objective": 0.92959, "seconds": 3067}
+{
+ "best_val_objective": 0.9070076048374176,
+ "best_step": 275
+}
+=== traj_k4 sigma 0.3 ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 12.26it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 12.18it/s]
+{"trainable_params": 15420800}
+/root/venv/lib/python3.12/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+{"peak_alloc_GB": 2.99, "params_with_nonzero_grad": 44, "trainable_tensors": 44, "grad_norm_step1": 4.7745, "loss_step1": 3.36059}
+{"step": 25, "train_loss": 1.36719, "grad_norm": 1.3415, "val_objective": 1.14433, "seconds": 160}
+{"step": 50, "train_loss": 0.9767, "grad_norm": 1.7569, "val_objective": 1.05326, "seconds": 319}
+{"step": 75, "train_loss": 2.90445, "grad_norm": 3.0927, "val_objective": 1.1608, "seconds": 478}
+{"step": 100, "train_loss": 1.10002, "grad_norm": 0.9522, "val_objective": 1.12079, "seconds": 637}
+{"step": 125, "train_loss": 0.79126, "grad_norm": 1.3536, "val_objective": 1.1673, "seconds": 797}
+{"step": 150, "train_loss": 0.97753, "grad_norm": 1.3234, "val_objective": 1.17853, "seconds": 956}
+{"step": 175, "train_loss": 0.71437, "grad_norm": 1.238, "val_objective": 1.15752, "seconds": 1116}
+{"step": 200, "train_loss": 1.20425, "grad_norm": 1.8105, "val_objective": 1.03932, "seconds": 1276}
+{"step": 225, "train_loss": 0.9538, "grad_norm": 0.8136, "val_objective": 1.04369, "seconds": 1437}
+{"step": 250, "train_loss": 0.4914, "grad_norm": 1.6558, "val_objective": 1.1963, "seconds": 1597}
+{"step": 275, "train_loss": 1.25596, "grad_norm": 2.6504, "val_objective": 1.34336, "seconds": 1757}
+{"step": 300, "train_loss": 1.54268, "grad_norm": 2.9111, "val_objective": 1.05708, "seconds": 1916}
+{"step": 325, "train_loss": 0.85745, "grad_norm": 0.8126, "val_objective": 1.09269, "seconds": 2077}
+{"step": 350, "train_loss": 1.31814, "grad_norm": 0.9445, "val_objective": 1.00995, "seconds": 2236}
+{"step": 375, "train_loss": 0.46191, "grad_norm": 1.0471, "val_objective": 0.98367, "seconds": 2397}
+{"step": 400, "train_loss": 0.83237, "grad_norm": 1.0355, "val_objective": 1.03759, "seconds": 2557}
+{
+ "best_val_objective": 0.9836696833372116,
+ "best_step": 375
+}
+=== traj_k1 sigma 0.75 ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 18.32it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 18.22it/s]
+{"trainable_params": 11881472}
+{"peak_alloc_GB": 7.45, "params_with_nonzero_grad": 44, "trainable_tensors": 44, "grad_norm_step1": 4.13359, "loss_step1": 2.01969}
+{"step": 25, "train_loss": 1.00455, "grad_norm": 3.0582, "val_objective": 1.05317, "seconds": 49}
+{"step": 50, "train_loss": 0.54564, "grad_norm": 1.7597, "val_objective": 0.96692, "seconds": 100}
+{"step": 75, "train_loss": 2.41702, "grad_norm": 4.6159, "val_objective": 0.93133, "seconds": 159}
+{"step": 100, "train_loss": 0.99603, "grad_norm": 1.664, "val_objective": 0.96055, "seconds": 223}
+{"step": 125, "train_loss": 0.69334, "grad_norm": 1.9094, "val_objective": 0.88603, "seconds": 319}
+{"step": 150, "train_loss": 0.75763, "grad_norm": 1.0672, "val_objective": 0.88598, "seconds": 414}
+{"step": 175, "train_loss": 0.41526, "grad_norm": 2.0179, "val_objective": 0.89268, "seconds": 510}
+{"step": 200, "train_loss": 0.77018, "grad_norm": 1.7666, "val_objective": 0.85409, "seconds": 606}
+{"step": 225, "train_loss": 0.57555, "grad_norm": 0.9946, "val_objective": 0.86246, "seconds": 701}
+{"step": 250, "train_loss": 0.28402, "grad_norm": 0.68, "val_objective": 0.84091, "seconds": 795}
+{"step": 275, "train_loss": 0.54468, "grad_norm": 1.5618, "val_objective": 0.87473, "seconds": 891}
+{"step": 300, "train_loss": 1.12536, "grad_norm": 1.0704, "val_objective": 0.89821, "seconds": 986}
+{"step": 325, "train_loss": 0.7447, "grad_norm": 0.8336, "val_objective": 1.01828, "seconds": 1081}
+{"step": 350, "train_loss": 1.2332, "grad_norm": 1.5851, "val_objective": 0.87706, "seconds": 1176}
+{"step": 375, "train_loss": 0.34085, "grad_norm": 1.3208, "val_objective": 0.89256, "seconds": 1272}
+{"step": 400, "train_loss": 0.55779, "grad_norm": 0.9873, "val_objective": 0.85406, "seconds": 1368}
+{
+ "best_val_objective": 0.8409052491188049,
+ "best_step": 250
+}
+=== traj_k2 sigma 0.3 ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  67%|██████▋   | 2/3 [00:00<00:00,  7.26it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00,  9.45it/s]
+{"trainable_params": 13061248}
+{"peak_alloc_GB": 12.78, "params_with_nonzero_grad": 44, "trainable_tensors": 44, "grad_norm_step1": 1.44749, "loss_step1": 1.98182}
+{"step": 25, "train_loss": 1.37367, "grad_norm": 1.2615, "val_objective": 1.07307, "seconds": 91}
+{"step": 50, "train_loss": 0.88129, "grad_norm": 1.6281, "val_objective": 1.11325, "seconds": 181}
+{"step": 75, "train_loss": 1.98311, "grad_norm": 1.1718, "val_objective": 1.09757, "seconds": 276}
+{"step": 100, "train_loss": 1.09634, "grad_norm": 0.8451, "val_objective": 1.10971, "seconds": 367}
+{"step": 125, "train_loss": 0.83559, "grad_norm": 1.0926, "val_objective": 1.07511, "seconds": 457}
+{"step": 150, "train_loss": 1.11144, "grad_norm": 1.0619, "val_objective": 1.07354, "seconds": 548}
+{"step": 175, "train_loss": 0.61238, "grad_norm": 1.023, "val_objective": 0.98188, "seconds": 637}
+{"step": 200, "train_loss": 1.19006, "grad_norm": 1.41, "val_objective": 1.05084, "seconds": 727}
+{"step": 225, "train_loss": 1.11843, "grad_norm": 0.7157, "val_objective": 0.96994, "seconds": 821}
+{"step": 250, "train_loss": 0.4446, "grad_norm": 1.4, "val_objective": 0.98579, "seconds": 912}
+{"step": 275, "train_loss": 0.82688, "grad_norm": 0.7048, "val_objective": 1.01552, "seconds": 998}
+{"step": 300, "train_loss": 1.44171, "grad_norm": 1.812, "val_objective": 1.06336, "seconds": 1088}
+{"step": 325, "train_loss": 0.80245, "grad_norm": 0.7345, "val_objective": 1.05032, "seconds": 1182}
+{"step": 350, "train_loss": 1.33798, "grad_norm": 0.8069, "val_objective": 0.97487, "seconds": 1238}
+{"step": 375, "train_loss": 0.49878, "grad_norm": 1.316, "val_objective": 1.04148, "seconds": 1295}
+{"step": 400, "train_loss": 0.65982, "grad_norm": 0.542, "val_objective": 0.97444, "seconds": 1378}
+{
+ "best_val_objective": 0.9699394454558691,
+ "best_step": 225
+}
+=== traj_k14 sigma 0.2 ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  33%|███▎      | 1/3 [00:00<00:00,  2.49it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00,  6.89it/s]
+{"trainable_params": 27218560}
+/root/venv/lib/python3.12/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+{"peak_alloc_GB": 4.23, "params_with_nonzero_grad": 44, "trainable_tensors": 44, "grad_norm_step1": 5.09419, "loss_step1": 3.40359}
+{"step": 25, "train_loss": 1.65726, "grad_norm": 2.5771, "val_objective": 1.17718, "seconds": 263}
+{"step": 50, "train_loss": 1.01646, "grad_norm": 2.4934, "val_objective": 1.08257, "seconds": 531}
+{"step": 75, "train_loss": 1.78274, "grad_norm": 1.1276, "val_objective": 1.07765, "seconds": 783}
+{"step": 100, "train_loss": 1.09934, "grad_norm": 1.1194, "val_objective": 1.11233, "seconds": 1036}
+{"step": 125, "train_loss": 0.7429, "grad_norm": 1.3808, "val_objective": 1.08987, "seconds": 1398}
+{"step": 150, "train_loss": 1.02995, "grad_norm": 2.1838, "val_objective": 1.21694, "seconds": 1760}
+{"step": 175, "train_loss": 1.23008, "grad_norm": 2.0002, "val_objective": 1.4476, "seconds": 2124}
+{"step": 200, "train_loss": 1.31928, "grad_norm": 3.1272, "val_objective": 0.9995, "seconds": 2486}
+{"step": 225, "train_loss": 0.96566, "grad_norm": 2.0487, "val_objective": 0.98673, "seconds": 2850}
+{"step": 250, "train_loss": 0.43248, "grad_norm": 0.6477, "val_objective": 0.97179, "seconds": 3213}
+{"step": 275, "train_loss": 0.9841, "grad_norm": 1.5006, "val_objective": 1.18444, "seconds": 3576}
+{"step": 300, "train_loss": 1.46801, "grad_norm": 2.5126, "val_objective": 0.98501, "seconds": 3939}
+{"step": 325, "train_loss": 0.85339, "grad_norm": 1.5055, "val_objective": 0.98953, "seconds": 4302}
+{"step": 350, "train_loss": 1.15619, "grad_norm": 0.6941, "val_objective": 0.97889, "seconds": 4665}
+{"step": 375, "train_loss": 0.42096, "grad_norm": 1.3434, "val_objective": 0.96241, "seconds": 5024}
+{"step": 400, "train_loss": 0.84114, "grad_norm": 1.8407, "val_objective": 0.96082, "seconds": 5387}
+{
+ "best_val_objective": 0.9608242263396581,
+ "best_step": 400
+}
+=== traj_k28 sigma 0.2 ===
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  67%|██████▋   | 2/3 [00:00<00:00,  9.88it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 14.14it/s]
+{"trainable_params": 43735424}
+/root/venv/lib/python3.12/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+{"peak_alloc_GB": 5.99, "params_with_nonzero_grad": 44, "trainable_tensors": 44, "grad_norm_step1": 5.86529, "loss_step1": 3.34133}
+{"step": 25, "train_loss": 1.33911, "grad_norm": 1.6357, "val_objective": 1.11455, "seconds": 308}
+{"step": 50, "train_loss": 0.93267, "grad_norm": 3.0544, "val_objective": 1.08249, "seconds": 616}
+{"step": 75, "train_loss": 1.62968, "grad_norm": 1.2767, "val_objective": 1.19169, "seconds": 924}
+{"step": 100, "train_loss": 1.17332, "grad_norm": 1.4693, "val_objective": 1.18891, "seconds": 1232}
+{"step": 125, "train_loss": 0.81227, "grad_norm": 2.1636, "val_objective": 1.11882, "seconds": 1540}
+{"step": 150, "train_loss": 0.96954, "grad_norm": 2.5051, "val_objective": 1.21399, "seconds": 1848}
+{"step": 175, "train_loss": 1.10733, "grad_norm": 2.7765, "val_objective": 1.17105, "seconds": 2156}
+{"step": 200, "train_loss": 1.19513, "grad_norm": 2.8478, "val_objective": 0.97072, "seconds": 2464}
+{"step": 225, "train_loss": 0.89354, "grad_norm": 1.2482, "val_objective": 1.01814, "seconds": 2772}
+{"step": 250, "train_loss": 0.45091, "grad_norm": 1.0219, "val_objective": 0.96677, "seconds": 3080}
+{"step": 275, "train_loss": 0.74655, "grad_norm": 0.7107, "val_objective": 0.97706, "seconds": 3388}
+{"step": 300, "train_loss": 1.41711, "grad_norm": 4.6044, "val_objective": 0.96447, "seconds": 3696}
+{"step": 325, "train_loss": 0.98844, "grad_norm": 2.8378, "val_objective": 0.90766, "seconds": 4005}
+{"step": 350, "train_loss": 1.30525, "grad_norm": 1.4297, "val_objective": 0.9708, "seconds": 4313}
+{"step": 375, "train_loss": 0.47331, "grad_norm": 2.1481, "val_objective": 1.01149, "seconds": 4621}
+{"step": 400, "train_loss": 0.78183, "grad_norm": 1.7294, "val_objective": 0.99888, "seconds": 4929}
+{
+ "best_val_objective": 0.9076644778251648,
+ "best_step": 325
+}
+LANE_SIDE_DONE

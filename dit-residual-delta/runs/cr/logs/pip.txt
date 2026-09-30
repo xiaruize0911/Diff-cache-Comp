@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/root/venv/lib/python3.12/site-packages/ImageReward/__init__.py", line 1, in <module>
+    from .utils import *
+  File "/root/venv/lib/python3.12/site-packages/ImageReward/utils.py", line 19, in <module>
+    from .ImageReward import ImageReward
+  File "/root/venv/lib/python3.12/site-packages/ImageReward/ImageReward.py", line 16, in <module>
+    from .models.BLIP.blip_pretrain import BLIP_Pretrain
+  File "/root/venv/lib/python3.12/site-packages/ImageReward/models/__init__.py", line 1, in <module>
+    from .AestheticScore import *
+  File "/root/venv/lib/python3.12/site-packages/ImageReward/models/AestheticScore.py", line 16, in <module>
+    import clip
+ModuleNotFoundError: No module named 'clip'

@@ -1,5 +1,5 @@
 {
- "rule": "first three test subjects in prompt-file order; per subject the case with the median Trajector-minus-cache SSIM gain (upper median of 12); centre 250x250 crop",
+ "rule": "first three test subjects in prompt-file order; per subject the case with the median Trajector-minus-cache SSIM gain (upper median of that subject's cases); centre 250x250 crop",
  "cases": [
   {
    "case": "prompt-21-seed-9401",

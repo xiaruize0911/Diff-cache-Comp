@@ -43,7 +43,9 @@ Every Trajector run is initialised from the residual corrector of the same $K$
 (`init_checkpoint` in each `traj_k*/train_report.json`). Figures are drawn by
 [`paper/figs/make_icdm_figs.py`](paper/figs/make_icdm_figs.py) and Tables 1–2 are written
 by [`paper/figs/make_tables.py`](paper/figs/make_tables.py), both from `runs/cr/report.json`.
-Trained weights are not in git (`*.pt` is ignored). Run directories not
+Pod logs for the rerun (training memory and time, sweeps) are in `runs/cr/logs/`, and
+the 15 source images behind Fig. 3 are committed. Trained weights are not in git (`*.pt`
+is ignored). Run directories not
 listed here belong to the earlier study described below; the submitted version's
 evaluation runs (`same_steps/`, `ir_main/`, `traj_allk_eval/`, `traj_sigma_*/`) are
 kept for the record.

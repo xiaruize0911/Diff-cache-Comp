@@ -1,0 +1,18 @@
+Loading pipeline components...:   0%|          | 0/3 [00:00<?, ?it/s]The config attributes {'double_self_attention': False, 'num_vector_embeds': None, 'only_cross_attention': False, 'use_linear_projection': False} were passed to PixArtTransformer2DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  67%|██████▋   | 2/3 [00:00<00:00, 14.14it/s]Loading pipeline components...: 100%|██████████| 3/3 [00:00<00:00, 17.68it/s]
+{"shard": 0, "rollouts_done": 1, "seconds": 78.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 1, "rollouts_done": 2, "seconds": 173.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 2, "rollouts_done": 3, "seconds": 252.2, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 3, "rollouts_done": 4, "seconds": 340.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 4, "rollouts_done": 5, "seconds": 435.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 5, "rollouts_done": 6, "seconds": 513.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 6, "rollouts_done": 7, "seconds": 593.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 7, "rollouts_done": 8, "seconds": 674.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 8, "rollouts_done": 9, "seconds": 751.3, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 9, "rollouts_done": 10, "seconds": 831.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 10, "rollouts_done": 11, "seconds": 909.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 11, "rollouts_done": 12, "seconds": 991.7, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 12, "rollouts_done": 13, "seconds": 1070.9, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 13, "rollouts_done": 14, "seconds": 1149.6, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 14, "rollouts_done": 15, "seconds": 1229.0, "slots": 448, "tokens": 48, "dim": 1152}
+{"shard": 15, "rollouts_done": 16, "seconds": 1307.9, "slots": 448, "tokens": 48, "dim": 1152}

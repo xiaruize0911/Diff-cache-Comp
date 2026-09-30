@@ -52,7 +52,9 @@ def main():
     t1_arms = ["cache_i5", "taylor1", "taylor2", "blockcache", "m_k1", "traj_k1"]
     t1 = {}
     for a in t1_arms:
-        row = {"speedup": st.mean(col(cases, a, SP)), "ssim": st.mean(col(cases, a, SS)),
+        # median: the first case of each arm includes one-off corrector loading and
+        # warm-up (m_k1 records 0.57x there against ~3.4x elsewhere)
+        row = {"speedup": st.median(col(cases, a, SP)), "ssim": st.mean(col(cases, a, SS)),
                "psnr": st.mean(col(cases, a, PS)), "lpips": st.mean(col(cases, a, LP)),
                "ir": ir["aggregate"][a]["reward"]["mean"]}
         if a != "cache_i5":
